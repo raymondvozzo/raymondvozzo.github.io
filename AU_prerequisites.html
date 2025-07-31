@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Prerequisite Tree</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .reset-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        #visualization {
+            width: 100%;
+            height: 900px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            background: white;
+            overflow: auto;
+        }
+
+        .course-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .course-node rect {
+            stroke-width: 2;
+            rx: 8;
+            ry: 8;
+        }
+
+        .course-node.applied rect {
+            fill: #e74c3c;
+            stroke: #c0392b;
+        }
+
+        .course-node.pure rect {
+            fill: #9b59b6;
+            stroke: #8e44ad;
+        }
+
+        .course-node.statistics rect {
+            fill: #3498db;
+            stroke: #2980b9;
+        }
+
+        .course-node.general rect {
+            fill: #95a5a6;
+            stroke: #7f8c8d;
+        }
+
+        .course-node:hover rect {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .course-node.selected rect {
+            stroke: #2c3e50;
+            stroke-width: 4;
+            filter: brightness(1.2);
+        }
+
+        .course-node.highlighted rect {
+            stroke: #f39c12;
+            stroke-width: 3;
+            filter: brightness(1.1);
+        }
+
+        .course-node.faded {
+            opacity: 0.2;
+        }
+
+        .course-node text {
+            fill: white;
+            font-size: 10px;
+            font-weight: 600;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .year-label {
+            font-size: 18px;
+            font-weight: bold;
+            fill: #2c3e50;
+            text-anchor: middle;
+        }
+
+        .link {
+            fill: none;
+            stroke: #95a5a6;
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+            transition: all 0.3s ease;
+        }
+
+        .link.highlighted {
+            stroke: #e74c3c;
+            stroke-width: 3;
+        }
+
+        .link.faded {
+            opacity: 0.1;
+        }
+
+        .info-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .info-panel .course-code {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .info-panel .prerequisites {
+            margin-top: 15px;
+        }
+
+        .info-panel .prerequisites strong {
+            color: #e74c3c;
+        }
+
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Course Prerequisite Tree</h1>
+        <p class="subtitle">Click on any course to highlight its prerequisite pathway</p>
+        
+        <div class="controls">
+            <button class="reset-btn" onclick="resetVisualization()">Reset View</button>
+        </div>
+
+        <div id="visualization"></div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-color" style="background: #e74c3c;"></span>
+                Applied Mathematics
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #9b59b6;"></span>
+                Pure Mathematics
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #3498db;"></span>
+                Statistics/Data Science
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #95a5a6;"></span>
+                General/Core
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <h3>Course Details</h3>
+            <div id="courseInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        // Parse the course data
+        const courseData = `Course Code (CurV Code),Course Name,Year,Semester Offered,Prerequisite course(s),Prerequisite note(s),major
+MATH1000,Foundations,First Year,,,,
+MATH1004,Calculus 1,First Year,Both Sem,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,
+MATHX106,Critical Evaluation in Data Science,First Year,Sem 1,,,statistics
+MATH1006,Discrete Mathematics,First Year,Sem 1,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,
+MATH1007,Geometry,First Year,Sem 1,,,
+STATX100,Probability and Statistics,First Year,Sem 1,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,statistics
+COMP1002,Problem Solving and Programming,First Year,Both Sem,,,
+MATH1005,Calculus 2,First Year,Both Sem,,,
+MATH1011,First Steps in Mathematics Research,First Year,Sem 2,MATHX104 OR MATH1004 OR MATH1005,"D grade or above in at least one of Calculus 1 or, Calculus 2 or, Linear Algebra",
+MATHX104,Linear Algebra,First Year,Sem 2,,,
+MATH1012,Mathematics in Action,First Year,Sem 2,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,applied
+MATH1035,Introduction to Mathematical Data Science,First Year,Sem 2,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,statistics
+MATHX201,Algebra,Second Year,Sem 1,MATHX104,,pure
+MATH1020,Communication and Research Skills in Mathematics,Second Year,Sem 1,,,
+MATHX202,Differential Equations,Second Year,Sem 1,MATH1005 AND MATHX104,,applied
+MATHX314,Data Visualisation,Second Year,Both Sem,STATX100 OR STAT1000 OR STAT5020,,statistics
+MATHX205,Optimisation,Second Year,Sem 1,MATH1005 AND MATHX104,,applied
+STATX200,Probability,Second Year,Sem 1,(MATH1005 AND STATX100) OR (MATH1022 AND STATX100),,statistics
+MATHX100,Complex Analysis,Second Year,Sem 2,MATH1005,,pure
+STATX500,Design of Experiments,Second Year,Sem 2,STATX100 OR STAT1000,,statistics
+MATH2010,Further Steps in Mathematics Research,Second Year,Sem 2,,Grade D or better in TWO level 2 mathematics courses,
+MATHX102,Introduction to Networks,Second Year,Sem 2,MATHX104,,statistics
+MATHX103,Mathematical Modelling,Second Year,Sem 2,MATH1005,,applied
+MATHX204,Numerical Methods,Second Year,Sem 2,MATH1005 AND MATHX104 AND COMP1002,,applied
+MATHX206,Real Analysis,Second Year,Sem 2,MATH1005,,pure
+STATX290,Statistical Practice,Second Year,Sem 2,(MATHX104 AND STATX100) OR (MATH1022 AND STATX100),"for students enrolled in the Master of Statistics, we will accept Linear Algebra ((MATHX104))  as pre or co-requisite",statistics
+STAT2003,Statistical Theory,Second Year,Sem 2,MATH1005 AND STATX100,,statistics
+MATHX203,Multivariable Calculus,Second Year,Both Sem,MATH1005 AND MATHX104,,
+MATH1021,Professional Practice,Third Year,Sem 1,MATH1020,,
+MATHX300,Advanced Differential Equations,Third Year,Sem 1,MATHX202 AND MATHX203,,applied
+MATHX301,Advanced Mathematical Modelling,Third Year,Sem 1,MATHX202 AND MATHX203,,applied
+STATX300,Bayesian Statistical Practice,Third Year,Sem 1,STATX290,,statistics
+MATHX303,Complex Networks,Third Year,NA,MATHX102,,statistics
+MATHX306,Geometry of Surfaces,Third Year,Sem 1,MATHX203,,pure
+MATHX307,"Groups, Rings and Fields",Third Year,Sem 1,MATHX201,,pure
+MATHX308,Introduction to Topological Data Analysis,Third Year,NA,MATHX201,,statistics
+MATH3013,Mathematics Clinic 1,Third Year,Sem 1,MATH1020 AND STATX290,"Communication and Research Skills in Mathematics, Statistical Practice. Normally students must have completed the first two years of the BMaths program with a grade point average of at least 5.5 in mathematics courses.",
+MATHX311,Metric and Topological Spaces,Third Year,Sem 1,MATHX206,,pure
+MATHX207,Simulation for Decision Science,Third Year,Sem 1,STATX200 AND COMP1002,,statistics
+STATX302,Statistical Methodology,Third Year,Sem 1,(STATX290 AND MATH5111) OR (STATX290 AND STAT2003),,statistics
+COMPX300,Text and Social Media Analytics,Third Year,Sem 1,STATX290,,statistics
+MATHX313,Time Series Analysis,Third Year,Sem 1,STATX290,,statistics
+MATHX302,Advanced Optimisation,Third Year,Sem 2,MATHX205,,applied
+STAT3006,Computational Statistics,Third Year,Sem 2,STATX200 AND COMP1002 AND STATX290,,statistics
+MATH3022,Cryptography,Third Year,Sem 2,MATH1004 OR MATH1006 OR MATH1000 OR MATHX104,,
+STATX301,Data Science Practice,Third Year,Sem 2,STATX290,,statistics
+MATHX304,Fluid Dynamics,Third Year,Sem 2,MATHX202 AND MATHX203,,applied
+MATHX305,Functional Analysis,Third Year,Sem 2,MATHX206,,pure
+MATHX309,Mathematical Biology,Third Year,Sem 2,MATHX202 AND MATHX203,,applied
+MATH3900,Mathematics Clinic 2,Third Year,Sem 2,MATH3013,,
+MATHX310,Measure and Integration,Third Year,Sem 2,MATHX206,,pure
+MATHX312,Number Theory,Third Year,Sem 2,MATH1005 AND MATHX104,,pure
+MATH3901,Project in Mathematics,Third Year,Sem 2,,Students must have completed at least 18 units of Mathematical Sciences units at Year 2,
+STATX303,Stochastic Processes,Third Year,Sem 2,STATX200,,statistics
+STAT3005,Advanced Statistical Theory,Third Year,Sem 2,STAT2003,,statistics
+MATHX200,Advanced Stochastic Processes,Fourth Year,Sem 1,STATX303,,statistics
+MATHX400,Advanced Time Series,Fourth Year,NA,MATHX313,,statistics
+MATH4010,Algebraic Topology,Fourth Year,Sem 1,MATHX311 AND MATHX307,,pure
+STAT3003,Bayesian Statistical Theory,Fourth Year,NA,STAT3005 AND STAT3006,,statistics
+MATHX403,Integral Transforms,Fourth Year,Sem 1,MATHX300,,applied
+MATHX406,Mathematics Research Project 1,Fourth Year,Both Sem,,,
+MATH6019,Reinforcement Learning,Fourth Year,Sem 1,MATHX302 AND STATX303,,statistics
+MATHX409,Smooth Manifolds,Fourth Year,Sem 1,MATHX311,,pure
+MATH4008,Statistical Machine Learning,Fourth Year,NA,MATHX302 AND STATX200,,statistics
+MATHX410,Topics in Applied Mathematics A,Fourth Year,Sem 1,,18 units of level 3 applied mathematics,applied
+STAT4001,Topics in Data Science A,Fourth Year,Sem 1,,18 units of level 3 data science or statistics,statistics
+STAT4002,Topics in Data Science B,Fourth Year,Sem 1,,18 units of level 3 data science or statistics,statistics
+MATHX412,Topics in Pure Mathematics A,Fourth Year,Sem 1,,18 units of level 3 pure mathematics,pure
+MATHX401,Asymptotic Methods,Fourth Year,Sem 2,MATHX300,,applied
+MATHX402,Category Theory,Fourth Year,NA,,12 units of Level 3 Pure Mathematics,pure
+STATX403,Causal Inference,Fourth Year,Sem 2,(STATX200 AND STAT2003) OR (STATX302),,statistics
+ARTI1000,Mathematical Generative Artificial Intelligence,Fourth Year,Sem 2,STATX303,,statistics
+MATHX404,Lie Algebras and Lie Groups,Fourth Year,Sem 2,MATHX307 AND MATHX311,,pure
+MATHX405,Mathematics of Artificial Intelligence,Fourth Year,Sem 2,MATHX201 AND MATHX203 AND STATX200,,statistics
+MATHX407,Mathematics Research Project 2,Fourth Year,Both Sem,MATHX406,,
+COMP4007,Information Theory,Fourth Year,Sem 2,(STATX200 AND COMP5004) OR (STATX200 AND COMP1002),,statistics
+STATX400,Predictive Analytics,Fourth Year,NA,STATX300 AND MATHX313,,statistics
+MATHX408,Riemannian Geometry,Fourth Year,Sem 2,MATHX311,,pure
+STATX401,Spatial Statistics,Fourth Year,Sem 2,STATX302 OR STAT3005,,statistics
+STATX402,Survey Statistics,Fourth Year,NA,STATX302,,statistics
+MATHX411,Topics in Applied Mathematics B,Fourth Year,Sem 2,,18 units of level 3 applied mathematics,applied
+MATHX413,Topics in Pure Mathematics B,Fourth Year,NA,,18 units of level 3 pure mathematics,pure
+MATHX415,Natural Language Processing,Fourth Year,NA,,,statistics
+MATHX101,Internship in Mathematics,Third Year,Both Sem,,Students must have completed at least 18 units of Level 2 Mathematical courses,`;
+
+        // Parse CSV data
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const courses = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i];
+                if (!line.trim()) continue; // Skip empty lines
+                
+                // Handle commas within quoted fields
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim()); // Add the last value
+                
+                const course = {};
+                headers.forEach((header, index) => {
+                    course[header] = values[index] || '';
+                });
+                courses.push(course);
+            }
+            return courses;
+        }
+
+        // Extract prerequisite codes from prerequisite string
+        function extractPrerequisites(prereqString) {
+            if (!prereqString || prereqString.trim() === '') return [];
+            
+            try {
+                // Extract course codes using regex
+                const courseCodePattern = /[A-Z]{3,5}[X]?[0-9]{3,4}/g;
+                const matches = prereqString.match(courseCodePattern);
+                return matches ? matches : [];
+            } catch (e) {
+                console.log('Error parsing prerequisites:', prereqString);
+                return [];
+            }
+        }
+
+        // Process course data
+        const courses = parseCSV(courseData);
+        const courseMap = new Map();
+        const links = [];
+
+        courses.forEach(course => {
+            const code = course['Course Code (CurV Code)'];
+            const rawPrereqString = course['Prerequisite course(s)'] || '';
+            courseMap.set(code, {
+                code: code,
+                name: course['Course Name'],
+                year: course['Year'],
+                semester: course['Semester Offered'],
+                prerequisites: extractPrerequisites(rawPrereqString),
+                prereqNotes: course['Prerequisite note(s)'],
+                major: course['major'] || 'general',
+                rawPrereqs: rawPrereqString // Store the original prerequisite string
+            });
+        });
+
+        // Create links (only for prerequisites that exist)
+        courseMap.forEach((course, code) => {
+            course.prerequisites.forEach(prereqCode => {
+                if (courseMap.has(prereqCode)) {
+                    links.push({
+                        source: prereqCode,
+                        target: code
+                    });
+                }
+            });
+        });
+
+        // Group courses by year and major
+        const yearGroups = {
+            'First Year': { applied: [], pure: [], statistics: [], general: [] },
+            'Second Year': { applied: [], pure: [], statistics: [], general: [] },
+            'Third Year': { applied: [], pure: [], statistics: [], general: [] },
+            'Fourth Year': { applied: [], pure: [], statistics: [], general: [] }
+        };
+
+        courseMap.forEach(course => {
+            if (yearGroups[course.year]) {
+                const major = course.major || 'general';
+                yearGroups[course.year][major].push(course);
+            }
+        });
+
+        // Sort courses within each major group alphabetically
+        Object.keys(yearGroups).forEach(year => {
+            Object.keys(yearGroups[year]).forEach(major => {
+                yearGroups[year][major].sort((a, b) => a.code.localeCompare(b.code));
+            });
+        });
+
+        // Set up SVG
+        const margin = { top: 80, right: 50, bottom: 80, left: 50 };
+        const width = 1300 - margin.left - margin.right;
+        const height = 1800 - margin.top - margin.bottom;
+
+        const svg = d3.select("#visualization")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom);
+
+        // Add arrow marker
+        svg.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 10)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#95a5a6");
+
+        const g = svg.append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Position courses
+        const yearPositions = {
+            'First Year': 0,
+            'Second Year': 1,
+            'Third Year': 2,
+            'Fourth Year': 3
+        };
+
+        const nodeWidth = 120;
+        const nodeHeight = 50;
+        const yearSpacing = width / 4;
+        const nodeSpacing = 8;
+        const majorSpacing = 15; // Extra space between major groups
+
+        // Calculate positions
+        const nodes = [];
+        Object.keys(yearGroups).forEach(year => {
+            const yearData = yearGroups[year];
+            const yearIndex = yearPositions[year];
+            const x = yearIndex * yearSpacing + yearSpacing/2;
+            
+            // Flatten all courses in this year, grouped by major
+            const allYearCourses = [];
+            ['applied', 'pure', 'statistics', 'general'].forEach(major => {
+                if (yearData[major].length > 0) {
+                    allYearCourses.push(...yearData[major]);
+                    // Add a separator marker if not the last major with courses
+                    const remainingMajors = ['applied', 'pure', 'statistics', 'general'].slice(['applied', 'pure', 'statistics', 'general'].indexOf(major) + 1);
+                    const hasMoreMajors = remainingMajors.some(m => yearData[m].length > 0);
+                    if (hasMoreMajors) {
+                        allYearCourses.push({ separator: true });
+                    }
+                }
+            });
+            
+            // Calculate total height including separators
+            const separatorCount = allYearCourses.filter(c => c.separator).length;
+            const courseCount = allYearCourses.length - separatorCount;
+            const totalHeight = courseCount * (nodeHeight + nodeSpacing) + separatorCount * majorSpacing;
+            const startY = (height - totalHeight) / 2;
+            
+            let currentY = startY;
+            allYearCourses.forEach((course) => {
+                if (course.separator) {
+                    currentY += majorSpacing;
+                } else {
+                    nodes.push({
+                        ...course,
+                        x: x,
+                        y: currentY + nodeHeight/2,
+                        id: course.code
+                    });
+                    currentY += nodeHeight + nodeSpacing;
+                }
+            });
+        });
+
+        // Add year labels
+        Object.keys(yearGroups).forEach(year => {
+            const yearIndex = yearPositions[year];
+            const x = yearIndex * yearSpacing + yearSpacing/2;
+            
+            g.append("text")
+                .attr("class", "year-label")
+                .attr("x", x)
+                .attr("y", 20)
+                .text(year);
+        });
+
+        // Draw links
+        const linkSelection = g.selectAll(".link")
+            .data(links)
+            .enter()
+            .append("path")
+            .attr("class", "link")
+            .attr("d", d => {
+                const source = nodes.find(n => n.code === d.source);
+                const target = nodes.find(n => n.code === d.target);
+                if (!source || !target) return "";
+                
+                const sourceX = source.x + nodeWidth/2;
+                const sourceY = source.y + nodeHeight/2;
+                const targetX = target.x - nodeWidth/2;
+                const targetY = target.y + nodeHeight/2;
+                
+                const midX = (sourceX + targetX) / 2;
+                
+                return `M${sourceX},${sourceY} C${midX},${sourceY} ${midX},${targetY} ${targetX},${targetY}`;
+            });
+
+        // Draw nodes
+        const nodeSelection = g.selectAll(".course-node")
+            .data(nodes)
+            .enter()
+            .append("g")
+            .attr("class", d => `course-node ${d.major}`)
+            .attr("transform", d => `translate(${d.x - nodeWidth/2}, ${d.y - nodeHeight/2})`)
+            .on("click", function(event, d) {
+                selectCourse(d);
+            })
+            .on("mouseover", function(event, d) {
+                showCourseInfo(d, event);
+            })
+            .on("mouseout", function() {
+                hideCourseInfo();
+            });
+
+        nodeSelection.append("rect")
+            .attr("width", nodeWidth)
+            .attr("height", nodeHeight);
+
+        nodeSelection.append("text")
+            .attr("x", nodeWidth/2)
+            .attr("y", nodeHeight/2 - 5)
+            .text(d => d.code)
+            .style("font-size", "11px")
+            .style("font-weight", "bold");
+
+        nodeSelection.append("text")
+            .attr("x", nodeWidth/2)
+            .attr("y", nodeHeight/2 + 8)
+            .text(d => {
+                const name = d.name.length > 15 ? d.name.substring(0, 15) + "..." : d.name;
+                return name;
+            })
+            .style("font-size", "9px");
+
+        let selectedCourse = null;
+
+        function selectCourse(course) {
+            selectedCourse = course;
+            
+            // Find all related courses (prerequisites and dependents)
+            const relatedCourses = new Set();
+            const relatedLinks = new Set();
+            
+            // Add direct prerequisites
+            function addPrerequisites(courseCode) {
+                const courseData = courseMap.get(courseCode);
+                if (courseData) {
+                    courseData.prerequisites.forEach(prereq => {
+                        relatedCourses.add(prereq);
+                        relatedLinks.add(`${prereq}-${courseCode}`);
+                        addPrerequisites(prereq); // Recursively add prerequisites
+                    });
+                }
+            }
+            
+            // Add courses that depend on this course
+            function addDependents(courseCode) {
+                links.forEach(link => {
+                    if (link.source === courseCode) {
+                        relatedCourses.add(link.target);
+                        relatedLinks.add(`${link.source}-${link.target}`);
+                        addDependents(link.target); // Recursively add dependents
+                    }
+                });
+            }
+            
+            addPrerequisites(course.code);
+            addDependents(course.code);
+            relatedCourses.add(course.code); // Add the selected course itself
+            
+            // Update node styles
+            nodeSelection
+                .classed("selected", d => d.code === course.code)
+                .classed("highlighted", d => relatedCourses.has(d.code) && d.code !== course.code)
+                .classed("faded", d => !relatedCourses.has(d.code));
+            
+            // Update link styles
+            linkSelection
+                .classed("highlighted", d => relatedLinks.has(`${d.source}-${d.target}`))
+                .classed("faded", d => !relatedLinks.has(`${d.source}-${d.target}`));
+        }
+
+        function resetVisualization() {
+            selectedCourse = null;
+            nodeSelection
+                .classed("selected", false)
+                .classed("highlighted", false)
+                .classed("faded", false);
+            
+            linkSelection
+                .classed("highlighted", false)
+                .classed("faded", false);
+                
+            hideCourseInfo();
+        }
+
+        function showCourseInfo(course, event) {
+            const panel = document.getElementById('infoPanel');
+            const info = document.getElementById('courseInfo');
+            
+            // Get the raw prerequisite string to show the full logical structure
+            const rawPrereqs = courseMap.get(course.code).rawPrereqs || 'None';
+            let prereqText = rawPrereqs === '' ? 'None' : rawPrereqs;
+            
+            info.innerHTML = `
+                <div class="course-code">${course.code}</div>
+                <div><strong>Name:</strong> ${course.name}</div>
+                <div><strong>Year:</strong> ${course.year}</div>
+                <div><strong>Major:</strong> ${course.major === 'general' ? 'General/Core' : course.major.charAt(0).toUpperCase() + course.major.slice(1)}</div>
+                <div><strong>Semester:</strong> ${course.semester || 'Not specified'}</div>
+                <div class="prerequisites">
+                    <strong>Prerequisites:</strong> ${prereqText}
+                </div>
+                ${course.prereqNotes ? `<div><strong>Notes:</strong> ${course.prereqNotes}</div>` : ''}
+            `;
+            
+            panel.style.display = 'block';
+        }
+
+        function hideCourseInfo() {
+            document.getElementById('infoPanel').style.display = 'none';
+        }
+
+        // Global function for reset button
+        window.resetVisualization = resetVisualization;
+    </script>
+</body>
+</html>
