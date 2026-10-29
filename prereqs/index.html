@@ -226,12 +226,21 @@ document.getElementById('sub').textContent=
 const MAJORS={core:{label:'Core'},applied:{label:'Applied Mathematics'},pure:{label:'Pure Mathematics'},statistics:{label:'Statistics/Data Science'},discipline:{label:'Discipline Electives'}};
 const ORDER=Object.keys(MAJORS);
 d3.select('#majors').selectAll('li').data(ORDER).join('li').attr('class',m=>'pill '+m).text(m=>MAJORS[m].label);
+const semRank=c=>c.sem==='1'?1:c.sem==='2'?2:3; // Sem 1, then Sem 2, then offered in both
+// Bespoke ordering tweaks: pin some courses to the top of their group, swap others
+const PIN_TOP=['MATH1004','MATH1005','MATHX203']; // Calculus 1, Calculus 2, Multivariable Calculus
+const SWAP=[['MATH3900','MATH3902']];             // Mathematics Clinic 2 <-> Professional Practice
+function tweak(g){
+  PIN_TOP.slice().reverse().forEach(code=>{const i=g.findIndex(c=>c.code===code);if(i>0)g.unshift(g.splice(i,1)[0]);});
+  SWAP.forEach(([x,y])=>{const i=g.findIndex(c=>c.code===x),j=g.findIndex(c=>c.code===y);if(i>=0&&j>=0)[g[i],g[j]]=[g[j],g[i]];});
+  return g;
+}
 const NW=150,NH=54,GAP=6,SEP=18,COLW=310,TOP=60,LEFT=40;
 const nodes=[];let maxH=0;
 [1,2,3,4].forEach(l=>{
   let y=TOP,first=true;
   ORDER.forEach(m=>{
-    const g=courses.filter(c=>c.level===l&&c.major===m).sort((a,b)=>(b.off-a.off)||a.name.localeCompare(b.name));
+    const g=tweak(courses.filter(c=>c.level===l&&c.major===m).sort((a,b)=>(b.off-a.off)||(semRank(a)-semRank(b))||a.name.localeCompare(b.name)));
     if(!g.length)return;
     if(!first)y+=SEP;first=false;
     g.forEach(c=>{nodes.push({...c,x:LEFT+(l-1)*COLW,y});y+=NH+GAP;});
