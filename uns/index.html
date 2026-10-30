@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unspecified Major – Bachelor: program planner</title>
+<style>
+:root{--navy:#140f50;--purple:#8C78FF;--dpurple:#6E5AE1;--bblue:#1448FF;--cream:#F8EFE0;--up:#F5A300;--down:#0E9F9A;
+--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--ui:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}
+.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:660px;line-height:1.5;margin:0 0 20px}
+.tabs{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+button{font-family:var(--ui);cursor:pointer}
+.tab{background:none;color:#fff;border:2px solid rgba(255,255,255,.4);padding:10px 22px;border-radius:25px;font-size:14px;font-weight:700}
+.tab[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue)}
+button:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.year{margin-bottom:22px}
+.year h2{font-family:var(--head);font-size:1.6rem;margin:0 0 8px}
+.sem{display:grid;grid-template-columns:6.5rem repeat(4,1fr);gap:8px;margin-bottom:8px;align-items:stretch}
+.sl{font-size:13px;font-weight:700;align-self:center}
+.cell{min-height:62px;padding:8px;border-radius:8px;text-align:left;font-size:12px;line-height:1.3;background:var(--f);color:var(--t);border:2px solid var(--s)}
+.cell b{display:block;font-size:13px}
+.cell:hover{filter:brightness(1.12)}
+.cell.ph{background:rgba(255,255,255,.07);color:#fff;border:2px dashed rgba(255,255,255,.55)}
+.cell.ph small{display:block;opacity:.75;margin-top:3px}
+.note{font-size:13px;font-family:var(--body);opacity:.9;margin:0 0 6px}
+.legend{margin-top:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:12px}
+.pure{--f:#6E5AE1;--s:#4B3BB0;--t:#fff}.applied{--f:#1448FF;--s:#0A2FC7;--t:#fff}.statistics{--f:#140f50;--s:#8C78FF;--t:#fff}
+.core{--f:#F8EFE0;--s:#140f50;--t:#140f50}.discipline{--f:#B5338A;--s:#7E1F61;--t:#fff}
+dialog{width:min(860px,94vw);max-height:88vh;padding:20px;border:0;border-left:8px solid var(--dpurple);border-radius:12px;background:#fff;color:var(--navy);font-family:var(--body);font-size:14px;line-height:1.45}
+dialog::backdrop{background:rgba(10,8,40,.6)}
+dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 6px}
+dialog .code{color:var(--dpurple);font-family:var(--ui)}
+.x{position:absolute;top:8px;right:12px;background:none;border:0;font-size:26px;color:var(--navy)}
+.back{background:none;border:0;color:var(--dpurple);font-weight:700;padding:0 0 8px;font-size:14px}
+.warn{color:#9c3d00}
+.grp{font-family:var(--ui);font-size:14px;margin:14px 0 6px}
+.grp.no{opacity:.6}
+ul.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.opt{width:100%;text-align:left;padding:7px 9px;border-radius:6px;font-size:12px;background:#fff;color:var(--navy);border:1px solid #c9c6e0;border-left:8px solid var(--f)}
+.opt b{font-size:13px}.opt small{display:block;opacity:.75}
+.opt.off{border-style:dashed}
+.opt:hover{background:#f1efff}
+.tree{overflow:auto;border:1px solid #ddd;border-radius:8px;margin-top:10px;background:#fbfaff}
+.tree svg{display:block;margin:0 auto}
+.n{cursor:pointer}.n rect{fill:var(--f);stroke:var(--s);stroke-width:2}
+.n.off{opacity:.55}.n.off rect{stroke-dasharray:5 3}
+.n.sel rect{stroke:#000;stroke-width:4}
+.n text{fill:var(--t);text-anchor:middle;font-size:9px;font-family:var(--ui);pointer-events:none}
+.n text.c{font-size:10.5px;font-weight:700}
+.e{fill:none;stroke-width:2}.e.up{stroke:var(--up)}.e.dn{stroke:var(--down)}.e.alt{stroke-dasharray:6 4}
+.key{font-size:12px;margin-top:6px;font-family:var(--ui)}
+.key i{display:inline-block;width:24px;border-top:3px solid;margin:0 5px 3px 10px;vertical-align:middle}
+@media(max-width:700px){body{padding:16px}.sem{grid-template-columns:1fr 1fr}.sl{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
+<h1>Unspecified Major – Bachelor</h1>
+<p class="sub">Choose a start semester to see the three-year plan. Click any course to see what leads to it and what it unlocks. Click a dashed slot to see the courses that can fill it, sorted by semester.</p>
+<div class="tabs" role="group" aria-label="Start semester">
+<button class="tab" data-p="std" aria-pressed="true">Standard (starts Semester 1)</button>
+<button class="tab" data-p="mid" aria-pressed="false">Mid-year (starts Semester 2)</button>
+</div>
+<div id="plan"></div>
+<div class="legend">Dashed slots are choices; solid slots are fixed courses. Course data comes from the prerequisite tree.</div>
+</div>
+<dialog id="dlg"></dialog>
+<script>
+const MJ={c:['Core','core'],a:['Applied','applied'],p:['Pure','pure'],s:['Statistics / Data Science','statistics'],d:['Discipline elective','discipline']};
+const SL={1:'Semester 1',2:'Semester 2',12:'Both semesters'};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let C=[],D={};
+// prerequisite parsing (same logic as the tree page): AND links are required, OR links are alternatives
+function parseExpr(s){const tk=s.match(/\(|\)|AND|OR|[A-Z]{3,5}[0-9]{3,4}/g)||[];let p=0;
+ const atom=()=>{const t=tk[p++];if(t==='('){const n=or();p++;return n}return{code:t}};
+ const and=()=>{const k=[atom()];while(tk[p]==='AND'){p++;k.push(atom())}return k.length>1?{op:'and',k}:k[0]};
+ const or=()=>{const k=[and()];while(tk[p]==='OR'){p++;k.push(and())}return k.length>1?{op:'or',k}:k[0]};
+ return tk.length?or():null}
+function req(n,r,o){if(!n)return;if(n.code){if(r)o.add(n.code);return}n.k.forEach(c=>req(c,r&&n.op==='and',o))}
+const LK=[];
+function csvRows(t){const rows=[];let row=[],cur='',q=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=c}
+  else if(c==='"')q=true;else if(c===','){row.push(cur);cur=''}
+  else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur=''}else if(c!=='\r')cur+=c}
+ if(cur||row.length){row.push(cur);rows.push(row)}
+ const h=rows.shift().map(s=>s.trim());
+ return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
+function build(csv){
+ const M={core:'c',applied:'a',pure:'p',statistics:'s',discipline:'d'};
+ C=csvRows(csv).map(r=>({code:r['Course Code'],name:r['Course Name'],lvl:+r.level,sem:r.semester.replace(/[\s,]/g,''),pre:r['Prerequisite course(s)'],note:r['Prerequisite note(s)'],mj:M[r.major]||'c',on:r.offered.toLowerCase()==='y'}));
+ D=Object.fromEntries(C.map(c=>[c.code,c]));LK.length=0;
+ C.forEach(c=>{const rq=new Set();req(parseExpr(c.pre),true,rq);
+  [...new Set(c.pre.match(/[A-Z]{3,5}[0-9]{3,4}/g)||[])].filter(x=>D[x]).forEach(x=>LK.push({s:x,t:c.code,alt:!rq.has(x)}))})}
+
+// slot types: which courses can fill each placeholder
+const L3M='MATHX308 MATH3022 MATHX300 MATHX301 STATX302 MATHX313 MATHX303 COMPX300 MATHX307 MATHX311 MATHX306 MATHX312 MATHX310 MATHX305 MATHX302 STATX303 MATHX309 MATHX304 STAT3005 STAT3006 STATX301 MATHX316'.split(' ');
+const nc=l=>C.filter(c=>c.lvl===l&&c.mj!=='c');
+const SLOT={
+ L1D:{label:'Level 1 discipline elective',pick:()=>nc(1),note:'This can be switched with COMP1002.'},
+ L2M:{label:'Level 2 major course',pick:()=>C.filter(c=>c.lvl===2&&'pas'.includes(c.mj))},
+ L2D:{label:'Level 2 discipline elective',pick:()=>nc(2)},
+ L3M:{label:'Level 3 major course',pick:()=>L3M.map(x=>D[x])},
+ L3D:{label:'Level 3 discipline elective',pick:()=>nc(3)},
+ W1:{label:'WIL 1',pick:()=>'MATH3013 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:'The MATH3013 + MATH3900 pair (Clinic 1 and 2) is not available in the mid-year plan.'},
+ W2:{label:'WIL 2',pick:()=>'MATH3900 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:'The MATH3013 + MATH3900 pair (Clinic 1 and 2) is not available in the mid-year plan.'},
+ FE:{label:'Free elective',msg:'Any course you are eligible for. No list is loaded for this slot.'},
+ CC:{label:'CC',msg:'No list of options has been loaded for this slot yet.'}};
+const PLANS={
+ std:[['Year 1',[[1,['L1D','STATX100','MATH1004','CC']],[2,['MATH1005','MATHX104','COMP1002','CC']]],'Note: the Level 1 discipline course can be switched with COMP1002.'],
+  ['Year 2',[[1,['MATH2025','MATHX203','L2M','L2M']],[2,['STATX290','L2M','L2D','CC']]]],
+  ['Year 3',[[1,['W1','L3M','L3M','L3D']],[2,['W2','L3M','L3M','FE']]]]],
+ mid:[['Year 1',[[2,['COMP1002','MATHX104','MATH1004','CC']],[1,['MATH1005','STATX100','L1D','CC']]],'Note: the Level 1 discipline course can be switched with COMP1002.'],
+  ['Year 2',[[2,['STATX290','MATHX203','L2M','L2D']],[1,['MATH2025','L2M','L2M','CC']]]],
+  ['Year 3',[[2,['W1','L3M','L3M','L3D']],[1,['W2','L3M','L3M','FE']]],'Note: WIL options do not include MATH3013 + MATH3900 in the mid-year plan.']]};
+
+function render(p){if(!C.length)return;
+ document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
+ document.getElementById('plan').innerHTML=PLANS[p].map(([y,sems,note])=>`<section class="year"><h2>${y}</h2>${sems.map(([s,sl])=>
+  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map(k=>D[k]?
+   `<button class="cell ${MJ[D[k].mj][1]}" data-c="${k}"><b>${k}</b>${esc(D[k].name)}</button>`:
+   `<button class="cell ph" data-k="${k}" data-s="${s}">${SLOT[k].label}<small>${SLOT[k].pick?'See options':'Details'}</small></button>`).join('')}</div>`).join('')}
+  ${note?`<p class="note">${note}</p>`:''}</section>`).join('')}
+
+const dlg=document.getElementById('dlg');let hist=[];
+function go(fn){hist.push(fn);fn()}
+function back(){hist.pop();hist[hist.length-1]()}
+function show(html){dlg.innerHTML=`<button class="x" aria-label="Close" data-x>×</button>${hist.length>1?'<button class="back" data-back>‹ Back</button>':''}${html}`;if(!dlg.open)dlg.showModal()}
+const chip=c=>`<small>${MJ[c.mj][0]} · ${SL[c.sem]}${c.on?'':' · not currently offered'}</small>`;
+
+function listView(k,s){
+ const m=SLOT[k];let h=`<h3>${m.label}</h3><p>Slot in Semester ${s}.${m.note?' '+m.note:''}</p>`;
+ if(!m.pick)return show(h+`<p>${m.msg}</p>`);
+ const cs=m.pick();
+ [String(s),'12',s==1?'2':'1'].forEach(g=>{
+  const it=cs.filter(c=>c.sem===g).sort((a,b)=>(b.on-a.on)||a.name.localeCompare(b.name));if(!it.length)return;
+  const fit=g==s||g==='12';
+  h+=`<h4 class="grp${fit?'':' no'}">${SL[g]}${fit?'':' (not available in this slot’s semester)'}</h4><ul class="opts">`+
+   it.map(c=>`<li><button class="opt ${MJ[c.mj][1]}${c.on?'':' off'}" data-c="${c.code}"><b>${c.code}</b> ${esc(c.name)}${chip(c)}</button></li>`).join('')+'</ul>'});
+ show(h)}
+
+function tree(code){
+ const up=new Set(),st=[code];
+ while(st.length){const t=st.pop();LK.forEach(l=>{if(l.t===t&&!up.has(l.s)){up.add(l.s);st.push(l.s)}})}
+ const A=new Set([code,...up]),kids=[...new Set(LK.filter(l=>l.s===code).map(l=>l.t))];
+ if(A.size===1&&!kids.length)return'<p>This course has no prerequisite courses in the tree and does not lead to any listed course.</p>';
+ const dp={[code]:0};
+ const dep=a=>a in dp?dp[a]:(dp[a]=Math.min(...LK.filter(l=>l.s===a&&A.has(l.t)).map(l=>dep(l.t)-1)));
+ up.forEach(dep);kids.forEach(k=>dp[k]=1);
+ const ds=[...new Set(Object.values(dp))].sort((a,b)=>a-b),cols=ds.map(d=>Object.keys(dp).filter(c=>dp[c]===d).sort());
+ const NW=132,NH=42,GX=64,GY=8,H=Math.max(...cols.map(c=>c.length))*(NH+GY)+8,W=cols.length*(NW+GX)-GX+8,pos={};
+ cols.forEach((c,i)=>{const off=(H-c.length*(NH+GY))/2;c.forEach((x,j)=>pos[x]={x:4+i*(NW+GX),y:off+j*(NH+GY)+4})});
+ const E=LK.filter(l=>pos[l.s]&&pos[l.t]&&((A.has(l.s)&&A.has(l.t))||l.s===code));
+ const wrap=t=>{const o=[];let l='';t.split(' ').forEach(w=>{if((l+' '+w).trim().length>25&&l){o.push(l);l=w}else l=(l+' '+w).trim()});o.push(l);if(o.length>2){o.length=2;o[1]=o[1].slice(0,22)+'…'}return o};
+ return`<div class="tree"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs>
+ <marker id="au" viewBox="0 -5 10 10" refX="10" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,-5L10,0L0,5" fill="#F5A300"/></marker>
+ <marker id="ad" viewBox="0 -5 10 10" refX="10" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,-5L10,0L0,5" fill="#0E9F9A"/></marker></defs>`+
+ E.map(l=>{const a=pos[l.s],b=pos[l.t],x1=a.x+NW,y1=a.y+NH/2,x2=b.x,y2=b.y+NH/2,m=(x1+x2)/2,dn=l.s===code;
+  return`<path class="e ${dn?'dn':'up'}${l.alt?' alt':''}" marker-end="url(#${dn?'ad':'au'})" d="M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}"/>`}).join('')+
+ Object.keys(pos).map(k=>{const c=D[k],p=pos[k];
+  return`<g class="n ${MJ[c.mj][1]}${c.on?'':' off'}${k===code?' sel':''}" transform="translate(${p.x},${p.y})" tabindex="0" role="button" data-c="${k}" aria-label="${k} ${esc(c.name)}">
+  <rect width="${NW}" height="${NH}" rx="6"/><text class="c" x="${NW/2}" y="15">${k}</text>${wrap(c.name).map((t,i)=>`<text x="${NW/2}" y="${26+i*10}">${esc(t)}</text>`).join('')}</g>`}).join('')+
+ `</svg></div><p class="key"><i style="border-color:#F5A300"></i>leads to this course<i style="border-color:#0E9F9A"></i>unlocked by this course<i style="border-top-style:dashed;border-color:#555"></i>one of several alternatives</p>`}
+
+function courseView(code){
+ const c=D[code];
+ show(`<h3><span class="code">${c.code}</span><br>${esc(c.name)}</h3>
+ <div><b>Level ${c.lvl}</b> · ${SL[c.sem]} · ${MJ[c.mj][0]}</div>
+ <div>${c.on?'Currently offered':'<b class="warn">Not currently offered</b>'}</div>
+ <p><b>Prerequisites:</b> ${esc(c.pre||'None listed')}</p>${c.note?`<p><b>Notes:</b> ${esc(c.note)}</p>`:''}${tree(code)}`)}
+
+dlg.addEventListener('click',e=>{
+ if(e.target===dlg||e.target.closest('[data-x]'))return dlg.close();
+ if(e.target.closest('[data-back]'))return back();
+ const n=e.target.closest('[data-c]');if(n)go(()=>courseView(n.dataset.c))});
+dlg.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('g[data-c]'))go(()=>courseView(e.target.dataset.c))});
+dlg.addEventListener('close',()=>{hist=[]});
+document.getElementById('plan').addEventListener('click',e=>{
+ const b=e.target.closest('button.cell');if(!b)return;hist=[];
+ if(b.dataset.c)go(()=>courseView(b.dataset.c));else go(()=>listView(b.dataset.k,+b.dataset.s))});
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>render(b.dataset.p)));
+fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw 0;return r.text()}).then(v=>{build(v);render('std')}).catch(()=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data (/prereqs/courses.csv). Open this page from the website, not as a file on your computer.</p>'});
+</script>
+</body>
+</html>

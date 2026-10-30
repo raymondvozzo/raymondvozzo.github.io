@@ -1,0 +1,84 @@
+Course Code,Course Name,level,semester,Prerequisite course(s),Prerequisite note(s),major,offered 2027
+MATH1004,Calculus 1,1,"1, 2",MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,core,y
+MATHX106,Critical Evaluation in Data Science,1,1,,,discipline,y
+MATH1006,Discrete Mathematics,1,1,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,discipline,y
+MATH1007,Geometry,1,1,,,discipline,y
+STATX100,Probability and Statistics,1,1,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,core,y
+COMP1002,Problem Solving and Programming,1,"1, 2",,,core,y
+MATH1005,Calculus 2,1,"1, 2",MATH1004,Or SACE Stage 2 Specialist Mathematics or equivalent,core,y
+MATH1011,First Steps in Mathematics Research,1,2,MATHX104 OR MATH1004 OR MATH1005,"D grade or above in at least one of Calculus 1 or, Calculus 2 or, Linear Algebra",discipline,y
+MATHX104,Linear Algebra,1,2,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,core,y
+MATH1012,Mathematics in Action,1,2,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,discipline,n
+MATH1035,Introduction to Mathematical Data Science,1,2,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,discipline,y
+MATHX201,Algebra,2,1,MATHX104,,pure,y
+MATH2025,Communication and Research Skills in Mathematics,2,1,,,core,y
+MATHX202,Differential Equations,2,1,MATH1005 AND MATHX104,,applied,y
+MATHX214,Data Visualisation,2,"1, 2",STATX100 OR STAT1000 OR STAT5020,,statistics,y
+MATHX205,Optimisation,2,1,MATH1005 AND MATHX104,,applied,y
+STATX200,Probability,2,1,(MATH1005 AND STATX100) OR (MATH1022 AND STATX100),,statistics,y
+MATHX208,Complex Analysis,2,2,MATH1005,,pure,n
+STATX201,Design of Experiments,2,2,STATX100 OR STAT1000,,statistics,n
+MATH2010,Further Steps in Mathematics Research,2,2,,Grade D or better in TWO level 2 mathematics courses,discipline,y
+MATHX210,Introduction to Networks,2,2,MATHX104,,statistics,y
+MATHX209,Mathematical Modelling,2,2,MATH1005,,applied,y
+MATHX204,Numerical Methods,2,2,MATH1005 AND MATHX104 AND COMP1002,,applied,y
+MATHX206,Real Analysis,2,2,MATH1005,,pure,y
+STATX290,Statistical Practice,2,2,MATHX104 AND STATX100,,core,y
+STAT2003,Statistical Theory,2,2,MATH1005 AND STATX100,,statistics,y
+MATH3902,Professional Practice,3,1,MATH2025,,core,y
+MATHX300,Advanced Differential Equations,3,1,MATHX202 AND MATHX203,,applied,y
+MATHX301,Advanced Mathematical Modelling,3,1,MATHX202 AND MATHX203,,applied,y
+STATX300,Bayesian Statistical Practice,3,1,STATX290,,statistics,y
+MATHX303,Complex Networks,3,1,MATHX210,,statistics,n
+MATHX306,Geometry of Surfaces,3,2,MATHX203,,pure,y
+MATHX307,"Groups, Rings and Fields",3,1,MATHX201,,pure,y
+MATHX308,Introduction to Topological Data Analysis,3,1,MATHX201,,statistics,n
+MATH3013,Mathematics Clinic 1,3,1,MATH2025,Must have completed the first two years of BMATH or HMATH programs with a grade point average of at least 5.5 in Mathematics courses (unless students have an exception).,core,y
+MATHX311,Metric and Topological Spaces,3,1,MATHX206,,pure,y
+MATHX316,Simulation for Decision Science,3,1,STATX200 AND COMP1002,,statistics,n
+STATX302,Statistical Methodology,3,1,(STATX290 AND MATH5111) OR (STATX290 AND STAT2003),,statistics,y
+COMPX300,Text and Social Media Analytics,3,1,STATX290,,statistics,y
+MATHX313,Time Series Analysis,3,1,STATX290,,statistics,y
+MATHX302,Advanced Optimisation,3,2,MATHX203,,applied,y
+STAT3006,Computational Statistics,3,2,STATX200 AND COMP1002 AND STATX290,,statistics,y
+MATH3022,Cryptography,3,2,MATH1004 OR MATH1006 OR MATH1000 OR MATHX104,,discipline,y
+STATX301,Data Science Practice,3,2,STATX290,,statistics,y
+MATHX304,Fluid Dynamics,3,2,MATHX202 AND MATHX203,,applied,y
+MATHX305,Functional Analysis,3,2,MATHX206,,pure,n
+MATHX309,Mathematical Biology,3,2,MATHX202 AND STATX100,,applied,y
+MATH3900,Mathematics Clinic 2,3,2,MATH3013,,core,y
+MATHX310,Measure and Integration,3,2,MATHX206,,pure,y
+MATHX312,Number Theory,3,2,MATH1005 AND MATHX104,,pure,n
+MATH3901,Project in Mathematics,3,2,MATH2025,Must have completed at least 18 units of Mathematical Sciences units at Year 2,core,y
+STATX303,Stochastic Processes,3,2,STATX200,,statistics,y
+STAT3005,Advanced Statistical Theory,3,2,STAT2003,,statistics,y
+MATHX418,Advanced Stochastic Processes,4,1,STATX303,Must have completed 144 units towards the HMATH,statistics,y
+MATHX400,Advanced Time Series,4,1,MATHX313,Must have completed 144 units towards the HMATH,statistics,n
+MATH4010,Algebraic Topology,4,1,MATHX311 AND MATHX307,Must have completed 144 units towards the HMATH,pure,n
+STAT4019,Bayesian Statistical Theory,4,1,STAT3005 AND STAT3006,Must have completed 144 units towards the HMATH,statistics,n
+MATHX403,Integral Transforms,4,1,MATHX300,Must have completed 144 units towards the HMATH,applied,y
+MATHX406,Mathematics Research Project 1,4,"1, 2",,Must have completed 144 units towards the HMATH,core,y
+MATH6019,Reinforcement Learning,4,1,MATHX302 AND STATX303,Must have completed 144 units towards the HMATH,statistics,y
+MATHX409,Smooth Manifolds,4,1,MATHX311,Must have completed 144 units towards the HMATH,pure,y
+MATH4008,Statistical Machine Learning,4,2,STATX200,Must have completed 144 units towards the HMATH,statistics,y
+MATHX410,Topics in Applied Mathematics A,4,1,,Must have completed 144 units towards the HMATH AND 18 units of level 3 applied mathematics,applied,y
+STAT4001,Topics in Data Science A,4,1,,Must have completed 144 units towards the HMATH AND 18 units of level 3 data science or statistics,statistics,n
+STAT4002,Topics in Data Science B,4,1,,Must have completed 144 units towards the HMATH AND 18 units of level 3 data science or statistics,statistics,y
+MATHX412,Topics in Pure Mathematics A,4,1,,Must have completed 144 units towards the HMATH AND 18 units of level 3 pure mathematics,pure,y
+MATHX401,Asymptotic Methods,4,2,MATHX300,Must have completed 144 units towards the HMATH,applied,y
+MATHX402,Category Theory,4,2,,Must have completed 144 units towards the HMATH AND 12 units of Level 3 Pure Mathematics,pure,n
+STATX403,Causal Inference,4,2,(STATX200 AND STAT2003) OR (STATX302),Must have completed 144 units towards the HMATH,statistics,y
+ARTI1000,Mathematical Generative Artificial Intelligence,4,2,STATX303,Must have completed 144 units towards the HMATH,statistics,y
+MATHX404,Lie Algebras and Lie Groups,4,2,MATHX307 AND MATHX311,Must have completed 144 units towards the HMATH,pure,y
+MATHX405,Mathematics of Artificial Intelligence,4,2,MATHX201 AND MATHX203 AND STATX200,Must have completed 144 units towards the HMATH,statistics,n
+MATHX407,Mathematics Research Project 2,4,"1, 2",MATHX406,Must have completed 144 units towards the HMATH,core,y
+COMP4007,Information Theory,4,2,(STATX200 AND COMP5004) OR (STATX200 AND COMP1002),Must have completed 144 units towards the HMATH,statistics,y
+STATX400,Predictive Analytics,4,2,STATX300 AND MATHX313,Must have completed 144 units towards the HMATH,statistics,n
+MATHX408,Riemannian Geometry,4,2,MATHX311,Must have completed 144 units towards the HMATH,pure,n
+STATX401,Spatial Statistics,4,2,STATX302 OR STAT3005,Must have completed 144 units towards the HMATH,statistics,n
+STATX402,Survey Statistics,4,2,STATX302,Must have completed 144 units towards the HMATH,statistics,n
+MATHX411,Topics in Applied Mathematics B,4,2,,Must have completed 144 units towards the HMATH AND 18 units of level 3 applied mathematics,applied,y
+MATHX413,Topics in Pure Mathematics B,4,2,,Must have completed 144 units towards the HMATH AND 18 units of level 3 pure mathematics,pure,y
+MATHX415,Natural Language Processing,4,2,,Must have completed 144 units towards the HMATH,statistics,y
+MATHX315,Internship in Mathematics,3,"1, 2",MATH2025,Students must have completed at least 18 units of Level 2 Mathematical courses,core,y
+MATHX203,Multivariable Calculus,2,"1, 2",MATH1005 AND MATHX104,,core,y
