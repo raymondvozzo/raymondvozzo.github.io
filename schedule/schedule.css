@@ -56,3 +56,14 @@ ul.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:re
 @media(max-width:700px){body{padding:16px}.sem{grid-template-columns:1fr 1fr}.sl{grid-column:1/-1}}
 
 .tabs .tl{align-self:center;font-size:13px;font-weight:700;min-width:3.2rem}
+
+.cw{position:relative;display:flex}.cw .cell{width:100%}
+.mv{position:absolute;top:4px;right:4px;width:22px;height:22px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#140f50;font-size:13px;line-height:22px;text-align:center}
+.mv:hover{box-shadow:0 0 0 2px #1448FF}
+.cell.src{outline:3px solid #1448FF;outline-offset:2px}
+.cell.ok{outline:3px solid #0E9F9A;outline-offset:2px}
+.cell.bad{outline:3px solid #D62839;outline-offset:2px;opacity:.75}
+.cell.nomove,.cell.dim{opacity:.35}
+.mvbar{background:#eef0ff;border:1px solid #c9c6e0;border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:13px}
+.mvbar .why{display:block;margin-top:4px;color:#a1121f;font-weight:700}
+.mvbar button{margin-left:8px;border:1px solid #6E5AE1;background:#fff;color:#140f50;border-radius:14px;padding:3px 12px;font-size:12px;font-weight:700}

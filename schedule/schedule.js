@@ -50,12 +50,38 @@ const N1='Note: the Level 1 discipline course can be switched with COMP1002.';
 const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,i===0?N1:(mid&&i===2?WILN:'')]);
 let PLANS;
 
-function render(p){if(!C.length)return;cur=p;
+let MID='',mv=null,mvMsg='';
+const LAY={},clone=x=>JSON.parse(JSON.stringify(x));
+const yrs=()=>{const k=MID+'|'+cur;return LAY[k]||(LAY[k]=clone(mk(P[cur],cur==='mid')))};
+// a box can move if it is a placeholder (not WIL) or a fixed course offered in both semesters
+const movable=k=>D[k]?(D[k].sem==='12'?null:`${k} is only offered in ${SL[D[k].sem]}.`):(k==='W1'||k==='W2'?'WIL boxes stay where they are.':null);
+// courses whose prerequisites are provably out of order (a prerequisite in the plan that is not in an earlier semester)
+function viol(Y){const pos={},out={};
+ Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>sl.forEach(k=>{if(D[k])pos[k]=y*2+r})));
+ Object.keys(pos).forEach(x=>{const ex=parseExpr(D[x].pre);if(!ex)return;
+  const ok=n=>n.code?(n.code in pos?pos[n.code]<pos[x]:true):n.op==='and'?n.k.every(ok):n.k.some(ok);
+  if(!ok(ex))out[x]=[...new Set(D[x].pre.match(/[A-Z]{3,5}[0-9]{3,4}/g)||[])].filter(c=>c in pos&&pos[c]>=pos[x])});
+ return out}
+// swap row 0 box i1 with row 1 box i2 of year y; returns null if allowed, otherwise the reason
+function check(y,i1,i2){const Y=yrs(),sl=Y[y][1],a=sl[0][1][i1],b=sl[1][1][i2];
+ const why=movable(a)||movable(b);if(why)return why;
+ const T=clone(Y),t=T[y][1];[t[0][1][i1],t[1][1][i2]]=[b,a];
+ const v0=viol(Y),v1=viol(T),bad=Object.keys(v1).find(x=>!(x in v0));
+ return bad?`${bad} needs ${v1[bad].join(' or ')} in an earlier semester.`:null}
+function render(p){if(!C.length)return;if(p!==cur)mv=null;cur=p;
  document.querySelectorAll('.tab[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
- document.getElementById('plan').innerHTML=PLANS[p].map(([y,sems,note])=>`<section class="year"><h2>${y}</h2>${sems.map(([s,sl])=>
-  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map(k=>D[k]?
-   `<button class="cell ${uc(D[k])}" data-c="${k}"><b>${k}</b>${esc(D[k].name)}</button>`:
-   `<button class="cell ph ${CLS[k]}" data-k="${k}" data-s="${s}">${SLOT[k].label}<small>${SLOT[k].pick||SLOT[k].html?'See options':'Details'}</small></button>`).join('')}</div>`).join('')}
+ const Y=yrs(),mod=JSON.stringify(Y)!==JSON.stringify(mk(clone(P[p]),p==='mid')),lab=k=>D[k]?k:SLOT[k].label;
+ let bar='';
+ if(mv)bar=`<div class="mvbar">Moving <b>${lab(Y[mv.y][1][mv.r][1][mv.i])}</b> within Year ${mv.y+1}. Pick a highlighted box in the other semester. <button data-cancel>Cancel</button>${mvMsg?`<span class="why">${esc(mvMsg)}</span>`:''}</div>`;
+ else if(mod)bar='<div class="mvbar">You have changed the layout. <button data-reset>Reset</button></div>';
+ document.getElementById('plan').innerHTML=bar+Y.map(([y,sems,note],yi)=>`<section class="year"><h2>${y}</h2>${sems.map(([s,sl],r)=>
+  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((k,i)=>{let x='',h='';
+   if(mv){if(yi===mv.y&&r===mv.r&&i===mv.i)x=' src';else if(yi===mv.y&&r!==mv.r)x=movable(k)?' nomove':check(yi,...(mv.r===0?[mv.i,i]:[i,mv.i]))?' bad':' ok';else x=' dim'}
+   else if(!movable(k))h=`<button class="mv" data-mv="${yi},${r},${i}" aria-label="Swap ${lab(k)} with a box in the other semester" title="Swap with a box in the other semester">⇄</button>`;
+   const pos=`data-y="${yi}" data-r="${r}" data-i="${i}"`;
+   return`<div class="cw">`+(D[k]?
+    `<button class="cell ${uc(D[k])}${x}" ${pos} data-c="${k}"><b>${k}</b>${esc(D[k].name)}</button>`:
+    `<button class="cell ph ${CLS[k]}${x}" ${pos} data-k="${k}" data-s="${s}">${SLOT[k].label}<small>${SLOT[k].pick||SLOT[k].html?'See options':'Details'}</small></button>`)+h+`</div>`}).join('')}</div>`).join('')}
   ${note?`<p class="note">${note}</p>`:''}</section>`).join('')}
 
 const dlg=document.getElementById('dlg');let hist=[];
@@ -113,7 +139,18 @@ dlg.addEventListener('click',e=>{
 dlg.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('g[data-c]'))go(()=>courseView(e.target.dataset.c))});
 dlg.addEventListener('close',()=>{hist=[]});
 document.getElementById('plan').addEventListener('click',e=>{
- const b=e.target.closest('button.cell');if(!b)return;hist=[];
+ const t=e.target;
+ if(t.closest('[data-reset]')){delete LAY[MID+'|'+cur];mv=null;return render(cur)}
+ if(t.closest('[data-cancel]')){mv=null;mvMsg='';return render(cur)}
+ const h=t.closest('[data-mv]');if(h){const [y,r,i]=h.dataset.mv.split(',').map(Number);mv={y,r,i};mvMsg='';return render(cur)}
+ const b=t.closest('button.cell');if(!b)return;
+ if(mv){const y=+b.dataset.y,r=+b.dataset.r,i=+b.dataset.i;
+  if(y===mv.y&&r!==mv.r){const [i1,i2]=mv.r===0?[mv.i,i]:[i,mv.i],why=check(y,i1,i2);
+   if(why)mvMsg=why;else{const sl=yrs()[y][1];[sl[0][1][i1],sl[1][1][i2]]=[sl[1][1][i2],sl[0][1][i1]];mv=null;mvMsg=''}}
+  else if(y===mv.y&&r===mv.r&&i===mv.i){mv=null;mvMsg=''}
+  else mvMsg='Pick one of the highlighted boxes in the other semester, or cancel.';
+  return render(cur)}
+ hist=[];
  if(b.dataset.c)go(()=>courseView(b.dataset.c));else go(()=>listView(b.dataset.k,+b.dataset.s))});
 document.querySelectorAll('.tab[data-p]').forEach(b=>b.addEventListener('click',()=>render(b.dataset.p)));
 const MK=Object.keys(window.MAJORS),MB=document.getElementById('majors');
@@ -123,9 +160,11 @@ window.addEventListener('hashchange',()=>{if(C.length)setMajor(location.hash.sli
 function setMajor(id){
  if(!window.MAJORS[id])id=MK[0];P=window.MAJORS[id];
  CLS.L2M=CLS.L3M=P.majorClass||'discipline';SLOT.FE.label=P.feLabel||'Free elective';
- PLANS={std:mk(P.std,false),mid:mk(P.mid,true)};
+ MID=id;mv=null;mvMsg='';
  document.getElementById('ttl').textContent=P.title;document.title=P.title+': program schedule';
  document.querySelectorAll('[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===id));
  if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);
  if(dlg.open)dlg.close();render(cur)}
 fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);setMajor(location.hash.slice(1))}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mv){mv=null;mvMsg='';render(cur)}});
