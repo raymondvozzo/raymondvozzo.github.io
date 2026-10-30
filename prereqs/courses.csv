@@ -1,4 +1,4 @@
-Course Code,Course Name,level,semester,Prerequisite course(s),Prerequisite note(s),major,offered 2027
+Course Code,Course Name,level,semester,Prerequisite course(s),Prerequisite note(s),major,offered
 MATH1004,Calculus 1,1,"1, 2",MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,core,y
 MATHX106,Critical Evaluation in Data Science,1,1,,,discipline,y
 MATH1006,Discrete Mathematics,1,1,MATH1000,Or SACE Stage 2 Mathematical Methods or equivalent,discipline,y
