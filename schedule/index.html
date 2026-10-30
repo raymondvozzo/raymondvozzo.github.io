@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program schedule</title>
+<link rel="stylesheet" href="schedule.css">
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
+<h1 id="ttl"></h1>
+<p class="sub">Choose a major and a start semester to see the three-year plan. Click any course to see what leads to it and what it unlocks. Click a dashed slot to see the courses that can fill it, sorted by semester.</p>
+<div class="tabs" id="majors" role="group" aria-label="Major"></div>
+<div class="tabs" role="group" aria-label="Start semester">
+<span class="tl">Start</span>
+<button class="tab" data-p="std" aria-pressed="true">Standard (starts Semester 1)</button>
+<button class="tab" data-p="mid" aria-pressed="false">Mid-year (starts Semester 2)</button>
+</div>
+<div id="plan"></div>
+<div class="legend">Dashed slots are choices; solid slots are fixed courses. Course data comes from the prerequisite tree.</div>
+</div>
+<dialog id="dlg"></dialog>
+<script>
+window.MAJORS={"uns":{"allMagenta":true,"L3M":["MATHX308","MATH3022","MATHX300","MATHX301","STATX302","MATHX313","MATHX303","COMPX300","MATHX307","MATHX311","MATHX306","MATHX312","MATHX310","MATHX305","MATHX302","STATX303","MATHX309","MATHX304","STAT3005","STAT3006","STATX301","MATHX316"],"std":[[[1,["L1D","STATX100","MATH1004","CC"]],[2,["MATH1005","MATHX104","COMP1002","CC"]]],[[1,["MATH2025","MATHX203","L2M","L2M"]],[2,["STATX290","L2M","L2D","CC"]]],[[1,["W1","L3M","L3M","L3D"]],[2,["W2","L3M","L3M","FE"]]]],"mid":[[[2,["COMP1002","MATHX104","MATH1004","CC"]],[1,["MATH1005","STATX100","L1D","CC"]]],[[2,["STATX290","MATHX203","L2M","L2D"]],[1,["MATH2025","L2M","L2M","CC"]]],[[2,["W1","L3M","L3M","L3D"]],[1,["W2","L3M","L3M","FE"]]]],"label":"Unspecified","title":"Unspecified Major – Bachelor"},"pure":{"majorClass":"pure","L2M":["MATHX202","MATHX205","MATHX208","STAT2003","STATX200"],"L3M":["MATHX307","MATHX311","MATHX310","MATHX306","MATHX312","MATHX305","MATHX313","STAT3006"],"std":[[[1,["L1D","STATX100","MATH1004","CC"]],[2,["MATH1005","MATHX104","COMP1002","CC"]]],[[1,["MATH2025","MATHX203","MATHX201","L2M"]],[2,["STATX290","MATHX206","L2D","CC"]]],[[1,["W1","L3M","L3M","L3D"]],[2,["W2","L3M","L3M","FE"]]]],"mid":[[[2,["COMP1002","MATHX104","MATH1004","CC"]],[1,["MATH1005","STATX100","L1D","CC"]]],[[2,["STATX290","MATHX203","MATHX206","L2D"]],[1,["MATH2025","MATHX201","L2M","CC"]]],[[2,["W1","L3M","L3M","L3D"]],[1,["W2","L3M","L3M","FE"]]]],"label":"Pure","title":"Pure Mathematics"},"applied":{"majorClass":"applied","feLabel":"Uni-wide elective","L2M":["MATHX202","STATX200","MATHX204","MATHX205","MATHX209"],"tags":{"MATHX202":"Group A","STATX200":"Group A","MATHX204":"Group B","MATHX205":"Group B","MATHX209":"Group B"},"l2mNote":"Group A: MATHX202, STATX200. Group B: MATHX204, MATHX205, MATHX209. Of your three Level 2 major courses, at least one must come from each group.","L3M":["MATHX300","MATHX301","MATHX302","MATHX303","MATHX304","MATHX309","MATHX313","MATHX316","STAT3006","STATX303"],"std":[[[1,["L1D","STATX100","MATH1004","CC"]],[2,["MATH1005","MATHX104","COMP1002","CC"]]],[[1,["MATH2025","MATHX203","L2M","L2M"]],[2,["STATX290","L2M","L2D","CC"]]],[[1,["W1","L3M","L3M","L3D"]],[2,["W2","L3M","L3M","FE"]]]],"mid":[[[2,["COMP1002","MATHX104","MATH1004","CC"]],[1,["MATH1005","STATX100","L1D","CC"]]],[[2,["STATX290","MATHX203","L2M","L2D"]],[1,["MATH2025","L2M","L2M","CC"]]],[[2,["W1","L3M","L3M","L3D"]],[1,["W2","L3M","L3M","FE"]]]],"label":"Applied","title":"Applied Mathematics"},"datascience":{"majorClass":"statistics","L2M":["MATHX201","MATHX202","MATHX206","MATHX210","MATHX209","MATHX214","STAT2003"],"L3M":["COMPX300","MATHX302","MATHX303","MATHX313","MATHX316","STAT3005","STAT3006","STATX302"],"std":[[[1,["L1D","STATX100","MATH1004","CC"]],[2,["MATH1005","MATHX104","COMP1002","CC"]]],[[1,["MATH2025","MATHX203","MATHX205","STATX200"]],[2,["STATX290","L2M","L2D","CC"]]],[[1,["W1","L3M","L3M","L3D"]],[2,["W2","STATX301","L3M","FE"]]]],"mid":[[[2,["COMP1002","MATHX104","MATH1004","CC"]],[1,["MATH1005","STATX100","L1D","CC"]]],[[2,["STATX290","MATHX203","L2M","L2D"]],[1,["MATH2025","MATHX205","STATX200","CC"]]],[[2,["W1","STATX301","L3M","L3D"]],[1,["W2","L3M","L3M","FE"]]]],"label":"Data Science","title":"Data Science"},"statistics":{"majorClass":"statistics","L2M":["MATHX201","MATHX202","MATHX205","MATHX206","MATHX209","MATHX210","MATHX214","STATX201"],"L3M":["STAT3005","MATHX310","MATHX313","STAT3006","STATX300","STATX303"],"std":[[[1,["L1D","STATX100","MATH1004","CC"]],[2,["MATH1005","MATHX104","COMP1002","CC"]]],[[1,["MATH2025","MATHX203","STATX200","L2M"]],[2,["STATX290","STAT2003","L2D","CC"]]],[[1,["W1","STATX302","L3M","L3D"]],[2,["W2","L3M","L3M","FE"]]]],"mid":[[[2,["COMP1002","MATHX104","MATH1004","CC"]],[1,["MATH1005","STATX100","L1D","CC"]]],[[2,["STATX290","MATHX203","STAT2003","L2D"]],[1,["MATH2025","STATX200","L2M","CC"]]],[[2,["W1","L3M","L3M","L3D"]],[1,["W2","STATX302","L3M","FE"]]]],"label":"Statistics","title":"Statistics"}};
+</script>
+<script src="schedule.js"></script>
+</body>
+</html>

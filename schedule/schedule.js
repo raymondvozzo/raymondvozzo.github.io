@@ -1,84 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unspecified Major – Bachelor: program planner</title>
-<style>
-:root{--navy:#140f50;--purple:#8C78FF;--dpurple:#6E5AE1;--bblue:#1448FF;--cream:#F8EFE0;--up:#F5A300;--down:#0E9F9A;
---head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--ui:Arial,Helvetica,sans-serif}
-*{box-sizing:border-box}
-body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
-.wrap{max-width:1100px;margin:0 auto}
-.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}
-.eyebrow a{color:#fff}
-h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
-.sub{font-family:var(--body);max-width:660px;line-height:1.5;margin:0 0 20px}
-.tabs{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
-button{font-family:var(--ui);cursor:pointer}
-.tab{background:none;color:#fff;border:2px solid rgba(255,255,255,.4);padding:10px 22px;border-radius:25px;font-size:14px;font-weight:700}
-.tab[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue)}
-button:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
-.year{margin-bottom:22px}
-.year h2{font-family:var(--head);font-size:1.6rem;margin:0 0 8px;color:var(--navy)}
-#plan{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
-.free{--f:#f3f1fb;--s:#6E5AE1;--t:#140f50}
-dialog a{color:var(--dpurple);font-weight:700}
-ul.cc{padding-left:1.2em}ul.cc li{margin:4px 0}ul.cc small{opacity:.75}
-.sem{display:grid;grid-template-columns:6.5rem repeat(4,1fr);gap:8px;margin-bottom:8px;align-items:stretch}
-.sl{font-size:13px;font-weight:700;align-self:center;color:var(--navy)}
-.cell{min-height:62px;padding:8px;border-radius:8px;text-align:left;font-size:12px;line-height:1.3;background:var(--f);color:var(--t);border:2px solid var(--s)}
-.cell b{display:block;font-size:13px}
-.cell:hover{filter:brightness(1.12)}
-.cell.ph{border-style:dashed}
-.cell.ph small{display:block;opacity:.75;margin-top:3px}
-.note{font-size:13px;font-family:var(--body);margin:0 0 6px;color:var(--navy)}
-.legend{margin-top:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:12px}
-.pure{--f:#6E5AE1;--s:#4B3BB0;--t:#fff}.applied{--f:#1448FF;--s:#0A2FC7;--t:#fff}.statistics{--f:#140f50;--s:#8C78FF;--t:#fff}
-.core{--f:#F8EFE0;--s:#140f50;--t:#140f50}.discipline{--f:#B5338A;--s:#7E1F61;--t:#fff}
-dialog{width:min(860px,94vw);max-height:88vh;padding:20px;border:0;border-left:8px solid var(--dpurple);border-radius:12px;background:#fff;color:var(--navy);font-family:var(--body);font-size:14px;line-height:1.45}
-dialog::backdrop{background:rgba(10,8,40,.6)}
-dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 6px}
-dialog .code{color:var(--dpurple);font-family:var(--ui)}
-.x{position:absolute;top:8px;right:12px;background:none;border:0;font-size:26px;color:var(--navy)}
-.back{background:none;border:0;color:var(--dpurple);font-weight:700;padding:0 0 8px;font-size:14px}
-.warn{color:#9c3d00}
-.grp{font-family:var(--ui);font-size:14px;margin:14px 0 6px}
-.grp.no{opacity:.6}
-ul.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
-.opt{width:100%;text-align:left;padding:7px 9px;border-radius:6px;font-size:12px;background:#fff;color:var(--navy);border:1px solid #c9c6e0;border-left:8px solid var(--f)}
-.opt b{font-size:13px}.opt small{display:block;opacity:.75}
-.opt.off{border-style:dashed}
-.opt:hover{background:#f1efff}
-.tree{overflow:auto;border:1px solid #ddd;border-radius:8px;margin-top:10px;background:#fbfaff}
-.tree svg{display:block;margin:0 auto}
-.n{cursor:pointer}.n rect{fill:var(--f);stroke:var(--s);stroke-width:2}
-.n.off{opacity:.55}.n.off rect{stroke-dasharray:5 3}
-.n.sel rect{stroke:#000;stroke-width:4}
-.n text{fill:var(--t);text-anchor:middle;font-size:9px;font-family:var(--ui);pointer-events:none}
-.n text.c{font-size:10.5px;font-weight:700}
-.e{fill:none;stroke-width:2}.e.up{stroke:var(--up)}.e.dn{stroke:var(--down)}.e.alt{stroke-dasharray:6 4}
-.key{font-size:12px;margin-top:6px;font-family:var(--ui)}
-.key i{display:inline-block;width:24px;border-top:3px solid;margin:0 5px 3px 10px;vertical-align:middle}
-@media(max-width:700px){body{padding:16px}.sem{grid-template-columns:1fr 1fr}.sl{grid-column:1/-1}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
-<h1>Unspecified Major – Bachelor</h1>
-<p class="sub">Choose a start semester to see the three-year plan. Click any course to see what leads to it and what it unlocks. Click a dashed slot to see the courses that can fill it, sorted by semester.</p>
-<div class="tabs" role="group" aria-label="Start semester">
-<button class="tab" data-p="std" aria-pressed="true">Standard (starts Semester 1)</button>
-<button class="tab" data-p="mid" aria-pressed="false">Mid-year (starts Semester 2)</button>
-</div>
-<div id="plan"></div>
-<div class="legend">Dashed slots are choices; solid slots are fixed courses. Course data comes from the prerequisite tree.</div>
-</div>
-<dialog id="dlg"></dialog>
-<script>
 const MJ={c:['Core','core'],a:['Applied','applied'],p:['Pure','pure'],s:['Statistics / Data Science','statistics'],d:['Discipline elective','discipline']};
-const uc=c=>c.mj==='c'?'core':'discipline'; // in this plan every major / discipline course is magenta
+let P; // the selected major's schedule and course lists (from window.MAJORS)
+const uc=c=>P.allMagenta?(c.mj==='c'?'core':'discipline'):MJ[c.mj][1];
 const url=c=>'https://adelaide.edu.au/study/courses/'+c.replace(/^([A-Z]+)(\d+)$/,(m,a,b)=>a.toLowerCase()+'-'+b)+'/';
 const SL={1:'Semester 1',2:'Semester 2',12:'Both semesters'};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -108,16 +30,15 @@ function build(csv){
   [...new Set(c.pre.match(/[A-Z]{3,5}[0-9]{3,4}/g)||[])].filter(x=>D[x]).forEach(x=>LK.push({s:x,t:c.code,alt:!rq.has(x)}))})}
 
 // slot types: which courses can fill each placeholder
-const L3M='MATHX308 MATH3022 MATHX300 MATHX301 STATX302 MATHX313 MATHX303 COMPX300 MATHX307 MATHX311 MATHX306 MATHX312 MATHX310 MATHX305 MATHX302 STATX303 MATHX309 MATHX304 STAT3005 STAT3006 STATX301 MATHX316'.split(' ');
 const nc=l=>C.filter(c=>c.lvl===l&&c.mj!=='c');
 const WILN='Note: To take Clinic 1 and Clinic 2 as the WIL option, MATH 3013 Clinic 1 will need to be taken in the second half of Year 2 (semester 1) and MATH 3900 Clinic 2 will need to be taken in the first half of Year 3 (semester 2).';
 const CCP='https://adelaide.edu.au/study/common-core/';
 const CCL=[['COREX001','An Ethically Rich Life','Ethical Knowledges'],['COREX002','Fact or Fiction: Data for Everyone','Data Knowledges'],['COREX003','Igniting Change: Ideas to Action','Entrepreneurship and Design Thinking'],['COREX004','Transforming Learning through First Nations Knowledges','First Nations Knowledges'],['COREX005','Responsible AI: Bridging Ethics, Education and Industry','Artificial Intelligence'],['COREX006','Building Belonging: Navigating Cultural Complexities','Intercultural Understanding']];
 const SLOT={
  L1D:{label:'Level 1 discipline elective',pick:()=>nc(1),note:'This can be switched with COMP1002.'},
- L2M:{label:'Level 2 major course',pick:()=>C.filter(c=>c.lvl===2&&'pas'.includes(c.mj))},
+ L2M:{label:'Level 2 major course',pick:()=>P.L2M?P.L2M.map(x=>D[x]):C.filter(c=>c.lvl===2&&'pas'.includes(c.mj)),get note(){return P.l2mNote}},
  L2D:{label:'Level 2 discipline elective',pick:()=>nc(2)},
- L3M:{label:'Level 3 major course',pick:()=>L3M.map(x=>D[x])},
+ L3M:{label:'Level 3 major course',pick:()=>(P.L3M||[]).map(x=>D[x])},
  L3D:{label:'Level 3 discipline elective',pick:()=>nc(3)},
  W1:{label:'WIL 1',pick:()=>'MATH3013 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:WILN,mid:1},
  W2:{label:'WIL 2',pick:()=>'MATH3900 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:WILN,mid:1},
@@ -125,16 +46,12 @@ const SLOT={
  CC:{label:'Common Core',html:`<p>Common Core courses are university-wide, have no prerequisites and don’t count towards your GPA. The courses on offer can change, so check the <a href="${CCP}" target="_blank" rel="noopener">Common Core page</a> for the current list.</p><ul class="cc">${CCL.map(([c,n,a])=>`<li><a href="${url(c)}" target="_blank" rel="noopener">${n}</a> <small>${a}</small></li>`).join('')}</ul>`}}
 const CLS={L1D:'discipline',L2M:'discipline',L2D:'discipline',L3M:'discipline',L3D:'discipline',W1:'core',W2:'core',CC:'core',FE:'free'};
 let cur='std';;
-const PLANS={
- std:[['Year 1',[[1,['L1D','STATX100','MATH1004','CC']],[2,['MATH1005','MATHX104','COMP1002','CC']]],'Note: the Level 1 discipline course can be switched with COMP1002.'],
-  ['Year 2',[[1,['MATH2025','MATHX203','L2M','L2M']],[2,['STATX290','L2M','L2D','CC']]]],
-  ['Year 3',[[1,['W1','L3M','L3M','L3D']],[2,['W2','L3M','L3M','FE']]]]],
- mid:[['Year 1',[[2,['COMP1002','MATHX104','MATH1004','CC']],[1,['MATH1005','STATX100','L1D','CC']]],'Note: the Level 1 discipline course can be switched with COMP1002.'],
-  ['Year 2',[[2,['STATX290','MATHX203','L2M','L2D']],[1,['MATH2025','L2M','L2M','CC']]]],
-  ['Year 3',[[2,['W1','L3M','L3M','L3D']],[1,['W2','L3M','L3M','FE']]],WILN]]};
+const N1='Note: the Level 1 discipline course can be switched with COMP1002.';
+const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,i===0?N1:(mid&&i===2?WILN:'')]);
+let PLANS;
 
 function render(p){if(!C.length)return;cur=p;
- document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
+ document.querySelectorAll('.tab[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
  document.getElementById('plan').innerHTML=PLANS[p].map(([y,sems,note])=>`<section class="year"><h2>${y}</h2>${sems.map(([s,sl])=>
   `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map(k=>D[k]?
    `<button class="cell ${uc(D[k])}" data-c="${k}"><b>${k}</b>${esc(D[k].name)}</button>`:
@@ -145,7 +62,7 @@ const dlg=document.getElementById('dlg');let hist=[];
 function go(fn){hist.push(fn);fn()}
 function back(){hist.pop();hist[hist.length-1]()}
 function show(html){dlg.innerHTML=`<button class="x" aria-label="Close" data-x>×</button>${hist.length>1?'<button class="back" data-back>‹ Back</button>':''}${html}`;if(!dlg.open)dlg.showModal()}
-const chip=c=>`<small>${MJ[c.mj][0]} · ${SL[c.sem]}${c.on?'':' · not currently offered'}</small>`;
+const chip=c=>`<small>${P.tags&&P.tags[c.code]?P.tags[c.code]+' · ':''}${MJ[c.mj][0]} · ${SL[c.sem]}${c.on?'':' · not currently offered'}</small>`;
 
 function listView(k,s){
  const m=SLOT[k];let h=`<h3>${m.label}</h3><p>Slot in Semester ${s}.${m.note&&!(m.mid&&cur!=='mid')?' '+m.note:''}</p>`;
@@ -198,8 +115,17 @@ dlg.addEventListener('close',()=>{hist=[]});
 document.getElementById('plan').addEventListener('click',e=>{
  const b=e.target.closest('button.cell');if(!b)return;hist=[];
  if(b.dataset.c)go(()=>courseView(b.dataset.c));else go(()=>listView(b.dataset.k,+b.dataset.s))});
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>render(b.dataset.p)));
-fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);render('std')}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
-</script>
-</body>
-</html>
+document.querySelectorAll('.tab[data-p]').forEach(b=>b.addEventListener('click',()=>render(b.dataset.p)));
+const MK=Object.keys(window.MAJORS),MB=document.getElementById('majors');
+MB.innerHTML='<span class="tl">Major</span>'+MK.map(k=>`<button class="tab" data-m="${k}" aria-pressed="false">${window.MAJORS[k].label}</button>`).join('');
+MB.addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(b)setMajor(b.dataset.m)});
+window.addEventListener('hashchange',()=>{if(C.length)setMajor(location.hash.slice(1))});
+function setMajor(id){
+ if(!window.MAJORS[id])id=MK[0];P=window.MAJORS[id];
+ CLS.L2M=CLS.L3M=P.majorClass||'discipline';SLOT.FE.label=P.feLabel||'Free elective';
+ PLANS={std:mk(P.std,false),mid:mk(P.mid,true)};
+ document.getElementById('ttl').textContent=P.title;document.title=P.title+': program schedule';
+ document.querySelectorAll('[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===id));
+ if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);
+ if(dlg.open)dlg.close();render(cur)}
+fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);setMajor(location.hash.slice(1))}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});

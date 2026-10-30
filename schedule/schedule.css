@@ -1,0 +1,58 @@
+:root{--navy:#140f50;--purple:#8C78FF;--dpurple:#6E5AE1;--bblue:#1448FF;--cream:#F8EFE0;--up:#F5A300;--down:#0E9F9A;
+--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--ui:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}
+.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:660px;line-height:1.5;margin:0 0 20px}
+.tabs{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+button{font-family:var(--ui);cursor:pointer}
+.tab{background:none;color:#fff;border:2px solid rgba(255,255,255,.4);padding:10px 22px;border-radius:25px;font-size:14px;font-weight:700}
+.tab[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue)}
+button:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.year{margin-bottom:22px}
+.year h2{font-family:var(--head);font-size:1.6rem;margin:0 0 8px;color:var(--navy)}
+#plan{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.free{--f:#f3f1fb;--s:#6E5AE1;--t:#140f50}
+dialog a{color:var(--dpurple);font-weight:700}
+ul.cc{padding-left:1.2em}ul.cc li{margin:4px 0}ul.cc small{opacity:.75}
+.sem{display:grid;grid-template-columns:6.5rem repeat(4,1fr);gap:8px;margin-bottom:8px;align-items:stretch}
+.sl{font-size:13px;font-weight:700;align-self:center;color:var(--navy)}
+.cell{min-height:62px;padding:8px;border-radius:8px;text-align:left;font-size:12px;line-height:1.3;background:var(--f);color:var(--t);border:2px solid var(--s)}
+.cell b{display:block;font-size:13px}
+.cell:hover{filter:brightness(1.12)}
+.cell.ph{border-style:dashed}
+.cell.ph small{display:block;opacity:.75;margin-top:3px}
+.note{font-size:13px;font-family:var(--body);margin:0 0 6px;color:var(--navy)}
+.legend{margin-top:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:12px}
+.pure{--f:#6E5AE1;--s:#4B3BB0;--t:#fff}.applied{--f:#1448FF;--s:#0A2FC7;--t:#fff}.statistics{--f:#140f50;--s:#8C78FF;--t:#fff}
+.core{--f:#F8EFE0;--s:#140f50;--t:#140f50}.discipline{--f:#B5338A;--s:#7E1F61;--t:#fff}
+dialog{width:min(860px,94vw);max-height:88vh;padding:20px;border:0;border-left:8px solid var(--dpurple);border-radius:12px;background:#fff;color:var(--navy);font-family:var(--body);font-size:14px;line-height:1.45}
+dialog::backdrop{background:rgba(10,8,40,.6)}
+dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 6px}
+dialog .code{color:var(--dpurple);font-family:var(--ui)}
+.x{position:absolute;top:8px;right:12px;background:none;border:0;font-size:26px;color:var(--navy)}
+.back{background:none;border:0;color:var(--dpurple);font-weight:700;padding:0 0 8px;font-size:14px}
+.warn{color:#9c3d00}
+.grp{font-family:var(--ui);font-size:14px;margin:14px 0 6px}
+.grp.no{opacity:.6}
+ul.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.opt{width:100%;text-align:left;padding:7px 9px;border-radius:6px;font-size:12px;background:#fff;color:var(--navy);border:1px solid #c9c6e0;border-left:8px solid var(--f)}
+.opt b{font-size:13px}.opt small{display:block;opacity:.75}
+.opt.off{border-style:dashed}
+.opt:hover{background:#f1efff}
+.tree{overflow:auto;border:1px solid #ddd;border-radius:8px;margin-top:10px;background:#fbfaff}
+.tree svg{display:block;margin:0 auto}
+.n{cursor:pointer}.n rect{fill:var(--f);stroke:var(--s);stroke-width:2}
+.n.off{opacity:.55}.n.off rect{stroke-dasharray:5 3}
+.n.sel rect{stroke:#000;stroke-width:4}
+.n text{fill:var(--t);text-anchor:middle;font-size:9px;font-family:var(--ui);pointer-events:none}
+.n text.c{font-size:10.5px;font-weight:700}
+.e{fill:none;stroke-width:2}.e.up{stroke:var(--up)}.e.dn{stroke:var(--down)}.e.alt{stroke-dasharray:6 4}
+.key{font-size:12px;margin-top:6px;font-family:var(--ui)}
+.key i{display:inline-block;width:24px;border-top:3px solid;margin:0 5px 3px 10px;vertical-align:middle}
+@media(max-width:700px){body{padding:16px}.sem{grid-template-columns:1fr 1fr}.sl{grid-column:1/-1}}
+
+.tabs .tl{align-self:center;font-size:13px;font-weight:700;min-width:3.2rem}
