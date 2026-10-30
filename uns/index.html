@@ -122,7 +122,7 @@ const SLOT={
  W1:{label:'WIL 1',pick:()=>'MATH3013 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:WILN,mid:1},
  W2:{label:'WIL 2',pick:()=>'MATH3900 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:WILN,mid:1},
  FE:{label:'Free elective',msg:'Any course you are eligible for. No list is loaded for this slot.'},
- CC:{label:'Common Core (CC)',html:`<p>Common Core courses are university-wide, have no prerequisites and don’t count towards your GPA. The courses on offer can change, so check the <a href="${CCP}" target="_blank" rel="noopener">Common Core page</a> for the current list.</p><ul class="cc">${CCL.map(([c,n,a])=>`<li><a href="${url(c)}" target="_blank" rel="noopener">${n}</a> <small>${a}</small></li>`).join('')}</ul>`}}
+ CC:{label:'Common Core',html:`<p>Common Core courses are university-wide, have no prerequisites and don’t count towards your GPA. The courses on offer can change, so check the <a href="${CCP}" target="_blank" rel="noopener">Common Core page</a> for the current list.</p><ul class="cc">${CCL.map(([c,n,a])=>`<li><a href="${url(c)}" target="_blank" rel="noopener">${n}</a> <small>${a}</small></li>`).join('')}</ul>`}}
 const CLS={L1D:'discipline',L2M:'discipline',L2D:'discipline',L3M:'discipline',L3D:'discipline',W1:'core',W2:'core',CC:'core',FE:'free'};
 let cur='std';;
 const PLANS={
