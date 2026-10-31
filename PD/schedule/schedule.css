@@ -78,3 +78,12 @@ ul.opts li{position:relative}.opt{padding-right:34px}
 .hint{font-size:13px;opacity:.8;margin:8px 0}
 .act{border:0;background:#6E5AE1;color:#fff;border-radius:18px;padding:8px 16px;font-weight:700;font-size:13px}
 .act.alt{background:#fff;color:#140f50;border:1px solid #6E5AE1}
+
+.cw.wide{grid-column:span 2}
+.y4h{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;display:flex;align-items:center;gap:8px;width:100%;text-align:left}
+.y4h::before{content:"▸";color:#6E5AE1;transition:transform .15s}
+.y4h[aria-expanded=true]::before{transform:rotate(90deg)}
+.y4h small{font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;opacity:.65}
+.year.collapsed .sem,.year.collapsed .note{display:none}
+.year.collapsed h2{margin-bottom:0}
+.note.end{margin-top:6px}

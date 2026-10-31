@@ -55,12 +55,14 @@ const SLOT={
  L2M:{label:'Level 2 major course',pick:()=>P.L2M?P.L2M.map(x=>D[x]):C.filter(c=>c.lvl===2&&'pas'.includes(c.mj)),get note(){return P.l2mNote}},
  L2D:{label:'Level 2 discipline elective',pick:()=>nc(2)},
  L3M:{label:'Level 3 major course',pick:()=>(P.L3M||[]).map(x=>D[x])},
+ L4M:{label:'Level 4 major course',pick:()=>(P.L4M||[]).map(x=>D[x])},
+ L4D:{label:'Level 4 discipline elective',pick:()=>C.filter(c=>c.lvl===4&&c.mj!=='c')},
  L3D:{label:'Level 3 discipline elective',pick:()=>nc(3)},
  W1:{label:'WIL 1',pick:()=>'MATH3013 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:WILN,mid:1},
  W2:{label:'WIL 2',pick:()=>'MATH3900 MATH3901 MATHX315 MATH3902'.split(' ').map(x=>D[x]),note:WILN,mid:1},
  FE:{label:'Free elective',msg:'Any course you are eligible for. No list is loaded for this slot.'},
  CC:{label:'Common Core',flat:1,pick:()=>CCL.map(c=>D[c[0]]),intro:`<p>Common Core courses are university-wide, have no prerequisites and don’t count towards your GPA. The courses on offer can change, so check the <a href="${CCP}" target="_blank" rel="noopener">Common Core page</a> for the current list.</p>`}}
-const CLS={L1D:'discipline',L2M:'discipline',L2D:'discipline',L3M:'discipline',L3D:'discipline',W1:'core',W2:'core',CC:'core',FE:'free'};
+const CLS={L1D:'discipline',L2M:'discipline',L2D:'discipline',L3M:'discipline',L3D:'discipline',L4M:'discipline',L4D:'discipline',W1:'core',W2:'core',CC:'core',FE:'free'};
 let cur='std';;
 const N1='Note: the Level 1 discipline course can be switched with COMP1002.';
 const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,i===0?N1:(mid&&i===2?WILN:'')]);
@@ -73,8 +75,11 @@ const yrs=()=>{const k=MID+'|'+cur;return LAY[k]||(LAY[k]=clone(mk(P[cur],cur===
 const code=e=>e.includes('=')?e.split('=')[1]:(D[e]?e:null);
 const slot=e=>e.includes('=')?e.split('=')[0]:(D[e]?null:e);
 let ctx=null; // position of the box whose dialog is open
+const BIG=new Set(['MATHX406','MATHX407']); // 12-unit courses count as two courses and show double width
+let y4=false; // is Year 4 open?
 const movable=e=>{const c=code(e),s=slot(e);
  if(s==='W1'||s==='W2')return 'WIL boxes stay where they are.';
+ if(c&&BIG.has(c))return `${c} is a 12-unit course and stays where it is.`;
  return c&&D[c].sem!=='12'?`${c} is only offered in ${SL[D[c].sem]}.`:null};
 // used to block swaps: a prerequisite that is in the schedule but not in an earlier semester
 function viol(Y){const pos={},out={};
@@ -110,16 +115,16 @@ function render(p){if(!C.length)return;if(p!==cur)mv=null;cur=p;
  if(mv)bar=`<div class="mvbar">Moving <b>${lab(Y[mv.y][1][mv.r][1][mv.i])}</b> within Year ${mv.y+1}. Pick a highlighted box in the other semester. <button data-cancel>Cancel</button>${mvMsg?`<span class="why">${esc(mvMsg)}</span>`:''}</div>`;
  else if(mod)bar='<div class="mvbar">You have made changes to this schedule. <button data-reset>Reset</button></div>';
  const wk=Object.keys(W),wp=wk.length?`<div class="warnbox"><b>⚠ Things to check</b><ul>${[...new Set(wk.flatMap(k=>{const [y,r]=k.split(',').map(Number);return W[k].map(w=>`Year ${y+1}, Semester ${Y[y][1][r][0]}: ${w.m}`)}))].map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:'';
- document.getElementById('plan').innerHTML=bar+Y.map(([y,sems,note],yi)=>`<section class="year"><h2>${y}</h2>${sems.map(([s,sl],r)=>
+ document.getElementById('plan').innerHTML=bar+Y.map(([y,sems,note],yi)=>`<section class="year${yi===3&&!y4?' collapsed':''}">${yi===3?`<h2><button class="y4h" data-y4 aria-expanded="${y4}">${y} <small>Honours</small></button></h2>`:`<h2>${y}</h2>`}${sems.map(([s,sl],r)=>
   `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((e,i)=>{let x='',h='';
    if(mv){if(yi===mv.y&&r===mv.r&&i===mv.i)x=' src';else if(yi===mv.y&&r!==mv.r)x=movable(e)?' nomove':check(yi,...(mv.r===0?[mv.i,i]:[i,mv.i]))?' bad':' ok';else x=' dim'}
    else if(!movable(e))h=`<button class="mv" data-mv="${yi},${r},${i}" aria-label="Swap ${lab(e)} with a box in the other semester" title="Swap with a box in the other semester">⇄</button>`;
    const pos=`data-y="${yi}" data-r="${r}" data-i="${i}"`,c=code(e),s0=slot(e),wr=W[`${yi},${r},${i}`]||[];
    const bd=wr.length?`<span class="wn" title="${esc(wr.map(w=>w.m).join(' '))}">⚠</span>`:'';
-   return`<div class="cw">`+(c?
+   return`<div class="cw${c&&BIG.has(c)?' wide':''}">`+(c?
     `<button class="cell ${uc(D[c])}${x}" ${pos} data-c="${c}"><b>${c}</b>${esc(D[c].name)}${s0?`<small>${SLOT[s0].label}</small>`:''}${bd}</button>`:
     `<button class="cell ph ${CLS[e]}${x}" ${pos} data-k="${e}" data-s="${s}">${SLOT[e].label}<small>${SLOT[e].pick||SLOT[e].html?'Choose a course':'Details'}</small></button>`)+h+`</div>`}).join('')}</div>`).join('')}
-  ${note?`<p class="note">${note}</p>`:''}</section>`).join('')+wp}
+  ${note?`<p class="note">${note}</p>`:''}</section>`).join('')+(P.bottomNote?`<p class="note end">${esc(P.bottomNote)}</p>`:'')+wp}
 
 const dlg=document.getElementById('dlg');let hist=[];
 function go(fn){hist.push(fn);fn()}
@@ -191,6 +196,7 @@ dlg.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('g[data-
 dlg.addEventListener('close',()=>{hist=[]});
 document.getElementById('plan').addEventListener('click',e=>{
  const t=e.target;
+ if(t.closest('[data-y4]')){y4=!y4;return render(cur)}
  if(t.closest('[data-reset]')){delete LAY[MID+'|'+cur];mv=null;return render(cur)}
  if(t.closest('[data-cancel]')){mv=null;mvMsg='';return render(cur)}
  const h=t.closest('[data-mv]');if(h){const [y,r,i]=h.dataset.mv.split(',').map(Number);mv={y,r,i};mvMsg='';return render(cur)}
@@ -211,7 +217,7 @@ MB.addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(b)setMaj
 window.addEventListener('hashchange',()=>{if(C.length)setMajor(location.hash.slice(1))});
 function setMajor(id){
  if(!window.MAJORS[id])id=MK[0];P=window.MAJORS[id];
- CLS.L2M=CLS.L3M=P.majorClass||'discipline';SLOT.FE.label=P.feLabel||'Free elective';
+ CLS.L2M=CLS.L3M=CLS.L4M=P.majorClass||'discipline';SLOT.FE.label=P.feLabel||'Free elective';
  MID=id;mv=null;mvMsg='';
  document.getElementById('ttl').textContent=P.title;document.title=P.title+': program schedule';
  document.querySelectorAll('[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===id));
