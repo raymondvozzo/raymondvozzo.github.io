@@ -11,6 +11,21 @@ function parseExpr(s){const tk=s.match(/\(|\)|AND|OR|[A-Z]{3,5}[0-9]{3,4}/g)||[]
  const and=()=>{const k=[atom()];while(tk[p]==='AND'){p++;k.push(atom())}return k.length>1?{op:'and',k}:k[0]};
  const or=()=>{const k=[and()];while(tk[p]==='OR'){p++;k.push(and())}return k.length>1?{op:'or',k}:k[0]};
  return tk.length?or():null}
+// Which prerequisite courses are shown as solid (required) rather than dashed (alternatives)?
+// The expression is expanded into branches (sets of courses needed together). Branches that need a course
+// outside the tree are ignored when an all-in-tree branch exists. With one branch left, all its courses are
+// solid. With several, courses in every branch are solid, and so is the single multi-course branch,
+// e.g. "(A AND B) OR C" gives A and B solid and C dashed.
+function branches(n){if(n.code)return[[n.code]];if(n.op==='or')return n.k.flatMap(branches);
+ return n.k.reduce((acc,k)=>acc.flatMap(a=>branches(k).map(b=>[...new Set([...a,...b])])),[[]])}
+function solidSet(n,inTree){const out=new Set();if(!n)return out;
+ let B=branches(n);const full=B.filter(b=>b.every(inTree));
+ B=full.length?full:B.map(b=>b.filter(inTree)).filter(b=>b.length);
+ if(!B.length)return out;
+ if(B.length===1){B[0].forEach(c=>out.add(c));return out}
+ B[0].filter(c=>B.every(b=>b.includes(c))).forEach(c=>out.add(c));
+ const multi=B.filter(b=>b.length>1);if(multi.length===1)multi[0].forEach(c=>out.add(c));
+ return out}
 function req(n,r,o){if(!n)return;if(n.code){if(r)o.add(n.code);return}n.k.forEach(c=>req(c,r&&n.op==='and',o))}
 const LK=[];
 function okCol(v){if(v===undefined)throw new Error('courses.csv has no "offered" column (the browser may be showing an old copy of the file)');return v}
@@ -27,7 +42,7 @@ function build(csv){
  C=csvRows(csv).map(r=>({code:r['Course Code'],name:r['Course Name'],lvl:+r.level,sem:r.semester.replace(/[\s,]/g,''),pre:r['Prerequisite course(s)'],note:r['Prerequisite note(s)'],mj:M[r.major]||'c',on:okCol(r.offered).toLowerCase()==='y'}));
  D=Object.fromEntries(C.map(c=>[c.code,c]));LK.length=0;
  CCL.forEach(([c,n,a])=>{D[c]={code:c,name:n,lvl:1,sem:'12',pre:'',note:'',mj:'c',on:true,area:a}});
- C.forEach(c=>{const rq=new Set();req(parseExpr(c.pre),true,rq);
+ C.forEach(c=>{const rq=solidSet(parseExpr(c.pre),x=>D[x]);
   [...new Set(c.pre.match(/[A-Z]{3,5}[0-9]{3,4}/g)||[])].filter(x=>D[x]).forEach(x=>LK.push({s:x,t:c.code,alt:!rq.has(x)}))})}
 
 // slot types: which courses can fill each placeholder

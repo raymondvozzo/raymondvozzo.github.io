@@ -92,6 +92,7 @@ svg{display:block;min-width:900px;width:100%;height:auto}
 </div>
 <script>
 
+function okCol(v){if(v===undefined)throw new Error('courses.csv has no "offered" column (the browser may be showing an old copy of the file)');return v}
 function parseCSV(t){
   const rows=[];let row=[],cur='',q=false;
   for(let i=0;i<t.length;i++){const c=t[i];
@@ -115,23 +116,38 @@ function parseExpr(s){
   const or=()=>{const k=[and()];while(tk[p]==='OR'){p++;k.push(and());}return k.length>1?{op:'or',k}:k[0];};
   return tk.length?or():null;
 }
+// Which prerequisite courses are shown as solid (required) rather than dashed (alternatives)?
+// The expression is expanded into branches (sets of courses needed together). Branches that need a course
+// outside the tree are ignored when an all-in-tree branch exists. With one branch left, all its courses are
+// solid. With several, courses in every branch are solid, and so is the single multi-course branch,
+// e.g. "(A AND B) OR C" gives A and B solid and C dashed.
+function branches(n){if(n.code)return[[n.code]];if(n.op==='or')return n.k.flatMap(branches);
+ return n.k.reduce((acc,k)=>acc.flatMap(a=>branches(k).map(b=>[...new Set([...a,...b])])),[[]])}
+function solidSet(n,inTree){const out=new Set();if(!n)return out;
+ let B=branches(n);const full=B.filter(b=>b.every(inTree));
+ B=full.length?full:B.map(b=>b.filter(inTree)).filter(b=>b.length);
+ if(!B.length)return out;
+ if(B.length===1){B[0].forEach(c=>out.add(c));return out}
+ B[0].filter(c=>B.every(b=>b.includes(c))).forEach(c=>out.add(c));
+ const multi=B.filter(b=>b.length>1);if(multi.length===1)multi[0].forEach(c=>out.add(c));
+ return out}
 function collectRequired(n,r,out){
   if(!n)return;
   if(n.code){if(r)out.add(n.code);return;}
   n.k.forEach(c=>collectRequired(c,r&&n.op==='and',out));
 }
 
-fetch('courses.csv').then(r=>{if(!r.ok)throw 0;return r.text()}).then(csv=>{
+fetch('courses.csv').then(r=>{if(!r.ok)throw new Error('courses.csv not found (HTTP '+r.status+')');return r.text()}).then(csv=>{
 const courses=parseCSV(csv).map(r=>({
   code:r['Course Code'],name:r['Course Name'],level:+r.level,
   sem:r.semester.replace(/\s/g,'').replace(',',' & '),
   raw:r['Prerequisite course(s)'],note:r['Prerequisite note(s)'],
-  major:r.major||'core',off:r.offered.toLowerCase()==='y'}));
+  major:r.major||'core',off:okCol(r.offered).toLowerCase()==='y'}));
 const byCode=new Map(courses.map(c=>[c.code,c]));
 const links=[];
 courses.forEach(c=>{
   const all=[...new Set(c.raw.match(CODE)||[])];
-  const req=new Set();collectRequired(parseExpr(c.raw),true,req);
+  const req=solidSet(parseExpr(c.raw),x=>byCode.has(x));
   c.external=all.filter(x=>!byCode.has(x));
   c.rule=!!c.note&&/units|grade/i.test(c.note)&&!all.some(x=>byCode.has(x));
   all.filter(x=>byCode.has(x)).forEach(x=>links.push({source:x,target:c.code,alt:!req.has(x)}));
@@ -259,7 +275,7 @@ document.getElementById('q').addEventListener('input',e=>{
   const q=e.target.value.trim().toLowerCase();
   if(q)nodeSel.classed('faded',n=>!(n.code+' '+n.name).toLowerCase().includes(q));
 });
-}).catch(()=>{document.getElementById('viz').innerHTML='<p style="padding:20px;color:#140f50">Could not load courses.csv. Open this page from the website, not as a file on your computer.</p>';});
+}).catch(e=>{document.getElementById('viz').innerHTML='<p style="padding:20px;color:#140f50">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
 </script>
 </body>
 </html>
