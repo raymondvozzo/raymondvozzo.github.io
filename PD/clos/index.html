@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course learning outcomes</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--bblue:#1448FF;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:640px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+#q{width:100%;padding:12px 14px;font:inherit;font-size:16px;color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:8px}
+#q:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+button{font-family:var(--ui);cursor:pointer}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+.sp{flex:1}
+.lnk{border:0;background:none;color:var(--purple);font-weight:700;font-size:13px;padding:6px 4px}
+#count{font-size:13px;margin:6px 0 0;opacity:.8}
+h2{font-family:var(--head);font-size:1.5rem;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+details{border-bottom:1px solid var(--line)}
+summary{display:flex;gap:12px;align-items:baseline;padding:11px 6px;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--purple);flex:none;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#f3f1ff}
+.cd{font-weight:700;color:var(--purple);flex:none;min-width:6.2em}
+.tt{flex:1}
+.n{font-size:12px;opacity:.65;flex:none}
+.body{padding:2px 8px 16px 32px;font-family:var(--body);line-height:1.5}
+.body ol{margin:6px 0 10px;padding-left:1.3em}.body li{margin:6px 0}
+.body a{color:var(--purple);font-weight:700;font-family:var(--ui);font-size:13px}
+mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
+.none{padding:18px 4px}
+@media(max-width:600px){body{padding:16px}.box{padding:14px}summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;padding-left:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
+<h1>Course learning outcomes</h1>
+<p class="sub">Search by course code, title or any word from an outcome. Click a course to see its learning outcomes.</p>
+<div class="box">
+<input id="q" type="search" placeholder="Search courses and outcomes" aria-label="Search courses and outcomes" autocomplete="off">
+<div class="bar" id="lv" role="group" aria-label="Level"></div>
+<div class="bar"><span id="count" aria-live="polite"></span><span class="sp"></span><button class="lnk" id="ex">Expand all</button><button class="lnk" id="co">Collapse all</button></div>
+<div id="list"></div>
+</div>
+</div>
+<script>
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const url=c=>'https://adelaide.edu.au/study/courses/'+c.replace(/^([A-Z]+)(\d+)$/,(m,a,b)=>a.toLowerCase()+'-'+b)+'/';
+function csvRows(t){const rows=[];let row=[],cur='',q=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=c}
+  else if(c==='"')q=true;else if(c===','){row.push(cur);cur=''}
+  else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur=''}else if(c!=='\r')cur+=c}
+ if(cur||row.length){row.push(cur);rows.push(row)}
+ const h=rows.shift().map(s=>s.trim());
+ return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
+const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4',5:'Postgraduate'};
+let COURSES=[],lvl='all',toks=[];
+const $=id=>document.getElementById(id);
+function hl(t){if(!toks.length)return esc(t);
+ const re=new RegExp('('+toks.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+ return t.split(re).map((p,i)=>i%2?`<mark>${esc(p)}</mark>`:esc(p)).join('')}
+function draw(){
+ const hit=COURSES.filter(c=>(lvl==='all'||c.g==lvl)&&toks.every(t=>c.hay.includes(t)));
+ const auto=toks.length&&hit.length<=10;
+ $('count').textContent=`Showing ${hit.length} of ${COURSES.length} courses`;
+ if(!hit.length){$('list').innerHTML='<p class="none">No courses match your search.</p>';return}
+ let h='',g=0;
+ hit.forEach(c=>{
+  if(c.g!==g){g=c.g;h+=`<h2>${GN[g]}</h2>`}
+  const open=auto&&toks.some(t=>c.clo.includes(t));
+  h+=`<details id="c-${c.code}"${open?' open':''}><summary><span class="cd">${hl(c.code)}</span><span class="tt">${hl(c.title)}</span><span class="n">${c.clos.length} outcome${c.clos.length>1?'s':''}</span></summary><div class="body"><ol>${c.clos.map(t=>`<li>${hl(t)}</li>`).join('')}</ol><a href="${url(c.code)}" target="_blank" rel="noopener">Course webpage ↗</a></div></details>`});
+ $('list').innerHTML=h;
+ const id=location.hash.slice(1),el=id&&document.getElementById('c-'+id);if(el&&!toks.length&&!draw.done){el.open=true;el.scrollIntoView()}
+ draw.done=1}
+$('q').addEventListener('input',e=>{toks=e.target.value.toLowerCase().split(/\s+/).filter(Boolean);draw()});
+$('lv').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;lvl=b.dataset.g;
+ document.querySelectorAll('#lv .pill').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+$('ex').onclick=()=>document.querySelectorAll('#list details').forEach(d=>d.open=true);
+$('co').onclick=()=>document.querySelectorAll('#list details').forEach(d=>d.open=false);
+fetch('clos.csv').then(r=>{if(!r.ok)throw new Error('clos.csv not found (HTTP '+r.status+')');return r.text()}).then(t=>{
+ const m=new Map();
+ csvRows(t).forEach(r=>{const k=r['Course Code'];if(!m.has(k))m.set(k,{code:k,title:r['Course Title'],clos:[]});m.get(k).clos.push(r['Course Learning Outcome'])});
+ COURSES=[...m.values()].map(c=>{const d=+c.code.match(/\d/)[0];return{...c,g:d>=5?5:d,hay:(c.code+' '+c.title+' '+c.clos.join(' ')).toLowerCase(),clo:c.clos.join(' ').toLowerCase()}})
+  .sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
+ const gs=[...new Set(COURSES.map(c=>c.g))];
+ $('lv').innerHTML=[['all','All levels'],...gs.map(g=>[g,GN[g]])].map(([g,l])=>`<button class="pill" data-g="${g}" aria-pressed="${g==='all'}">${l}</button>`).join('');
+ draw()}).catch(e=>{$('list').innerHTML='<p class="none">Could not load the course data: '+esc(e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>'});
+</script>
+</body>
+</html>

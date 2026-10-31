@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PD Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --ink: #1b2433;
+    --muted: #5b6577;
+    --line: #d9dde5;
+    --accent: #0f6e6e;
+    --accent-bg: #e6f2f2;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+    --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111720;
+      --surface: #1a212c;
+      --ink: #e8ecf2;
+      --muted: #9aa5b6;
+      --line: #2c3544;
+      --accent: #5cc4c4;
+      --accent-bg: #1c2e33;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  header { margin-bottom: 2rem; }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .sub { color: var(--muted); margin: 0; max-width: 36rem; }
+
+  .search {
+    width: 100%;
+    margin: 0 0 2rem;
+    padding: 0.7rem 0.9rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  .search:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  section { margin-bottom: 2.25rem; }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--accent);
+  }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  li a {
+    display: block;
+    padding: 0.85rem 0.6rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 4px;
+  }
+  li a:hover { background: var(--accent-bg); }
+  .title { display: block; font-weight: 600; color: var(--accent); }
+  li a:hover .title { text-decoration: underline; }
+  .desc { display: block; color: var(--muted); font-size: 0.93rem; }
+  .empty { color: var(--muted); display: none; }
+  footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>PD Resources</h1>
+  </header>
+
+  <input class="search" type="search" id="q" placeholder="Filter resources" aria-label="Filter resources" autocomplete="off">
+
+  <!-- ===== SECTIONS =====
+       To add a resource, copy one <li>...</li> block into the right <ul>.
+       To add a section, copy a whole <section>...</section> block. -->
+
+  <section>
+    <ul>
+      <li>
+        <a href="https://raymondvozzo.github.io/prereqs/">
+          <span class="title">Course prerequisite tree</span>
+          <span class="desc">Interactive map of majors and course prerequisites, School of Mathematical Sciences.</span>
+        </a>
+      </li>
+      <li>
+        <a href="schedule/">
+          <span class="title">Program schedule</span>
+          <span class="desc">Three-year plans for each major (Unspecified, Pure, Applied, Data Science, Statistics) with clickable courses and prerequisite sub-trees.</span>
+        </a>
+      </li>
+      <li>
+        <a href="clos/">
+          <span class="title">Course learning outcomes</span>
+          <span class="desc">Search the School's courses and see each course's learning outcomes.</span>
+        </a>
+      </li>
+      <!-- Copy this block to add another link:
+      <li>
+        <a href="https://example.com/">
+          <span class="title">Resource name</span>
+          <span class="desc">One line on what it is or when you would use it.</span>
+        </a>
+      </li>
+      -->
+    </ul>
+  </section>
+
+  <p class="empty" id="empty">No resources match that filter.</p>
+
+  <footer>Maintained by Raymond Vozzo.</footer>
+</div>
+
+<script>
+  // Filters the list as you type; hides sections with no matches.
+  var q = document.getElementById('q');
+  var empty = document.getElementById('empty');
+  q.addEventListener('input', function () {
+    var term = q.value.trim().toLowerCase();
+    var anyShown = false;
+    document.querySelectorAll('section').forEach(function (sec) {
+      var shown = 0;
+      sec.querySelectorAll('li').forEach(function (li) {
+        var match = li.textContent.toLowerCase().indexOf(term) !== -1;
+        li.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      sec.style.display = shown ? '' : 'none';
+      if (shown) anyShown = true;
+    });
+    empty.style.display = anyShown ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

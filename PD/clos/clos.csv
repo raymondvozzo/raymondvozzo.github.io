@@ -1,0 +1,340 @@
+Course Code,Course Title,CLO No,Course Learning Outcome
+MATHX300,Advanced Differential Equations,1,"Analyse systems of ordinary differential equations drawn from physical examples, including nonlinear systems, using techniques such as linearisation and stability analysis"
+MATHX300,Advanced Differential Equations,2,"Use Sturm-Liouville theory to analyse and solve linear boundary value problems, including those arising from separation of variables"
+MATHX300,Advanced Differential Equations,3,"Apply analytical techniques to solve parabolic, elliptic, and hyperbolic partial differential equations and evaluate potential finite difference methods"
+MATHX300,Advanced Differential Equations,4,"Compute numerical solutions to parabolic, elliptic, and hyperbolic partial differential equations using finite-difference numerical methods"
+MATHX300,Advanced Differential Equations,5,"Interpret analytical and numerical solutions for ordinary differential equations and partial differential equations, the main component of continuum mathematical models for physical problems"
+MATHX301,Advanced Mathematical Modelling,1,"Apply analytical solution techniques to advanced models, including similarity and leading-order solutions"
+MATHX301,Advanced Mathematical Modelling,2,"Implement numerical solutions for DE models, including the heat and traffic flow PDE models and stiff systems"
+MATHX301,Advanced Mathematical Modelling,3,Interpret analytical and/or numerical solutions to advanced mathematical models
+MATHX301,Advanced Mathematical Modelling,4,"Construct mathematical models from first principles, including using conservation laws and the calculus of variations, and reduced models using multiple-scale methods"
+MATHX302,Advanced Optimisation,1,"Demonstrate understanding of the complexities of, and techniques for solving, nonlinear optimisation problems"
+MATHX302,Advanced Optimisation,2,Apply algorithms to solve both constrained and un-constrained one-dimensional optimisation problems
+MATHX302,Advanced Optimisation,3,Apply algorithms to solve multi-dimensional unconstrained optimisations problems
+MATHX302,Advanced Optimisation,4,Apply algorithms to solve convex constrained optimisation problems
+MATHX302,Advanced Optimisation,5,Apply heuristic methods to solve non-convex problems and evaluate the limitations of such approaches
+MATHX302,Advanced Optimisation,6,Implement computer code for the algorithms studied throughout the course and critically analyse and interpret the results
+STAT3005,Advanced Statistical Theory,1,Propose statistical methodologies appropriate for the problem at hand.
+STAT3005,Advanced Statistical Theory,2,Discern the assumptions which underpin validity of a particular method.
+STAT3005,Advanced Statistical Theory,3,Apply the main theoretical results to a variety of situations.
+STAT3005,Advanced Statistical Theory,4,Apply principles of statistical decision theory to a variety of problems.
+STAT3005,Advanced Statistical Theory,5,Communicate results clearly.
+MATHX201,Algebra,1,"Demonstrate an understanding of the theory of linear algebra, including proficiency with the concepts of vector spaces, linear transformations, inner product spaces."
+MATHX201,Algebra,2,Demonstrate skills in constructing rigorous mathematical arguments within the realms of group theory and linear algebra.
+MATHX201,Algebra,3,Apply the theory in the course to solve a variety of problems at an appropriate level of difficulty.
+MATHX201,Algebra,4,Demonstrate skills in communicating mathematics.
+MATHX201,Algebra,5,"Demonstrate an understanding of the theory of groups, including proficiency with the concepts of subgroup, permutations, generators, homomorphisms, cosets and quotients."
+MATH4010,Algebraic Topology,1,"Explain the fundamental group, its properties, and its relationship with covering spaces"
+MATH4010,Algebraic Topology,2,"Explain homology and cohomology groups, their properties, and relationship to each other"
+MATH4010,Algebraic Topology,3,Calculate algebraic invariants for suitable examples
+MATH4010,Algebraic Topology,4,Apply the theory in the course to solve a variety of problems
+MATH4010,Algebraic Topology,5,Demonstrate skills in communicating mathematics
+MATHX401,Asymptotic Methods,1,"Recall, and be able to explain the assumptions underpinning, a range of mathematical models of complex systems (e.g., chemical reactions, nonlinear oscillators, heat transfer / diffusion, fluid flows)"
+MATHX401,Asymptotic Methods,2,Contextualise mathematical models to explain subjective choices in modelling approach and / or approximation method
+MATHX401,Asymptotic Methods,3,Apply theory and techniques from the course to derive asymptotic solutions of complex mathematical models
+MATHX401,Asymptotic Methods,4,Interpret results to communicate qualitative solution behaviour
+MATH1004,Calculus 1,1,Explain the mathematical concepts and apply techniques that form the basis of study in algebra and calculus at university level
+MATH1004,Calculus 1,2,Apply mathematical methods to formulate and solve problems involving physical systems and geometry
+MATH1004,Calculus 1,3,Use logical arguments to make connections between mathematical concepts and to solve problems
+MATH1004,Calculus 1,4,Demonstrate skills in communicating mathematics
+MATH1005,Calculus 2,1,Explain the key concepts and theorems in differential and integral calculus.
+MATH1005,Calculus 2,2,Solve problems in calculus using analytic methods.
+MATH1005,Calculus 2,3,Employ techniques from calculus in various applications.
+MATH1005,Calculus 2,4,Use software to solve practical problems and make numerical calculations
+MATH1005,Calculus 2,5,Demonstrate skills in communicating mathematics.
+STAT3013,Capstone Project in Applied Data Analytics III,1,Demonstrated familiarity with a specialised topic in an area of applied data analytics.
+STAT3013,Capstone Project in Applied Data Analytics III,2,Demonstrated skills in critical analysis and interpretation of applied data analytics.
+STAT3013,Capstone Project in Applied Data Analytics III,3,Demonstrated ability to work as part of a group to complete an assigned task.
+STAT3013,Capstone Project in Applied Data Analytics III,4,Demonstrated ability to communicate applied data analytical ideas in both written and oral form.
+STATX403,Causal Inference,1,Identify whether causal modelling is appropriate for the problem at hand
+STATX403,Causal Inference,2,Critically evaluate whether causal modelling is appropriate for novel scenarios
+STATX403,Causal Inference,3,Apply the main theoretical results to a variety of situations
+STATX403,Causal Inference,4,Apply principles of causal reasoning to a variety of problems
+STATX403,Causal Inference,5,Communicate results clearly
+STATX403,Causal Inference,6,Implement and interpret the results of basic causal inference algorithms
+STAT3006,Computational Statistics,1,Describe and implement statistical algorithms to perform inference in a complex statistical problem
+STAT3006,Computational Statistics,2,Interpret output and critically appraise algorithm performance
+STAT3006,Computational Statistics,3,Choose and justify suitable approaches to model problems
+MATHX106,Critical Evaluation in Data Science,1,Demonstrate the use of basic probability to solve word problems
+MATHX106,Critical Evaluation in Data Science,2,Critically analyse and improve data collection designs
+MATHX106,Critical Evaluation in Data Science,3,Compose appropriate graphics to visualise patterns in data
+MATHX106,Critical Evaluation in Data Science,4,Articulate the importance of statistics in modern scientific research
+MATH3022,Cryptography,1,Solve problems in elementary number theory
+MATH3022,Cryptography,2,Use number theory techniques to compute encryption and decryption using RSA and ElGamal
+MATH3022,Cryptography,3,Explain how different cryptographic tools are used to achieve different security goals
+MATH3022,Cryptography,4,Determine the security outcomes of a simple cryptographic protocol
+MATH3022,Cryptography,5,Explain the principles of key management and analyse techniques of key generation
+COMP6011,Data-Driven Decision-Making,1,Apply advanced statistical techniques to analyse complex data sets and draw actionable Insights
+COMP6011,Data-Driven Decision-Making,2,Evaluate and select appropriate statistical models based on data characteristics and application areas
+COMP6011,Data-Driven Decision-Making,3,Develop interactive data visualisations and dashboards for enhanced decision support
+COMP6011,Data-Driven Decision-Making,4,Integrate data analysis and visualisation techniques into a data-driven decision-making framework to solve a real-world problem.
+STATX301,Data Science Practice,1,Explain important factors and considerations for each key step of the data science workflow
+STATX301,Data Science Practice,2,Discriminate between predictive models with reference to the research question associated with a given dataset
+STATX301,Data Science Practice,3,Demonstrate an understanding the statistical underpinning of the chosen method
+STATX301,Data Science Practice,4,Safely implement data science methods
+STATX301,Data Science Practice,5,Interpret the results of data science methods
+STATX301,Data Science Practice,6,Communicate the output from the predictive models to a general audience
+STAT1000,Data Skills for Scientists,1,"Discuss study design in a variety of scenarios drawn from scientific research and industry including distinguishing between experimental and observational studies, identifying potential sampling biases, and proposing scientific and statistical hypotheses."
+STAT1000,Data Skills for Scientists,2,Identify and apply appropriate statistical techniques to analyse data from scenarios drawn from scientific research and industry.
+STAT1000,Data Skills for Scientists,3,Interpret and describe data and statistical analysis of data and communicate results to both technical and general audiences using reproducible reporting tools.
+STAT1000,Data Skills for Scientists,4,Perform probability calculations and analyse data to produce statistical analyses and visualisations using the statistical software R.
+MATHX202,Differential Equations,1,"Classify ODEs, systems of ODEs, and linear PDEs and identify appropriate methods to analyse solutions and behaviours."
+MATHX202,Differential Equations,2,Demonstrate fluency in translating between ODE models and the practical applications they represent.
+MATHX202,Differential Equations,3,Calculate solutions of ODEs and linear PDEs as analytic functions or series solutions.
+MATHX202,Differential Equations,4,"Identify ODE solution behaviour, such as bifurcations, fixed points, and qualitative behaviour"
+MATHX202,Differential Equations,5,Develop numerical code which utilises in-built solvers and plotting functions to compute and illustrate solutions of ODEs
+MATH1006,Discrete Mathematics,1,Use logical arguments to construct elementary derivations and proofs in discrete mathematics
+MATH1006,Discrete Mathematics,2,Employ concepts and methods from discrete mathematics in various applications
+MATH1006,Discrete Mathematics,3,Demonstrate skills in mathematical communication
+MATH1006,Discrete Mathematics,4,Demonstrate knowledge of discrete mathematical concepts and carry out calculations involving discrete structures
+ENGI5006,Engineering Data Analytics,1,"Critically review data requirements, ethics implications, and data management strategies for real life engineering problems and research projects."
+ENGI5006,Engineering Data Analytics,2,Design and interpret exploratory data models and analysis.
+ENGI5006,Engineering Data Analytics,3,Identify and apply appropriate data processing methods and statistical analysis models for hypotheses testing on real life engineering and research datasets.
+ENGI5006,Engineering Data Analytics,4,"Critically review, present, and report on the results of data analysis."
+ENGI5006,Engineering Data Analytics,5,Identify and interpret modern data analytics techniques for decision support in research and engineering applications.
+MATH1016,Engineering Mathematics,1,"Formulate and solve engineering problems involving functions, derivatives, integrals, vectors and complex numbers"
+MATH1016,Engineering Mathematics,2,"Evaluate, manipulate and interpret expressions involving functions, derivatives, integrals, vectors and complex numbers"
+MATH1016,Engineering Mathematics,3,Compute and visualise results using computer software
+MATH1016,Engineering Mathematics,4,Present results of calculations in a clear and logical manner and interpret the results in context
+ENGI2001,Engineering Modelling 2,1,"Formulate and solve engineering problems involving data, statistics, simulations and numerical approximations"
+ENGI2001,Engineering Modelling 2,2,Apply concepts of probability and statistics to model relationships between variables in face of uncertainty
+ENGI2001,Engineering Modelling 2,3,"Derive, analyse and apply numerical methods to obtain approximate solutions to otherwise intractable problems"
+ENGI2001,Engineering Modelling 2,4,Compute and visualise results using computer software
+ENGI2001,Engineering Modelling 2,5,Present results of calculations in a clear and logical manner and interpret the results in context
+MATH1015,Essential Mathematics,1,Manipulate mathematical equations and expressions
+MATH1015,Essential Mathematics,2,Solve equations and inequalities
+MATH1015,Essential Mathematics,3,Graph functions and interpret graphs in the Cartesian plane
+MATH1015,Essential Mathematics,4,"Formulate and solve problems using properties of angles, triangles, and trigonometric functions"
+MATH1015,Essential Mathematics,5,Communicate clearly using mathematical terminology and notation.
+MATH1011,First Steps in Mathematics Research,1,Construct rigorous arguments and proofs
+MATH1011,First Steps in Mathematics Research,2,Contrast different methods from various disciplines of mathematics
+MATH1011,First Steps in Mathematics Research,3,Employ various methods of analysing data
+MATH1011,First Steps in Mathematics Research,4,Solve problems using mathematical techniques
+MATH1011,First Steps in Mathematics Research,5,Present solutions to problems orally and in writing
+MATH1011,First Steps in Mathematics Research,6,Work effectively in teams to solve mathematical problems
+MATHX304,Fluid Dynamics,1,"Analyse, describe and visualise the motion of fluid flows."
+MATHX304,Fluid Dynamics,2,"Recall, apply, interpret and derive the continuity, Euler and Navier-Stokes equations."
+MATHX304,Fluid Dynamics,3,Formulate and solve inviscid incompressible flow problems.
+MATHX304,Fluid Dynamics,4,Formulate and solve viscous incompressible flow problems.
+MATHX304,Fluid Dynamics,5,"Interpret, explain and assess the results from mathematical models of fluid flows in context."
+MATH1000,Foundations in Mathematics,1,Calculate derivatives and integrals of common functions and various combinations of those functions.
+MATH1000,Foundations in Mathematics,2,Formulate and solve problems involving derivatives and integrals
+MATH1000,Foundations in Mathematics,3,Calculate probabilities and sample statistics in certain scenarios
+MATH1000,Foundations in Mathematics,4,Formulate and solve problems involving probability and statistics
+MATH1000,Foundations in Mathematics,5,Present results of calculations in a clear and logical manner
+MATHX305,Functional Analysis,1,Identify and work with the various notions of convergence in normed linear spaces.
+MATHX305,Functional Analysis,2,Identify and work with concrete realisations of linear functionals for various normed linear spaces.
+MATHX305,Functional Analysis,3,Explain and apply the main theorems in the course.
+MATHX305,Functional Analysis,4,Develop correct mathematical arguments at the appropriate level.
+MATHX305,Functional Analysis,5,Communicate solutions to problems clearly in writing.
+MATH2010,Further Steps in Mathematics Research,1,"Understand specialised topics in pure mathematics, dynamics, stochastics, and statistics"
+MATH2010,Further Steps in Mathematics Research,2,Create their own rigorous mathematical arguments
+MATH2010,Further Steps in Mathematics Research,3,Compute with mathematical models and analyse data
+MATH2010,Further Steps in Mathematics Research,4,Clearly communicate mathematics and statistics in writing
+MATH2010,Further Steps in Mathematics Research,5,Work effectively in teams to solve mathematical problems
+MATH1007,Geometry,1,Demonstrate knowledge of concepts and theorems from geometry
+MATH1007,Geometry,2,Prove results in elementary geometry
+MATH1007,Geometry,3,Identify and correctly use geometry results that are appropriate to solve a given problem.
+MATH1007,Geometry,4,Demonstrate mathematical communication skills
+MATHX306,Geometry of Surfaces,1,Obtain information about curves in space using vectors and calculus
+MATHX306,Geometry of Surfaces,2,"Derive and be able to compute the main properties of surfaces and curvature, and apply the main results concerning these"
+MATHX306,Geometry of Surfaces,3,"Demonstrate understanding of, and perform computations with, differential forms"
+MATHX306,Geometry of Surfaces,4,Build rigorous arguments and proofs
+MATHX306,Geometry of Surfaces,5,"Communicate results in writing in a clear manner, through text, equations, and suitable figures"
+MATHX307,"Groups, Rings and Fields",1,"Explain and apply advanced concepts in group theory, including group actions and Sylow theorems."
+MATHX307,"Groups, Rings and Fields",2,"Analyse the structure and properties of rings and ideals, with applications to divisibility and factorisation in integral domains."
+MATHX307,"Groups, Rings and Fields",3,Apply the theory of field extensions to problems including the classification and arithmetic of finite fields.
+MATHX307,"Groups, Rings and Fields",4,Construct rigorous mathematical proofs within abstract algebra employing various proof techniques
+MATHX307,"Groups, Rings and Fields",5,Communicate algebraic ideas and arguments effectively using mathematical language
+COMP4007,Information Theory,1,Rationalise different definitions and uses of entropy
+COMP4007,Information Theory,2,"Derive key measures (e.g., mutual information) from known distributions"
+COMP4007,Information Theory,3,Propose mechanisms for coding and compression of data in different contexts
+COMP4007,Information Theory,4,"Implement core theoretical findings in applied settings including cyber security, network coding, game theory, cryptography and statistical estimation"
+COMP4007,Information Theory,5,Quantify uncertainty both mathematically and programmatically
+MATHX403,Integral Transforms,1,"Recall the definition of the Dirac-delta function, its properties, and its interpretation as a point source / sudden impulse, etc"
+MATHX403,Integral Transforms,2,"Recall the definitions of the Laplace and Fourier transforms, and be able to derive their basic properties (shifting, derivatives, convolution, etc.). Calculate transforms of functions using these properties. Recall the inversion formulas for the Laplace and Fourier transforms, and be able to compute the inverse transforms of a range of functions using the methods from the course"
+MATHX403,Integral Transforms,3,"Apply the Laplace and / or Fourier transforms to solve problems in science and engineering (including ODE, PDE and signal processing problems)"
+MATHX403,Integral Transforms,4,"Recall that a range of other integral transforms exists, and given the definition of a transform, be able to apply it to solve problems similar to those encountered in the course"
+MATHX404,Lie Algebras and Lie Groups,1,Demonstrate an understanding of the basic theory of Lie algebras and Lie groups and familiarity with a range of examples
+MATHX404,Lie Algebras and Lie Groups,2,Demonstrate advanced skills in constructing rigorous mathematical arguments
+MATHX404,Lie Algebras and Lie Groups,3,Apply the theory in the course to solve a variety of problems at an appropriate level of difficulty
+MATHX404,Lie Algebras and Lie Groups,4,Demonstrate advanced skills in communicating mathematics
+MATHX104,Linear Algebra,1,Explain the key concepts and theorems in linear algebra over real Euclidean space
+MATHX104,Linear Algebra,2,Solve problems in linear algebra using analytic and computational methods
+MATHX104,Linear Algebra,3,Employ techniques from linear algebra in statistical applications
+MATHX104,Linear Algebra,4,Demonstrate skills in communicating mathematics
+MATHX309,Mathematical Biology,1,Devise deterministic and stochastic mathematical models for biological systems.
+MATHX309,Mathematical Biology,2,Apply analytical techniques to deterministic models described by ordinary and partial differential equations.
+MATHX309,Mathematical Biology,3,Apply analytical and simulation techniques to stochastic models.
+MATHX309,Mathematical Biology,4,Synthesise deterministic and stochastic approaches to modelling biological processes in the context of biochemical reaction networks and disease dynamics.
+MATHX309,Mathematical Biology,5,Implement mathematical models for biological science using computational software (Julia).
+MATHX309,Mathematical Biology,6,Interpret analytical and/or numerical solutions to mathematical models and contextualise the results with respect to the life sciences.
+MATH3013,Mathematics Clinic 1,1,"Work effectively as part of a team, and take on management roles for aspects of the work"
+MATH3013,Mathematics Clinic 1,2,Analyse a project brief and formulate a precise description of the problem and a plan for solving the problem
+MATH3013,Mathematics Clinic 1,3,Identify and learn techniques for solving the problem
+MATH3013,Mathematics Clinic 1,4,Prepare and deliver oral and written technical reports
+MATH3900,Mathematics Clinic 2,1,"Work effectively as part of a team, and take on management roles for aspects of the work"
+MATH3900,Mathematics Clinic 2,2,"Identify, learn and apply techniques for solving the problem"
+MATH3900,Mathematics Clinic 2,3,Prepare and deliver oral and written technical reports
+MATH5109,Mathematics for Data Analytics A,1,"Perform vector and matrix algebra, including obtaining determinants and matrix inverses."
+MATH5109,Mathematics for Data Analytics A,2,Calculate derivatives and integrals of elementary functions
+MATH5109,Mathematics for Data Analytics A,3,Formulate and solve problems involving derivatives and integrals
+MATH5109,Mathematics for Data Analytics A,4,Apply mathematical concepts to applications in data science
+MATH5109,Mathematics for Data Analytics A,5,Present results of calculations in a clear and logical manner
+MATH5110,Mathematics for Data Analytics B,1,"Apply techniques from linear algebra to solve problems involving vector spaces, matrices, eigenvalues and linear transformations."
+MATH5110,Mathematics for Data Analytics B,2,Formulate and solve optimisation problems using multivariable calculus.
+MATH5110,Mathematics for Data Analytics B,3,Perform computations with random variables and probability and explain the relation to entropy.
+MATH5110,Mathematics for Data Analytics B,4,Use Python to verify solutions and produce solutions for more complex problems.
+MATH5110,Mathematics for Data Analytics B,5,Present results of calculations in a clear and logical manner.
+MATH1024,Mathematics for Laboratory Sciences,1,Apply algebraic skills to facilitate solving mathematical problems
+MATH1024,Mathematics for Laboratory Sciences,2,"Investigate and interpret properties of polynomial, rational, exponential and logarithmic functions, particularly within the medical sciences"
+MATH1024,Mathematics for Laboratory Sciences,3,"Differentiate and integrate polynomial, rational, exponential and logarithmic functions, and apply these skills to relevant applications within the medical sciences"
+MATH1024,Mathematics for Laboratory Sciences,4,Investigate mathematical solutions using appropriate technology
+MATH1024,Mathematics for Laboratory Sciences,5,Report on and interpret mathematical solutions
+MATH1012,Mathematics in Action,1,"Identify mathematical features of real-world problems and strengths and weaknesses of different modelling approaches, including those from non-Western cultures"
+MATH1012,Mathematics in Action,2,Participate effectively in a team of peers on a mathematical investigation
+MATH1012,Mathematics in Action,3,Use written and oral communication effectively to transmit mathematical ideas
+MATH1012,Mathematics in Action,4,"Apply empirical and discrete mathematical techniques to solve modelling problems, analytically and using a computer"
+MATH1012,Mathematics in Action,5,Interpret the results of empirical and discrete mathematical models to evaluate their validity and utility to a real-world scenario
+MATHX405,Mathematics of Artificial Intelligence,1,Describe the fundamental architectures of deep learning and AI models and connect this with the underlying mathematical principles
+MATHX405,Mathematics of Artificial Intelligence,2,Demonstrate an understanding of how to represent and model data using deep learning approaches
+MATHX405,Mathematics of Artificial Intelligence,3,"Demonstrate skills in training and predicting using deep learning using computer programming, including visualisation"
+MATHX405,Mathematics of Artificial Intelligence,4,Apply mathematical deep learning techniques to solve a variety of problems at an appropriate level of difficulty
+MATHX405,Mathematics of Artificial Intelligence,5,"Demonstrate skills in communicating about artificial intelligence and deep learning, including through designing appropriate numerical experiments and visualisations"
+MATHX406,Mathematics Research Project 1,1,Demonstrate familiarity with research in an area of mathematics or statistics
+MATHX406,Mathematics Research Project 1,2,Demonstrate skills in interpreting and evaluating research literature
+MATHX406,Mathematics Research Project 1,3,Demonstrate skills in conducting research
+MATHX406,Mathematics Research Project 1,4,Demonstrate skills in communicating research outcomes in both oral and written form
+MATHX406,Mathematics Research Project 1,5,Demonstrate cultural awareness and ethical principles in research and in reporting of results
+MATHX407,Mathematics Research Project 2,1,Demonstrate familiarity with research in an area of mathematics or statistics
+MATHX407,Mathematics Research Project 2,2,Demonstrate skills in interpreting and evaluating research literature
+MATHX407,Mathematics Research Project 2,3,Demonstrate skills in conducting research
+MATHX407,Mathematics Research Project 2,4,Demonstrate skills in communicating research outcomes in both oral and written form
+MATHX407,Mathematics Research Project 2,5,Demonstrate cultural awareness and ethical principles in research and in reporting of results
+MATH1022,Maths for Machine Learning,1,Apply techniques from linear algebra to solve problems involving vectors and matrices
+MATH1022,Maths for Machine Learning,2,Formulate and solve problems using multivariable functions and derivatives
+MATH1022,Maths for Machine Learning,3,"Perform computations with random variables, probabilities and entropy"
+MATH1022,Maths for Machine Learning,4,Use Python to verify solutions and produce solutions for more complex problems
+MATH1022,Maths for Machine Learning,5,Present results of calculations in a clear and logical manner
+MATHX310,Measure and Integration,1,Demonstrate proficiency in working with the Lebesgue integral
+MATHX310,Measure and Integration,2,Prove basic results about integration on the line and in abstract settings
+MATHX310,Measure and Integration,3,Demonstrate proficiency in working with spaces of integrable functions
+MATHX310,Measure and Integration,4,Construct rigorous mathematical arguments at the appropriate level
+MATHX310,Measure and Integration,5,Communicate results clearly
+MATHX311,Metric and Topological Spaces,1,Demonstrate an understanding of the concepts of metric spaces and topological spaces and familiarity with a range of examples of these structures
+MATHX311,Metric and Topological Spaces,2,"Prove basic results about completeness, compactness, connectedness, and convergence within these structures"
+MATHX311,Metric and Topological Spaces,3,Demonstrate skills in constructing rigorous mathematical arguments
+MATHX311,Metric and Topological Spaces,4,Apply the theory in the course to solve a variety of problems at an appropriate level of difficulty
+MATHX311,Metric and Topological Spaces,5,Demonstrate skills in communicating mathematics
+MATHX311,Metric and Topological Spaces,6,Complete a small research project as a member of a team
+MATHX203,Multivariable Calculus,1,"Recognise, and be able to formulate how curves, surfaces and volumes in three dimensions can be expressed by equations (including in parametric form and in polar coordinates)."
+MATHX203,Multivariable Calculus,2,"Recall, and be able to calculate, vector derivatives including gradient, divergence, curl and Laplacian (in both Cartesian and orthogonal curvilinear coordinates) and give physical interpretations of these quantities."
+MATHX203,Multivariable Calculus,3,"Find, and determine the type of, critical points of multivariable functions, and use Lagrange multipliers to find maxima and minima of functions under constraints."
+MATHX203,Multivariable Calculus,4,"Calculate integrals over paths, surfaces and volumes (including changing the order of integration, or making changes of variables)"
+MATHX203,Multivariable Calculus,5,"Recall, and be able to apply Green’s, divergence, and Stokes’ theorems when computing integrals"
+MATHX203,Multivariable Calculus,6,"Apply the mathematical concepts of CLOs 1, 2, 3, 4 and 5 to problems arising in other relevant disciplines, and interpret the results."
+MATHX312,Number Theory,1,Solve a variety of problems in elementary number theory using appropriate techniques.
+MATHX312,Number Theory,2,Investigate the existence of integer solutions to algebraic equations using congruence methods.
+MATHX312,Number Theory,3,Use logical arguments to prove number theoretic results.
+MATHX312,Number Theory,4,Perform computations using continued fractions.
+MATHX312,Number Theory,5,Demonstrate skills in communicating mathematics.
+MATHX204,Numerical Methods,1,"Write efficient numerical code for a range of fundamental mathematical problems, including interpolation, calculus, linear algebra, and iteration"
+MATHX204,Numerical Methods,2,Derive formulas for numerical approximations for data interpolation and for calculus problems
+MATHX204,Numerical Methods,3,"Compute solutions of fundamental mathematical problems, including interpolations, differential equations, linear algebra problems and iterations"
+MATHX204,Numerical Methods,4,"Interpret numerical solutions to identify significant features, such as dynamical behaviour or failures in the numerical scheme"
+MATHX204,Numerical Methods,5,Quantify errors in numerical solutions using both analytic and numerical techniques
+MATHX204,Numerical Methods,6,Present numerical code and numerical solutions to professional standards
+MATHX205,Optimisation,1,Translate problem statements describing a real-world scenario into a mathematical formulation
+MATHX205,Optimisation,2,Analyse the computational complexity in various algorithm designs
+MATHX205,Optimisation,3,Formulate and solve linear programming problems and integer programming problems
+MATHX205,Optimisation,4,Solve optimisation problems using computer programs and packages.
+MATHX205,Optimisation,5,Collaborate in small teams to generate solutions to larger problems and produce a report
+STATX200,Probability,1,Translate real-world problems from verbal descriptions into probability models
+STATX200,Probability,2,Explain the common named discrete and continuous random distributions and apply them to modelling situations
+STATX200,Probability,3,"Apply the formal rules of probability, conditional probability and independence to calculate probabilities and expectations"
+STATX200,Probability,4,Demonstrate understanding of probablistic limit laws and apply them to relevant situations
+STATX200,Probability,5,Understand how joint distributions encode the behaviour of multiple random variables and exploit this for modelling and analysis of problems
+STATX100,Probability and Statistics,1,"Apply laws of probability and properties of random variables, including expected value and variance of linear combinations of random variables to a variety of problems"
+STATX100,Probability and Statistics,2,Choose and perform appropriate hypothesis tests in a variety of scenarios including one sample and two sample tests for means and proportions
+STATX100,Probability and Statistics,3,"Evaluate the assumptions of linear regression models fit to data and interpret the outputs from such a model fit including coefficients, measures of model-fit, and predictions"
+STATX100,Probability and Statistics,4,Describe data and data analysis to both statistical and generalist audiences
+STATX100,Probability and Statistics,5,"Analyse data using the statistical software R including fitting linear regression models to data, making predictions using such models, computing probabilities, applying hypothesis tests and producing graphics to visualise and investigate data"
+MATH3901,Project in Mathematics,1,Work effectively as part of a team
+MATH3901,Project in Mathematics,2,Analyse a project brief and formulate a precise description of the problem and a plan for solving the problem
+MATH3901,Project in Mathematics,3,"Identify, learn and apply techniques for solving the problem"
+MATH3901,Project in Mathematics,4,Prepare and deliver oral and written reports
+MATHX206,Real Analysis,1,Describe the fundamental properties of the real numbers that underpin the formal development of real analysis
+MATHX206,Real Analysis,2,"Demonstrate an understanding of the theory of sequences and series, continuity, differentiation, and integration"
+MATHX206,Real Analysis,3,Demonstrate skills in constructing rigorous mathematical arguments
+MATHX206,Real Analysis,4,Apply the theory in the course to solve a variety of problems at an appropriate level of difficulty
+MATHX206,Real Analysis,5,Demonstrate skills in communicating mathematics
+MATHX408,Riemannian Geometry,1,Demonstrate an understanding of the intrinsic geometry of manifolds
+MATHX408,Riemannian Geometry,2,Apply the general theory to specific examples
+MATHX408,Riemannian Geometry,3,"Produce sophisticated arguments and proofs, at the appropriate level"
+MATHX408,Riemannian Geometry,4,Communicate results clearly
+MATHX409,Smooth Manifolds,1,Demonstrate an understanding of the basic theory of smooth manifolds
+MATHX409,Smooth Manifolds,2,Demonstrate advanced skills in constructing rigorous mathematical arguments
+MATHX409,Smooth Manifolds,3,Apply the theory in the course to solve a variety of problems at an appropriate level of difficulty
+MATHX409,Smooth Manifolds,4,Demonstrate advanced skills in communicating mathematics
+MATHX409,Smooth Manifolds,5,Complete a small research project as a member of a team
+STATX401,Spatial Statistics,1,Apply core mathematical and computational techniques for spatially structured data.
+STATX401,Spatial Statistics,2,Critique different methods for sampling spatial data.
+STATX401,Spatial Statistics,3,Design a spatial analysis and implement in statistical software (R).
+STATX401,Spatial Statistics,4,Compare and contrast different spatial statistical approaches.
+STATX401,Spatial Statistics,5,"Communicate analysis to a range of stakeholders visually, verbally and mathematically."
+STAT5020,Statistical Foundations for Data Science and Artificial Intelligence,1,"Explain key statistical concepts, including data types, uncertainty, and the role of scientific inquiry in data science and AI"
+STAT5020,Statistical Foundations for Data Science and Artificial Intelligence,2,"Apply exploratory data analysis techniques to summarise and visualise datasets, identifying key patterns and relationships"
+STAT5020,Statistical Foundations for Data Science and Artificial Intelligence,3,"Perform basic probability calculations and statistical inferences, including constructing and interpreting confidence intervals and hypothesis tests"
+STAT5020,Statistical Foundations for Data Science and Artificial Intelligence,4,Implement data transformation and preparation techniques for model building
+STAT5020,Statistical Foundations for Data Science and Artificial Intelligence,5,"Build, interpret, and evaluate linear regression models for prediction and informed decision-making"
+STATX302,Statistical Methodology,1,Discern the assumptions which underpin validity of a particular method
+STATX302,Statistical Methodology,2,Apply the main theoretical results to a variety of situations
+STATX302,Statistical Methodology,3,Use statistical software and work with practical implementation of the statistical methods
+STATX302,Statistical Methodology,4,Communicate results clearly
+STATX302,Statistical Methodology,5,"Apply a range of statistical methodologies, appropriate for the problem at hand"
+STATX290,Statistical Practice,1,Apply statistical techniques to analyse real-world problems
+STATX290,Statistical Practice,2,Apply and interpret results from Generalised Linear Models (GLMS)
+STATX290,Statistical Practice,3,Perform data analysis using R programming language
+STATX290,Statistical Practice,4,Present statistical findings effectively through written reports and data visualisations
+STATX290,Statistical Practice,5,"Evaluate project outcomes, reflecting on the assumptions, strengths and limitations of the statistical analyses that were applied to project data"
+STATX290,Statistical Practice,6,Demonstrate ability to work collaboratively in a team to deliver project outcomes
+STAT2003,Statistical Theory,1,Identify which statistical methodology is appropriate for the problem at hand
+STAT2003,Statistical Theory,2,Recognise the assumptions needed for a particular method
+STAT2003,Statistical Theory,3,Apply the main theoretical results to a variety of situations
+STAT2003,Statistical Theory,4,Work with practical implementation of the statistical methods
+STAT2003,Statistical Theory,5,Communicate results clearly
+STAT2003,Statistical Theory,6,Recognise the difference between frequentist and Bayesian approaches
+STATX303,Stochastic Processes,1,Explain the mathematical foundations of stochastic processes in both discrete and continuous time.
+STATX303,Stochastic Processes,2,Explain the short and long-term behaviour of Markov chains and how this relates to the properties of the underlying states.
+STATX303,Stochastic Processes,3,Apply the theory developed in the course for modelling and solving appropriate problems.
+STATX303,Stochastic Processes,4,Demonstrate skills in communicating mathematics.
+STATX303,Stochastic Processes,5,Write computer code to simulate different types of stochastic processes.
+COMPX300,Text and Social Media Analytics,1,"Experiment with text reading and manipulation techniques in R (tokenisation, stop words and word embedding) to prepare text data."
+COMPX300,Text and Social Media Analytics,2,Explain the importance of representative datasets and the ethics of using text from social sources.
+COMPX300,Text and Social Media Analytics,3,Apply sentiment analysis and regression to real-world datasets to aid prediction and uncover patterns and themes.
+COMPX300,Text and Social Media Analytics,4,Interpret and evaluate the outputs of sentiment analysis and topic modelling to generate valid and novel insights.
+MATHX313,Time Series Analysis,1,Evaluate temporal features of data
+MATHX313,Time Series Analysis,2,Apply mathematical and statistical reasoning to time series models
+MATHX313,Time Series Analysis,3,Analyse complex time series data with appropriate statistical models in R
+MATHX313,Time Series Analysis,4,Produce professional statistical reports for both specialist and non-specialist audiences
+STAT6002,Time Series Analysis and Forecasting,1,"Apply fundamental time series analysis techniques to identify and model trends, seasonality, and noise within temporal data"
+STAT6002,Time Series Analysis and Forecasting,2,"Develop and evaluate ARIMA, SARIMA, and exponential smoothing models for forecasting time series data"
+STAT6002,Time Series Analysis and Forecasting,3,Use machine learning models to forecast complex time series data and compare their performance to traditional methods
+STAT6002,Time Series Analysis and Forecasting,4,Interpret and assess the accuracy of time series models using appropriate evaluation metrics
+STAT6002,Time Series Analysis and Forecasting,5,"Critically evaluate the ethical considerations in time series forecasting, ensuring responsible and unbiased applications of temporal models"
+MATHX410,Topics in Applied Mathematics A,1,Evaluate complex problems in an advanced field of applied mathematics
+MATHX410,Topics in Applied Mathematics A,2,Interpret the solutions of complex problems in an advanced field of applied mathematics
+MATHX410,Topics in Applied Mathematics A,3,Appraise the significance of the course content to contemporary applied mathematical research
+MATHX410,Topics in Applied Mathematics A,4,"Devise applications of the course content in science, engineering or finance (e.g., relate the course content to learners’ own research interests)"
+MATHX411,Topics in Applied Mathematics B,1,Evaluate complex problems in an advanced field of applied mathematics
+MATHX411,Topics in Applied Mathematics B,2,Interpret the solutions of complex problems in an advanced field of applied mathematics
+MATHX411,Topics in Applied Mathematics B,3,Appraise the significance of the course content to contemporary applied mathematical research
+MATHX411,Topics in Applied Mathematics B,4,"Devise applications of the course content in science, engineering or finance (e.g., relate the course content to learners’ own research interests)"
+STAT4002,Topics in Data Science B,1,Apply research skills to gain new knowledge in a topic of data science
+STAT4002,Topics in Data Science B,2,"Demonstrate knowledge of advanced concepts, theorems and techniques of data science, applied statistics or analysis"
+STAT4002,Topics in Data Science B,3,"Apply these mathematical, computational and statistical techniques to real-world situations"
+STAT4002,Topics in Data Science B,4,Communicate effectively to clearly describe the process and/or results
+MATHX412,Topics in Pure Mathematics A,1,"Engage deeply with topics in pure mathematics, demonstrating a nuanced understanding of advanced concepts, theorems, and proofs"
+MATHX412,Topics in Pure Mathematics A,2,Apply the theory in the course to solve a variety of problems at an appropriate level of difficulty
+MATHX412,Topics in Pure Mathematics A,3,"Develop advanced problem-solving skills, employing a variety of techniques and strategies to tackle complex mathematical problems and construct rigorous proofs"
+MATHX412,Topics in Pure Mathematics A,4,Articulate mathematical ideas and proofs with clarity and precision in written form
