@@ -18,9 +18,9 @@ function parseExpr(s){const tk=s.match(/\(|\)|AND|OR|[A-Z]{3,5}[0-9]{3,4}/g)||[]
 // e.g. "(A AND B) OR C" gives A and B solid and C dashed.
 function branches(n){if(n.code)return[[n.code]];if(n.op==='or')return n.k.flatMap(branches);
  return n.k.reduce((acc,k)=>acc.flatMap(a=>branches(k).map(b=>[...new Set([...a,...b])])),[[]])}
+function effB(n,inTree){const B=branches(n),full=B.filter(b=>b.every(inTree));return full.length?full:B.map(b=>b.filter(inTree)).filter(b=>b.length)}
 function solidSet(n,inTree){const out=new Set();if(!n)return out;
- let B=branches(n);const full=B.filter(b=>b.every(inTree));
- B=full.length?full:B.map(b=>b.filter(inTree)).filter(b=>b.length);
+ const B=effB(n,inTree);
  if(!B.length)return out;
  if(B.length===1){B[0].forEach(c=>out.add(c));return out}
  B[0].filter(c=>B.every(b=>b.includes(c))).forEach(c=>out.add(c));
@@ -85,8 +85,8 @@ const movable=e=>{const c=code(e),s=slot(e);
 function viol(Y){const pos={},out={};
  Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>sl.forEach(e=>{const c=code(e);if(c)pos[c]=y*2+r})));
  Object.keys(pos).forEach(x=>{const ex=parseExpr(D[x].pre);if(!ex)return;
-  const ok=n=>n.code?(n.code in pos?pos[n.code]<pos[x]:true):n.op==='and'?n.k.every(ok):n.k.some(ok);
-  if(!ok(ex))out[x]=[...new Set(D[x].pre.match(/[A-Z]{3,5}[0-9]{3,4}/g)||[])].filter(c=>c in pos&&pos[c]>=pos[x])});
+  const B=effB(ex,k=>D[k]);
+  if(B.length&&!B.some(b=>b.every(c=>!(c in pos)||pos[c]<pos[x])))out[x]=[...new Set(B.flat())].filter(c=>c in pos&&pos[c]>=pos[x])});
  return out}
 // warnings shown on boxes: wrong semester, not offered, repeated, or prerequisites not met earlier in the schedule
 function warns(Y){const pos={},cnt={},out={};
@@ -96,9 +96,9 @@ function warns(Y){const pos={},cnt={},out={};
   if(!d.on)w.push({t:'off',m:`${c} is not currently offered.`});
   if(cnt[c]>1)w.push({t:'dup',m:`${c} is already in your schedule.`});
   const ex=parseExpr(d.pre);
-  if(ex){const here=y*2+r,ok=n=>n.code?(D[n.code]?(n.code in pos&&pos[n.code]<here):true):n.op==='and'?n.k.every(ok):n.k.some(ok);
-   if(!ok(ex)){const u=[...new Set(d.pre.match(/[A-Z]{3,5}[0-9]{3,4}/g)||[])].filter(x=>D[x]&&!(x in pos&&pos[x]<here));
-    w.push({t:'pre',m:u.length===1&&!/ OR /.test(d.pre)?`${c} needs ${u[0]} in an earlier semester.`:`${c}: prerequisites (${d.pre}) are not all met earlier in your schedule.`})}}
+  if(ex){const here=y*2+r,B=effB(ex,k=>D[k]),met=k=>k in pos&&pos[k]<here;
+   if(B.length&&!B.some(b=>b.every(met))){const u=B.length===1?B[0].filter(k=>!met(k)):[];
+    w.push({t:'pre',m:u.length?`${c} needs ${u.join(' and ')} in an earlier semester.`:`${c}: prerequisites (${d.pre}) are not all met earlier in your schedule.`})}}
   if(w.length)out[y+','+r+','+i]=w})));
  return out}
 // what would be flagged if this course went into the open box
