@@ -214,7 +214,7 @@ document.querySelectorAll('.tab[data-p]').forEach(b=>b.addEventListener('click',
 const MK=Object.keys(window.MAJORS),MB=document.getElementById('majors');
 MB.innerHTML='<span class="tl">Major</span>'+MK.map(k=>`<button class="tab" data-m="${k}" aria-pressed="false">${window.MAJORS[k].label}</button>`).join('');
 MB.addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(b)setMajor(b.dataset.m)});
-window.addEventListener('hashchange',()=>{if(C.length)setMajor(location.hash.slice(1))});
+window.addEventListener('hashchange',()=>{if(C.length)startFromHash()});
 function setMajor(id){
  if(!window.MAJORS[id])id=MK[0];P=window.MAJORS[id];
  CLS.L2M=CLS.L3M=CLS.L4M=P.majorClass||'discipline';SLOT.FE.label=P.feLabel||'Free elective';
@@ -223,6 +223,29 @@ function setMajor(id){
  document.querySelectorAll('[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===id));
  if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);
  if(dlg.open)dlg.close();render(cur)}
-fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);setMajor(location.hash.slice(1))}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
+// ---- sharing: a link stores the major, the start semester and only the boxes that differ from the standard layout
+const b64=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const unb64=s=>decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/'))));
+function changes(){const base=mk(clone(P[cur]),cur==='mid'),out=[];
+ yrs().forEach((yr,y)=>yr[1].forEach((row,r)=>row[1].forEach((e,i)=>{if(e!==base[y][1][r][1][i])out.push([y,r,i,e])})));return out}
+function shareUrl(){const ch=changes();return location.origin+location.pathname+'#'+MID+'.'+cur+(ch.length?'.'+b64(JSON.stringify(ch)):'')}
+function startFromHash(){
+ const [id,pl,dat]=location.hash.slice(1).split('.');
+ if(pl==='std'||pl==='mid')cur=pl;
+ setMajor(id);
+ if(!dat)return;
+ try{delete LAY[MID+'|'+cur];const Y=yrs();
+  JSON.parse(unb64(dat)).forEach(([y,r,i,e])=>{const [k,c]=e.includes('=')?e.split('='):[e,e];
+   const ok=e.includes('=')?(SLOT[k]&&D[c]):(D[e]||SLOT[e]);
+   if(ok&&Y[y]&&Y[y][1][r]&&i in Y[y][1][r][1]){Y[y][1][r][1][i]=e;if(y===3)y4=true}});
+  render(cur)}catch(x){}}
+document.getElementById('cp').addEventListener('click',async e=>{const b=e.currentTarget,u=shareUrl();
+ try{await navigator.clipboard.writeText(u);b.textContent='Link copied ✓'}catch(x){prompt('Copy this link:',u)}
+ setTimeout(()=>{b.textContent='Copy link'},2000)});
+document.getElementById('pr').addEventListener('click',()=>window.print());
+window.addEventListener('beforeprint',()=>{const n=document.getElementById('pfor').value.trim();
+ document.getElementById('plink').textContent=shareUrl();
+ document.getElementById('pinfo').textContent=(n?'Prepared for '+n+' · ':'')+P.title+' · '+(cur==='mid'?'Mid-year start (Semester 2)':'Standard start (Semester 1)')+' · '+new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})});
+fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);startFromHash()}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mv){mv=null;mvMsg='';render(cur)}});

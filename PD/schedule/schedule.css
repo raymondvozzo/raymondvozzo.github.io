@@ -87,3 +87,18 @@ ul.opts li{position:relative}.opt{padding-right:34px}
 .year.collapsed .sem,.year.collapsed .note{display:none}
 .year.collapsed h2{margin-bottom:0}
 .note.end{margin-top:6px}
+
+.print-only{display:none}
+.tabs .pfor{padding:8px 14px;border-radius:20px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:14px;min-width:15rem}
+.tabs .pfor::placeholder{color:rgba(255,255,255,.65)}
+@media print{
+ @page{margin:12mm}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{background:#fff;color:#000;padding:0;min-height:0}
+ .eyebrow,.sub,.tabs,.legend,.mv,.mvbar,.y4h::before{display:none}
+ h1{color:#140f50;font-size:2rem;margin:0 0 4px}
+ .print-only{display:block;color:#000;font-size:12px;margin:0 0 10px;word-break:break-all}
+ #plan{box-shadow:none;padding:0;border-radius:0}
+ .year{break-inside:avoid}
+ .year.collapsed .sem{display:grid}.year.collapsed .note{display:block}
+}

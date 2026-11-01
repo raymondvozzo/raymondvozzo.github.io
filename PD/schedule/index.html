@@ -10,6 +10,7 @@
 <div class="wrap">
 <p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
 <h1 id="ttl"></h1>
+<p class="print-only" id="pinfo"></p>
 <p class="sub">Choose a major and a start semester to see the three-year plan. Click any course to see what leads to it and what it unlocks. Click a dashed slot to see the courses that can fill it, sorted by semester.</p>
 <div class="tabs" id="majors" role="group" aria-label="Major"></div>
 <div class="tabs" role="group" aria-label="Start semester">
@@ -17,7 +18,14 @@
 <button class="tab" data-p="std" aria-pressed="true">Standard (starts Semester 1)</button>
 <button class="tab" data-p="mid" aria-pressed="false">Mid-year (starts Semester 2)</button>
 </div>
+<div class="tabs" role="group" aria-label="Share or print">
+<span class="tl">Share</span>
+<button class="tab" id="cp">Copy link</button>
+<button class="tab" id="pr">Print / save as PDF</button>
+<input class="pfor" id="pfor" placeholder="Prepared for (optional, shown on the PDF)" aria-label="Name to show on the printed schedule">
+</div>
 <div id="plan"></div>
+<div class="print-only"><p>To open and edit this schedule online:</p><p id="plink"></p></div>
 <div class="legend">Dashed boxes are choices: click one to pick a course for it. A ⚠ marks something to check, such as a prerequisite that isn’t earlier in your schedule. Course data comes from the prerequisite tree. For the majors, Year 4 (Honours) opens when you click its heading. A ⇄ button on a box lets you swap it with a box in the other semester of the same year.</div>
 </div>
 <dialog id="dlg"></dialog>
