@@ -64,8 +64,7 @@ const SLOT={
  CC:{label:'Common Core',flat:1,pick:()=>CCL.map(c=>D[c[0]]),intro:`<p>Common Core courses are university-wide, have no prerequisites and don’t count towards your GPA. The courses on offer can change, so check the <a href="${CCP}" target="_blank" rel="noopener">Common Core page</a> for the current list.</p>`}}
 const CLS={L1D:'discipline',L2M:'discipline',L2D:'discipline',L3M:'discipline',L3D:'discipline',L4M:'discipline',L4D:'discipline',W1:'core',W2:'core',CC:'core',FE:'free'};
 let cur='std';;
-const N1='Note: the Level 1 discipline course can be switched with COMP1002.';
-const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,i===0?N1:(mid&&i===2?WILN:'')]);
+const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,mid&&i===2?WILN:'']);
 let PLANS;
 
 let MID='',mv=null,mvMsg='';
