@@ -253,7 +253,7 @@ document.getElementById('cp').addEventListener('click',async e=>{const b=e.curre
 document.getElementById('pr').addEventListener('click',()=>window.print());
 window.addEventListener('beforeprint',()=>{const n=document.getElementById('pfor').value.trim();
  document.getElementById('plink').textContent=shareUrl();
- document.getElementById('pinfo').textContent=(n?'Prepared for '+n+' · ':'')+P.title+' · '+(cur==='mid'?'Mid-year start (Semester 2)':'Standard start (Semester 1)')+' · '+new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})});
+ document.getElementById('pinfo').textContent=(n?'Student name/number: '+n+' · ':'')+P.title+' · '+(cur==='mid'?'Mid-year start (Semester 2)':'Standard start (Semester 1)')+' · '+new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})});
 fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);startFromHash()}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mv){mv=null;mvMsg='';render(cur)}});
