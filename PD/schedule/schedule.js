@@ -64,61 +64,65 @@ const SLOT={
  CC:{label:'Common Core',flat:1,pick:()=>CCL.map(c=>D[c[0]]),intro:`<p>Common Core courses are university-wide, have no prerequisites and don’t count towards your GPA. The courses on offer can change, so check the <a href="${CCP}" target="_blank" rel="noopener">Common Core page</a> for the current list.</p>`}}
 const CLS={L1D:'discipline',L2M:'discipline',L2D:'discipline',L3M:'discipline',L3D:'discipline',L4M:'discipline',L4D:'discipline',W1:'core',W2:'core',CC:'core',FE:'free'};
 let cur='std';;
-const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,mid&&i===2?WILN:'']);
+const N1='Note: Students who have completed SACE Stage 2 Specialist Mathematics (or equivalent) do not need to take MATH 1004. It can be replaced with a free elective.';
+const mk=(ys,mid)=>ys.map((sems,i)=>['Year '+(i+1),sems,i===0?N1:(mid&&i===2?WILN:'')]);
 let PLANS;
 
 let MID='',mv=null,mvMsg='';
 const LAY={},clone=x=>JSON.parse(JSON.stringify(x));
 const yrs=()=>{const k=MID+'|'+cur;return LAY[k]||(LAY[k]=clone(mk(P[cur],cur==='mid')))};
+const HIST={};function snap(){const k=MID+'|'+cur;(HIST[k]=HIST[k]||[]).push(clone(yrs()));if(HIST[k].length>40)HIST[k].shift()}
 // layout entries: a fixed course ('MATH1004'), an empty slot ('L3M') or a slot with a chosen course ('L3M=MATHX310')
 const code=e=>e.includes('=')?e.split('=')[1]:(D[e]?e:null);
 const slot=e=>e.includes('=')?e.split('=')[0]:(D[e]?null:e);
 let ctx=null; // position of the box whose dialog is open
 const BIG=new Set(['MATHX406','MATHX407']); // 12-unit courses count as two courses and show double width
+const WAIVABLE=new Set(['MATH1004']); // not needed with Specialist Mathematics, so a missing one is not a prerequisite problem
+const SLV={L1D:1,L2M:2,L2D:2,L3M:3,L3D:3,L4M:4,L4D:4};
 let y4=false; // is Year 4 open?
 const movable=e=>{const c=code(e),s=slot(e);
  if(s==='W1'||s==='W2')return 'WIL boxes stay where they are.';
  if(c&&BIG.has(c))return `${c} is a 12-unit course and stays where it is.`;
- return c&&D[c].sem!=='12'?`${c} is only offered in ${SL[D[c].sem]}.`:null};
-// used to block swaps: a prerequisite that is in the schedule but not in an earlier semester
-function viol(Y){const pos={},out={};
- Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>sl.forEach(e=>{const c=code(e);if(c)pos[c]=y*2+r})));
- Object.keys(pos).forEach(x=>{const ex=parseExpr(D[x].pre);if(!ex)return;
-  const B=effB(ex,k=>D[k]);
-  if(B.length&&!B.some(b=>b.every(c=>!(c in pos)||pos[c]<pos[x])))out[x]=[...new Set(B.flat())].filter(c=>c in pos&&pos[c]>=pos[x])});
- return out}
+ return null};
 // warnings shown on boxes: wrong semester, not offered, repeated, or prerequisites not met earlier in the schedule
 function warns(Y){const pos={},cnt={},out={};
  Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>sl.forEach(e=>{const c=code(e);if(c){pos[c]=y*2+r;cnt[c]=(cnt[c]||0)+1}})));
- Y.forEach(([,sems],y)=>sems.forEach(([s,sl],r)=>sl.forEach((e,i)=>{const c=code(e);if(!c)return;const d=D[c],w=[];
+ Y.forEach(([,sems],y)=>sems.forEach(([s,sl],r)=>sl.forEach((e,i)=>{const c=code(e);
+  if(!c){if(SLV[e]&&SLV[e]>=y+3)out[y+','+r+','+i]=[{t:'lvl',m:`The ${SLOT[e].label} box is in Year ${y+1}, well before its level.`}];return}
+  const d=D[c],w=[];
   if(!d.sem.includes(String(s)))w.push({t:'sem',m:`${c} is not offered in Semester ${s}.`});
   if(!d.on)w.push({t:'off',m:`${c} is not currently offered.`});
   if(cnt[c]>1)w.push({t:'dup',m:`${c} is already in your schedule.`});
   const ex=parseExpr(d.pre);
-  if(ex){const here=y*2+r,B=effB(ex,k=>D[k]),met=k=>k in pos&&pos[k]<here;
+  if(ex){const here=y*2+r,B=effB(ex,k=>D[k]),met=k=>(k in pos&&pos[k]<here)||(WAIVABLE.has(k)&&!(k in pos));
    if(B.length&&!B.some(b=>b.every(met))){const u=B.length===1?B[0].filter(k=>!met(k)):[];
     w.push({t:'pre',m:u.length?`${c} needs ${u.join(' and ')} in an earlier semester.`:`${c}: prerequisites (${d.pre}) are not all met earlier in your schedule.`})}}
   if(w.length)out[y+','+r+','+i]=w})));
  return out}
 // what would be flagged if this course went into the open box
 function hypo(c){const Y=clone(yrs()),sl=Y[ctx.y][1][ctx.r][1];sl[ctx.i]=slot(sl[ctx.i])+'='+c;return warns(Y)[ctx.y+','+ctx.r+','+ctx.i]||[]}
-function check(y,i1,i2){const Y=yrs(),sl=Y[y][1],a=sl[0][1][i1],b=sl[1][1][i2];
- const why=movable(a)||movable(b);if(why)return why;
- const T=clone(Y),t=T[y][1];[t[0][1][i1],t[1][1][i2]]=[b,a];
- const v0=viol(Y),v1=viol(T),bad=Object.keys(v1).find(x=>!(x in v0));
- return bad?`${bad} needs ${v1[bad].join(' or ')} in an earlier semester.`:null}
+const offered=(e,s)=>{const c=code(e);return !c||D[c].sem.includes(String(s))};
+// can boxes a and b ({y,r,i}) swap? Returns {why} if not, otherwise {news}: the warnings the swap would add
+function swapInfo(a,b){const Y=yrs(),ea=Y[a.y][1][a.r][1][a.i],eb=Y[b.y][1][b.r][1][b.i],sa=Y[a.y][1][a.r][0],sb=Y[b.y][1][b.r][0];
+ if((a.y===3)!==(b.y===3))return{why:'Boxes can’t move into or out of Year 4.'};
+ const why=movable(ea)||movable(eb);if(why)return{why};
+ if(!offered(ea,sb))return{why:`${code(ea)} is not offered in Semester ${sb}.`};
+ if(!offered(eb,sa))return{why:`${code(eb)} is not offered in Semester ${sa}.`};
+ const T=clone(Y);T[a.y][1][a.r][1][a.i]=eb;T[b.y][1][b.r][1][b.i]=ea;
+ const msgs=Z=>new Set(Object.values(warns(Z)).flat().map(w=>w.m)),old=msgs(Y);
+ return{news:[...msgs(T)].filter(m=>!old.has(m))}}
 function render(p){if(!C.length)return;if(p!==cur)mv=null;cur=p;
  document.querySelectorAll('.tab[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
  const Y=yrs(),W=warns(Y),mod=JSON.stringify(Y)!==JSON.stringify(mk(clone(P[p]),p==='mid')),lab=e=>code(e)||SLOT[e].label;
  let bar='';
- if(mv)bar=`<div class="mvbar">Moving <b>${lab(Y[mv.y][1][mv.r][1][mv.i])}</b> within Year ${mv.y+1}. Pick a highlighted box in the other semester. <button data-cancel>Cancel</button>${mvMsg?`<span class="why">${esc(mvMsg)}</span>`:''}</div>`;
- else if(mod)bar='<div class="mvbar">You have made changes to this schedule. <button data-reset>Reset</button></div>';
+ if(mv)bar=`<div class="mvbar">Swapping <b>${lab(Y[mv.y][1][mv.r][1][mv.i])}</b>. Pick a box in another semester: green is fine, amber is allowed but adds a warning. Year 4 boxes only swap within Year 4. <button data-cancel>Cancel</button>${mvMsg?`<span class="why">${esc(mvMsg)}</span>`:''}</div>`;
+ else if(mod||(HIST[MID+'|'+cur]||[]).length)bar=`<div class="mvbar">You have made changes to this schedule. ${(HIST[MID+'|'+cur]||[]).length?'<button data-undo>Undo</button>':''}<button data-reset>Reset</button></div>`;
  const wk=Object.keys(W),wp=wk.length?`<div class="warnbox"><b>⚠ Things to check</b><ul>${[...new Set(wk.flatMap(k=>{const [y,r]=k.split(',').map(Number);return W[k].map(w=>`Year ${y+1}, Semester ${Y[y][1][r][0]}: ${w.m}`)}))].map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:'';
  document.getElementById('plan').innerHTML=bar+Y.map(([y,sems,note],yi)=>`<section class="year${yi===3&&!y4?' collapsed':''}">${yi===3?`<h2><button class="y4h" data-y4 aria-expanded="${y4}">${y} <small>Honours</small></button></h2>`:`<h2>${y}</h2>`}${sems.map(([s,sl],r)=>
-  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((e,i)=>{let x='',h='';
-   if(mv){if(yi===mv.y&&r===mv.r&&i===mv.i)x=' src';else if(yi===mv.y&&r!==mv.r)x=movable(e)?' nomove':check(yi,...(mv.r===0?[mv.i,i]:[i,mv.i]))?' bad':' ok';else x=' dim'}
+  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((e,i)=>{let x='',h='',tt='';
+   if(mv){if(yi===mv.y&&r===mv.r&&i===mv.i)x=' src';else if((yi===3)===(mv.y===3)&&(yi!==mv.y||r!==mv.r)){const f=swapInfo(mv,{y:yi,r,i});x=f.why?' nomove':f.news.length?' amber':' ok';const t=f.why||f.news.join(' ');if(t)tt=` title="${esc(t)}"`}else x=' dim'}
    else if(!movable(e))h=`<button class="mv" data-mv="${yi},${r},${i}" aria-label="Swap ${lab(e)} with a box in the other semester" title="Swap with a box in the other semester">⇄</button>`;
-   const pos=`data-y="${yi}" data-r="${r}" data-i="${i}"`,c=code(e),s0=slot(e),wr=W[`${yi},${r},${i}`]||[];
+   const pos=`data-y="${yi}" data-r="${r}" data-i="${i}"${tt}`,c=code(e),s0=slot(e),wr=W[`${yi},${r},${i}`]||[];
    const bd=wr.length?`<span class="wn" title="${esc(wr.map(w=>w.m).join(' '))}">⚠</span>`:'';
    return`<div class="cw${c&&BIG.has(c)?' wide':''}">`+(c?
     `<button class="cell ${uc(D[c])}${x}" ${pos} data-c="${c}"><b>${c}</b>${esc(D[c].name)}${s0?`<small>${SLOT[s0].label}</small>`:''}${bd}</button>`:
@@ -133,7 +137,8 @@ const chip=c=>`<small>${P.tags&&P.tags[c.code]?P.tags[c.code]+' · ':''}${c.area
 
 function listView(k,s){
  const m=SLOT[k];let h=`<h3>${m.label}</h3><p>Slot in Semester ${s}.${m.note&&!(m.mid&&cur!=='mid')?' '+m.note:''}</p>${m.intro||''}`;
- if(!m.pick)return show(h+(m.html||`<p>${m.msg}</p>`));
+ if(!m.pick){const has=yrs().some(([,ss])=>ss.some(([,sl])=>sl.some(e=>code(e)==='MATH1004')));
+  return show(h+(m.html||`<p>${m.msg}</p>`)+(k==='FE'&&!has?'<p>MATH 1004 is not in this schedule, because it was replaced by a free elective.</p><p><button class="act alt" data-act="back1004">Put MATH 1004 in this box</button></p>':''))}
  const cs=m.pick(),chosen=code(yrs()[ctx.y][1][ctx.r][1][ctx.i]);
  h+='<p class="hint">Click a course to choose it. ⓘ shows its details and prerequisite tree.</p>';
  (m.flat?[null]:[String(s),'12',s==1?'2':'1']).forEach(g=>{
@@ -170,15 +175,17 @@ function tree(code){
 function courseView(code,mode){
  const c=D[code],wl=ws=>ws.length?`<div class="warnbox"><b>⚠ Things to check</b><ul>${ws.map(w=>`<li>${esc(w.m)}</li>`).join('')}</ul></div>`:'';
  let ex='';
+ const m4=code==='MATH1004'?`<div class="infobox">${esc(N1.replace('Note: ',''))}</div>`+(mode==='fixed'?'<p><button class="act" data-act="tofe">Replace with a free elective</button></p>':''):'';
  if(mode==='pick')ex=wl(hypo(code))+`<p><button class="act" data-act="choose" data-code="${code}">Choose ${code} for this box</button></p>`;
  else if(mode==='chosen'||mode==='fixed'){ex=wl(warns(yrs())[`${ctx.y},${ctx.r},${ctx.i}`]||[]);
   if(mode==='chosen')ex+='<p><button class="act" data-act="change">Change course</button> <button class="act alt" data-act="clear">Clear</button></p>'}
  show(`<h3><span class="code">${c.code}</span><br>${esc(c.name)}</h3>
  <div>${c.area?`<b>Common Core</b> · ${esc(c.area)}`:`<b>Level ${c.lvl}</b> · ${SL[c.sem]} · ${MJ[c.mj][0]}`}</div>
  ${c.area?'':`<div>${c.on?'Currently offered':'<b class="warn">Not currently offered</b>'}</div>`}
- <p><a href="${url(code)}" target="_blank" rel="noopener">Course webpage ↗</a></p>${ex}
+ <p><a href="${url(code)}" target="_blank" rel="noopener">Course webpage ↗</a></p>${ex}${m4}
  <p><b>Prerequisites:</b> ${esc(c.pre||'None listed')}</p>${c.note?`<p><b>Notes:</b> ${esc(c.note)}</p>`:''}${tree(code)}`)}
-function pick(c){const sl=yrs()[ctx.y][1][ctx.r][1];sl[ctx.i]=slot(sl[ctx.i])+'='+c;dlg.close();render(cur)}
+function setEntry(v){snap();yrs()[ctx.y][1][ctx.r][1][ctx.i]=v;dlg.close();render(cur)}
+function pick(c){setEntry(slot(yrs()[ctx.y][1][ctx.r][1][ctx.i])+'='+c)}
 
 dlg.addEventListener('click',e=>{
  if(e.target===dlg||e.target.closest('[data-x]'))return dlg.close();
@@ -189,22 +196,24 @@ dlg.addEventListener('click',e=>{
  if(a){const sl=yrs()[ctx.y][1][ctx.r],en=sl[1][ctx.i];
   if(a.dataset.act==='choose')return pick(a.dataset.code);
   if(a.dataset.act==='change')return go(()=>listView(slot(en),sl[0]));
-  if(a.dataset.act==='clear'){sl[1][ctx.i]=slot(en);dlg.close();return render(cur)}}
+  if(a.dataset.act==='clear')return setEntry(slot(en));
+  if(a.dataset.act==='tofe')return setEntry('FE');
+  if(a.dataset.act==='back1004')return setEntry('MATH1004')}
  const n=e.target.closest('[data-c]');if(n)go(()=>courseView(n.dataset.c))});
 dlg.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('g[data-c]'))go(()=>courseView(e.target.dataset.c))});
 dlg.addEventListener('close',()=>{hist=[]});
 document.getElementById('plan').addEventListener('click',e=>{
  const t=e.target;
  if(t.closest('[data-y4]')){y4=!y4;return render(cur)}
- if(t.closest('[data-reset]')){delete LAY[MID+'|'+cur];mv=null;return render(cur)}
+ if(t.closest('[data-reset]')){delete LAY[MID+'|'+cur];delete HIST[MID+'|'+cur];mv=null;return render(cur)}
+ if(t.closest('[data-undo]')){const h=HIST[MID+'|'+cur];if(h&&h.length)LAY[MID+'|'+cur]=h.pop();mv=null;return render(cur)}
  if(t.closest('[data-cancel]')){mv=null;mvMsg='';return render(cur)}
  const h=t.closest('[data-mv]');if(h){const [y,r,i]=h.dataset.mv.split(',').map(Number);mv={y,r,i};mvMsg='';return render(cur)}
  const b=t.closest('button.cell');if(!b)return;
- if(mv){const y=+b.dataset.y,r=+b.dataset.r,i=+b.dataset.i;
-  if(y===mv.y&&r!==mv.r){const [i1,i2]=mv.r===0?[mv.i,i]:[i,mv.i],why=check(y,i1,i2);
-   if(why)mvMsg=why;else{const sl=yrs()[y][1];[sl[0][1][i1],sl[1][1][i2]]=[sl[1][1][i2],sl[0][1][i1]];mv=null;mvMsg=''}}
-  else if(y===mv.y&&r===mv.r&&i===mv.i){mv=null;mvMsg=''}
-  else mvMsg='Pick one of the highlighted boxes in the other semester, or cancel.';
+ if(mv){const t2={y:+b.dataset.y,r:+b.dataset.r,i:+b.dataset.i};
+  if(t2.y===mv.y&&t2.r===mv.r&&t2.i===mv.i){mv=null;mvMsg=''}
+  else if(t2.y===mv.y&&t2.r===mv.r)mvMsg='Pick a box in a different semester, or cancel.';
+  else{const f=swapInfo(mv,t2);if(f.why)mvMsg=f.why;else{snap();const Y=yrs(),A=Y[mv.y][1][mv.r][1],B=Y[t2.y][1][t2.r][1];[A[mv.i],B[t2.i]]=[B[t2.i],A[mv.i]];mv=null;mvMsg=''}}
   return render(cur)}
  ctx={y:+b.dataset.y,r:+b.dataset.r,i:+b.dataset.i};hist=[];
  const en=yrs()[ctx.y][1][ctx.r][1][ctx.i];
