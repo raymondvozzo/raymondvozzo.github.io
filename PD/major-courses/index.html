@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Major courses</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:640px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+h2{font-family:var(--head);font-size:1.7rem;margin:0 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+h2:not(:first-child){margin-top:28px}
+details{border-bottom:1px solid var(--line)}
+summary{display:flex;gap:12px;align-items:center;padding:12px 6px;cursor:pointer;list-style:none;font-weight:700}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--purple);flex:none;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#f3f1ff}
+.dot{width:12px;height:12px;border-radius:3px;background:var(--f);flex:none}
+.n{margin-left:auto;font-size:12px;font-weight:400;opacity:.65}
+ul.cs{list-style:none;margin:0;padding:4px 6px 14px 30px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px}
+.c{width:100%;text-align:left;padding:8px 10px;border-radius:6px;font:inherit;font-size:13px;background:#fff;color:var(--navy);border:1px solid #c9c6e0;border-left:8px solid var(--f);cursor:pointer}
+.c:hover{background:#f1efff}.c small{display:block;opacity:.7;margin-top:2px}.c.off{border-style:dashed}
+.c.miss{cursor:default;background:#fff4e5;border-color:#f0c27b;border-left-color:#F5A300}.c.miss:hover{background:#fff4e5}
+.fl{display:block;color:#7a3b00;margin-top:3px}
+.pure{--f:#6E5AE1}.applied{--f:#1448FF}.statistics{--f:#140f50}.discipline{--f:#B5338A}.core{--f:#d8c9a8}
+button{font-family:var(--ui)}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+dialog{width:min(560px,94vw);max-height:88vh;padding:20px;border:0;border-left:8px solid var(--f,var(--purple));border-radius:12px;background:#fff;color:var(--navy);font-family:var(--body);font-size:14px;line-height:1.45}
+dialog::backdrop{background:rgba(10,8,40,.6)}
+dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 8px}.code{color:var(--purple);font-family:var(--ui)}
+dialog a{color:var(--purple);font-weight:700;font-family:var(--ui)}
+.x{position:absolute;top:8px;right:12px;background:none;border:0;font-size:26px;color:var(--navy);cursor:pointer}
+.warn{color:#9c3d00}.msg{padding:14px 4px}
+.flag{background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:8px 12px;font-size:13px;color:#5a3600;margin:10px 0}
+@media(max-width:600px){body{padding:16px}.box{padding:14px}ul.cs{padding-left:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
+<h1>Major courses</h1>
+<p class="sub">The Level 2, 3 and 4 courses that count towards each major. Open a major to see its courses, and click a course for its prerequisites and links.</p>
+<div class="box" id="out"><p class="msg">Loading…</p></div>
+</div>
+<dialog id="dlg"></dialog>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const url=c=>'https://adelaide.edu.au/study/courses/'+c.replace(/^([A-Z]+)(\d+)$/,(m,a,b)=>a.toLowerCase()+'-'+b)+'/';
+const SL={1:'Semester 1',2:'Semester 2',12:'Both semesters'};
+const TREE={c:['Core','core'],a:['Applied','applied'],p:['Pure','pure'],s:['Statistics / Data Science','statistics'],d:['Discipline elective','discipline']};
+// the headers used in the spreadsheets -> how each major is shown (and its tree colour)
+const MAJ={uns:['Unspecified major','discipline'],pure:['Pure Mathematics','pure'],applied:['Applied Mathematics','applied'],statistics:['Statistics','statistics'],datascience:['Data Science','statistics']};
+const ALIAS={uns:'uns',pmth:'pure',pure:'pure',appm:'applied',applied:'applied',stat:'statistics',stats:'statistics',statistics:'statistics',dats:'datascience',ds:'datascience',datascience:'datascience'};
+function csvRows(t){const rows=[];let row=[],cur='',q=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=c}
+  else if(c==='"')q=true;else if(c===','){row.push(cur);cur=''}
+  else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur=''}else if(c!=='\r')cur+=c}
+ if(cur||row.length){row.push(cur);rows.push(row)}
+ const h=rows.shift().map(s=>s.trim());
+ return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
+const text=async f=>{const r=await fetch(f);if(!r.ok)throw new Error(f+' not found (HTTP '+r.status+')');return r.text()};
+const sheet=async f=>{if(!window.XLSX)throw new Error('the Excel reader could not be loaded');const r=await fetch(f);if(!r.ok)throw new Error(f+' not found (HTTP '+r.status+')');
+ const wb=XLSX.read(await r.arrayBuffer(),{type:'array'});return XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''})};
+// read the spreadsheet: a header row naming the majors, then each major's titles (and codes, if there is a "Course Code" column)
+function groups(g){const hr=g.findIndex(r=>r.filter(x=>String(x).trim()).length>=2);if(hr<0)return[];
+ const sub=g[hr+1]||[],start=hr+1+(sub.some(x=>/title|code/i.test(x))?1:0);
+ return g[hr].map((h,j)=>({name:String(h).trim(),j})).filter(x=>x.name).map(({name,j})=>{
+  const hc=/code/i.test(sub[j+1]||''),hn=hc&&/note/i.test(sub[j+2]||''),items=[];
+  for(let i=start;i<g.length;i++){const t=String(g[i][j]||'').trim(),c=hc?String(g[i][j+1]||'').trim():'',note=hn?String(g[i][j+2]||'').trim():'';if(t||c)items.push({title:t,code:c,note})}
+  return{name,items}})}
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+function lev(a,b){const d=Array.from({length:a.length+1},(_,i)=>[i,...Array(b.length).fill(0)]);for(let j=1;j<=b.length;j++)d[0][j]=j;
+ for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
+let D={},C=[],CLO=new Set();
+// match a spreadsheet row to a course in the prerequisite tree (by code, else by title, allowing small typos)
+function resolve(it){let c=it.code&&D[it.code],flag='';
+ if(!c&&it.title){const t=norm(it.title);c=C.find(x=>norm(x.name)===t);
+  if(!c){let bd=3;C.forEach(x=>{const d=lev(norm(x.name),t);if(d<bd){bd=d;c=x}})}
+  if(c&&it.code&&c.code!==it.code)flag=`The spreadsheet gives the code ${it.code}, but the prerequisite tree has ${c.code} for this title.`}
+ return c?{c,flag,note:it.note||''}:{miss:it}}
+function level(title,gs){
+ const ord=gs.map(g=>({...g,k:ALIAS[g.name.toLowerCase().replace(/[^a-z]/g,'')]})).sort((a,b)=>(Object.keys(MAJ).indexOf(a.k)+99)%99-(Object.keys(MAJ).indexOf(b.k)+99)%99);
+ return`<h2>${title}</h2>`+ord.map(g=>{const [label,cls]=MAJ[g.k]||[g.name,'discipline'];
+  const rk=r=>/^compulsory/i.test(r.note||'')?0:1,rs=g.items.map(resolve).sort((a,b)=>rk(a)-rk(b)||(a.c?a.c.name:a.miss.title).localeCompare(b.c?b.c.name:b.miss.title));
+  return`<details><summary><span class="dot ${cls}"></span>${esc(label)}<span class="n">${rs.length} course${rs.length==1?'':'s'}</span></summary><ul class="cs">`+rs.map(r=>{
+   if(r.miss)return`<li><div class="c miss"><b>${esc(r.miss.code||'')}</b> ${esc(r.miss.title)}<span class="fl">⚠ Not found in the prerequisite tree.</span></div></li>`;
+   const c=r.c;return`<li><button class="c ${TREE[c.mj][1]}${c.on?'':' off'}" data-c="${c.code}"><b>${c.code}</b> ${esc(c.name)}<small>${r.note?(rk(r)?esc(r.note):'<b>Compulsory</b>')+' · ':''}${SL[c.sem]}${c.on?'':' · not currently offered'}</small>${r.flag?`<span class="fl">⚠ ${esc(r.flag)}</span>`:''}</button></li>`}).join('')+'</ul></details>'}).join('')}
+function show(code,flag){const c=D[code];
+ $('dlg').style.setProperty('--f',{pure:'#6E5AE1',applied:'#1448FF',statistics:'#140f50',discipline:'#B5338A',core:'#d8c9a8'}[TREE[c.mj][1]]);
+ $('dlg').innerHTML=`<button class="x" aria-label="Close" data-x>×</button><h3><span class="code">${c.code}</span><br>${esc(c.name)}</h3>
+ <div><b>Level ${c.lvl}</b> · ${SL[c.sem]} · ${TREE[c.mj][0]}</div>
+ <div>${c.on?'Currently offered':'<b class="warn">Not currently offered</b>'}</div>
+ <p><a href="${url(c.code)}" target="_blank" rel="noopener">Course webpage ↗</a>${CLO.has(c.code)?` &nbsp;·&nbsp; <a href="../clos/#${c.code}">Learning outcomes ↗</a>`:''}</p>
+ <p><b>Prerequisites:</b> ${esc(c.pre||'None listed')}</p>${c.note?`<p><b>Notes:</b> ${esc(c.note)}</p>`:''}`;
+ $('dlg').showModal()}
+$('dlg').addEventListener('click',e=>{if(e.target===$('dlg')||e.target.closest('[data-x]'))$('dlg').close()});
+$('out').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(b)show(b.dataset.c)});
+Promise.all([text('/prereqs/courses.csv'),text('../clos/clos.csv').catch(()=>''),sheet('level2.xlsx'),sheet('level3.xlsx'),sheet('level4.xlsx')]).then(([cs,clo,l2,l3,l4])=>{
+ C=csvRows(cs).map(r=>({code:r['Course Code'],name:r['Course Name'],lvl:+r.level,sem:r.semester.replace(/[\s,]/g,''),pre:r['Prerequisite course(s)'],note:r['Prerequisite note(s)'],mj:{core:'c',applied:'a',pure:'p',statistics:'s',discipline:'d'}[r.major]||'c',on:r.offered.toLowerCase()==='y'}));
+ D=Object.fromEntries(C.map(c=>[c.code,c]));
+ if(clo)csvRows(clo).forEach(r=>CLO.add(r['Course Code']));
+ $('out').innerHTML=level('Level 2',groups(l2))+level('Level 3',groups(l3))+level('Level 4',groups(l4))}).catch(e=>{$('out').innerHTML='<p class="msg">Could not load the course lists: '+esc(e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>'});
+</script>
+</body>
+</html>
