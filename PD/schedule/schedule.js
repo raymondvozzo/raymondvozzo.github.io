@@ -118,7 +118,7 @@ function render(p){if(!C.length)return;if(p!==cur)mv=null;cur=p;
  if(mv)bar=`<div class="mvbar">Swapping <b>${lab(Y[mv.y][1][mv.r][1][mv.i])}</b>. Pick a box in another semester: green is fine, amber is allowed but adds a warning. Year 4 boxes only swap within Year 4. <button data-cancel>Cancel</button>${mvMsg?`<span class="why">${esc(mvMsg)}</span>`:''}</div>`;
  else if(mod||(HIST[MID+'|'+cur]||[]).length)bar=`<div class="mvbar">You have made changes to this schedule. ${(HIST[MID+'|'+cur]||[]).length?'<button data-undo>Undo</button>':''}<button data-reset>Reset</button></div>`;
  const wk=Object.keys(W),wp=wk.length?`<div class="warnbox"><b>⚠ Things to check</b><ul>${[...new Set(wk.flatMap(k=>{const [y,r]=k.split(',').map(Number);return W[k].map(w=>`Year ${y+1}, Semester ${Y[y][1][r][0]}: ${w.m}`)}))].map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:'';
- document.getElementById('plan').innerHTML=bar+Y.map(([y,sems,note],yi)=>`<section class="year${yi===3&&!y4?' collapsed':''}">${yi===3?`<h2><button class="y4h" data-y4 aria-expanded="${y4}">${y} <small>Honours</small></button></h2>`:`<h2>${y}</h2>`}${sems.map(([s,sl],r)=>
+ document.getElementById('plan').innerHTML=(LISTMSG?`<div class="warnbox">⚠ ${esc(LISTMSG)}</div>`:'')+bar+Y.map(([y,sems,note],yi)=>`<section class="year${yi===3&&!y4?' collapsed':''}">${yi===3?`<h2><button class="y4h" data-y4 aria-expanded="${y4}">${y} <small>Honours</small></button></h2>`:`<h2>${y}</h2>`}${sems.map(([s,sl],r)=>
   `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((e,i)=>{let x='',h='',tt='';
    if(mv){if(yi===mv.y&&r===mv.r&&i===mv.i)x=' src';else if((yi===3)===(mv.y===3)&&(yi!==mv.y||r!==mv.r)){const f=swapInfo(mv,{y:yi,r,i});x=f.why?' nomove':f.news.length?' amber':' ok';const t=f.why||f.news.join(' ');if(t)tt=` title="${esc(t)}"`}else x=' dim'}
    else if(!movable(e))h=`<button class="mv" data-mv="${yi},${r},${i}" aria-label="Swap ${lab(e)} with a box in the other semester" title="Swap with a box in the other semester">⇄</button>`;
@@ -254,6 +254,17 @@ document.getElementById('pr').addEventListener('click',()=>window.print());
 window.addEventListener('beforeprint',()=>{const n=document.getElementById('pfor').value.trim();
  document.getElementById('plink').textContent=shareUrl();
  document.getElementById('pinfo').textContent=(n?'Student name/number: '+n+' · ':'')+P.title+' · '+(cur==='mid'?'Mid-year start (Semester 2)':'Standard start (Semester 1)')+' · '+new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})});
-fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}).then(v=>{build(v);startFromHash()}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
+// ---- course lists come from the spreadsheets in ../major-courses/ (level2.xlsx, level3.xlsx, level4.xlsx)
+let LISTMSG='';
+const loadLists=()=>{if(!window.MajorLists||!window.XLSX)return Promise.reject(new Error('the spreadsheet reader could not be loaded'));
+ return Promise.all([2,3,4].map(n=>MajorLists.sheet('../major-courses/level'+n+'.xlsx').then(g=>MajorLists.groups(g))))};
+function applyLists(L){const bad=new Set();
+ L.forEach((gs,i)=>gs.forEach(g=>{const m=window.MAJORS[MajorLists.key(g.name)];if(!m)return;
+  const ok=g.items.filter(it=>{if(D[it.code])return true;if(it.code)bad.add(it.code);return false});
+  // compulsory courses are fixed boxes in the schedule, so only the choose-from courses are offered in the lists
+  m['L'+(i+2)+'M']=ok.filter(it=>!/^compulsory/i.test(it.note)).map(it=>it.code);
+  m.tags=Object.assign(m.tags||{},Object.fromEntries(ok.filter(it=>it.note&&!/^compulsory/i.test(it.note)).map(it=>[it.code,it.note])))}));
+ if(bad.size)LISTMSG='Some courses in the course-list spreadsheets are not in the prerequisite tree and were skipped: '+[...bad].join(', ')+'.'}
+Promise.all([fetch('/prereqs/courses.csv').then(r=>{if(!r.ok)throw new Error('/prereqs/courses.csv not found (HTTP '+r.status+')');return r.text()}),loadLists().catch(e=>{LISTMSG='The course lists (spreadsheets) could not be loaded: '+(e&&e.message||'download failed')+'. The choose-a-course lists will be empty.';return[]})]).then(([v,L])=>{build(v);applyLists(L);startFromHash()}).catch(e=>{document.getElementById('plan').innerHTML='<p class="sub">Could not load the course data: '+esc(e&&e.message||'download failed')+'. If you opened this file from your computer, open it from the website instead.</p>';console.error(e)});
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mv){mv=null;mvMsg='';render(cur)}});

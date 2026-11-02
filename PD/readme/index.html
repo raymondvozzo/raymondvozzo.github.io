@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How this site works</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:920px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:660px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.35);line-height:1.5;font-size:15px}
+h2{font-family:var(--head);font-size:1.7rem;margin:30px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+h2:first-child{margin-top:0}
+h3{font-size:1rem;margin:18px 0 4px}
+p,ul,ol{margin:8px 0}
+code{background:#f1efff;border-radius:4px;padding:1px 5px;font-size:.92em}
+pre{background:#f1efff;border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:13px;line-height:1.45}
+.t{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{background:#f3f1ff;font-size:13px}
+a{color:var(--purple);font-weight:700}
+.tip{background:#eef0ff;border:1px solid #c9c6e0;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+@media(max-width:600px){body{padding:16px}.box{padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
+<h1>How this site works</h1>
+<p class="sub">Which file to change for which job, and how to put the change online.</p>
+<div class="box">
+
+<h2>The short version</h2>
+<p>Almost everything is driven by data files, not by the pages themselves. Each fact lives in <b>one</b> place, and every page that needs it reads it from there. Change the file, upload it, and the pages update.</p>
+
+<h2>Which file do I edit?</h2>
+<div class="t"><table>
+<tr><th>To change…</th><th>Edit this file</th><th>Notes</th></tr>
+<tr><td>A course's title, semester, whether it is offered, its prerequisites or prerequisite notes, its level or its colour</td><td><code>prereqs/courses.csv</code></td><td>The main file. Used by the prerequisite tree, the schedules and the Major courses page. See <a href="#csv">the columns</a> below.</td></tr>
+<tr><td>Which courses count towards a major at Level 2, 3 or 4, and the labels Compulsory / Group A / Group B</td><td><code>major-courses/level2.xlsx</code>, <code>level3.xlsx</code>, <code>level4.xlsx</code></td><td>Used by the Major courses page and by the "choose a course" lists in the schedules. See <a href="#xlsx">the layout</a> below.</td></tr>
+<tr><td>A course's learning outcomes</td><td><code>clos/clos.csv</code></td><td>One row per outcome. Or send the updated spreadsheet to Claude to convert.</td></tr>
+<tr><td>A major's schedule layout (which courses are fixed in each year, which boxes are choices), the Applied group note, the Honours note for UNS</td><td>The settings block near the bottom of <code>schedule/index.html</code> (it starts with <code>window.MAJORS=</code>)</td><td>See <a href="#settings">the settings block</a> below.</td></tr>
+<tr><td>The list of links on the hub page</td><td><code>index.html</code> (the hub, in the <code>PD</code> folder)</td><td>Copy an existing <code>&lt;li&gt;…&lt;/li&gt;</code> block, change the address, title and description.</td></tr>
+<tr><td>The Common Core course list, the WIL course options, the two 12-unit research courses, the MATH 1004 exemption, or the wording of the notes under Year 1 and Year 3</td><td><code>schedule/schedule.js</code></td><td>These are typed near the top of the file. Ask Claude to change them if you're unsure.</td></tr>
+</table></div>
+
+<h2>What feeds what</h2>
+<div class="t"><table>
+<tr><th>Page</th><th>Reads</th></tr>
+<tr><td>Course prerequisite tree (<code>prereqs/</code>)</td><td><code>courses.csv</code></td></tr>
+<tr><td>Program schedule (<code>schedule/</code>)</td><td><code>courses.csv</code> for every course's details and prerequisites; <code>level2/3/4.xlsx</code> for the choose-from lists; its own settings block for the layouts</td></tr>
+<tr><td>Major courses (<code>major-courses/</code>)</td><td><code>level2/3/4.xlsx</code> for the lists; <code>courses.csv</code> for course details; <code>clos/clos.csv</code> to decide whether to show a "Learning outcomes" link</td></tr>
+<tr><td>Course learning outcomes (<code>clos/</code>)</td><td><code>clos.csv</code></td></tr>
+</table></div>
+<p>The discipline electives (Level 1 to 4) are not listed anywhere. They are worked out automatically: every course in <code>courses.csv</code> at that level that is not marked <code>core</code>.</p>
+
+<h2 id="csv">courses.csv: the columns</h2>
+<div class="t"><table>
+<tr><th>Column</th><th>What goes in it</th></tr>
+<tr><td>Course Code</td><td>No spaces, for example <code>MATHX203</code>. This is how every other file refers to the course.</td></tr>
+<tr><td>Course Name</td><td>The title.</td></tr>
+<tr><td>level</td><td><code>1</code>, <code>2</code>, <code>3</code> or <code>4</code></td></tr>
+<tr><td>semester</td><td><code>1</code>, <code>2</code> or <code>1, 2</code> (both). Boxes in the schedules only accept courses offered in their semester.</td></tr>
+<tr><td>Prerequisite course(s)</td><td>Codes joined by <code>AND</code> / <code>OR</code>, with brackets where needed, for example <code>(STATX200 AND STAT2003) OR (STATX302)</code>. Codes that are not in this file (like MATH1022) are fine: the tree and the schedules ignore them.</td></tr>
+<tr><td>Prerequisite note(s)</td><td>Free text for grades, unit counts and so on. Shown to the reader but not checked.</td></tr>
+<tr><td>major</td><td><code>core</code>, <code>applied</code>, <code>pure</code>, <code>statistics</code> or <code>discipline</code>. Sets the colour everywhere, and <code>core</code> courses are left out of the discipline elective lists.</td></tr>
+<tr><td>offered</td><td><code>y</code> or <code>n</code>: is it currently offered? Courses marked <code>n</code> are shown dashed and dimmed, and give a warning if chosen in a schedule.</td></tr>
+</table></div>
+<p>When you save from Excel, choose <b>CSV UTF-8</b> so accented characters survive.</p>
+
+<h2 id="xlsx">The major-course spreadsheets: the layout</h2>
+<p>Keep the file names exactly <code>level2.xlsx</code>, <code>level3.xlsx</code> and <code>level4.xlsx</code>, and keep the layout:</p>
+<ul>
+<li>Row 3 has the major names across the top: <code>UNS</code>, <code>PMTH</code>, <code>APPM</code>, <code>STAT</code>, <code>DATS</code>. The words Pure, Applied, Stats / Statistics and DS / Data Science are understood too.</li>
+<li>Row 4 has the column labels under each major: <code>Course Title</code>, <code>Course Code</code> and (Levels 2 and 3) <code>Notes</code>.</li>
+<li>The courses follow from row 5. The <b>code</b> is what counts: it must exist in <code>courses.csv</code>. The title is only a label.</li>
+<li><b>Notes</b> is optional. A note starting with <code>Compulsory</code> marks a course that is a fixed box in the schedules (so it is left out of that major's choose-from list and shown first on the Major courses page). Other notes, like <code>Group A</code>, are shown next to the course.</li>
+</ul>
+
+<h2 id="settings">The settings block in schedule/index.html</h2>
+<p>Open <code>schedule/index.html</code> in a text editor and scroll to the bottom. Each major has an entry like this (shortened):</p>
+<pre>"pure":{ "majorClass":"pure", "label":"Pure", "title":"Pure Mathematics",
+  "std":[ [[1,["L1D","STATX100","MATH1004","CC"]],[2,["MATH1005","MATHX104","COMP1002","CC"]]], …year 2, 3, 4… ],
+  "mid":[ …the same, with the semesters in mid-year order… ] }</pre>
+<ul>
+<li>Each year has two rows, written <code>[semester, [four boxes]]</code>. The Year 4 rows have three boxes.</li>
+<li>A <b>course code</b> (<code>MATH1005</code>) is a fixed box.</li>
+<li>These <b>short names</b> are choose-a-course boxes: <code>L1D</code> <code>L2M</code> <code>L2D</code> <code>L3M</code> <code>L3D</code> <code>L4M</code> <code>L4D</code> (Level 1 to 4 discipline elective or major course), <code>W1</code> and <code>W2</code> (WIL), <code>FE</code> (free elective) and <code>CC</code> (Common Core).</li>
+<li>Take care with commas and brackets. If the schedule page goes blank after an edit, a bracket or comma is usually missing.</li>
+</ul>
+
+<h2>Putting a change online</h2>
+<ol>
+<li>Edit the file on your computer.</li>
+<li>Upload it to the repository, in the same folder and with the same name as the old one, replacing it.</li>
+<li>Wait a minute or two for GitHub Pages to publish.</li>
+<li>Hard refresh the page (Ctrl+Shift+R, or Cmd+Shift+R on a Mac). Browsers keep old copies of these files, and this is the most common reason a change does not appear.</li>
+</ol>
+<h3>Where the files live</h3>
+<pre>raymondvozzo.github.io/
+├── prereqs/               index.html, courses.csv
+└── PD/                    index.html (the hub)
+    ├── schedule/          index.html, schedule.js, schedule.css
+    ├── major-courses/     index.html, lists.js, level2.xlsx, level3.xlsx, level4.xlsx
+    ├── clos/              index.html, clos.csv
+    └── readme/            index.html (this page)</pre>
+<p>The pages find each other by these relative positions, so please keep the folders as they are. <code>PD</code> must be in capital letters, because addresses on GitHub Pages are case-sensitive.</p>
+
+<h2>When something looks wrong</h2>
+<div class="t"><table>
+<tr><th>What you see</th><th>What it means</th></tr>
+<tr><td>An orange notice at the top of a schedule: "…not in the prerequisite tree and were skipped"</td><td>A spreadsheet lists a code that is not in <code>courses.csv</code>. Fix the code in the spreadsheet, or add the course to <code>courses.csv</code>.</td></tr>
+<tr><td>An orange notice: "…spreadsheets could not be loaded"</td><td>A <code>level…xlsx</code> file is missing, misnamed or in the wrong folder.</td></tr>
+<tr><td>An amber row with ⚠ on the Major courses page</td><td>The spreadsheet's code does not match the title in <code>courses.csv</code>, or the course is not in <code>courses.csv</code>. The message says which.</td></tr>
+<tr><td>"Could not load…" on any page</td><td>The page was opened as a file from your computer (open it from the website instead), or a file it needs is missing.</td></tr>
+<tr><td>The page looks like an old version</td><td>Hard refresh. If it still does, check that every changed file was uploaded.</td></tr>
+<tr><td>A ⚠ on a box in a schedule</td><td>Not an error in the site: it is the schedule checker. For example, a prerequisite is missing earlier in the plan, or the course is not offered in that semester. Click the box, or see "Things to check" under the schedule.</td></tr>
+</table></div>
+
+<h2>A checklist for the start of each year</h2>
+<ol>
+<li>In <code>courses.csv</code>, update the <code>offered</code> column, and any changed semesters, prerequisites or new courses.</li>
+<li>If the majors changed, update <code>level2/3/4.xlsx</code>.</li>
+<li>If a program schedule changed, update the settings block in <code>schedule/index.html</code>.</li>
+<li>Upload the changed files, hard refresh, and open each major in the schedule page. Every schedule should start with no ⚠ boxes, and no orange notice should appear.</li>
+<li>Check the Major courses page for amber rows.</li>
+</ol>
+
+</div>
+</div>
+</body>
+</html>
