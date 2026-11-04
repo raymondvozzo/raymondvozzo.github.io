@@ -73,31 +73,38 @@ const LAY={},clone=x=>JSON.parse(JSON.stringify(x));
 const yrs=()=>{const k=MID+'|'+cur;return LAY[k]||(LAY[k]=clone(mk(P[cur],cur==='mid')))};
 const HIST={};function snap(){const k=MID+'|'+cur;(HIST[k]=HIST[k]||[]).push(clone(yrs()));if(HIST[k].length>40)HIST[k].shift()}
 // layout entries: a fixed course ('MATH1004'), an empty slot ('L3M') or a slot with a chosen course ('L3M=MATHX310')
-const code=e=>e.includes('=')?e.split('=')[1]:(D[e]?e:null);
-const slot=e=>e.includes('=')?e.split('=')[0]:(D[e]?null:e);
+const done=e=>e.endsWith('!'),base=e=>e.replace(/!$/,''); // 'MATH1005!' = completed
+const code=e=>{e=base(e);return e.includes('=')?e.split('=')[1]:(D[e]?e:null)};
+const slot=e=>{e=base(e);return e.includes('=')?e.split('=')[0]:(D[e]?null:e)};
+const WILPAIR=new Set(['MATH3902','MATHX315']); // the only two WIL courses that can share a semester
 let ctx=null; // position of the box whose dialog is open
 const BIG=new Set(['MATHX406','MATHX407']); // 12-unit courses count as two courses and show double width
 const WAIVABLE=new Set(['MATH1004']); // not needed with Specialist Mathematics, so a missing one is not a prerequisite problem
-const SLV={L1D:1,L2M:2,L2D:2,L3M:3,L3D:3,L4M:4,L4D:4};
+const SLV={L1D:1,L2M:2,L2D:2,L3M:3,L3D:3,L4M:4,L4D:4,W1:3,W2:3};
 let y4=false; // is Year 4 open?
-const movable=e=>{const c=code(e),s=slot(e);
- if(s==='W1'||s==='W2')return 'WIL boxes stay where they are.';
- if(c&&BIG.has(c))return `${c} is a 12-unit course and stays where it is.`;
+const movable=e=>{const c=code(e);
+if(c&&BIG.has(c))return `${c} is a 12-unit course and stays where it is.`;
  return null};
 // warnings shown on boxes: wrong semester, not offered, repeated, or prerequisites not met earlier in the schedule
 function warns(Y){const pos={},cnt={},out={};
- Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>sl.forEach(e=>{const c=code(e);if(c){pos[c]=y*2+r;cnt[c]=(cnt[c]||0)+1}})));
+ const dc=new Set();
+ Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>sl.forEach(e=>{const c=code(e);if(c){pos[c]=y*2+r;cnt[c]=(cnt[c]||0)+1;if(done(e))dc.add(c)}})));
  Y.forEach(([,sems],y)=>sems.forEach(([s,sl],r)=>sl.forEach((e,i)=>{const c=code(e);
-  if(!c){if(SLV[e]&&SLV[e]>=y+3)out[y+','+r+','+i]=[{t:'lvl',m:`The ${SLOT[e].label} box is in Year ${y+1}, well before its level.`}];return}
+  if(!c){const k=slot(e);if(!done(e)&&SLV[k]&&SLV[k]>=y+3)out[y+','+r+','+i]=[{t:'lvl',m:`The ${SLOT[k].label} box is in Year ${y+1}, well before its level.`}];return}
   const d=D[c],w=[];
   if(!d.sem.includes(String(s)))w.push({t:'sem',m:`${c} is not offered in Semester ${s}.`});
   if(!d.on)w.push({t:'off',m:`${c} is not currently offered.`});
   if(cnt[c]>1)w.push({t:'dup',m:`${c} is already in your schedule.`});
   const ex=parseExpr(d.pre);
-  if(ex){const here=y*2+r,B=effB(ex,k=>D[k]),met=k=>(k in pos&&pos[k]<here)||(WAIVABLE.has(k)&&!(k in pos));
+  if(ex){const here=y*2+r,B=effB(ex,k=>D[k]),met=k=>(k in pos&&pos[k]<here)||dc.has(k)||(WAIVABLE.has(k)&&!(k in pos));
    if(B.length&&!B.some(b=>b.every(met))){const u=B.length===1?B[0].filter(k=>!met(k)):[];
     w.push({t:'pre',m:u.length?`${c} needs ${u.join(' and ')} in an earlier semester.`:`${c}: prerequisites (${d.pre}) are not all met earlier in your schedule.`})}}
-  if(w.length)out[y+','+r+','+i]=w})));
+  const w2=done(e)?w.filter(x=>x.t==='dup'):w;if(w2.length)out[y+','+r+','+i]=w2})));
+ // two WIL boxes in the same semester only work with MATH3902 + MATHX315
+ Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>{const ix=sl.map((e,i)=>[e,i]).filter(([e])=>/^W[12]$/.test(slot(e)||''));
+  if(ix.length<2)return;const ch=ix.map(([e])=>code(e)).filter(Boolean);
+  if(ch.length&&ch.every(c=>WILPAIR.has(c)))return;
+  ix.forEach(([e,i])=>{if(done(e))return;const k=y+','+r+','+i;out[k]=(out[k]||[]).concat([{t:'wil',m:'Two WIL courses in the same semester only works with MATH3902 and MATHX315.'}])})}));
  return out}
 // what would be flagged if this course went into the open box
 function hypo(c){const Y=clone(yrs()),sl=Y[ctx.y][1][ctx.r][1];sl[ctx.i]=slot(sl[ctx.i])+'='+c;return warns(Y)[ctx.y+','+ctx.r+','+ctx.i]||[]}
@@ -113,21 +120,22 @@ function swapInfo(a,b){const Y=yrs(),ea=Y[a.y][1][a.r][1][a.i],eb=Y[b.y][1][b.r]
  return{news:[...msgs(T)].filter(m=>!old.has(m))}}
 function render(p){if(!C.length)return;if(p!==cur)mv=null;cur=p;
  document.querySelectorAll('.tab[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
- const Y=yrs(),W=warns(Y),mod=JSON.stringify(Y)!==JSON.stringify(mk(clone(P[p]),p==='mid')),lab=e=>code(e)||SLOT[e].label;
+ const Y=yrs(),W=warns(Y),mod=JSON.stringify(Y)!==JSON.stringify(mk(clone(P[p]),p==='mid')),lab=e=>code(e)||SLOT[slot(e)].label,nd=Y.reduce((n,yr)=>n+yr[1].reduce((m,row)=>m+row[1].filter(done).length,0),0);
  let bar='';
  if(mv)bar=`<div class="mvbar">Swapping <b>${lab(Y[mv.y][1][mv.r][1][mv.i])}</b>. Pick a box in another semester: green is fine, amber is allowed but adds a warning. Year 4 boxes only swap within Year 4. <button data-cancel>Cancel</button>${mvMsg?`<span class="why">${esc(mvMsg)}</span>`:''}</div>`;
  else if(mod||(HIST[MID+'|'+cur]||[]).length)bar=`<div class="mvbar">You have made changes to this schedule. ${(HIST[MID+'|'+cur]||[]).length?'<button data-undo>Undo</button>':''}<button data-reset>Reset</button></div>`;
  const wk=Object.keys(W),wp=wk.length?`<div class="warnbox"><b>⚠ Things to check</b><ul>${[...new Set(wk.flatMap(k=>{const [y,r]=k.split(',').map(Number);return W[k].map(w=>`Year ${y+1}, Semester ${Y[y][1][r][0]}: ${w.m}`)}))].map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:'';
  document.getElementById('plan').innerHTML=(LISTMSG?`<div class="warnbox">⚠ ${esc(LISTMSG)}</div>`:'')+bar+Y.map(([y,sems,note],yi)=>`<section class="year${yi===3&&!y4?' collapsed':''}">${yi===3?`<h2><button class="y4h" data-y4 aria-expanded="${y4}">${y} <small>Honours</small></button></h2>`:`<h2>${y}</h2>`}${sems.map(([s,sl],r)=>
-  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((e,i)=>{let x='',h='',tt='';
+  `<div class="sem"><div class="sl">Semester ${s}</div>${sl.map((e,i)=>{let x='',h='',tt='',ck='';
    if(mv){if(yi===mv.y&&r===mv.r&&i===mv.i)x=' src';else if((yi===3)===(mv.y===3)&&(yi!==mv.y||r!==mv.r)){const f=swapInfo(mv,{y:yi,r,i});x=f.why?' nomove':f.news.length?' amber':' ok';const t=f.why||f.news.join(' ');if(t)tt=` title="${esc(t)}"`}else x=' dim'}
    else if(!movable(e))h=`<button class="mv" data-mv="${yi},${r},${i}" aria-label="Swap ${lab(e)} with a box in the other semester" title="Swap with a box in the other semester">⇄</button>`;
-   const pos=`data-y="${yi}" data-r="${r}" data-i="${i}"${tt}`,c=code(e),s0=slot(e),wr=W[`${yi},${r},${i}`]||[];
+    if(!mv)ck=`<button class="ck${done(e)?' on':''}" data-done="${yi},${r},${i}" aria-pressed="${done(e)}" aria-label="${done(e)?'Completed (click to undo)':'Mark as completed'}: ${esc(lab(e))}" title="${done(e)?'Course completed (click to undo)':'Mark as completed'}">✓</button>`;
+const pos=`data-y="${yi}" data-r="${r}" data-i="${i}"${tt}`,c=code(e),s0=slot(e),dn=done(e)?' done':'',wr=W[`${yi},${r},${i}`]||[];
    const bd=wr.length?`<span class="wn" title="${esc(wr.map(w=>w.m).join(' '))}">⚠</span>`:'';
    return`<div class="cw${c&&BIG.has(c)?' wide':''}">`+(c?
-    `<button class="cell ${uc(D[c])}${x}" ${pos} data-c="${c}"><b>${c}</b>${esc(D[c].name)}${s0?`<small>${SLOT[s0].label}</small>`:''}${bd}</button>`:
-    `<button class="cell ph ${CLS[e]}${x}" ${pos} data-k="${e}" data-s="${s}">${SLOT[e].label}<small>${SLOT[e].pick||SLOT[e].html?'Choose a course':'Details'}</small></button>`)+h+`</div>`}).join('')}</div>`).join('')}
-  ${note?`<p class="note">${note}</p>`:''}</section>`).join('')+(P.bottomNote?`<p class="note end">${esc(P.bottomNote)}</p>`:'')+wp}
+    `<button class="cell ${uc(D[c])}${dn}${x}" ${pos} data-c="${c}"><b>${c}</b>${esc(D[c].name)}${s0?`<small>${SLOT[s0].label}</small>`:''}${bd}</button>`:
+    `<button class="cell ph ${CLS[slot(e)]}${dn}${x}" ${pos} data-k="${slot(e)}" data-s="${s}">${SLOT[slot(e)].label}<small>${SLOT[slot(e)].pick||SLOT[slot(e)].html?'Choose a course':'Details'}</small></button>`)+h+ck+`</div>`}).join('')}</div>`).join('')}
+  ${note?`<p class="note">${note}</p>`:''}</section>`).join('')+(P.bottomNote?`<p class="note end">${esc(P.bottomNote)}</p>`:'')+(nd?`<p class="note end">✓ ${nd} box${nd>1?'es are':' is'} marked as completed (shown with a green outline).</p>`:'')+wp}
 
 const dlg=document.getElementById('dlg');let hist=[];
 function go(fn){hist.push(fn);fn()}
@@ -136,7 +144,7 @@ function show(html){dlg.innerHTML=`<button class="x" aria-label="Close" data-x>�
 const chip=c=>`<small>${P.tags&&P.tags[c.code]?P.tags[c.code]+' · ':''}${c.area||MJ[c.mj][0]+' · '+SL[c.sem]}${c.on?'':' · not currently offered'}</small>`;
 
 function listView(k,s){
- const m=SLOT[k];let h=`<h3>${m.label}</h3><p>Slot in Semester ${s}.${m.note&&!(m.mid&&cur!=='mid')?' '+m.note:''}</p>${m.intro||''}`;
+ const m=SLOT[k];let h=`<h3>${m.label}</h3><p>Slot in Semester ${s}.${m.note&&!(m.mid&&cur!=='mid')?' '+m.note:''}</p><p><button class="act alt" data-act="done">${done(yrs()[ctx.y][1][ctx.r][1][ctx.i])?'Mark as not completed':'Mark as completed'}</button></p>${m.intro||''}`;
  if(!m.pick){const has=yrs().some(([,ss])=>ss.some(([,sl])=>sl.some(e=>code(e)==='MATH1004')));
   return show(h+(m.html||`<p>${m.msg}</p>`)+(k==='FE'&&!has?'<p>MATH 1004 is not in this schedule, because it was replaced by a free elective.</p><p><button class="act alt" data-act="back1004">Put MATH 1004 in this box</button></p>':''))}
  const cs=m.pick(),chosen=code(yrs()[ctx.y][1][ctx.r][1][ctx.i]);
@@ -177,15 +185,15 @@ function courseView(code,mode){
  let ex='';
  const m4=code==='MATH1004'?`<div class="infobox">${esc(N1.replace('Note: ',''))}</div>`+(mode==='fixed'?'<p><button class="act" data-act="tofe">Replace with a free elective</button></p>':''):'';
  if(mode==='pick')ex=wl(hypo(code))+`<p><button class="act" data-act="choose" data-code="${code}">Choose ${code} for this box</button></p>`;
- else if(mode==='chosen'||mode==='fixed'){ex=wl(warns(yrs())[`${ctx.y},${ctx.r},${ctx.i}`]||[]);
-  if(mode==='chosen')ex+='<p><button class="act" data-act="change">Change course</button> <button class="act alt" data-act="clear">Clear</button></p>'}
+ else if(mode==='chosen'||mode==='fixed'){ex=wl(warns(yrs())[`${ctx.y},${ctx.r},${ctx.i}`]||[])+`<p><button class="act alt" data-act="done">${done(yrs()[ctx.y][1][ctx.r][1][ctx.i])?'Mark as not completed':'Mark as completed'}</button></p>`;
+if(mode==='chosen')ex+='<p><button class="act" data-act="change">Change course</button> <button class="act alt" data-act="clear">Clear</button></p>'}
  show(`<h3><span class="code">${c.code}</span><br>${esc(c.name)}</h3>
  <div>${c.area?`<b>Common Core</b> · ${esc(c.area)}`:`<b>Level ${c.lvl}</b> · ${SL[c.sem]} · ${MJ[c.mj][0]}`}</div>
  ${c.area?'':`<div>${c.on?'Currently offered':'<b class="warn">Not currently offered</b>'}</div>`}
  <p><a href="${url(code)}" target="_blank" rel="noopener">Course webpage ↗</a></p>${ex}${m4}
  <p><b>Prerequisites:</b> ${esc(c.pre||'None listed')}</p>${c.note?`<p><b>Notes:</b> ${esc(c.note)}</p>`:''}${tree(code)}`)}
 function setEntry(v){snap();yrs()[ctx.y][1][ctx.r][1][ctx.i]=v;dlg.close();render(cur)}
-function pick(c){setEntry(slot(yrs()[ctx.y][1][ctx.r][1][ctx.i])+'='+c)}
+function pick(c){const en=yrs()[ctx.y][1][ctx.r][1][ctx.i];setEntry(slot(en)+'='+c+(done(en)?'!':''))}
 
 dlg.addEventListener('click',e=>{
  if(e.target===dlg||e.target.closest('[data-x]'))return dlg.close();
@@ -196,9 +204,11 @@ dlg.addEventListener('click',e=>{
  if(a){const sl=yrs()[ctx.y][1][ctx.r],en=sl[1][ctx.i];
   if(a.dataset.act==='choose')return pick(a.dataset.code);
   if(a.dataset.act==='change')return go(()=>listView(slot(en),sl[0]));
-  if(a.dataset.act==='clear')return setEntry(slot(en));
-  if(a.dataset.act==='tofe')return setEntry('FE');
-  if(a.dataset.act==='back1004')return setEntry('MATH1004')}
+  const dm=done(en)?'!':'';
+   if(a.dataset.act==='done')return setEntry(done(en)?base(en):base(en)+'!');
+   if(a.dataset.act==='clear')return setEntry(slot(en)+dm);
+   if(a.dataset.act==='tofe')return setEntry('FE'+dm);
+   if(a.dataset.act==='back1004')return setEntry('MATH1004'+dm)}
  const n=e.target.closest('[data-c]');if(n)go(()=>courseView(n.dataset.c))});
 dlg.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('g[data-c]'))go(()=>courseView(e.target.dataset.c))});
 dlg.addEventListener('close',()=>{hist=[]});
@@ -208,6 +218,7 @@ document.getElementById('plan').addEventListener('click',e=>{
  if(t.closest('[data-reset]')){delete LAY[MID+'|'+cur];delete HIST[MID+'|'+cur];mv=null;return render(cur)}
  if(t.closest('[data-undo]')){const h=HIST[MID+'|'+cur];if(h&&h.length)LAY[MID+'|'+cur]=h.pop();mv=null;return render(cur)}
  if(t.closest('[data-cancel]')){mv=null;mvMsg='';return render(cur)}
+ const dk=t.closest('[data-done]');if(dk){const [y,r,i]=dk.dataset.done.split(',').map(Number);snap();const row=yrs()[y][1][r][1];row[i]=done(row[i])?base(row[i]):base(row[i])+'!';return render(cur)}
  const h=t.closest('[data-mv]');if(h){const [y,r,i]=h.dataset.mv.split(',').map(Number);mv={y,r,i};mvMsg='';return render(cur)}
  const b=t.closest('button.cell');if(!b)return;
  if(mv){const t2={y:+b.dataset.y,r:+b.dataset.r,i:+b.dataset.i};
@@ -243,9 +254,9 @@ function startFromHash(){
  setMajor(id);
  if(!dat)return;
  try{delete LAY[MID+'|'+cur];const Y=yrs();
-  JSON.parse(unb64(dat)).forEach(([y,r,i,e])=>{const [k,c]=e.includes('=')?e.split('='):[e,e];
+  JSON.parse(unb64(dat)).forEach(([y,r,i,e0])=>{const e=base(String(e0));const [k,c]=e.includes('=')?e.split('='):[e,e];
    const ok=e.includes('=')?(SLOT[k]&&D[c]):(D[e]||SLOT[e]);
-   if(ok&&Y[y]&&Y[y][1][r]&&i in Y[y][1][r][1]){Y[y][1][r][1][i]=e;if(y===3)y4=true}});
+   if(ok&&Y[y]&&Y[y][1][r]&&i in Y[y][1][r][1]){Y[y][1][r][1][i]=String(e0);if(y===3)y4=true}});
   render(cur)}catch(x){}}
 document.getElementById('cp').addEventListener('click',async e=>{const b=e.currentTarget,u=shareUrl();
  try{await navigator.clipboard.writeText(u);b.textContent='Link copied ✓'}catch(x){prompt('Copy this link:',u)}
@@ -256,7 +267,7 @@ window.addEventListener('beforeprint',()=>{const n=document.getElementById('pfor
  document.getElementById('pinfo').textContent=(n?'Student name/number: '+n+' · ':'')+P.title+' · '+(cur==='mid'?'Mid-year start (Semester 2)':'Standard start (Semester 1)')+' · '+new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})});
 // ---- course lists come from the spreadsheets in ../major-courses/ (level2.xlsx, level3.xlsx, level4.xlsx)
 let LISTMSG='';
-const loadLists=()=>{if(!window.MajorLists||!window.XLSX)return Promise.reject(new Error('the spreadsheet reader could not be loaded'));
+const loadLists=()=>{if(!window.MajorLists||!window.XLSX)return Promise.reject(new Error('the spreadsheet reader could not be loaded (check that major-courses/lists.js has been uploaded)'));
  return Promise.all([2,3,4].map(n=>MajorLists.sheet('../major-courses/level'+n+'.xlsx').then(g=>MajorLists.groups(g))))};
 function applyLists(L){const bad=new Set();
  L.forEach((gs,i)=>gs.forEach(g=>{const m=window.MAJORS[MajorLists.key(g.name)];if(!m)return;

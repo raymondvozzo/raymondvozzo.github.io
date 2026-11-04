@@ -62,7 +62,7 @@ ul.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:re
 .mv:hover{box-shadow:0 0 0 2px #1448FF}
 .cell.src{outline:3px solid #1448FF;outline-offset:2px}
 .cell.ok{outline:3px solid #0E9F9A;outline-offset:2px}
-.cell.bad{outline:3px solid #D62839;outline-offset:2px;opacity:.75}
+.cell.amber{outline:3px solid #F5A300;outline-offset:2px}
 .cell.nomove,.cell.dim{opacity:.35}
 .mvbar{background:#eef0ff;border:1px solid #c9c6e0;border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:13px}
 .mvbar .why{display:block;margin-top:4px;color:#a1121f;font-weight:700}
@@ -89,7 +89,7 @@ ul.opts li{position:relative}.opt{padding-right:34px}
 .note.end{margin-top:6px}
 
 .print-only{display:none}
-.tabs .pfor{padding:8px 14px;border-radius:20px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:14px;min-width:15rem}
+.tabs .pfor{padding:8px 14px;border-radius:20px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:14px;flex:1 1 17rem;min-width:17rem;max-width:24rem}
 .tabs .pfor::placeholder{color:rgba(255,255,255,.65)}
 @media print{
  @page{margin:12mm}
@@ -102,3 +102,12 @@ ul.opts li{position:relative}.opt{padding-right:34px}
  .year{break-inside:avoid}
  .year.collapsed .sem{display:grid}.year.collapsed .note{display:block}
 }
+
+.infobox{background:#eef0ff;border:1px solid #c9c6e0;border-radius:8px;padding:8px 12px;font-size:13px;margin:12px 0}
+
+.cell{padding-bottom:30px}
+.ck{position:absolute;left:6px;bottom:6px;width:22px;height:22px;padding:0;border-radius:50%;border:2px solid rgba(20,15,80,.35);background:rgba(255,255,255,.92);color:rgba(20,15,80,.35);font-size:12px;line-height:18px;text-align:center;cursor:pointer}
+.ck:hover{border-color:#1f9d55;color:#1f9d55}
+.ck.on{background:#1f9d55;border-color:#1f9d55;color:#fff}
+.cell.done{box-shadow:0 0 0 3px #1f9d55}
+@media print{.ck:not(.on){display:none}}
