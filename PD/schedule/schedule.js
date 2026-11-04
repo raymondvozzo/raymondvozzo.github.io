@@ -95,11 +95,12 @@ function warns(Y){const pos={},cnt={},out={};
   if(!d.sem.includes(String(s)))w.push({t:'sem',m:`${c} is not offered in Semester ${s}.`});
   if(!d.on)w.push({t:'off',m:`${c} is not currently offered.`});
   if(cnt[c]>1)w.push({t:'dup',m:`${c} is already in your schedule.`});
+   if(c==='MATH3013'&&!('MATH3900' in pos))w.push({t:'clin',m:'Students must take both Clinic 1 and Clinic 2.'});
   const ex=parseExpr(d.pre);
   if(ex){const here=y*2+r,B=effB(ex,k=>D[k]),met=k=>(k in pos&&pos[k]<here)||dc.has(k)||(WAIVABLE.has(k)&&!(k in pos));
    if(B.length&&!B.some(b=>b.every(met))){const u=B.length===1?B[0].filter(k=>!met(k)):[];
     w.push({t:'pre',m:u.length?`${c} needs ${u.join(' and ')} in an earlier semester.`:`${c}: prerequisites (${d.pre}) are not all met earlier in your schedule.`})}}
-  const w2=done(e)?w.filter(x=>x.t==='dup'):w;if(w2.length)out[y+','+r+','+i]=w2})));
+  const w2=done(e)?w.filter(x=>x.t==='dup'||x.t==='clin'):w;if(w2.length)out[y+','+r+','+i]=w2})));
  // two WIL boxes in the same semester only work with MATH3902 + MATHX315
  Y.forEach(([,sems],y)=>sems.forEach(([,sl],r)=>{const ix=sl.map((e,i)=>[e,i]).filter(([e])=>/^W[12]$/.test(slot(e)||''));
   if(ix.length<2)return;const ch=ix.map(([e])=>code(e)).filter(Boolean);
@@ -153,7 +154,7 @@ function listView(k,s){
   const it=(g===null?cs:cs.filter(c=>c.sem===g)).sort((a,b)=>(b.on-a.on)||a.name.localeCompare(b.name));if(!it.length)return;
   const fit=g===null||g==s||g==='12';
   h+=(g===null?'':`<h4 class="grp${fit?'':' no'}">${SL[g]}${fit?'':' (not available in this slot’s semester)'}</h4>`)+'<ul class="opts">'+
-   it.map(c=>{const w=hypo(c.code).filter(x=>x.t!=='sem'&&x.t!=='off');
+   it.map(c=>{const w=hypo(c.code).filter(x=>x.t!=='sem'&&x.t!=='off'&&x.t!=='clin');
     return`<li><button class="opt ${uc(c)}${c.on?'':' off'}" data-pick="${c.code}"><b>${c.code}</b> ${esc(c.name)}${chip(c)}${c.code===chosen?'<small>✓ currently chosen</small>':''}${w.length?`<small class="wr">⚠ ${esc(w.map(x=>x.m).join(' '))}</small>`:''}</button><button class="info" data-info="${c.code}" aria-label="Details for ${c.code}" title="Details and prerequisite tree">ⓘ</button></li>`}).join('')+'</ul>'});
  show(h)}
 
