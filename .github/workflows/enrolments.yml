@@ -1,0 +1,46 @@
+name: Update class enrolments
+
+on:
+  schedule:
+    - cron: '7 * * * *'        # every hour, at seven minutes past
+  workflow_dispatch:           # lets you start it by hand (Actions tab > Run workflow), or from the page's refresh buttons
+    inputs:
+      course:
+        description: 'Course code to refresh, for example MATHX206 (leave empty to refresh every course)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: enrolments
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        run: npm install --prefix PD/enrolments/scraper --no-audit --no-fund
+      - name: Collect enrolment numbers
+        run: node PD/enrolments/scraper/scrape.mjs
+        env:
+          COURSE: ${{ github.event.inputs.course }}
+          YEAR: '2027'
+      - name: Save the data
+        run: |
+          git config user.name "enrolments-bot"
+          git config user.email "enrolments-bot@users.noreply.github.com"
+          git add PD/enrolments/data/enrolments.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Update class enrolments"
+          for i in 1 2 3; do
+            git pull --rebase origin "${{ github.ref_name }}" && git push && exit 0
+            sleep 5
+          done
+          exit 1
