@@ -1,0 +1,7 @@
+{
+  "name": "enrolments-scraper",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node test/test.mjs" },
+  "dependencies": { "cheerio": "^1.0.0" }
+}
