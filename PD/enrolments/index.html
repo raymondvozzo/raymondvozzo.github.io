@@ -70,28 +70,35 @@ h4{font-size:13px;margin:10px 0 4px;text-transform:uppercase;letter-spacing:.04e
 // ---- settings you may want to change -------------------------------------------------
 // Class pages on the university system look like
 //   ClassStudentDetails.aspx?ciid=2720_MATH_1004_1&clid=27209&csmn=1
-// where 27 = year, 20 = Semester 1 (50 = Semester 2), MATH_1004 = course, the last digit is the semester,
+// where 27 = year, 20 = Semester 1 (50 = Semester 2), MATH_1004 = course, the last digit is the first semester the course runs,
 // and clid is the class number. Only Semester 1 and 2 are known; other terms show the class as plain text.
 const CLASS_BASE = 'https://apps.adelaide.edu.au/Staff/Teaching/Courses/ClassStudentDetails.aspx';
 const TERM_CODE = {1:'20', 2:'50'};
 const DASH_BASE = 'https://apps.adelaide.edu.au/Staff/Teaching/Courses/Dashboard.aspx';
-function ciid(code, term){
+// The last digit of the code identifies the course on a campus (it is not the semester). It is kept in
+// ciid-suffix.csv, one row per course and campus.
+let SUF={};
+const sufFor=(code,campus)=>(SUF[code]||{})[String(campus||'').trim().toLowerCase()]||'';
+function ciid(code, term, suf){
   const sem = (/^semester\s*([12])\b/i.exec(term||'')||[])[1], m = /^([A-Z]{4})(.+)$/.exec(code||'');
   const yr = String(DATA.meta&&DATA.meta.year||'').slice(-2);
-  return sem&&m&&yr.length===2 ? yr+TERM_CODE[sem]+'_'+m[1]+'_'+m[2]+'_'+sem : '';
+  return sem&&m&&suf&&yr.length===2 ? yr+TERM_CODE[sem]+'_'+m[1]+'_'+m[2]+'_'+suf : '';
 }
-function classUrl(code, term, k){
-  const id = ciid(code, term);
+function classUrl(code, term, campus, k){
+  const id = ciid(code, term, sufFor(code,campus));
   return id&&k.number ? CLASS_BASE+'?ciid='+id+'&clid='+encodeURIComponent(k.number)+'&csmn=1' : '';
 }
 function dashLinks(code, c){
-  const ls=(c.terms||[]).map(t=>({t:t.name,id:ciid(code,t.name)})).filter(x=>x.id);
-  return ls.map(x=>`<a href="${esc(DASH_BASE+'?ciid='+x.id)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Dashboard${ls.length>1?' ('+esc(x.t)+')':''}</a>`).join('');
+  const a=(id,label)=>`<a href="${esc(DASH_BASE+'?ciid='+id)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">${label}</a>`;
+  const combos=[];
+  for(const t of c.terms||[])for(const cp of t.campuses)if(ciid(code,t.name,'1'))combos.push({t:t.name,cp:cp.name,suf:sufFor(code,cp.name)});
+  const nt=new Set(combos.map(x=>x.t)).size, nc=new Set(combos.map(x=>x.cp)).size;
+  const known=combos.filter(x=>x.suf), unknown=combos.filter(x=>!x.suf);
+  let h=known.map(x=>{const p=[nt>1?x.t:'',nc>1?x.cp:''].filter(Boolean).join(', ');return a(ciid(code,x.t,x.suf),'Dashboard'+(p?' ('+esc(p)+')':''))}).join('');
+  if(unknown.length){const x=unknown[0];   // not in ciid-suffix.csv yet: offer both digits so you can see which one works
+    h+=`<span>Dashboard, not checked yet${nc>1?' ('+esc(x.cp)+')':''}: ${a(ciid(code,x.t,'1'),'try 1')} ${a(ciid(code,x.t,'2'),'try 2')}</span>`}
+  return h;
 }
-// Address of the refresh relay (see PD/enrolments/relay/README.txt). Leave empty to have the
-// per-course buttons only reload the saved data.
-const REFRESH_URL = '';
-// ---------------------------------------------------------------------------------------
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let CSV=[], DATA={meta:{},courses:{}};
@@ -109,10 +116,10 @@ const colour=p=>p>=100?'var(--hi)':p>=75?'var(--mid)':'var(--ok)';
 function classes(c){const out=[];for(const t of c.terms||[])for(const cp of t.campuses)for(const g of cp.groups)for(const k of g.classes)out.push(k);return out}
 function totals(c){let size=0,taken=0,n=0;for(const k of classes(c)){if(k.size==null||k.available==null)continue;n++;
   if(k.type==='Enrolment class'){size+=k.size;taken+=k.size-k.available}}return{size,taken,n}}
-function classHtml(k,code,term){
+function classHtml(k,code,term,campus){
   const has=k.size!=null&&k.available!=null, taken=has?k.size-k.available:0, p=has&&k.size?Math.round(100*taken/k.size):0;
   const name=esc(k.kind)+' '+esc(k.section);
-  const u=classUrl(code,term,k), link=u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">${name}</a>`:name;
+  const u=classUrl(code,term,campus,k), link=u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">${name}</a>`:name;
   const m=(k.meetings||[]).map(x=>[x.days,x.time,x.location||x.campus].filter(Boolean).join(' ')).filter(Boolean).join(' · ');
   return `<div class="cl"><div class="k">${link}<small>${k.type==='Enrolment class'?'Enrolment class':'Related class'} · #${esc(k.number)}</small></div>
   <div class="bar" role="img" aria-label="${p}% full"><i style="--w:${Math.min(p,100)}%;--c:${colour(p)}"></i></div>
@@ -128,7 +135,7 @@ function courseBody(code){
   for(const t of c.terms){h+=`<h3>${esc(t.name)}</h3>`;const kd=t.keyDates||{};
     const parts=[['enrol','Enrol by'],['census','Census'],['lastWF','Last day to withdraw (no fail)'],['lastW','Last day to withdraw']].filter(([k])=>kd[k]).map(([k,l])=>l+' '+kd[k]);
     if(parts.length)h+=`<p class="kd">${esc(parts.join(' · '))}</p>`;
-    for(const cp of t.campuses)for(const g of cp.groups){h+=`<h4>${esc(cp.name)} · ${esc(g.name)}</h4>`+g.classes.map(k=>classHtml(k,code,t.name)).join('')}}
+    for(const cp of t.campuses)for(const g of cp.groups){h+=`<h4>${esc(cp.name)} · ${esc(g.name)}</h4>`+g.classes.map(k=>classHtml(k,code,t.name,cp.name)).join('')}}
   return h}
 function render(){
   const q=$('q').value.trim().toLowerCase(), lv=$('lvl').value;
@@ -142,6 +149,7 @@ function render(){
   $('upd').textContent=DATA.meta&&DATA.meta.generated?`Last updated ${fmt(DATA.meta.generated)} (${ago(DATA.meta.generated)}). Fill is shown for enrolment classes (e.g. the forum); related classes have their own bars.`:'No enrolment data has been collected yet. Run the "Update class enrolments" workflow once, or wait for the next hourly run.'}
 async function load(){
   try{const [c,d]=await Promise.all([fetch('/prereqs/courses.csv',{cache:'no-store'}),fetch('data/enrolments.json?'+Date.now(),{cache:'no-store'})]);
+    try{const sf=await fetch('ciid-suffix.csv?'+Date.now(),{cache:'no-store'});SUF={};if(sf.ok)for(const r of parseCSV(await sf.text()).slice(1)){const k=(r[0]||'').trim().toUpperCase().replace(/\s+/g,''),cp=(r[1]||'').trim().toLowerCase(),v=(r[2]||'').trim();if(k&&cp&&/^\d$/.test(v))(SUF[k]=SUF[k]||{})[cp]=v}}catch(_){SUF={}}
     if(!c.ok)throw new Error('Could not load prereqs/courses.csv');
     const rows=parseCSV(await c.text()),h=rows.shift().map(x=>x.trim().toLowerCase());
     const i=n=>h.indexOf(n);if(i('course code')<0||i('course name')<0)throw new Error('courses.csv is missing the "Course Code" or "Course Name" column');
