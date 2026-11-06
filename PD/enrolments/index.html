@@ -162,6 +162,11 @@ async function load(){
     const rows=parseCSV(await c.text()),h=rows.shift().map(x=>x.trim().toLowerCase());
     const i=n=>h.indexOf(n);if(i('course code')<0||i('course name')<0)throw new Error('courses.csv is missing the "Course Code" or "Course Name" column');
     CSV=rows.map(r=>({code:r[i('course code')].trim(),name:r[i('course name')].trim(),level:r[i('level')]}));
+    try{const ex=await fetch('extra-courses.csv?'+Date.now(),{cache:'no-store'});   // courses listed only on this page
+      if(ex.ok){const er=parseCSV(await ex.text()),eh=er.shift().map(x=>x.trim().toLowerCase()),ei=n=>eh.indexOf(n);
+        for(const r of er){const code=(r[ei('course code')]||'').trim().toUpperCase();
+          if(code&&!CSV.some(x=>x.code===code))CSV.push({code,name:(r[ei('course name')]||'').trim(),level:(r[ei('level')]||'').trim()})}
+        CSV=CSV.map((x,n)=>[x,n]).sort((a,b)=>(+a[0].level||9)-(+b[0].level||9)||a[1]-b[1]).map(x=>x[0])}}catch(_){}
     DATA=d.ok?await d.json():{meta:{},courses:{}};render()}
   catch(e){$('out').innerHTML='<p class="msg err">'+esc(e.message)+'</p>'}}
 $('q').addEventListener('input',render);$('lvl').addEventListener('change',render);

@@ -93,7 +93,9 @@ async function getHtml(code) {
 }
 
 async function main() {
-  const codes = fs.readFileSync(path.join(ROOT, 'prereqs/courses.csv'), 'utf8').split(/\r?\n/).slice(1).map(l => l.split(',')[0].trim()).filter(Boolean);
+  const readCodes = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').replace(/^\uFEFF/, '').split(/\r?\n/).slice(1).map(l => l.split(',')[0].trim().toUpperCase()).filter(Boolean) : [];
+  // the course list, plus any extra courses listed only for this page (PD/enrolments/extra-courses.csv)
+  const codes = [...new Set([...readCodes(path.join(ROOT, 'prereqs/courses.csv')), ...readCodes(path.join(ROOT, 'PD/enrolments/extra-courses.csv'))])];
   const prev = fs.existsSync(DATA) ? JSON.parse(fs.readFileSync(DATA, 'utf8')) : { meta: {}, courses: {} };
   const want = (process.env.COURSE || '').split(/[\s,]+/).filter(Boolean).map(s => s.toUpperCase());
   const targets = want.length ? want : codes;
