@@ -1,7 +1,7 @@
 {
  "meta": {
   "year": "2027",
-  "generated": "2026-11-06T02:21:42.155Z",
+  "generated": "2026-11-06T05:51:57.557Z",
   "fullRun": "2026-11-06T02:21:42.155Z"
  },
  "courses": {
@@ -2634,7 +2634,7 @@
   "MATHX202": {
    "code": "MATHX202",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-202/",
-   "fetched": "2026-11-06T02:18:02.603Z",
+   "fetched": "2026-11-06T05:51:52.597Z",
    "status": "ok",
    "terms": [
     {
@@ -2690,6 +2690,76 @@
           },
           {
            "type": "Related class",
+           "kind": "Assessment",
+           "number": "26188",
+           "section": "AS01",
+           "size": 125,
+           "available": 80,
+           "meetings": [
+            {
+             "dates": "12 Apr - 12 Apr",
+             "days": "Monday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, 102",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Workshop",
+           "number": "30047",
+           "section": "WS02",
+           "size": 36,
+           "available": 25,
+           "meetings": [
+            {
+             "dates": "23 Feb - 13 Apr",
+             "days": "Tuesday",
+             "time": "1:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "4 May - 25 May",
+             "days": "Tuesday",
+             "time": "1:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Workshop",
+           "number": "32714",
+           "section": "WS03",
+           "size": 36,
+           "available": 17,
+           "meetings": [
+            {
+             "dates": "24 Feb - 14 Apr",
+             "days": "Wednesday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "5 May - 26 May",
+             "days": "Wednesday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
            "kind": "Workshop",
            "number": "32715",
            "section": "WS04",
@@ -2710,24 +2780,6 @@
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
              "location": "Barr Smith South, 1063",
-             "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Assessment",
-           "number": "26188",
-           "section": "AS01",
-           "size": 125,
-           "available": 80,
-           "meetings": [
-            {
-             "dates": "12 Apr - 12 Apr",
-             "days": "Monday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, 102",
              "instructor": ""
             }
            ]
