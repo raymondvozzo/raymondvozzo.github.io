@@ -1,0 +1,516 @@
+{
+ "year": "2026",
+ "courses": {
+  "MATH1004": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 85,
+    "size": 150
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 54,
+    "size": 150
+   }
+  },
+  "MATHX106": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 3,
+    "size": 20
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 50,
+    "size": 50
+   }
+  },
+  "MATH1006": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 6,
+    "size": 50
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 136,
+    "size": 200
+   }
+  },
+  "MATH1007": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 3,
+    "size": 25
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 30,
+    "size": 50
+   }
+  },
+  "STATX100": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 118,
+    "size": 136
+   }
+  },
+  "COMP1002": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 45,
+    "size": 60
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 351,
+    "size": 390
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 38,
+    "size": 70
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 132,
+    "size": 145
+   }
+  },
+  "MATH1005": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 89,
+    "size": 125
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 83,
+    "size": 125
+   }
+  },
+  "MATH1011": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 14,
+    "size": 25
+   }
+  },
+  "MATHX104": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 148,
+    "size": 180
+   }
+  },
+  "MATH1012": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 17,
+    "size": 20
+   }
+  },
+  "MATHX201": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 45,
+    "size": 70
+   }
+  },
+  "MATHX202": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 90,
+    "size": 120
+   },
+   "Semester 1|Mawson Lakes": {
+    "taken": 1,
+    "size": 25
+   }
+  },
+  "MATHX205": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 0,
+    "size": 15
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 50,
+    "size": 60
+   }
+  },
+  "STATX200": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 6,
+    "size": 25
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 57,
+    "size": 60
+   }
+  },
+  "MATH2010": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 11,
+    "size": 25
+   }
+  },
+  "MATHX204": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 24,
+    "size": 50
+   }
+  },
+  "MATHX206": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 46,
+    "size": 56
+   }
+  },
+  "STATX290": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 70,
+    "size": 90
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 7,
+    "size": 25
+   }
+  },
+  "STAT2003": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 20,
+    "size": 50
+   }
+  },
+  "MATHX300": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 4,
+    "size": 25
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 25,
+    "size": 35
+   }
+  },
+  "MATHX301": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 39,
+    "size": 42
+   },
+   "Semester 1|Mawson Lakes": {
+    "taken": 0,
+    "size": 25
+   }
+  },
+  "MATHX307": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 14,
+    "size": 25
+   }
+  },
+  "MATH3013": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 2,
+    "size": 20
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 5,
+    "size": 20
+   }
+  },
+  "MATHX311": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 20,
+    "size": 40
+   }
+  },
+  "STATX302": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 29,
+    "size": 50
+   }
+  },
+  "COMPX300": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 1,
+    "size": 25
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 14,
+    "size": 25
+   }
+  },
+  "MATHX313": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 24,
+    "size": 50
+   }
+  },
+  "MATHX302": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 27,
+    "size": 40
+   }
+  },
+  "STAT3006": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 20,
+    "size": 50
+   }
+  },
+  "MATH3022": {
+   "Semester 2|Mawson Lakes": {
+    "taken": 5,
+    "size": 25
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 55,
+    "size": 90
+   }
+  },
+  "STATX301": {
+   "Semester 2|Mawson Lakes": {
+    "taken": 3,
+    "size": 20
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 25,
+    "size": 50
+   }
+  },
+  "MATHX304": {
+   "Semester 2|Mawson Lakes": {
+    "taken": 5,
+    "size": 25
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 26,
+    "size": 42
+   }
+  },
+  "MATHX305": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 19,
+    "size": 36
+   }
+  },
+  "MATHX309": {
+   "Semester 2|Mawson Lakes": {
+    "taken": 5,
+    "size": 25
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 17,
+    "size": 25
+   }
+  },
+  "MATH3900": {
+   "Semester 2|Mawson Lakes": {
+    "taken": 3,
+    "size": 20
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 4,
+    "size": 20
+   }
+  },
+  "MATHX310": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 13,
+    "size": 25
+   }
+  },
+  "MATHX312": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 25,
+    "size": 30
+   }
+  },
+  "MATH3901": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 35,
+    "size": 80
+   }
+  },
+  "STATX303": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 35,
+    "size": 50
+   }
+  },
+  "STAT3005": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 5,
+    "size": 25
+   }
+  },
+  "MATH4010": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 6,
+    "size": 10
+   }
+  },
+  "MATHX403": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 4,
+    "size": 20
+   }
+  },
+  "MATHX406": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 0,
+    "size": 10
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 4,
+    "size": 20
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 0,
+    "size": 10
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 7,
+    "size": 10
+   }
+  },
+  "MATHX409": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 6,
+    "size": 20
+   }
+  },
+  "MATHX410": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 7,
+    "size": 20
+   }
+  },
+  "STAT4001": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 12,
+    "size": 25
+   }
+  },
+  "STAT4002": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 11,
+    "size": 20
+   }
+  },
+  "MATHX412": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 1,
+    "size": 20
+   }
+  },
+  "MATHX401": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 5,
+    "size": 10
+   }
+  },
+  "STATX403": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 11,
+    "size": 25
+   }
+  },
+  "MATHX404": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 7,
+    "size": 20
+   }
+  },
+  "MATHX405": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 14,
+    "size": 25
+   }
+  },
+  "MATHX407": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 1,
+    "size": 10
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 10,
+    "size": 20
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 0,
+    "size": 20
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 4,
+    "size": 20
+   }
+  },
+  "COMP4007": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 3,
+    "size": 10
+   }
+  },
+  "MATHX408": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 5,
+    "size": 20
+   }
+  },
+  "STATX401": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 1,
+    "size": 25
+   }
+  },
+  "MATHX411": {
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 3,
+    "size": 10
+   }
+  },
+  "MATHX203": {
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 121,
+    "size": 136
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 4,
+    "size": 25
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 55,
+    "size": 75
+   }
+  },
+  "MATH1016": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 140,
+    "size": 175
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 631,
+    "size": 710
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 39,
+    "size": 75
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 180,
+    "size": 210
+   }
+  },
+  "ENGI1004": {
+   "Semester 2|Mawson Lakes": {
+    "taken": 86,
+    "size": 255
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 585,
+    "size": 702
+   }
+  },
+  "ENGI2001": {
+   "Semester 1|Mawson Lakes": {
+    "taken": 93,
+    "size": 120
+   },
+   "Semester 1|Adelaide City Campus East": {
+    "taken": 241,
+    "size": 332
+   },
+   "Semester 2|Mawson Lakes": {
+    "taken": 36,
+    "size": 102
+   },
+   "Semester 2|Adelaide City Campus East": {
+    "taken": 454,
+    "size": 520
+   }
+  }
+ },
+ "generated": "2026-11-06T08:56:41.259Z"
+}
