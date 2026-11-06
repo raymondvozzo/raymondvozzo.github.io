@@ -45,6 +45,8 @@ a{color:var(--purple);font-weight:700}
 <tr><td>Which courses count towards a major at Level 2, 3 or 4, and the labels Compulsory / Group A / Group B</td><td><code>major-courses/level2.xlsx</code>, <code>level3.xlsx</code>, <code>level4.xlsx</code></td><td>Used by the Major courses page and by the "choose a course" lists in the schedules. See <a href="#xlsx">the layout</a> below.</td></tr>
 <tr><td>A course's learning outcomes</td><td><code>clos/clos.csv</code></td><td>One row per outcome. Or send the updated spreadsheet to Claude to convert.</td></tr>
 <tr><td>A major's schedule layout (which courses are fixed in each year, which boxes are choices), the Applied group note, the Honours note for UNS</td><td>The settings block near the bottom of <code>schedule/index.html</code> (it starts with <code>window.MAJORS=</code>)</td><td>See <a href="#settings">the settings block</a> below.</td></tr>
+<tr><td>Which courses appear on the Class enrolments page</td><td><code>prereqs/courses.csv</code> (every course in it appears), plus <code>PD/enrolments/extra-courses.csv</code> for courses that should appear <em>only</em> there (such as MATH 1016)</td><td>See <a href="#enrol">Class enrolments</a> below.</td></tr>
+<tr><td>The staff-system dashboard and class links on the Class enrolments page</td><td><code>PD/enrolments/ciid-suffix.csv</code></td><td>One row per course and campus. See <a href="#enrol">Class enrolments</a> below.</td></tr>
 <tr><td>The list of links on the hub page</td><td><code>index.html</code> (the hub, in the <code>PD</code> folder)</td><td>Copy an existing <code>&lt;li&gt;…&lt;/li&gt;</code> block, change the address, title and description.</td></tr>
 <tr><td>The Common Core course list, the WIL course options and WIL rules (Clinic 1 with Clinic 2; MATH3902 with MATHX315), the two 12-unit research courses, the MATH 1004 exemption, or the wording of the notes under Year 1 and Year 3</td><td><code>schedule/schedule.js</code></td><td>These are typed near the top of the file. Ask Claude to change them if you're unsure.</td></tr>
 </table></div>
@@ -56,6 +58,7 @@ a{color:var(--purple);font-weight:700}
 <tr><td>Program schedule (<code>schedule/</code>)</td><td><code>courses.csv</code> for every course's details and prerequisites; <code>level2/3/4.xlsx</code> for the choose-from lists; its own settings block for the layouts</td></tr>
 <tr><td>Major courses (<code>major-courses/</code>)</td><td><code>level2/3/4.xlsx</code> for the lists; <code>courses.csv</code> for course details; <code>clos/clos.csv</code> to decide whether to show a "Learning outcomes" link</td></tr>
 <tr><td>Course learning outcomes (<code>clos/</code>)</td><td><code>clos.csv</code></td></tr>
+<tr><td>Class enrolments (<code>enrolments/</code>)</td><td><code>data/enrolments.json</code> (written by the hourly job, never edited by hand) for the numbers; <code>courses.csv</code> and <code>extra-courses.csv</code> for the list of courses; <code>ciid-suffix.csv</code> for the staff-system links</td></tr>
 </table></div>
 <p>The discipline electives (Level 1 to 4) are not listed anywhere. They are worked out automatically: every course in <code>courses.csv</code> at that level that is not marked <code>core</code>.</p>
 
@@ -94,6 +97,36 @@ a{color:var(--purple);font-weight:700}
 <li>Take care with commas and brackets. If the schedule page goes blank after an edit, a bracket or comma is usually missing.</li>
 </ul>
 
+<h2 id="enrol">Class enrolments: how the hourly update works</h2>
+<p>A browser cannot read the university's course pages directly, so a small job on GitHub does it. Every hour it opens each course's page on the university website, reads the "Availability" section (classes, sizes, spaces left, meeting times, key dates) and saves the result in <code>PD/enrolments/data/enrolments.json</code>. The Class enrolments page only reads that saved file. "Last updated" on the page is the time of the last run.</p>
+<div class="t"><table>
+<tr><th>File</th><th>What it does</th><th>Edit it?</th></tr>
+<tr><td><code>.github/workflows/enrolments.yml</code></td><td>The hourly job. It lives in a hidden <code>.github</code> folder at the very top of the repository (not inside <code>PD</code>). The line <code>YEAR: '2027'</code> says which year's course pages to read.</td><td>Only to change the year.</td></tr>
+<tr><td><code>PD/enrolments/scraper/scrape.mjs</code> and <code>package.json</code></td><td>The program that reads the university pages.</td><td>No. Ask Claude if the university changes its page layout.</td></tr>
+<tr><td><code>PD/enrolments/data/enrolments.json</code></td><td>The saved numbers. The job overwrites it every run.</td><td>No.</td></tr>
+<tr><td><code>PD/enrolments/extra-courses.csv</code></td><td>Courses to show on this page that are not in <code>courses.csv</code>. Columns: <code>Course Code</code>, <code>Course Name</code>, <code>Level</code>.</td><td>Yes: add a line to add a course.</td></tr>
+<tr><td><code>PD/enrolments/ciid-suffix.csv</code></td><td>The staff system's addresses end in a digit that belongs to each course on each campus (for example <code>2750_MATH_X306_2</code>), and it cannot be worked out, so it is listed here. Columns: <code>Course Code</code>, <code>Campus</code> (exactly as the university page spells it, e.g. Adelaide City Campus East), <code>Last digit</code>.</td><td>Yes: add a row when a course is missing.</td></tr>
+</table></div>
+
+<h3>Running it by hand</h3>
+<p>On GitHub, open the repository's <b>Actions</b> tab, choose <b>Update class enrolments</b>, then <b>Run workflow</b>. Leave the course box empty to refresh every course, or type one code (for example <code>MATHX206</code>) to refresh just that course. A full run takes a few minutes. Then hard refresh the page.</p>
+
+<h3>Adding a course to the page</h3>
+<ol>
+<li>If the course is in <code>courses.csv</code>, it is already there. Otherwise add a line to <code>extra-courses.csv</code>, for example <code>MATH1016,Engineering Mathematics,1</code>.</li>
+<li>Run the workflow by hand (above) so its numbers are collected.</li>
+<li>For working dashboard and class links, add the course's digit to <code>ciid-suffix.csv</code>. Until you do, the course shows "Dashboard, not checked yet: try 1 · try 2" and its class names are plain text. Click each "try" link while signed in to the staff system. The one that opens the course's dashboard gives the digit. A course that runs on two campuses needs one row per campus (usually 1 for Mawson Lakes and 2 for Adelaide City Campus East, but not always).</li>
+</ol>
+<p>The links only work for Semester 1 and Semester 2 classes and need you to be signed in to the staff system.</p>
+
+<h3>Good to know</h3>
+<ul>
+<li>GitHub treats scheduled jobs as best effort: the hourly run can start late, or be skipped for a while. If "Last updated" is many hours old, run the workflow by hand.</li>
+<li>GitHub switches scheduled jobs off after about 60 days without any activity in the repository. If the updates stop, open the Actions tab; there is a button to turn the workflow back on.</li>
+<li>The job needs the setting Settings → Actions → General → Workflow permissions → <b>Read and write permissions</b>.</li>
+<li>A pending or stuck "pages build and deployment" run means the website itself is slow to update. Your files are fine; wait, or push a small change to start a fresh one.</li>
+</ul>
+
 <h2>Putting a change online</h2>
 <ol>
 <li>Edit the file on your computer.</li>
@@ -103,11 +136,16 @@ a{color:var(--purple);font-weight:700}
 </ol>
 <h3>Where the files live</h3>
 <pre>raymondvozzo.github.io/
+├── .github/workflows/     enrolments.yml (the hourly job; a hidden folder)
 ├── prereqs/               index.html, courses.csv
 └── PD/                    index.html (the hub)
     ├── schedule/          index.html, schedule.js, schedule.css
     ├── major-courses/     index.html, lists.js, level2.xlsx, level3.xlsx, level4.xlsx
     ├── clos/              index.html, clos.csv
+    ├── enrolments/        index.html, extra-courses.csv, ciid-suffix.csv
+    │   ├── data/          enrolments.json (written by the hourly job)
+    │   ├── scraper/       scrape.mjs, package.json
+    │   └── relay/         optional, not in use
     └── readme/            index.html (this page)</pre>
 <p>The pages find each other by these relative positions, so please keep the folders as they are. <code>PD</code> must be in capital letters, because addresses on GitHub Pages are case-sensitive.</p>
 
@@ -119,6 +157,10 @@ a{color:var(--purple);font-weight:700}
 <tr><td>An amber row with ⚠ on the Major courses page</td><td>The spreadsheet's code does not match the title in <code>courses.csv</code>, or the course is not in <code>courses.csv</code>. The message says which.</td></tr>
 <tr><td>"Could not load…" on any page</td><td>The page was opened as a file from your computer (open it from the website instead), or a file it needs is missing.</td></tr>
 <tr><td>The page looks like an old version</td><td>Hard refresh. If it still does, check that every changed file was uploaded.</td></tr>
+<tr><td>"Last updated" on the Class enrolments page is many hours old</td><td>The hourly job did not run. Run it by hand from the Actions tab (see <a href="#enrol">Class enrolments</a>). If runs show a red cross, open one and read the failed step.</td></tr>
+<tr><td>A course shows "No data yet" or "no page"</td><td>The job has not collected it yet (run it by hand), or the university has no page for that course and year.</td></tr>
+<tr><td>"Dashboard, not checked yet: try 1 · try 2", or class names that are not links</td><td>The course is not in <code>ciid-suffix.csv</code> for that campus. Add its row (see <a href="#enrol">Class enrolments</a>).</td></tr>
+<tr><td>A dashboard or class link shows the staff system's "An error has occurred" page</td><td>The digit in <code>ciid-suffix.csv</code> is wrong for that course and campus, or you are not signed in to the staff system.</td></tr>
 <tr><td>A ⚠ on a box in a schedule</td><td>Not an error in the site: it is the schedule checker. For example, a prerequisite is missing earlier in the plan, or the course is not offered in that semester. Click the box, or see "Things to check" under the schedule.</td></tr>
 </table></div>
 
@@ -127,6 +169,7 @@ a{color:var(--purple);font-weight:700}
 <li>In <code>courses.csv</code>, update the <code>offered</code> column, and any changed semesters, prerequisites or new courses.</li>
 <li>If the majors changed, update <code>level2/3/4.xlsx</code>.</li>
 <li>If a program schedule changed, update the settings block in <code>schedule/index.html</code>.</li>
+<li>For Class enrolments: in <code>.github/workflows/enrolments.yml</code> change <code>YEAR: '2027'</code> to the new year, run the workflow by hand, and add <code>ciid-suffix.csv</code> rows for any new courses.</li>
 <li>Upload the changed files, hard refresh, and open each major in the schedule page. Every schedule should start with no ⚠ boxes, and no orange notice should appear.</li>
 <li>Check the Major courses page for amber rows.</li>
 </ol>
