@@ -86,7 +86,7 @@ function classUrl(code, term, k){
 }
 function dashLinks(code, c){
   const ls=(c.terms||[]).map(t=>({t:t.name,id:ciid(code,t.name)})).filter(x=>x.id);
-  return ls.map(x=>`<a href="${esc(DASH_BASE+'?ciid='+x.id)}" target="_blank" rel="noopener">Dashboard${ls.length>1?' ('+esc(x.t)+')':''}</a>`).join('');
+  return ls.map(x=>`<a href="${esc(DASH_BASE+'?ciid='+x.id)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Dashboard${ls.length>1?' ('+esc(x.t)+')':''}</a>`).join('');
 }
 // Address of the refresh relay (see PD/enrolments/relay/README.txt). Leave empty to have the
 // per-course buttons only reload the saved data.
@@ -112,7 +112,7 @@ function totals(c){let size=0,taken=0,n=0;for(const k of classes(c)){if(k.size==
 function classHtml(k,code,term){
   const has=k.size!=null&&k.available!=null, taken=has?k.size-k.available:0, p=has&&k.size?Math.round(100*taken/k.size):0;
   const name=esc(k.kind)+' '+esc(k.section);
-  const u=classUrl(code,term,k), link=u?`<a href="${esc(u)}" target="_blank" rel="noopener">${name}</a>`:name;
+  const u=classUrl(code,term,k), link=u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">${name}</a>`:name;
   const m=(k.meetings||[]).map(x=>[x.days,x.time,x.location||x.campus].filter(Boolean).join(' ')).filter(Boolean).join(' · ');
   return `<div class="cl"><div class="k">${link}<small>${k.type==='Enrolment class'?'Enrolment class':'Related class'} · #${esc(k.number)}</small></div>
   <div class="bar" role="img" aria-label="${p}% full"><i style="--w:${Math.min(p,100)}%;--c:${colour(p)}"></i></div>
