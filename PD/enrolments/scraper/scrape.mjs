@@ -4,6 +4,10 @@
 //   YEAR=2027         which year's pages to read
 //   SITE_ROOT=...     the repository root (default: the current folder)
 //   FIXTURE_DIR=...   read saved pages (CODE.html) instead of the website, for testing
+//   MODE=lastyear     one-off: read last year's pages (set YEAR) and save each course's final numbers
+//                     in PD/enrolments/data/last-year.json (enrolments.json and history.json are not touched)
+// Besides enrolments.json (the latest numbers) every normal run adds to PD/enrolments/data/history.json:
+// for each class, a record [time, enrolled, size] is added whenever its enrolled number or size changes.
 import * as cheerio from 'cheerio';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,6 +16,8 @@ import { pathToFileURL } from 'node:url';
 const YEAR = process.env.YEAR || '2027';
 const ROOT = process.env.SITE_ROOT || process.cwd();
 const DATA = path.join(ROOT, 'PD/enrolments/data/enrolments.json');
+const HIST = path.join(ROOT, 'PD/enrolments/data/history.json');
+const LAST = path.join(ROOT, 'PD/enrolments/data/last-year.json');
 const UA = 'Mozilla/5.0 (compatible; SchoolMathsEnrolmentsBot/1.0)';
 const slug = c => c.toLowerCase().replace(/^([a-z]+)(\d+)$/, '$1-$2');
 const pageUrl = c => `https://adelaide.edu.au/study/courses/${YEAR}/${slug(c)}/`;
@@ -85,6 +91,28 @@ export function parseCourse(html) {
   return { status: n ? 'ok' : 'no-classes', terms };
 }
 
+// Adds a record [seconds, enrolled, size] for each class of a course when its numbers differ from the last record.
+export function updateHistory(classes, code, course, nowSec) {
+  let added = 0;
+  for (const t of course.terms || []) for (const cp of t.campuses) for (const g of cp.groups) for (const k of g.classes) {
+    if (!k.number || k.size == null || k.available == null) continue;
+    const key = code + '|' + k.number, taken = k.size - k.available, arr = classes[key] || (classes[key] = []), last = arr[arr.length - 1];
+    if (!last || last[1] !== taken || last[2] !== k.size) { arr.push([nowSec, taken, k.size]); added++; }
+  }
+  return added;
+}
+// Final totals of the enrolment classes (e.g. forums) for each semester and campus of a course.
+export function segmentTotals(course) {
+  const out = {};
+  for (const t of course.terms || []) for (const cp of t.campuses) {
+    let size = 0, taken = 0, n = 0;
+    for (const g of cp.groups) for (const k of g.classes) if (k.type === 'Enrolment class' && k.size != null && k.available != null) { size += k.size; taken += k.size - k.available; n++; }
+    if (n) out[t.name + '|' + cp.name] = { taken, size };
+  }
+  return out;
+}
+const writeHistory = (h) => fs.writeFileSync(HIST, '{"v":1,"classes":{\n' + Object.keys(h).sort().map(k => JSON.stringify(k) + ':' + JSON.stringify(h[k])).join(',\n') + '\n}}\n');
+
 async function getHtml(code) {
   if (process.env.FIXTURE_DIR) {
     const f = path.join(process.env.FIXTURE_DIR, code + '.html');
@@ -104,7 +132,11 @@ async function main() {
   const readCodes = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').replace(/^\uFEFF/, '').split(/\r?\n/).slice(1).map(l => l.split(',')[0].trim().toUpperCase()).filter(Boolean) : [];
   // the course list, plus any extra courses listed only for this page (PD/enrolments/extra-courses.csv)
   const codes = [...new Set([...readCodes(path.join(ROOT, 'prereqs/courses.csv')), ...readCodes(path.join(ROOT, 'PD/enrolments/extra-courses.csv'))])];
+  const lastYear = process.env.MODE === 'lastyear';
   const prev = fs.existsSync(DATA) ? JSON.parse(fs.readFileSync(DATA, 'utf8')) : { meta: {}, courses: {} };
+  const hist = !lastYear && fs.existsSync(HIST) ? (JSON.parse(fs.readFileSync(HIST, 'utf8')).classes || {}) : {};
+  const ly = lastYear && fs.existsSync(LAST) ? JSON.parse(fs.readFileSync(LAST, 'utf8')) : { year: YEAR, courses: {} };
+  let histAdded = 0;
   const want = (process.env.COURSE || '').split(/[\s,]+/).filter(Boolean).map(s => s.toUpperCase());
   const targets = want.length ? want : codes;
   const out = prev.courses || {};
@@ -116,6 +148,8 @@ async function main() {
       if (html === null) out[code] = { code, url: pageUrl(code), fetched: now, status: 'no-page', terms: [] };
       else {
         const p = parseCourse(html);
+        if (lastYear) { const st = segmentTotals(p); if (Object.keys(st).length) ly.courses[code] = st; }
+        else if (p.status === 'ok') histAdded += updateHistory(hist, code, p, Math.floor(Date.now() / 1000));
         out[code] = { code, url: pageUrl(code), fetched: now, status: p.status, terms: p.terms };
         if (p.status === 'no-availability' && !shown) { shown = true; console.log(`${code}: no "Availability" heading found. Headings seen:`, p.headings); }
       }
@@ -125,13 +159,22 @@ async function main() {
     }
     if (!process.env.FIXTURE_DIR) await sleep(1000);
   }
+  if (lastYear) {
+    ly.year = YEAR; ly.generated = new Date().toISOString();
+    fs.mkdirSync(path.dirname(LAST), { recursive: true });
+    fs.writeFileSync(LAST, JSON.stringify(ly, null, 1) + '\n');
+    console.log(`Saved last year's (${YEAR}) final numbers for ${Object.keys(ly.courses).length} course(s).`);
+    if (failed && failed === targets.length) process.exit(1);
+    return;
+  }
   const now = new Date().toISOString();
   const meta = { year: YEAR, generated: now, fullRun: want.length ? prev.meta?.fullRun || null : now };
   const sorted = Object.fromEntries(Object.keys(out).sort().map(k => [k, out[k]]));
   fs.mkdirSync(path.dirname(DATA), { recursive: true });
   fs.writeFileSync(DATA, JSON.stringify({ meta, courses: sorted }, null, 1) + '\n');
+  writeHistory(hist);
   const c = s => targets.filter(k => out[k].status === s).length;
-  console.log(`Checked ${targets.length} course(s): ${c('ok')} with classes, ${c('no-classes')} with no classes listed, ${c('no-page')} with no page, ${c('no-availability')} without an Availability section, ${failed} failed.`);
+  console.log(`Checked ${targets.length} course(s): ${c('ok')} with classes, ${c('no-classes')} with no classes listed, ${c('no-page')} with no page, ${c('no-availability')} without an Availability section, ${failed} failed. History: ${histAdded} new record(s).`);
   if (failed && failed === targets.length) process.exit(1);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

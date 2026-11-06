@@ -104,9 +104,15 @@ a{color:var(--purple);font-weight:700}
 <tr><td><code>.github/workflows/enrolments.yml</code></td><td>The hourly job. It lives in a hidden <code>.github</code> folder at the very top of the repository (not inside <code>PD</code>). The line <code>YEAR: '2027'</code> says which year's course pages to read.</td><td>Only to change the year.</td></tr>
 <tr><td><code>PD/enrolments/scraper/scrape.mjs</code> and <code>package.json</code></td><td>The program that reads the university pages.</td><td>No. Ask Claude if the university changes its page layout.</td></tr>
 <tr><td><code>PD/enrolments/data/enrolments.json</code></td><td>The saved numbers. The job overwrites it every run.</td><td>No.</td></tr>
+<tr><td><code>PD/enrolments/data/history.json</code></td><td>The history behind the small lines and charts. Each run adds a record <code>[time, enrolled, size]</code> for a class only when its enrolled number or its size has changed. It only grows, and it cannot be rebuilt if lost, so do not delete it.</td><td>No.</td></tr>
+<tr><td><code>PD/enrolments/data/last-year.json</code> and <code>.github/workflows/enrolments-last-year.yml</code></td><td>Last year's final numbers for each course, semester and campus (the pink dashed line on the charts). Made once by running the "Collect last year's final enrolments" workflow by hand.</td><td>No. Re-run the workflow each year.</td></tr>
 <tr><td><code>PD/enrolments/extra-courses.csv</code></td><td>Courses to show on this page that are not in <code>courses.csv</code>. Columns: <code>Course Code</code>, <code>Course Name</code>, <code>Level</code>.</td><td>Yes: add a line to add a course.</td></tr>
 <tr><td><code>PD/enrolments/ciid-suffix.csv</code></td><td>The staff system's addresses end in a digit that belongs to each course on each campus (for example <code>2750_MATH_X306_2</code>), and it cannot be worked out, so it is listed here. Columns: <code>Course Code</code>, <code>Campus</code> (exactly as the university page spells it, e.g. Adelaide City Campus East), <code>Last digit</code>.</td><td>Yes: add a row when a course is missing.</td></tr>
 </table></div>
+
+<h3>The small lines and charts</h3>
+<p>Beside each bar is a small line showing how that semester's enrolment has changed since the history began (it says "collecting" until the numbers have changed over a few hours). Click it for a bigger chart: enrolled (solid), class size (dashed grey), last year's final (pink dashed), and the enrol-by and census dates. Use the button under the chart to switch between "data so far" and "up to the enrol-by date". The forecast is switched off until there is a full enrolment period of history. The numbers can never go above a class's size, so a full class hides how many more students wanted a place.</p>
+<p>To get last year's reference line: Actions → <b>Collect last year's final enrolments</b> → Run workflow (the year box already says 2026). Run it once a year, with the previous year.</p>
 
 <h3>Running it by hand</h3>
 <p>On GitHub, open the repository's <b>Actions</b> tab, choose <b>Update class enrolments</b>, then <b>Run workflow</b>. Leave the course box empty to refresh every course, or type one code (for example <code>MATHX206</code>) to refresh just that course. A full run takes a few minutes. Then hard refresh the page.</p>
@@ -136,14 +142,14 @@ a{color:var(--purple);font-weight:700}
 </ol>
 <h3>Where the files live</h3>
 <pre>raymondvozzo.github.io/
-├── .github/workflows/     enrolments.yml (the hourly job; a hidden folder)
+├── .github/workflows/     enrolments.yml (hourly), enrolments-last-year.yml (by hand); a hidden folder
 ├── prereqs/               index.html, courses.csv
 └── PD/                    index.html (the hub)
     ├── schedule/          index.html, schedule.js, schedule.css
     ├── major-courses/     index.html, lists.js, level2.xlsx, level3.xlsx, level4.xlsx
     ├── clos/              index.html, clos.csv
     ├── enrolments/        index.html, extra-courses.csv, ciid-suffix.csv
-    │   ├── data/          enrolments.json (written by the hourly job)
+    │   ├── data/          enrolments.json, history.json, last-year.json (written by the jobs)
     │   ├── scraper/       scrape.mjs, package.json
     │   └── relay/         optional, not in use
     └── readme/            index.html (this page)</pre>
@@ -158,6 +164,8 @@ a{color:var(--purple);font-weight:700}
 <tr><td>"Could not load…" on any page</td><td>The page was opened as a file from your computer (open it from the website instead), or a file it needs is missing.</td></tr>
 <tr><td>The page looks like an old version</td><td>Hard refresh. If it still does, check that every changed file was uploaded.</td></tr>
 <tr><td>"Last updated" on the Class enrolments page is many hours old</td><td>The hourly job did not run. Run it by hand from the Actions tab (see <a href="#enrol">Class enrolments</a>). If runs show a red cross, open one and read the failed step.</td></tr>
+<tr><td>A chart opens but is nearly empty, or a small line says "collecting"</td><td>The history only starts when the job first records a class, so there is little to show at first. It fills in over days and weeks.</td></tr>
+<tr><td>No pink "last year final" line on a chart</td><td>The "Collect last year's final enrolments" workflow has not been run yet, or last year's page for that course had no classes.</td></tr>
 <tr><td>A course shows "No data yet" or "no page"</td><td>The job has not collected it yet (run it by hand), or the university has no page for that course and year.</td></tr>
 <tr><td>"Dashboard, not checked yet: try 1 · try 2", or class names that are not links</td><td>The course is not in <code>ciid-suffix.csv</code> for that campus. Add its row (see <a href="#enrol">Class enrolments</a>).</td></tr>
 <tr><td>A dashboard or class link shows the staff system's "An error has occurred" page</td><td>The digit in <code>ciid-suffix.csv</code> is wrong for that course and campus, or you are not signed in to the staff system.</td></tr>

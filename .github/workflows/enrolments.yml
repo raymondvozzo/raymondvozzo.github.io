@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "enrolments-bot"
           git config user.email "enrolments-bot@users.noreply.github.com"
-          git add PD/enrolments/data/enrolments.json
+          git add PD/enrolments/data/enrolments.json PD/enrolments/data/history.json
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Update class enrolments"
           for i in 1 2 3; do
