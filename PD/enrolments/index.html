@@ -47,6 +47,7 @@ dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 4px;
 .lg{font-family:var(--ui);font-size:12px;display:flex;flex-wrap:wrap;gap:14px;margin:6px 0}.lg i{display:inline-block;width:22px;height:0;border-top:3px solid var(--purple);vertical-align:middle;margin-right:6px}
 .lg .a i{border-top:2px dashed #9a96bd}.lg .b i{border-top:2px dashed #B5338A}
 .note{font-family:var(--ui);font-size:12px;background:#f3f1ff;border-radius:8px;padding:8px 12px;margin:10px 0 0}
+.mc{margin:6px 0 10px}.mcn{font-size:12px;opacity:.6;margin:6px 0}.mc .btn{margin-top:4px}
 .nodata{font-size:12px;opacity:.6}
 .mini{width:70px;height:8px;border-radius:4px;background:#e6e3f5;overflow:hidden;flex:none}
 .mini i,.bar i{display:block;height:100%;background:var(--c,var(--ok));width:var(--w,0%)}
@@ -56,7 +57,7 @@ dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 4px;
 h3{font-family:var(--head);font-size:1.4rem;margin:14px 0 2px;border-bottom:2px solid var(--purple)}
 .kd{font-size:12px;opacity:.8;margin:4px 0}
 h4{font-size:13px;margin:10px 0 4px;text-transform:uppercase;letter-spacing:.04em;opacity:.7}
-.cl{display:grid;grid-template-columns:150px 1fr 110px;gap:10px;align-items:center;padding:6px 8px;border-radius:6px;font-size:13px}
+.cl{display:grid;grid-template-columns:150px 1fr 110px 76px;gap:10px;align-items:center;padding:6px 8px;border-radius:6px;font-size:13px}
 .cl:nth-child(odd){background:#f7f6fd}
 .cl .k{font-weight:700}.cl .k small{display:block;font-weight:400;opacity:.7}
 .cl .k a{color:var(--navy)}
@@ -66,7 +67,7 @@ h4{font-size:13px;margin:10px 0 4px;text-transform:uppercase;letter-spacing:.04e
 .msg{padding:14px 4px}.err{color:#9c3d00}
 .legend{font-size:12px;display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 12px}
 .legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:5px}
-@media(max-width:600px){summary{flex-wrap:wrap}.segs{margin-left:30px;width:100%}body{padding:16px}.box{padding:14px}.cl{grid-template-columns:1fr 90px}.cl .bar{grid-column:1/3;grid-row:2}.body{padding-left:8px}.when{grid-column:1/3}}
+@media(max-width:600px){summary{flex-wrap:wrap}.segs{margin-left:30px;width:100%}body{padding:16px}.box{padding:14px}.cl{grid-template-columns:1fr 90px 76px}.cl .bar{grid-column:1/4;grid-row:2}.body{padding-left:8px}.when{grid-column:1/4}}
 </style>
 </head>
 <body>
@@ -142,10 +143,8 @@ const termAbbr=n=>{const m=/^semester\s*(\d)/i.exec(n||'');return m?'Sem '+m[1]:
 function segs(c){const out=[];for(const t of c.terms||[])for(const cp of t.campuses){let size=0,taken=0,n=0;
   for(const g of cp.groups)for(const k of g.classes)if(k.type==='Enrolment class'&&k.size!=null&&k.available!=null){size+=k.size;taken+=k.size-k.available;n++}
   if(n)out.push({label:termAbbr(t.name)+' · '+campAbbr(cp.name),title:t.name+', '+cp.name,size,taken,code:c.code,term:t.name,campus:cp.name})}return out.sort((a,b)=>a.label.localeCompare(b.label))}
-// ---- history: enrolled number of a semester+campus over time (sum of its enrolment classes) ----
-function series(code,term,campus){
-  const c=DATA.courses[code],t=c&&(c.terms||[]).find(x=>x.name===term),cp=t&&t.campuses.find(x=>x.name===campus);if(!cp)return null;
-  const arrs=[];for(const g of cp.groups)for(const k of g.classes)if(k.type==='Enrolment class'&&k.number){const a=HIST[code+'|'+k.number];if(a&&a.length)arrs.push(a)}
+// ---- history: enrolled number over time ----
+function seriesFromArrays(arrs){
   if(!arrs.length)return null;
   const t0=Math.max(...arrs.map(a=>a[0][0]));
   const times=[...new Set(arrs.flatMap(a=>a.map(p=>p[0])).filter(x=>x>=t0).concat([t0]))].sort((a,b)=>a-b);
@@ -153,62 +152,96 @@ function series(code,term,campus){
   const end=Math.max(pts[pts.length-1].t,Date.parse(DATA.meta&&DATA.meta.generated)||0);
   if(end>pts[pts.length-1].t)pts.push({...pts[pts.length-1],t:end});
   return pts}
+// a semester + campus: the sum of its enrolment classes (e.g. the forum)
+function series(code,term,campus){
+  const c=DATA.courses[code],t=c&&(c.terms||[]).find(x=>x.name===term),cp=t&&t.campuses.find(x=>x.name===campus);if(!cp)return null;
+  const arrs=[];for(const g of cp.groups)for(const k of g.classes)if(k.type==='Enrolment class'&&k.number){const a=HIST[code+'|'+k.number];if(a&&a.length)arrs.push(a)}
+  return seriesFromArrays(arrs)}
+// one class (a forum, a workshop, an assessment...)
+function classSeries(code,k){const a=k&&k.number&&HIST[code+'|'+k.number];return a&&a.length?seriesFromArrays([a]):null}
 const stepPath=(pts,X,Y,key)=>pts.map((p,i)=>(i?`H${X(p.t).toFixed(1)}V${Y(p[key]).toFixed(1)}`:`M${X(p.t).toFixed(1)} ${Y(p[key]).toFixed(1)}`)).join('');
-function sparkHtml(x){
-  const pts=series(x.code,x.term,x.campus),key=esc([x.code,x.term,x.campus].join('|'));
+function sparkBtn(pts,key,title,p){
   if(!pts||pts.length<2||pts[pts.length-1].t-pts[0].t<2*3600e3)return`<span class="nospark" title="History is being collected: a line appears once the numbers have changed over a few hours">collecting</span>`;
-  const W=72,H=20,m=2,t0=pts[0].t,t1=pts[pts.length-1].t,ym=Math.max(1,...pts.map(p=>Math.max(p.taken,p.size)));
-  const X=t=>m+(W-2*m)*(t-t0)/(t1-t0||1),Y=v=>H-m-(H-2*m)*v/ym,p=x.size?Math.round(100*x.taken/x.size):0;
-  return`<button class="spark" data-h="${key}" style="--c:${colour(p)}" title="Enrolment over time: click for a bigger chart" aria-label="Enrolment over time for ${esc(x.title)}: open chart"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><path d="${stepPath(pts,X,Y,'size')}" fill="none" stroke="#b9b5d6" stroke-width="1" stroke-dasharray="2 2"/><path d="${stepPath(pts,X,Y,'taken')}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>`}
+  const W=72,H=20,m=2,t0=pts[0].t,t1=pts[pts.length-1].t,ym=Math.max(1,...pts.map(q=>Math.max(q.taken,q.size)));
+  const X=t=>m+(W-2*m)*(t-t0)/(t1-t0||1),Y=v=>H-m-(H-2*m)*v/ym;
+  return`<button class="spark" data-h="${esc(key)}" style="--c:${colour(p)}" title="Enrolment over time: click for a bigger chart" aria-label="Enrolment over time for ${esc(title)}: open chart"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><path d="${stepPath(pts,X,Y,'size')}" fill="none" stroke="#b9b5d6" stroke-width="1" stroke-dasharray="2 2"/><path d="${stepPath(pts,X,Y,'taken')}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>`}
+const sparkHtml=x=>sparkBtn(series(x.code,x.term,x.campus),'S|'+[x.code,x.term,x.campus].join('|'),x.title,x.size?Math.round(100*x.taken/x.size):0);
 function kdate(s){const m=/(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(s||'');return m?new Date(+m[3],+m[2]-1,+m[1]).getTime():null}
 const dshort=t=>new Date(t).toLocaleDateString([], {day:'numeric',month:'short'});
 const dlong=t=>new Date(t).toLocaleString([], {weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit'});
-function openChart(key,full){
-  const [code,term,campus]=key.split('|'),pts=series(code,term,campus);if(!pts)return;
-  const c=DATA.courses[code],tm=(c.terms||[]).find(x=>x.name===term),kd=(tm&&tm.keyDates)||{},eb=kdate(kd.enrol),cs=kdate(kd.census);
-  const ly=((LY.courses||{})[code]||{})[term+'|'+campus];
-  const cur=pts[pts.length-1],t0=pts[0].t,now=cur.t;
-  const target=Math.max(eb||0,cs||0);
-  if(full===undefined)full=!!target&&(target-t0)<=4*(now-t0)+21*86400e3;   // long, empty stretch ahead: start with the data so far
-  const tEnd=full&&target?Math.max(now+86400e3,target):now+Math.max(2*86400e3,.08*(now-t0));
-  const ymax=Math.max(1,cur.size,...pts.map(p=>Math.max(p.taken,p.size)),ly?ly.taken:0)*1.1;
-  const W=680,H=300,L=44,R=16,T=14,B=30,X=t=>L+(W-L-R)*(t-t0)/((tEnd-t0)||1),Y=v=>T+(H-T-B)*(1-v/ymax);
-  const ticks=[];const step=Math.pow(10,Math.floor(Math.log10(ymax/4)));let st=step;for(const k of[1,2,2.5,5,10])if(ymax/(step*k)<=5){st=step*k;break}
-  for(let v=0;v<=ymax;v+=st)ticks.push(v);
-  const xt=[0,1,2,3,4].map(i=>t0+(tEnd-t0)*i/4),dtick=t=>(tEnd-t0)<4*86400e3?new Date(t).toLocaleString([], {day:'numeric',month:'short',hour:'numeric'}):dshort(t);
-  const p=cur.size?Math.round(100*cur.taken/cur.size):0;
-  let svg=`<svg class="ch" id="chsvg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Enrolment over time for ${esc(code)}, ${esc(term)}, ${esc(campus)}">`;
+const dday=t=>new Date(t).toLocaleDateString([], {weekday:'short',day:'numeric',month:'short',year:'numeric'});
+function termDates(code,term){const c=DATA.courses[code],tm=c&&(c.terms||[]).find(x=>x.name===term),kd=(tm&&tm.keyDates)||{};return{eb:kdate(kd.enrol),cs:kdate(kd.census)}}
+// what a chart key stands for: 'S|code|term|campus' (a semester and campus) or 'C|code|number|term|campus' (one class)
+function chartInfo(key){
+  const a=key.split('|');
+  if(a[0]==='S'){const[,code,term,campus]=a,pts=series(code,term,campus),ly=((LY.courses||{})[code]||{})[term+'|'+campus];
+    return{code,term,campus,pts,ly,...termDates(code,term),title:termAbbr(term)+' · '+campAbbr(campus),what:'Enrolment classes (e.g. the forum)'}}
+  if(a[0]==='C'){const[,code,number,term,campus]=a;let k=null;
+    const c=DATA.courses[code],tm=c&&(c.terms||[]).find(x=>x.name===term),cp=tm&&tm.campuses.find(x=>x.name===campus);
+    if(cp)for(const g of cp.groups)for(const q of g.classes)if(q.number===number)k=q;
+    return k?{code,term,campus,pts:classSeries(code,k),ly:null,...termDates(code,term),title:k.kind+' '+k.section+' · '+termAbbr(term)+' · '+campAbbr(campus),what:k.kind+' '+k.section+' (class '+number+')'}:null}
+  return null}
+const CH={};
+// draws a chart as an SVG string; o = {id, pts, W, H, ly, lyYear, eb, cs, full}
+function drawChart(o){
+  const pts=o.pts,cur=pts[pts.length-1],t0=pts[0].t,now=cur.t,target=Math.max(o.eb||0,o.cs||0);
+  const tEnd=o.full&&target?Math.max(now+86400e3,target):now+Math.max(2*86400e3,.08*(now-t0));
+  const ly=o.ly,ymax=Math.max(1,cur.size,...pts.map(p=>Math.max(p.taken,p.size)),ly?ly.taken:0)*1.1;
+  const W=o.W,H=o.H,L=44,R=16,T=14,B=30,X=t=>L+(W-L-R)*(t-t0)/((tEnd-t0)||1),Y=v=>T+(H-T-B)*(1-v/ymax);
+  const step=Math.pow(10,Math.floor(Math.log10(ymax/4)));let st=step;for(const k of[1,2,2.5,5,10])if(ymax/(step*k)<=5){st=step*k;break}
+  const ticks=[];for(let v=0;v<=ymax;v+=st)ticks.push(v);
+  const short=(tEnd-t0)<4*86400e3,dtick=t=>short?new Date(t).toLocaleString([], {day:'numeric',month:'short',hour:'numeric'}):dshort(t);
+  const xt=[0,1,2,3,4].map(i=>t0+(tEnd-t0)*i/4);
+  CH[o.id]={pts,t0,tEnd,W,L,R,now};
+  let svg=`<svg class="ch" id="${o.id}" data-rd="rd-${o.id}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label||'Enrolment over time')}">`;
   svg+=`<rect class="fut" x="${X(now)}" y="${T}" width="${Math.max(0,W-R-X(now))}" height="${H-T-B}"/>`;
   svg+=ticks.map(v=>`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L-6}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('');
   svg+=xt.map(t=>`<text x="${X(t)}" y="${H-10}" text-anchor="middle">${dtick(t)}</text>`).join('');
-  if(ly)svg+=`<line class="ly" x1="${L}" x2="${W-R}" y1="${Y(ly.taken)}" y2="${Y(ly.taken)}"/><text x="${W-R-2}" y="${Y(ly.taken)-4}" text-anchor="end" style="fill:#B5338A;opacity:1">${esc(LY.year||'Last year')} final: ${ly.taken}</text>`;
-  for(const [t,l] of [[eb,'Enrol by'],[cs,'Census']])if(t&&t>=t0&&t<=tEnd)svg+=`<line class="vl" x1="${X(t)}" x2="${X(t)}" y1="${T}" y2="${H-B}"/><text x="${X(t)-3}" y="${T+10}" text-anchor="end">${l}</text>`;
+  if(ly)svg+=`<line class="ly" x1="${L}" x2="${W-R}" y1="${Y(ly.taken)}" y2="${Y(ly.taken)}"/><text x="${W-R-2}" y="${Y(ly.taken)-4}" text-anchor="end" style="fill:#B5338A;opacity:1">${esc(o.lyYear||'Last year')} final: ${ly.taken}</text>`;
+  for(const[t,l]of[[o.eb,'Enrol by'],[o.cs,'Census']])if(t&&t>=t0&&t<=tEnd)svg+=`<line class="vl" x1="${X(t)}" x2="${X(t)}" y1="${T}" y2="${H-B}"/><text x="${X(t)-3}" y="${T+10}" text-anchor="end">${l}</text>`;
   svg+=`<path class="cap" d="${stepPath(pts,X,Y,'size')}"/><path class="ln" d="${stepPath(pts,X,Y,'taken')}"/><circle class="dot" cx="${X(now)}" cy="${Y(cur.taken)}" r="4.5"/>`;
   svg+=`<text x="${X(now)+(X(now)>W-120?-8:8)}" y="${H-B-8}" text-anchor="${X(now)>W-120?'end':'start'}" style="opacity:.55">forecast: not available yet</text>`;
-  svg+=`<line class="xh" id="xh" y1="${T}" y2="${H-B}" x1="-10" x2="-10"/></svg>`;
+  return svg+`<line class="xh" y1="${T}" y2="${H-B}" x1="-10" x2="-10"/></svg>`}
+const defaultFull=(pts,eb,cs)=>{const target=Math.max(eb||0,cs||0);return!!target&&(target-pts[0].t)<=4*(pts[pts.length-1].t-pts[0].t)+21*86400e3};
+// reading under the pointer, for every chart on the page
+function chartHover(e){
+  const sv=e.target.closest&&e.target.closest('svg.ch');if(!sv)return;const m=CH[sv.id];if(!m)return;
+  const xh=sv.querySelector('.xh'),rd=document.getElementById(sv.dataset.rd),r=sv.getBoundingClientRect(),px=(e.clientX-r.left)*m.W/r.width;
+  if(px<m.L||px>m.W-m.R){xh.setAttribute('x1',-10);xh.setAttribute('x2',-10);return}
+  xh.setAttribute('x1',px);xh.setAttribute('x2',px);if(!rd)return;
+  const t=m.t0+(px-m.L)/(m.W-m.L-m.R)*(m.tEnd-m.t0);
+  if(t>m.now){rd.textContent=dday(t)+': after the latest data (no forecast yet)';return}
+  let v=m.pts[0];for(const q of m.pts){if(q.t<=t)v=q;else break}
+  rd.textContent=dlong(Math.max(t,m.t0))+': '+v.taken+' enrolled of '+v.size}
+document.addEventListener('pointermove',chartHover);
+function openChart(key,full){
+  const info=chartInfo(key);if(!info||!info.pts)return;
+  const{code,term,campus,pts,ly,eb,cs}=info,cur=pts[pts.length-1],t0=pts[0].t,target=Math.max(eb||0,cs||0);
+  if(full===undefined)full=defaultFull(pts,eb,cs);
+  const p=cur.size?Math.round(100*cur.taken/cur.size):0;
+  const svg=drawChart({id:'big',pts,W:680,H:300,ly,lyYear:LY.year,eb,cs,full,label:'Enrolment over time for '+info.title});
   const days=t=>{const d=Math.round((t-Date.now())/86400e3);return d>0?`in ${d} day${d==1?'':'s'}`:d==0?'today':`${-d} day${d==-1?'':'s'} ago`};
-  $('dlg').innerHTML=`<button class="dx" aria-label="Close" id="dx">×</button><h3>${esc(code)} <span style="color:var(--purple)">${esc(termAbbr(term))} · ${esc(campAbbr(campus))}</span></h3>
-  <div style="font-family:var(--ui);font-size:12px;opacity:.75">${esc(c.name||(CSV.find(r=>r.code===code)||{}).name||'')} · ${esc(term)}, ${esc(campus)}</div>
-  <div class="rd" id="rd" aria-live="polite">Move over the chart to read a value.</div>${svg}
+  $('dlg').innerHTML=`<button class="dx" aria-label="Close" id="dx">×</button><h3>${esc(code)} <span style="color:var(--purple)">${esc(info.title)}</span></h3>
+  <div style="font-family:var(--ui);font-size:12px;opacity:.75">${esc((CSV.find(r=>r.code===code)||{}).name||'')} · ${esc(term)}, ${esc(campus)}</div>
+  <div class="rd" id="rd-big" aria-live="polite">Move over the chart to read a value.</div>${svg}
   <div class="lg"><span><i></i>Enrolled</span><span class="a"><i></i>Class size (capacity)</span>${ly?`<span class="b"><i></i>${esc(LY.year||'Last year')} final</span>`:''}</div>
   ${target?`<button class="btn" id="vw">${full?'Zoom to the data so far':'Show up to the enrol-by date'}</button>`:''}
   <dl class="dl"><dt>Now</dt><dd>${cur.taken} of ${cur.size} (${p}% full)</dd>
-  ${ly?`<dt>${esc(LY.year||'Last year')} final</dt><dd>${ly.taken} of ${ly.size}</dd>`:''}
-  ${eb?`<dt>Enrol by</dt><dd>${new Date(eb).toLocaleDateString([], {weekday:'short',day:'numeric',month:'short',year:'numeric'})} (${days(eb)})</dd>`:''}
-  ${cs?`<dt>Census</dt><dd>${new Date(cs).toLocaleDateString([], {weekday:'short',day:'numeric',month:'short',year:'numeric'})} (${days(cs)})</dd>`:''}
+  ${ly?`<dt>${esc(LY.year||'Last year')} final</dt><dd>${ly.taken} of ${ly.size} (whole semester and campus)</dd>`:''}
+  ${eb?`<dt>Enrol by</dt><dd>${dday(eb)} (${days(eb)})</dd>`:''}
+  ${cs?`<dt>Census</dt><dd>${dday(cs)} (${days(cs)})</dd>`:''}
   <dt>History from</dt><dd>${dlong(t0)}</dd></dl>
   <p class="note">Forecast: not available yet. It needs a full enrolment period of recorded history to learn how numbers rise towards the enrol-by date. The numbers shown cannot rise above a class's size, so a full class hides how many more students wanted a place.</p>`;
   const dlg=$('dlg');if(!dlg.open)dlg.showModal();
-  $('dx').onclick=()=>dlg.close();if($('vw'))$('vw').onclick=()=>openChart(key,!full);
-  const sv=$('chsvg'),xh=$('xh'),rd=$('rd');
-  const val=t=>{let v=pts[0];for(const q of pts){if(q.t<=t)v=q;else break}return v};
-  const mv=e=>{const r=sv.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width,t=t0+(px-L)/(W-L-R)*(tEnd-t0);
-    if(px<L||px>W-R){xh.setAttribute('x1',-10);xh.setAttribute('x2',-10);return}
-    xh.setAttribute('x1',px);xh.setAttribute('x2',px);
-    if(t>now){rd.textContent=dlong(t).replace(/,\s*\d+:\d+.*$/,'')+': after the latest data (no forecast yet)';return}
-    const v=val(t);rd.textContent=dlong(Math.max(t,t0))+': '+v.taken+' enrolled of '+v.size}
-  sv.addEventListener('mousemove',mv);sv.addEventListener('pointermove',mv);
-}
+  $('dx').onclick=()=>dlg.close();if($('vw'))$('vw').onclick=()=>openChart(key,!full)}
+// the medium chart inside an opened course, for one semester and campus
+let chn=0;
+function inlineChart(code,t,cp){
+  const key='S|'+[code,t.name,cp.name].join('|'),pts=series(code,t.name,cp.name);
+  if(!pts||pts.length<2||pts[pts.length-1].t-pts[0].t<2*3600e3)return'<p class="mcn">Enrolment history is being collected.</p>';
+  const{eb,cs}=termDates(code,t.name),ly=((LY.courses||{})[code]||{})[t.name+'|'+cp.name],id='ic'+(++chn);
+  return`<div class="mc"><div class="rd" id="rd-${id}">Enrolment history · move over the chart to read a value</div>${drawChart({id,pts,W:680,H:200,ly,lyYear:LY.year,eb,cs,full:defaultFull(pts,eb,cs),label:'Enrolment history for '+t.name+', '+cp.name})}
+  <button class="btn" data-h="${esc(key)}">Open larger</button></div>`}
 function classHtml(k,code,term,campus){
   const has=k.size!=null&&k.available!=null, taken=has?k.size-k.available:0, p=has&&k.size?Math.round(100*taken/k.size):0;
   const name=esc(k.kind)+' '+esc(k.section);
@@ -216,7 +249,8 @@ function classHtml(k,code,term,campus){
   const m=(k.meetings||[]).map(x=>[x.days,x.time,x.location||x.campus].filter(Boolean).join(' ')).filter(Boolean).join(' · ');
   return `<div class="cl"><div class="k">${link}<small>${k.type==='Enrolment class'?'Enrolment class':'Related class'} · #${esc(k.number)}</small></div>
   <div class="bar" role="img" aria-label="${p}% full"><i style="--w:${Math.min(p,100)}%;--c:${colour(p)}"></i></div>
-  <div class="num">${has?`${taken} / ${k.size}<br><small>${k.available} left</small>`:'–'}</div>${m?`<div class="when">${esc(m)}</div>`:''}</div>`}
+  <div class="num">${has?`${taken} / ${k.size}<br><small>${k.available} left</small>`:'–'}</div>
+  <div>${sparkBtn(classSeries(code,k),'C|'+[code,k.number,term,campus].join('|'),k.kind+' '+k.section,p)}</div>${m?`<div class="when">${esc(m)}</div>`:''}</div>`}
 function courseBody(code){
   const c=DATA.courses[code];
   if(!c)return'<p class="msg">No data yet for this course. It will appear after the next update.</p>';
@@ -228,7 +262,7 @@ function courseBody(code){
   for(const t of c.terms){h+=`<h3>${esc(t.name)}</h3>`;const kd=t.keyDates||{};
     const parts=[['enrol','Enrol by'],['census','Census'],['lastWF','Last day to withdraw (no fail)'],['lastW','Last day to withdraw']].filter(([k])=>kd[k]).map(([k,l])=>l+' '+kd[k]);
     if(parts.length)h+=`<p class="kd">${esc(parts.join(' · '))}</p>`;
-    for(const cp of t.campuses)for(const g of cp.groups){h+=`<h4>${esc(cp.name)} · ${esc(g.name)}</h4>`+g.classes.map(k=>classHtml(k,code,t.name,cp.name)).join('')}}
+    for(const cp of t.campuses)cp.groups.forEach((g,gi)=>{h+=`<h4>${esc(cp.name)} · ${esc(g.name)}</h4>`+(gi===0?inlineChart(code,t,cp):'')+g.classes.map(k=>classHtml(k,code,t.name,cp.name)).join('')})}
   return h}
 function render(){
   const q=$('q').value.trim().toLowerCase(), lv=$('lvl').value;
