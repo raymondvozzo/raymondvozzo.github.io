@@ -51,8 +51,16 @@ export function parseCourse(html) {
           campus.groups.push(group = { name: s, classes: [] }); cls = null;
         } else if ((m = s.match(/^(Enrolment class|Related class)\s*:\s*(.*)$/i))) {
           need(); group.classes.push(cls = { type: /^enrol/i.test(m[1]) ? 'Enrolment class' : 'Related class', kind: m[2], number: '', section: '', size: null, available: null, meetings: [] });
-        } else if (cls && (m = s.match(/^Class number\s+(.+)$/i))) cls.number = m[1];
-        else if (cls && (m = s.match(/^Section\s+(.+)$/i))) cls.section = m[1];
+        } else if (cls && (m = s.match(/^Class number\s+(.+)$/i))) {
+          // Several classes can sit under one "Related class: Workshop" heading, each with its own
+          // "Class number". Start a new class when this one already has a number.
+          if (cls.number) group.classes.push(cls = { type: cls.type, kind: cls.kind, number: '', section: '', size: null, available: null, meetings: [] });
+          cls.number = m[1];
+        }
+        else if (cls && (m = s.match(/^Section\s+(.+)$/i))) {
+          if (cls.section) group.classes.push(cls = { type: cls.type, kind: cls.kind, number: '', section: '', size: null, available: null, meetings: [] });
+          cls.section = m[1];
+        }
         else if (cls && (m = s.match(/^Size\s+(\d+)/i))) cls.size = +m[1];
         else if (cls && (m = s.match(/^Available\s+(\d+)/i))) cls.available = +m[1];
         else if (!/^(class number|section|size|available)\b/i.test(s)) {   // a campus heading
