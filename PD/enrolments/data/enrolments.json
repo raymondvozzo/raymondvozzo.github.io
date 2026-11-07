@@ -1,14 +1,14 @@
 {
  "meta": {
   "year": "2027",
-  "generated": "2026-11-07T02:49:17.690Z",
-  "fullRun": "2026-11-07T02:49:17.690Z"
+  "generated": "2026-11-07T09:59:53.344Z",
+  "fullRun": "2026-11-07T09:59:53.344Z"
  },
  "courses": {
   "ARTI1000": {
    "code": "ARTI1000",
    "url": "https://adelaide.edu.au/study/courses/2027/arti-1000/",
-   "fetched": "2026-11-07T02:47:55.365Z",
+   "fetched": "2026-11-07T09:59:08.047Z",
    "status": "ok",
    "terms": [
     {
@@ -63,7 +63,7 @@
   "COMP1002": {
    "code": "COMP1002",
    "url": "https://adelaide.edu.au/study/courses/2027/comp-1002/",
-   "fetched": "2026-11-07T02:43:13.397Z",
+   "fetched": "2026-11-07T09:56:02.946Z",
    "status": "ok",
    "terms": [
     {
@@ -555,7 +555,7 @@
   "COMP4007": {
    "code": "COMP4007",
    "url": "https://adelaide.edu.au/study/courses/2027/comp-4007/",
-   "fetched": "2026-11-07T02:48:08.600Z",
+   "fetched": "2026-11-07T09:59:16.927Z",
    "status": "ok",
    "terms": [
     {
@@ -610,7 +610,7 @@
   "COMPX300": {
    "code": "COMPX300",
    "url": "https://adelaide.edu.au/study/courses/2027/compx-300/",
-   "fetched": "2026-11-07T02:46:05.597Z",
+   "fetched": "2026-11-07T09:57:47.211Z",
    "status": "ok",
    "terms": [
     {
@@ -691,7 +691,7 @@
   "ENGI1004": {
    "code": "ENGI1004",
    "url": "https://adelaide.edu.au/study/courses/2027/engi-1004/",
-   "fetched": "2026-11-07T02:49:07.226Z",
+   "fetched": "2026-11-07T09:59:45.787Z",
    "status": "ok",
    "terms": [
     {
@@ -712,16 +712,16 @@
            "available": 25,
            "meetings": [
             {
-             "dates": "12 Jan - 9 Feb",
-             "days": "Tuesday",
+             "dates": "14 Jan - 11 Feb",
+             "days": "Thursday",
              "time": "10:10am - 12pm",
              "campus": "Mawson Lakes",
              "location": "Sir Charles Todd, SCT2-37",
              "instructor": ""
             },
             {
-             "dates": "14 Jan - 11 Feb",
-             "days": "Thursday",
+             "dates": "12 Jan - 9 Feb",
+             "days": "Tuesday",
              "time": "10:10am - 12pm",
              "campus": "Mawson Lakes",
              "location": "Sir Charles Todd, SCT2-37",
@@ -792,16 +792,16 @@
            "available": 245,
            "meetings": [
             {
-             "dates": "11 Jan - 8 Feb",
-             "days": "Monday",
+             "dates": "15 Jan - 12 Feb",
+             "days": "Friday",
              "time": "10:10am - 12pm",
              "campus": "Adelaide City Campus East",
              "location": "Horace Lamb, 1022",
              "instructor": ""
             },
             {
-             "dates": "15 Jan - 12 Feb",
-             "days": "Friday",
+             "dates": "11 Jan - 8 Feb",
+             "days": "Monday",
              "time": "10:10am - 12pm",
              "campus": "Adelaide City Campus East",
              "location": "Horace Lamb, 1022",
@@ -836,16 +836,16 @@
            "available": 27,
            "meetings": [
             {
-             "dates": "11 Jan - 8 Feb",
-             "days": "Monday",
+             "dates": "15 Jan - 12 Feb",
+             "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Hughes, 111a",
              "instructor": ""
             },
             {
-             "dates": "15 Jan - 12 Feb",
-             "days": "Friday",
+             "dates": "11 Jan - 8 Feb",
+             "days": "Monday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Hughes, 111a",
@@ -862,16 +862,16 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "11 Jan - 8 Feb",
-             "days": "Monday",
+             "dates": "15 Jan - 12 Feb",
+             "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 105",
              "instructor": ""
             },
             {
-             "dates": "15 Jan - 12 Feb",
-             "days": "Friday",
+             "dates": "11 Jan - 8 Feb",
+             "days": "Monday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 105",
@@ -888,16 +888,16 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "11 Jan - 8 Feb",
-             "days": "Monday",
+             "dates": "15 Jan - 12 Feb",
+             "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 218",
              "instructor": ""
             },
             {
-             "dates": "15 Jan - 12 Feb",
-             "days": "Friday",
+             "dates": "11 Jan - 8 Feb",
+             "days": "Monday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 218",
@@ -914,16 +914,16 @@
            "available": 28,
            "meetings": [
             {
-             "dates": "11 Jan - 8 Feb",
-             "days": "Monday",
+             "dates": "15 Jan - 12 Feb",
+             "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 105",
              "instructor": ""
             },
             {
-             "dates": "15 Jan - 12 Feb",
-             "days": "Friday",
+             "dates": "11 Jan - 8 Feb",
+             "days": "Monday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 105",
@@ -940,16 +940,16 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "11 Jan - 8 Feb",
-             "days": "Monday",
+             "dates": "15 Jan - 12 Feb",
+             "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 218",
              "instructor": ""
             },
             {
-             "dates": "15 Jan - 12 Feb",
-             "days": "Friday",
+             "dates": "11 Jan - 8 Feb",
+             "days": "Monday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 218",
@@ -987,7 +987,7 @@
            "available": 70,
            "meetings": [
             {
-             "dates": "23 Feb - 13 Apr",
+             "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "11:10am - 1pm",
              "campus": "Mawson Lakes",
@@ -995,7 +995,7 @@
              "instructor": ""
             },
             {
-             "dates": "4 May - 25 May",
+             "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "11:10am - 1pm",
              "campus": "Mawson Lakes",
@@ -1098,7 +1098,7 @@
            "number": "26189",
            "section": "FR02",
            "size": 250,
-           "available": 227,
+           "available": 226,
            "meetings": [
             {
              "dates": "25 Feb - 15 Apr",
@@ -1281,7 +1281,7 @@
            "available": 27,
            "meetings": [
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -1289,7 +1289,7 @@
              "instructor": ""
             },
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -1307,6 +1307,14 @@
            "available": 29,
            "meetings": [
             {
+             "dates": "7 May - 28 May",
+             "days": "Friday",
+             "time": "10:10am - 11am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engineering North, N132",
+             "instructor": ""
+            },
+            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "10:10am - 11am",
@@ -1316,14 +1324,6 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
-             "days": "Friday",
-             "time": "10:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engineering North, N132",
-             "instructor": ""
-            },
-            {
-             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -1409,6 +1409,14 @@
            "available": 30,
            "meetings": [
             {
+             "dates": "7 May - 28 May",
+             "days": "Friday",
+             "time": "10:10am - 11am",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 111a",
+             "instructor": ""
+            },
+            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "10:10am - 11am",
@@ -1418,14 +1426,6 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
-             "days": "Friday",
-             "time": "10:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 111a",
-             "instructor": ""
-            },
-            {
-             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -1443,7 +1443,7 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "25 Feb - 15 Apr",
+             "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -1451,7 +1451,7 @@
              "instructor": ""
             },
             {
-             "dates": "6 May - 27 May",
+             "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -1610,10 +1610,10 @@
            "number": "26205",
            "section": "WS02",
            "size": 30,
-           "available": 28,
+           "available": 27,
            "meetings": [
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -1621,7 +1621,7 @@
              "instructor": ""
             },
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -1639,6 +1639,14 @@
            "available": 30,
            "meetings": [
             {
+             "dates": "7 May - 28 May",
+             "days": "Friday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "2:10pm - 3pm",
@@ -1648,14 +1656,6 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
-             "days": "Friday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
-             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -2224,7 +2224,7 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "4 Aug - 22 Sep",
+             "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -2232,7 +2232,7 @@
              "instructor": ""
             },
             {
-             "dates": "13 Oct - 3 Nov",
+             "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -2328,7 +2328,7 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -2336,7 +2336,7 @@
              "instructor": ""
             },
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -2380,7 +2380,7 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "6 Aug - 24 Sep",
+             "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -2388,7 +2388,7 @@
              "instructor": ""
             },
             {
-             "dates": "15 Oct - 5 Nov",
+             "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -2414,7 +2414,7 @@
   "ENGI2001": {
    "code": "ENGI2001",
    "url": "https://adelaide.edu.au/study/courses/2027/engi-2001/",
-   "fetched": "2026-11-07T02:49:14.710Z",
+   "fetched": "2026-11-07T09:59:48.762Z",
    "status": "ok",
    "terms": [
     {
@@ -2588,7 +2588,7 @@
            "number": "26173",
            "section": "FR01",
            "size": 300,
-           "available": 213,
+           "available": 212,
            "meetings": [
             {
              "dates": "24 Feb - 14 Apr",
@@ -2716,7 +2716,7 @@
            "number": "26177",
            "section": "PR03",
            "size": 50,
-           "available": 20,
+           "available": 19,
            "meetings": [
             {
              "dates": "26 Feb - 19 Mar",
@@ -2839,7 +2839,7 @@
            "number": "61171",
            "section": "FR01",
            "size": 50,
-           "available": 35,
+           "available": 34,
            "meetings": [
             {
              "dates": "6 Aug - 24 Sep",
@@ -2865,7 +2865,7 @@
            "number": "61172",
            "section": "PR02",
            "size": 25,
-           "available": 12,
+           "available": 11,
            "meetings": [
             {
              "dates": "6 Aug - 24 Sep",
@@ -3198,178 +3198,9 @@
   "MATH1004": {
    "code": "MATH1004",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1004/",
-   "fetched": "2026-11-07T02:42:41.460Z",
+   "fetched": "2026-11-07T09:55:53.629Z",
    "status": "ok",
    "terms": [
-    {
-     "name": "Semester 2",
-     "campuses": [
-      {
-       "name": "Adelaide City Campus East",
-       "groups": [
-        {
-         "name": "Group 1",
-         "classes": [
-          {
-           "type": "Enrolment class",
-           "kind": "Forum",
-           "number": "62326",
-           "section": "FR01",
-           "size": 100,
-           "available": 99,
-           "meetings": [
-            {
-             "dates": "2 Aug - 20 Sep",
-             "days": "Monday",
-             "time": "2:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Benham, G10",
-             "instructor": ""
-            },
-            {
-             "dates": "11 Oct - 1 Nov",
-             "days": "Monday",
-             "time": "2:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Benham, G10",
-             "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Workshop",
-           "number": "62327",
-           "section": "WS04",
-           "size": 30,
-           "available": 30,
-           "meetings": [
-            {
-             "dates": "14 Oct - 4 Nov",
-             "days": "Thursday",
-             "time": "1:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G06",
-             "instructor": ""
-            },
-            {
-             "dates": "5 Aug - 23 Sep",
-             "days": "Thursday",
-             "time": "1:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G06",
-             "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Workshop",
-           "number": "62328",
-           "section": "WS03",
-           "size": 30,
-           "available": 29,
-           "meetings": [
-            {
-             "dates": "3 Aug - 21 Sep",
-             "days": "Tuesday",
-             "time": "11:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
-             "dates": "12 Oct - 2 Nov",
-             "days": "Tuesday",
-             "time": "11:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Workshop",
-           "number": "62329",
-           "section": "WS02",
-           "size": 30,
-           "available": 30,
-           "meetings": [
-            {
-             "dates": "4 Aug - 22 Sep",
-             "days": "Wednesday",
-             "time": "11:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G06",
-             "instructor": ""
-            },
-            {
-             "dates": "13 Oct - 3 Nov",
-             "days": "Wednesday",
-             "time": "11:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G06",
-             "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Workshop",
-           "number": "62330",
-           "section": "WS01",
-           "size": 30,
-           "available": 30,
-           "meetings": [
-            {
-             "dates": "5 Aug - 23 Sep",
-             "days": "Thursday",
-             "time": "10:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G06",
-             "instructor": ""
-            },
-            {
-             "dates": "14 Oct - 4 Nov",
-             "days": "Thursday",
-             "time": "10:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G06",
-             "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Assessment",
-           "number": "61769",
-           "section": "AS01",
-           "size": 170,
-           "available": 169,
-           "meetings": [
-            {
-             "dates": "16 Sep - 16 Sep",
-             "days": "Thursday",
-             "time": "3:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Physics, 103",
-             "instructor": ""
-            }
-           ]
-          }
-         ]
-        }
-       ]
-      }
-     ],
-     "keyDates": {
-      "enrol": "Fri 13/08/2027",
-      "census": "Fri 03/09/2027",
-      "lastW": "Fri 17/09/2027",
-      "lastWF": "Fri 15/10/2027"
-     }
-    },
     {
      "name": "Semester 1",
      "campuses": [
@@ -3388,22 +3219,6 @@
            "available": 142,
            "meetings": [
             {
-             "dates": "22 Feb - 1 Mar",
-             "days": "Monday",
-             "time": "9:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Mawson, G19",
-             "instructor": ""
-            },
-            {
-             "dates": "15 Mar - 22 Mar",
-             "days": "Monday",
-             "time": "9:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Mawson, G19",
-             "instructor": ""
-            },
-            {
              "dates": "5 Apr - 12 Apr",
              "days": "Monday",
              "time": "9:10am - 11am",
@@ -3418,23 +3233,21 @@
              "campus": "Adelaide City Campus East",
              "location": "Mawson, G19",
              "instructor": ""
-            }
-           ]
-          },
-          {
-           "type": "Related class",
-           "kind": "Assessment",
-           "number": "26678",
-           "section": "AS01",
-           "size": 170,
-           "available": 162,
-           "meetings": [
+            },
             {
-             "dates": "9 Apr - 9 Apr",
-             "days": "Friday",
-             "time": "3:10pm - 4pm",
+             "dates": "22 Feb - 1 Mar",
+             "days": "Monday",
+             "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
-             "location": "Physics, 103",
+             "location": "Mawson, G19",
+             "instructor": ""
+            },
+            {
+             "dates": "15 Mar - 22 Mar",
+             "days": "Monday",
+             "time": "9:10am - 11am",
+             "campus": "Adelaide City Campus East",
+             "location": "Mawson, G19",
              "instructor": ""
             }
            ]
@@ -3568,6 +3381,24 @@
              "instructor": ""
             }
            ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Assessment",
+           "number": "26678",
+           "section": "AS01",
+           "size": 170,
+           "available": 162,
+           "meetings": [
+            {
+             "dates": "9 Apr - 9 Apr",
+             "days": "Friday",
+             "time": "3:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Physics, 103",
+             "instructor": ""
+            }
+           ]
           }
          ]
         }
@@ -3580,13 +3411,182 @@
       "lastW": "Fri 09/04/2027",
       "lastWF": "Fri 07/05/2027"
      }
+    },
+    {
+     "name": "Semester 2",
+     "campuses": [
+      {
+       "name": "Adelaide City Campus East",
+       "groups": [
+        {
+         "name": "Group 1",
+         "classes": [
+          {
+           "type": "Enrolment class",
+           "kind": "Forum",
+           "number": "62326",
+           "section": "FR01",
+           "size": 100,
+           "available": 99,
+           "meetings": [
+            {
+             "dates": "2 Aug - 20 Sep",
+             "days": "Monday",
+             "time": "2:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Benham, G10",
+             "instructor": ""
+            },
+            {
+             "dates": "11 Oct - 1 Nov",
+             "days": "Monday",
+             "time": "2:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Benham, G10",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Workshop",
+           "number": "62327",
+           "section": "WS04",
+           "size": 30,
+           "available": 30,
+           "meetings": [
+            {
+             "dates": "5 Aug - 23 Sep",
+             "days": "Thursday",
+             "time": "1:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G06",
+             "instructor": ""
+            },
+            {
+             "dates": "14 Oct - 4 Nov",
+             "days": "Thursday",
+             "time": "1:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G06",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Workshop",
+           "number": "62328",
+           "section": "WS03",
+           "size": 30,
+           "available": 29,
+           "meetings": [
+            {
+             "dates": "3 Aug - 21 Sep",
+             "days": "Tuesday",
+             "time": "11:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "12 Oct - 2 Nov",
+             "days": "Tuesday",
+             "time": "11:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Workshop",
+           "number": "62329",
+           "section": "WS02",
+           "size": 30,
+           "available": 30,
+           "meetings": [
+            {
+             "dates": "4 Aug - 22 Sep",
+             "days": "Wednesday",
+             "time": "11:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G06",
+             "instructor": ""
+            },
+            {
+             "dates": "13 Oct - 3 Nov",
+             "days": "Wednesday",
+             "time": "11:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G06",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Workshop",
+           "number": "62330",
+           "section": "WS01",
+           "size": 30,
+           "available": 30,
+           "meetings": [
+            {
+             "dates": "5 Aug - 23 Sep",
+             "days": "Thursday",
+             "time": "10:10am - 11am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G06",
+             "instructor": ""
+            },
+            {
+             "dates": "14 Oct - 4 Nov",
+             "days": "Thursday",
+             "time": "10:10am - 11am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G06",
+             "instructor": ""
+            }
+           ]
+          },
+          {
+           "type": "Related class",
+           "kind": "Assessment",
+           "number": "61769",
+           "section": "AS01",
+           "size": 170,
+           "available": 169,
+           "meetings": [
+            {
+             "dates": "16 Sep - 16 Sep",
+             "days": "Thursday",
+             "time": "3:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Physics, 103",
+             "instructor": ""
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "keyDates": {
+      "enrol": "Fri 13/08/2027",
+      "census": "Fri 03/09/2027",
+      "lastW": "Fri 17/09/2027",
+      "lastWF": "Fri 15/10/2027"
+     }
     }
    ]
   },
   "MATH1005": {
    "code": "MATH1005",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1005/",
-   "fetched": "2026-11-07T02:43:20.496Z",
+   "fetched": "2026-11-07T09:56:07.720Z",
    "status": "ok",
    "terms": [
     {
@@ -4337,7 +4337,7 @@
   "MATH1006": {
    "code": "MATH1006",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1006/",
-   "fetched": "2026-11-07T02:42:54.495Z",
+   "fetched": "2026-11-07T09:55:58.177Z",
    "status": "ok",
    "terms": [
     {
@@ -4548,6 +4548,14 @@
            "available": 19,
            "meetings": [
             {
+             "dates": "7 May - 28 May",
+             "days": "Friday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Ingkarni Wardli, B.18",
+             "instructor": ""
+            },
+            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "2:10pm - 3pm",
@@ -4557,14 +4565,6 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
-             "days": "Friday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Ingkarni Wardli, B.18",
-             "instructor": ""
-            },
-            {
-             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -4714,7 +4714,7 @@
   "MATH1007": {
    "code": "MATH1007",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1007/",
-   "fetched": "2026-11-07T02:42:58.989Z",
+   "fetched": "2026-11-07T09:56:00.056Z",
    "status": "ok",
    "terms": [
     {
@@ -4821,7 +4821,7 @@
   "MATH1011": {
    "code": "MATH1011",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1011/",
-   "fetched": "2026-11-07T02:43:27.072Z",
+   "fetched": "2026-11-07T09:56:11.850Z",
    "status": "ok",
    "terms": [
     {
@@ -4876,14 +4876,14 @@
   "MATH1012": {
    "code": "MATH1012",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1012/",
-   "fetched": "2026-11-07T02:43:35.038Z",
+   "fetched": "2026-11-07T09:56:21.860Z",
    "status": "no-availability",
    "terms": []
   },
   "MATH1016": {
    "code": "MATH1016",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1016/",
-   "fetched": "2026-11-07T02:48:52.281Z",
+   "fetched": "2026-11-07T09:59:44.443Z",
    "status": "ok",
    "terms": [
     {
@@ -4904,7 +4904,7 @@
            "available": 156,
            "meetings": [
             {
-             "dates": "25 Feb - 15 Apr",
+             "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "2:10pm - 4pm",
              "campus": "Mawson Lakes",
@@ -4912,7 +4912,7 @@
              "instructor": ""
             },
             {
-             "dates": "6 May - 27 May",
+             "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "2:10pm - 4pm",
              "campus": "Mawson Lakes",
@@ -4988,14 +4988,6 @@
            "available": 19,
            "meetings": [
             {
-             "dates": "25 Feb - 25 Feb",
-             "days": "Thursday",
-             "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
-             "location": "Building GP, GP1-06",
-             "instructor": ""
-            },
-            {
              "dates": "11 Mar - 11 Mar",
              "days": "Thursday",
              "time": "10:10am - 11am",
@@ -5029,6 +5021,14 @@
             },
             {
              "dates": "20 May - 20 May",
+             "days": "Thursday",
+             "time": "10:10am - 11am",
+             "campus": "Mawson Lakes",
+             "location": "Building GP, GP1-06",
+             "instructor": ""
+            },
+            {
+             "dates": "25 Feb - 25 Feb",
              "days": "Thursday",
              "time": "10:10am - 11am",
              "campus": "Mawson Lakes",
@@ -5104,30 +5104,6 @@
            "available": 20,
            "meetings": [
             {
-             "dates": "23 Feb - 23 Feb",
-             "days": "Tuesday",
-             "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-13",
-             "instructor": ""
-            },
-            {
-             "dates": "9 Mar - 9 Mar",
-             "days": "Tuesday",
-             "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-13",
-             "instructor": ""
-            },
-            {
-             "dates": "23 Mar - 23 Mar",
-             "days": "Tuesday",
-             "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-13",
-             "instructor": ""
-            },
-            {
              "dates": "6 Apr - 6 Apr",
              "days": "Tuesday",
              "time": "10:10am - 11am",
@@ -5145,6 +5121,30 @@
             },
             {
              "dates": "18 May - 18 May",
+             "days": "Tuesday",
+             "time": "10:10am - 11am",
+             "campus": "Mawson Lakes",
+             "location": "Building P, P1-13",
+             "instructor": ""
+            },
+            {
+             "dates": "23 Feb - 23 Feb",
+             "days": "Tuesday",
+             "time": "10:10am - 11am",
+             "campus": "Mawson Lakes",
+             "location": "Building P, P1-13",
+             "instructor": ""
+            },
+            {
+             "dates": "9 Mar - 9 Mar",
+             "days": "Tuesday",
+             "time": "10:10am - 11am",
+             "campus": "Mawson Lakes",
+             "location": "Building P, P1-13",
+             "instructor": ""
+            },
+            {
+             "dates": "23 Mar - 23 Mar",
              "days": "Tuesday",
              "time": "10:10am - 11am",
              "campus": "Mawson Lakes",
@@ -5336,6 +5336,14 @@
            "available": 20,
            "meetings": [
             {
+             "dates": "21 May - 21 May",
+             "days": "Friday",
+             "time": "2:10pm - 3pm",
+             "campus": "Mawson Lakes",
+             "location": "Building P, P1-12",
+             "instructor": ""
+            },
+            {
              "dates": "26 Feb - 26 Feb",
              "days": "Friday",
              "time": "2:10pm - 3pm",
@@ -5369,14 +5377,6 @@
             },
             {
              "dates": "7 May - 7 May",
-             "days": "Friday",
-             "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-12",
-             "instructor": ""
-            },
-            {
-             "dates": "21 May - 21 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Mawson Lakes",
@@ -5644,6 +5644,14 @@
            "available": 30,
            "meetings": [
             {
+             "dates": "13 May - 13 May",
+             "days": "Thursday",
+             "time": "11:10am - 12pm",
+             "campus": "Mawson Lakes",
+             "location": "Building P, P2-04",
+             "instructor": ""
+            },
+            {
              "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "11:10am - 12pm",
@@ -5661,14 +5669,6 @@
             },
             {
              "dates": "15 Apr - 15 Apr",
-             "days": "Thursday",
-             "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P2-04",
-             "instructor": ""
-            },
-            {
-             "dates": "13 May - 13 May",
              "days": "Thursday",
              "time": "11:10am - 12pm",
              "campus": "Mawson Lakes",
@@ -5701,7 +5701,7 @@
            "number": "27193",
            "section": "FR01",
            "size": 420,
-           "available": 407,
+           "available": 405,
            "meetings": [
             {
              "dates": "24 Feb - 14 Apr",
@@ -5864,6 +5864,14 @@
            "available": 44,
            "meetings": [
             {
+             "dates": "6 Apr - 6 Apr",
+             "days": "Tuesday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G13",
+             "instructor": ""
+            },
+            {
              "dates": "23 Feb - 23 Feb",
              "days": "Tuesday",
              "time": "2:10pm - 3pm",
@@ -5881,14 +5889,6 @@
             },
             {
              "dates": "23 Mar - 23 Mar",
-             "days": "Tuesday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G13",
-             "instructor": ""
-            },
-            {
-             "dates": "6 Apr - 6 Apr",
              "days": "Tuesday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -5919,7 +5919,7 @@
            "number": "26227",
            "section": "PR08",
            "size": 50,
-           "available": 48,
+           "available": 47,
            "meetings": [
             {
              "dates": "23 Feb - 23 Feb",
@@ -5980,14 +5980,6 @@
            "available": 50,
            "meetings": [
             {
-             "dates": "26 Feb - 26 Feb",
-             "days": "Friday",
-             "time": "4:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Ingkarni Wardli, 2.34",
-             "instructor": ""
-            },
-            {
              "dates": "12 Mar - 12 Mar",
              "days": "Friday",
              "time": "4:10pm - 5pm",
@@ -6013,6 +6005,14 @@
             },
             {
              "dates": "21 May - 21 May",
+             "days": "Friday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Ingkarni Wardli, 2.34",
+             "instructor": ""
+            },
+            {
+             "dates": "26 Feb - 26 Feb",
              "days": "Friday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -6127,32 +6127,8 @@
            "number": "26231",
            "section": "PR04",
            "size": 50,
-           "available": 47,
+           "available": 46,
            "meetings": [
-            {
-             "dates": "24 Feb - 24 Feb",
-             "days": "Wednesday",
-             "time": "8:10am - 9am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G13",
-             "instructor": ""
-            },
-            {
-             "dates": "10 Mar - 10 Mar",
-             "days": "Wednesday",
-             "time": "8:10am - 9am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G13",
-             "instructor": ""
-            },
-            {
-             "dates": "24 Mar - 24 Mar",
-             "days": "Wednesday",
-             "time": "8:10am - 9am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G13",
-             "instructor": ""
-            },
             {
              "dates": "7 Apr - 7 Apr",
              "days": "Wednesday",
@@ -6171,6 +6147,30 @@
             },
             {
              "dates": "19 May - 19 May",
+             "days": "Wednesday",
+             "time": "8:10am - 9am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G13",
+             "instructor": ""
+            },
+            {
+             "dates": "24 Mar - 24 Mar",
+             "days": "Wednesday",
+             "time": "8:10am - 9am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G13",
+             "instructor": ""
+            },
+            {
+             "dates": "24 Feb - 24 Feb",
+             "days": "Wednesday",
+             "time": "8:10am - 9am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G13",
+             "instructor": ""
+            },
+            {
+             "dates": "10 Mar - 10 Mar",
              "days": "Wednesday",
              "time": "8:10am - 9am",
              "campus": "Adelaide City Campus East",
@@ -6338,6 +6338,14 @@
            "available": 29,
            "meetings": [
             {
+             "dates": "13 May - 13 May",
+             "days": "Thursday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Horace Lamb, 422",
+             "instructor": ""
+            },
+            {
              "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "9:10am - 10am",
@@ -6355,14 +6363,6 @@
             },
             {
              "dates": "15 Apr - 15 Apr",
-             "days": "Thursday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Horace Lamb, 422",
-             "instructor": ""
-            },
-            {
-             "dates": "13 May - 13 May",
              "days": "Thursday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -6488,22 +6488,6 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "5 Mar - 5 Mar",
-             "days": "Friday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 322",
-             "instructor": ""
-            },
-            {
-             "dates": "19 Mar - 19 Mar",
-             "days": "Friday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 322",
-             "instructor": ""
-            },
-            {
              "dates": "16 Apr - 16 Apr",
              "days": "Friday",
              "time": "9:10am - 10am",
@@ -6513,6 +6497,22 @@
             },
             {
              "dates": "14 May - 14 May",
+             "days": "Friday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 322",
+             "instructor": ""
+            },
+            {
+             "dates": "5 Mar - 5 Mar",
+             "days": "Friday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 322",
+             "instructor": ""
+            },
+            {
+             "dates": "19 Mar - 19 Mar",
              "days": "Friday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -6735,7 +6735,7 @@
            "number": "26244",
            "section": "WS13",
            "size": 30,
-           "available": 28,
+           "available": 27,
            "meetings": [
             {
              "dates": "1 Mar - 1 Mar",
@@ -6788,6 +6788,22 @@
            "available": 28,
            "meetings": [
             {
+             "dates": "10 May - 10 May",
+             "days": "Monday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "24 May - 24 May",
+             "days": "Monday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
              "dates": "1 Mar - 1 Mar",
              "days": "Monday",
              "time": "2:10pm - 3pm",
@@ -6805,22 +6821,6 @@
             },
             {
              "dates": "12 Apr - 12 Apr",
-             "days": "Monday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
-             "dates": "10 May - 10 May",
-             "days": "Monday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
-             "dates": "24 May - 24 May",
              "days": "Monday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -6988,22 +6988,6 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "4 Mar - 4 Mar",
-             "days": "Thursday",
-             "time": "4:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 322",
-             "instructor": ""
-            },
-            {
-             "dates": "18 Mar - 18 Mar",
-             "days": "Thursday",
-             "time": "4:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 322",
-             "instructor": ""
-            },
-            {
              "dates": "15 Apr - 15 Apr",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
@@ -7021,6 +7005,22 @@
             },
             {
              "dates": "27 May - 27 May",
+             "days": "Thursday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 322",
+             "instructor": ""
+            },
+            {
+             "dates": "18 Mar - 18 Mar",
+             "days": "Thursday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 322",
+             "instructor": ""
+            },
+            {
+             "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -7138,14 +7138,6 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "1 Mar - 1 Mar",
-             "days": "Monday",
-             "time": "1:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Schulz, 214",
-             "instructor": ""
-            },
-            {
              "dates": "15 Mar - 15 Mar",
              "days": "Monday",
              "time": "1:10pm - 2pm",
@@ -7171,6 +7163,14 @@
             },
             {
              "dates": "24 May - 24 May",
+             "days": "Monday",
+             "time": "1:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Schulz, 214",
+             "instructor": ""
+            },
+            {
+             "dates": "1 Mar - 1 Mar",
              "days": "Monday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -7235,7 +7235,7 @@
            "number": "26254",
            "section": "WS03",
            "size": 30,
-           "available": 29,
+           "available": 28,
            "meetings": [
             {
              "dates": "1 Mar - 1 Mar",
@@ -7338,6 +7338,14 @@
            "available": 30,
            "meetings": [
             {
+             "dates": "12 May - 12 May",
+             "days": "Wednesday",
+             "time": "12:10pm - 1pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
              "dates": "3 Mar - 3 Mar",
              "days": "Wednesday",
              "time": "12:10pm - 1pm",
@@ -7355,14 +7363,6 @@
             },
             {
              "dates": "14 Apr - 14 Apr",
-             "days": "Wednesday",
-             "time": "12:10pm - 1pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
-             "dates": "12 May - 12 May",
              "days": "Wednesday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
@@ -7409,7 +7409,7 @@
            "available": 59,
            "meetings": [
             {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "9:10am - 11am",
              "campus": "Mawson Lakes",
@@ -7417,7 +7417,7 @@
              "instructor": ""
             },
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "9:10am - 11am",
              "campus": "Mawson Lakes",
@@ -7535,6 +7535,14 @@
            "available": 19,
            "meetings": [
             {
+             "dates": "12 Oct - 12 Oct",
+             "days": "Tuesday",
+             "time": "12:10pm - 1pm",
+             "campus": "Mawson Lakes",
+             "location": "Building F, F1-17",
+             "instructor": ""
+            },
+            {
              "dates": "3 Aug - 3 Aug",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
@@ -7552,14 +7560,6 @@
             },
             {
              "dates": "14 Sep - 14 Sep",
-             "days": "Tuesday",
-             "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
-             "location": "Building F, F1-17",
-             "instructor": ""
-            },
-            {
-             "dates": "12 Oct - 12 Oct",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
              "campus": "Mawson Lakes",
@@ -7635,6 +7635,14 @@
            "available": 30,
            "meetings": [
             {
+             "dates": "20 Oct - 20 Oct",
+             "days": "Wednesday",
+             "time": "9:10am - 10am",
+             "campus": "Mawson Lakes",
+             "location": "Building P, P1-10",
+             "instructor": ""
+            },
+            {
              "dates": "11 Aug - 11 Aug",
              "days": "Wednesday",
              "time": "9:10am - 10am",
@@ -7652,14 +7660,6 @@
             },
             {
              "dates": "22 Sep - 22 Sep",
-             "days": "Wednesday",
-             "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-10",
-             "instructor": ""
-            },
-            {
-             "dates": "20 Oct - 20 Oct",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Mawson Lakes",
@@ -7695,7 +7695,7 @@
            "available": 239,
            "meetings": [
             {
-             "dates": "4 Aug - 22 Sep",
+             "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "1:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -7703,7 +7703,7 @@
              "instructor": ""
             },
             {
-             "dates": "13 Oct - 3 Nov",
+             "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "1:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -7921,6 +7921,14 @@
            "available": 50,
            "meetings": [
             {
+             "dates": "14 Oct - 14 Oct",
+             "days": "Thursday",
+             "time": "11:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Nexus10, 207",
+             "instructor": ""
+            },
+            {
              "dates": "5 Aug - 5 Aug",
              "days": "Thursday",
              "time": "11:10am - 12pm",
@@ -7938,14 +7946,6 @@
             },
             {
              "dates": "16 Sep - 16 Sep",
-             "days": "Thursday",
-             "time": "11:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Nexus10, 207",
-             "instructor": ""
-            },
-            {
-             "dates": "14 Oct - 14 Oct",
              "days": "Thursday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -8321,6 +8321,14 @@
            "available": 30,
            "meetings": [
             {
+             "dates": "19 Oct - 19 Oct",
+             "days": "Tuesday",
+             "time": "12:10pm - 1pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, LG23",
+             "instructor": ""
+            },
+            {
              "dates": "10 Aug - 10 Aug",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
@@ -8338,14 +8346,6 @@
             },
             {
              "dates": "21 Sep - 21 Sep",
-             "days": "Tuesday",
-             "time": "12:10pm - 1pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, LG23",
-             "instructor": ""
-            },
-            {
-             "dates": "19 Oct - 19 Oct",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
@@ -8379,7 +8379,7 @@
   "MATH1035": {
    "code": "MATH1035",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1035/",
-   "fetched": "2026-11-07T02:43:44.525Z",
+   "fetched": "2026-11-07T09:56:26.686Z",
    "status": "ok",
    "terms": [
     {
@@ -8538,7 +8538,7 @@
   "MATH2010": {
    "code": "MATH2010",
    "url": "https://adelaide.edu.au/study/courses/2027/math-2010/",
-   "fetched": "2026-11-07T02:44:39.317Z",
+   "fetched": "2026-11-07T09:56:56.478Z",
    "status": "ok",
    "terms": [
     {
@@ -8593,7 +8593,7 @@
   "MATH2025": {
    "code": "MATH2025",
    "url": "https://adelaide.edu.au/study/courses/2027/math-2025/",
-   "fetched": "2026-11-07T02:43:52.635Z",
+   "fetched": "2026-11-07T09:56:32.015Z",
    "status": "ok",
    "terms": [
     {
@@ -8768,7 +8768,7 @@
   "MATH3013": {
    "code": "MATH3013",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3013/",
-   "fetched": "2026-11-07T02:45:51.597Z",
+   "fetched": "2026-11-07T09:57:38.401Z",
    "status": "ok",
    "terms": [
     {
@@ -8789,7 +8789,15 @@
            "available": 20,
            "meetings": [
             {
-             "dates": "4 May - 25 May",
+             "dates": "5 May - 26 May",
+             "days": "Wednesday",
+             "time": "3:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 213",
+             "instructor": ""
+            },
+            {
+             "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "8:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -8805,15 +8813,7 @@
              "instructor": ""
             },
             {
-             "dates": "5 May - 26 May",
-             "days": "Wednesday",
-             "time": "3:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 213",
-             "instructor": ""
-            },
-            {
-             "dates": "23 Feb - 13 Apr",
+             "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "8:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -8843,7 +8843,7 @@
   "MATH3022": {
    "code": "MATH3022",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3022/",
-   "fetched": "2026-11-07T02:46:19.026Z",
+   "fetched": "2026-11-07T09:58:01.668Z",
    "status": "ok",
    "terms": [
     {
@@ -9000,14 +9000,6 @@
            "available": 25,
            "meetings": [
             {
-             "dates": "15 Oct - 5 Nov",
-             "days": "Friday",
-             "time": "4:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
              "dates": "6 Aug - 27 Aug",
              "days": "Friday",
              "time": "4:10pm - 5pm",
@@ -9017,6 +9009,14 @@
             },
             {
              "dates": "10 Sep - 24 Sep",
+             "days": "Friday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -9078,7 +9078,7 @@
   "MATH3900": {
    "code": "MATH3900",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3900/",
-   "fetched": "2026-11-07T02:46:42.964Z",
+   "fetched": "2026-11-07T09:58:15.241Z",
    "status": "ok",
    "terms": [
     {
@@ -9099,7 +9099,15 @@
            "available": 20,
            "meetings": [
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "14 Oct - 4 Nov",
+             "days": "Thursday",
+             "time": "10:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 213",
+             "instructor": ""
+            },
+            {
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "2:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -9115,15 +9123,7 @@
              "instructor": ""
             },
             {
-             "dates": "14 Oct - 4 Nov",
-             "days": "Thursday",
-             "time": "10:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 213",
-             "instructor": ""
-            },
-            {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "2:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -9141,22 +9141,6 @@
            "available": 20,
            "meetings": [
             {
-             "dates": "6 Aug - 24 Sep",
-             "days": "Friday",
-             "time": "12:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 213",
-             "instructor": ""
-            },
-            {
-             "dates": "15 Oct - 5 Nov",
-             "days": "Friday",
-             "time": "12:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 213",
-             "instructor": ""
-            },
-            {
              "dates": "2 Aug - 20 Sep",
              "days": "Monday",
              "time": "10:10am - 12pm",
@@ -9165,9 +9149,25 @@
              "instructor": ""
             },
             {
+             "dates": "6 Aug - 24 Sep",
+             "days": "Friday",
+             "time": "12:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 213",
+             "instructor": ""
+            },
+            {
              "dates": "11 Oct - 1 Nov",
              "days": "Monday",
              "time": "10:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 213",
+             "instructor": ""
+            },
+            {
+             "dates": "15 Oct - 5 Nov",
+             "days": "Friday",
+             "time": "12:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 213",
              "instructor": ""
@@ -9195,7 +9195,7 @@
   "MATH3901": {
    "code": "MATH3901",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3901/",
-   "fetched": "2026-11-07T02:46:53.089Z",
+   "fetched": "2026-11-07T09:58:21.776Z",
    "status": "ok",
    "terms": [
     {
@@ -9326,7 +9326,7 @@
   "MATH3902": {
    "code": "MATH3902",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3902/",
-   "fetched": "2026-11-07T02:45:16.368Z",
+   "fetched": "2026-11-07T09:57:15.530Z",
    "status": "ok",
    "terms": [
     {
@@ -9467,7 +9467,7 @@
   "MATH4008": {
    "code": "MATH4008",
    "url": "https://adelaide.edu.au/study/courses/2027/math-4008/",
-   "fetched": "2026-11-07T02:47:31.669Z",
+   "fetched": "2026-11-07T09:58:50.251Z",
    "status": "ok",
    "terms": [
     {
@@ -9522,14 +9522,14 @@
   "MATH4010": {
    "code": "MATH4010",
    "url": "https://adelaide.edu.au/study/courses/2027/math-4010/",
-   "fetched": "2026-11-07T02:47:10.452Z",
+   "fetched": "2026-11-07T09:58:30.003Z",
    "status": "no-availability",
    "terms": []
   },
   "MATH6019": {
    "code": "MATH6019",
    "url": "https://adelaide.edu.au/study/courses/2027/math-6019/",
-   "fetched": "2026-11-07T02:47:24.719Z",
+   "fetched": "2026-11-07T09:58:45.582Z",
    "status": "ok",
    "terms": [
     {
@@ -9600,7 +9600,7 @@
   "MATHX104": {
    "code": "MATHX104",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-104/",
-   "fetched": "2026-11-07T02:43:30.814Z",
+   "fetched": "2026-11-07T09:56:14.888Z",
    "status": "ok",
    "terms": [
     {
@@ -9673,7 +9673,7 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "15 Oct - 5 Nov",
+             "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "3:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -9681,7 +9681,7 @@
              "instructor": ""
             },
             {
-             "dates": "6 Aug - 24 Sep",
+             "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "3:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -9855,7 +9855,7 @@
            "available": 34,
            "meetings": [
             {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -9863,7 +9863,7 @@
              "instructor": ""
             },
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -10045,7 +10045,7 @@
   "MATHX106": {
    "code": "MATHX106",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-106/",
-   "fetched": "2026-11-07T02:42:48.135Z",
+   "fetched": "2026-11-07T09:55:55.760Z",
    "status": "ok",
    "terms": [
     {
@@ -10218,7 +10218,7 @@
   "MATHX201": {
    "code": "MATHX201",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-201/",
-   "fetched": "2026-11-07T02:43:47.679Z",
+   "fetched": "2026-11-07T09:56:29.653Z",
    "status": "ok",
    "terms": [
     {
@@ -10359,7 +10359,7 @@
   "MATHX202": {
    "code": "MATHX202",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-202/",
-   "fetched": "2026-11-07T02:44:00.007Z",
+   "fetched": "2026-11-07T09:56:37.532Z",
    "status": "ok",
    "terms": [
     {
@@ -10377,7 +10377,7 @@
            "number": "32712",
            "section": "FR01",
            "size": 125,
-           "available": 78,
+           "available": 76,
            "meetings": [
             {
              "dates": "22 Feb - 1 Mar",
@@ -10419,7 +10419,7 @@
            "number": "26188",
            "section": "AS01",
            "size": 125,
-           "available": 78,
+           "available": 76,
            "meetings": [
             {
              "dates": "12 Apr - 12 Apr",
@@ -10437,7 +10437,7 @@
            "number": "30047",
            "section": "WS02",
            "size": 36,
-           "available": 24,
+           "available": 23,
            "meetings": [
             {
              "dates": "23 Feb - 13 Apr",
@@ -10463,10 +10463,10 @@
            "number": "32714",
            "section": "WS03",
            "size": 36,
-           "available": 16,
+           "available": 15,
            "meetings": [
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -10474,7 +10474,7 @@
              "instructor": ""
             },
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -10526,7 +10526,7 @@
   "MATHX203": {
    "code": "MATHX203",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-203/",
-   "fetched": "2026-11-07T02:48:46.531Z",
+   "fetched": "2026-11-07T09:59:42.151Z",
    "status": "ok",
    "terms": [
     {
@@ -10972,7 +10972,7 @@
   "MATHX204": {
    "code": "MATHX204",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-204/",
-   "fetched": "2026-11-07T02:44:56.026Z",
+   "fetched": "2026-11-07T09:57:04.668Z",
    "status": "ok",
    "terms": [
     {
@@ -11079,7 +11079,7 @@
   "MATHX205": {
    "code": "MATHX205",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-205/",
-   "fetched": "2026-11-07T02:44:16.628Z",
+   "fetched": "2026-11-07T09:56:44.151Z",
    "status": "ok",
    "terms": [
     {
@@ -11100,14 +11100,6 @@
            "available": 63,
            "meetings": [
             {
-             "dates": "3 May - 24 May",
-             "days": "Monday",
-             "time": "10:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, 209",
-             "instructor": ""
-            },
-            {
              "dates": "22 Feb - 1 Mar",
              "days": "Monday",
              "time": "10:10am - 12pm",
@@ -11125,6 +11117,14 @@
             },
             {
              "dates": "5 Apr - 12 Apr",
+             "days": "Monday",
+             "time": "10:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, 209",
+             "instructor": ""
+            },
+            {
+             "dates": "3 May - 24 May",
              "days": "Monday",
              "time": "10:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -11218,7 +11218,7 @@
   "MATHX206": {
    "code": "MATHX206",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-206/",
-   "fetched": "2026-11-07T02:44:59.452Z",
+   "fetched": "2026-11-07T09:57:07.160Z",
    "status": "ok",
    "terms": [
     {
@@ -11369,14 +11369,14 @@
   "MATHX208": {
    "code": "MATHX208",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-208/",
-   "fetched": "2026-11-07T02:44:33.653Z",
+   "fetched": "2026-11-07T09:56:53.243Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX209": {
    "code": "MATHX209",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-209/",
-   "fetched": "2026-11-07T02:44:48.950Z",
+   "fetched": "2026-11-07T09:57:00.901Z",
    "status": "ok",
    "terms": [
     {
@@ -11457,7 +11457,7 @@
   "MATHX210": {
    "code": "MATHX210",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-210/",
-   "fetched": "2026-11-07T02:44:43.481Z",
+   "fetched": "2026-11-07T09:56:58.553Z",
    "status": "ok",
    "terms": [
     {
@@ -11564,7 +11564,7 @@
   "MATHX214": {
    "code": "MATHX214",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-214/",
-   "fetched": "2026-11-07T02:44:05.321Z",
+   "fetched": "2026-11-07T09:56:40.456Z",
    "status": "ok",
    "terms": [
     {
@@ -11988,7 +11988,7 @@
   "MATHX300": {
    "code": "MATHX300",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-300/",
-   "fetched": "2026-11-07T02:45:20.183Z",
+   "fetched": "2026-11-07T09:57:19.041Z",
    "status": "ok",
    "terms": [
     {
@@ -12085,7 +12085,7 @@
   "MATHX301": {
    "code": "MATHX301",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-301/",
-   "fetched": "2026-11-07T02:45:24.365Z",
+   "fetched": "2026-11-07T09:57:22.459Z",
    "status": "ok",
    "terms": [
     {
@@ -12182,7 +12182,7 @@
   "MATHX302": {
    "code": "MATHX302",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-302/",
-   "fetched": "2026-11-07T02:46:10.986Z",
+   "fetched": "2026-11-07T09:57:51.889Z",
    "status": "ok",
    "terms": [
     {
@@ -12263,14 +12263,14 @@
   "MATHX303": {
    "code": "MATHX303",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-303/",
-   "fetched": "2026-11-07T02:45:37.082Z",
+   "fetched": "2026-11-07T09:57:30.318Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX304": {
    "code": "MATHX304",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-304/",
-   "fetched": "2026-11-07T02:46:32.954Z",
+   "fetched": "2026-11-07T09:58:05.813Z",
    "status": "ok",
    "terms": [
     {
@@ -12351,14 +12351,14 @@
   "MATHX305": {
    "code": "MATHX305",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-305/",
-   "fetched": "2026-11-07T02:46:38.150Z",
+   "fetched": "2026-11-07T09:58:08.155Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX306": {
    "code": "MATHX306",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-306/",
-   "fetched": "2026-11-07T02:45:40.151Z",
+   "fetched": "2026-11-07T09:57:32.127Z",
    "status": "ok",
    "terms": [
     {
@@ -12439,7 +12439,7 @@
   "MATHX307": {
    "code": "MATHX307",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-307/",
-   "fetched": "2026-11-07T02:45:43.350Z",
+   "fetched": "2026-11-07T09:57:34.968Z",
    "status": "ok",
    "terms": [
     {
@@ -12538,14 +12538,14 @@
   "MATHX308": {
    "code": "MATHX308",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-308/",
-   "fetched": "2026-11-07T02:45:48.367Z",
+   "fetched": "2026-11-07T09:57:36.586Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX309": {
    "code": "MATHX309",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-309/",
-   "fetched": "2026-11-07T02:46:40.436Z",
+   "fetched": "2026-11-07T09:58:10.173Z",
    "status": "ok",
    "terms": [
     {
@@ -12626,7 +12626,7 @@
   "MATHX310": {
    "code": "MATHX310",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-310/",
-   "fetched": "2026-11-07T02:46:45.303Z",
+   "fetched": "2026-11-07T09:58:17.512Z",
    "status": "ok",
    "terms": [
     {
@@ -12707,7 +12707,7 @@
   "MATHX311": {
    "code": "MATHX311",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-311/",
-   "fetched": "2026-11-07T02:45:54.913Z",
+   "fetched": "2026-11-07T09:57:41.543Z",
    "status": "ok",
    "terms": [
     {
@@ -12728,14 +12728,6 @@
            "available": 36,
            "meetings": [
             {
-             "dates": "22 Feb - 1 Mar",
-             "days": "Monday",
-             "time": "2:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Barr Smith South, 2051",
-             "instructor": ""
-            },
-            {
              "dates": "15 Mar - 22 Mar",
              "days": "Monday",
              "time": "2:10pm - 4pm",
@@ -12753,6 +12745,14 @@
             },
             {
              "dates": "3 May - 24 May",
+             "days": "Monday",
+             "time": "2:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Barr Smith South, 2051",
+             "instructor": ""
+            },
+            {
+             "dates": "22 Feb - 1 Mar",
              "days": "Monday",
              "time": "2:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -12820,14 +12820,14 @@
   "MATHX312": {
    "code": "MATHX312",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-312/",
-   "fetched": "2026-11-07T02:46:48.541Z",
+   "fetched": "2026-11-07T09:58:19.758Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX313": {
    "code": "MATHX313",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-313/",
-   "fetched": "2026-11-07T02:46:08.138Z",
+   "fetched": "2026-11-07T09:57:48.830Z",
    "status": "ok",
    "terms": [
     {
@@ -12924,11 +12924,11 @@
   "MATHX315": {
    "code": "MATHX315",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-315/",
-   "fetched": "2026-11-07T02:48:41.405Z",
+   "fetched": "2026-11-07T09:59:39.464Z",
    "status": "ok",
    "terms": [
     {
-     "name": "Semester 1",
+     "name": "Semester 2",
      "campuses": [
       {
        "name": "Adelaide City Campus East",
@@ -12939,7 +12939,7 @@
           {
            "type": "Enrolment class",
            "kind": "Workshop",
-           "number": "25447",
+           "number": "60439",
            "section": "01CE",
            "size": 100,
            "available": 100,
@@ -12960,10 +12960,10 @@
       }
      ],
      "keyDates": {
-      "enrol": "Fri 05/03/2027",
-      "census": "Fri 26/03/2027",
-      "lastW": "Fri 09/04/2027",
-      "lastWF": "Fri 07/05/2027"
+      "enrol": "Fri 13/08/2027",
+      "census": "Fri 03/09/2027",
+      "lastW": "Fri 17/09/2027",
+      "lastWF": "Fri 15/10/2027"
      }
     },
     {
@@ -13006,7 +13006,7 @@
      }
     },
     {
-     "name": "Semester 2",
+     "name": "Semester 1",
      "campuses": [
       {
        "name": "Adelaide City Campus East",
@@ -13017,7 +13017,7 @@
           {
            "type": "Enrolment class",
            "kind": "Workshop",
-           "number": "60439",
+           "number": "25447",
            "section": "01CE",
            "size": 100,
            "available": 100,
@@ -13038,10 +13038,10 @@
       }
      ],
      "keyDates": {
-      "enrol": "Fri 13/08/2027",
-      "census": "Fri 03/09/2027",
-      "lastW": "Fri 17/09/2027",
-      "lastWF": "Fri 15/10/2027"
+      "enrol": "Fri 05/03/2027",
+      "census": "Fri 26/03/2027",
+      "lastW": "Fri 09/04/2027",
+      "lastWF": "Fri 07/05/2027"
      }
     }
    ]
@@ -13049,21 +13049,21 @@
   "MATHX316": {
    "code": "MATHX316",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-316/",
-   "fetched": "2026-11-07T02:45:58.277Z",
+   "fetched": "2026-11-07T09:57:43.181Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX400": {
    "code": "MATHX400",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-400/",
-   "fetched": "2026-11-07T02:47:07.471Z",
+   "fetched": "2026-11-07T09:58:28.765Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX401": {
    "code": "MATHX401",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-401/",
-   "fetched": "2026-11-07T02:47:46.676Z",
+   "fetched": "2026-11-07T09:59:02.196Z",
    "status": "ok",
    "terms": [
     {
@@ -13118,14 +13118,14 @@
   "MATHX402": {
    "code": "MATHX402",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-402/",
-   "fetched": "2026-11-07T02:47:49.198Z",
+   "fetched": "2026-11-07T09:59:04.237Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX403": {
    "code": "MATHX403",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-403/",
-   "fetched": "2026-11-07T02:47:18.390Z",
+   "fetched": "2026-11-07T09:58:32.783Z",
    "status": "ok",
    "terms": [
     {
@@ -13180,7 +13180,7 @@
   "MATHX404": {
    "code": "MATHX404",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-404/",
-   "fetched": "2026-11-07T02:47:57.925Z",
+   "fetched": "2026-11-07T09:59:10.245Z",
    "status": "ok",
    "terms": [
     {
@@ -13235,59 +13235,16 @@
   "MATHX405": {
    "code": "MATHX405",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-405/",
-   "fetched": "2026-11-07T02:48:00.813Z",
+   "fetched": "2026-11-07T09:59:12.451Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX406": {
    "code": "MATHX406",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-406/",
-   "fetched": "2026-11-07T02:47:21.781Z",
+   "fetched": "2026-11-07T09:58:34.840Z",
    "status": "ok",
    "terms": [
-    {
-     "name": "Semester 1",
-     "campuses": [
-      {
-       "name": "Adelaide City Campus East",
-       "groups": [
-        {
-         "name": "Group 1",
-         "classes": [
-          {
-           "type": "Enrolment class",
-           "kind": "Workshop",
-           "number": "25307",
-           "section": "01CE",
-           "size": 25,
-           "available": 25,
-           "meetings": [
-            {
-             "dates": "-",
-             "days": "",
-             "time": "",
-             "campus": "Adelaide City Campus East",
-             "location": ",",
-             "instructor": ""
-            }
-           ]
-          }
-         ]
-        }
-       ]
-      },
-      {
-       "name": "Notes:",
-       "groups": []
-      }
-     ],
-     "keyDates": {
-      "enrol": "Fri 05/03/2027",
-      "census": "Fri 26/03/2027",
-      "lastW": "Fri 09/04/2027",
-      "lastWF": "Fri 07/05/2027"
-     }
-    },
     {
      "name": "Semester 2",
      "campuses": [
@@ -13330,13 +13287,56 @@
       "lastW": "Fri 17/09/2027",
       "lastWF": "Fri 15/10/2027"
      }
+    },
+    {
+     "name": "Semester 1",
+     "campuses": [
+      {
+       "name": "Adelaide City Campus East",
+       "groups": [
+        {
+         "name": "Group 1",
+         "classes": [
+          {
+           "type": "Enrolment class",
+           "kind": "Workshop",
+           "number": "25307",
+           "section": "01CE",
+           "size": 25,
+           "available": 25,
+           "meetings": [
+            {
+             "dates": "-",
+             "days": "",
+             "time": "",
+             "campus": "Adelaide City Campus East",
+             "location": ",",
+             "instructor": ""
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "name": "Notes:",
+       "groups": []
+      }
+     ],
+     "keyDates": {
+      "enrol": "Fri 05/03/2027",
+      "census": "Fri 26/03/2027",
+      "lastW": "Fri 09/04/2027",
+      "lastWF": "Fri 07/05/2027"
+     }
     }
    ]
   },
   "MATHX407": {
    "code": "MATHX407",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-407/",
-   "fetched": "2026-11-07T02:48:03.719Z",
+   "fetched": "2026-11-07T09:59:14.076Z",
    "status": "ok",
    "terms": [
     {
@@ -13430,14 +13430,14 @@
   "MATHX408": {
    "code": "MATHX408",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-408/",
-   "fetched": "2026-11-07T02:48:17.786Z",
+   "fetched": "2026-11-07T09:59:21.535Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX409": {
    "code": "MATHX409",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-409/",
-   "fetched": "2026-11-07T02:47:28.313Z",
+   "fetched": "2026-11-07T09:58:47.522Z",
    "status": "ok",
    "terms": [
     {
@@ -13492,7 +13492,7 @@
   "MATHX410": {
    "code": "MATHX410",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-410/",
-   "fetched": "2026-11-07T02:47:34.338Z",
+   "fetched": "2026-11-07T09:58:55.049Z",
    "status": "ok",
    "terms": [
     {
@@ -13547,7 +13547,7 @@
   "MATHX411": {
    "code": "MATHX411",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-411/",
-   "fetched": "2026-11-07T02:48:29.233Z",
+   "fetched": "2026-11-07T09:59:27.099Z",
    "status": "ok",
    "terms": [
     {
@@ -13602,7 +13602,7 @@
   "MATHX412": {
    "code": "MATHX412",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-412/",
-   "fetched": "2026-11-07T02:47:44.045Z",
+   "fetched": "2026-11-07T09:59:00.063Z",
    "status": "ok",
    "terms": [
     {
@@ -13657,7 +13657,7 @@
   "MATHX413": {
    "code": "MATHX413",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-413/",
-   "fetched": "2026-11-07T02:48:33.778Z",
+   "fetched": "2026-11-07T09:59:33.653Z",
    "status": "ok",
    "terms": [
     {
@@ -13712,7 +13712,7 @@
   "MATHX415": {
    "code": "MATHX415",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-415/",
-   "fetched": "2026-11-07T02:48:37.988Z",
+   "fetched": "2026-11-07T09:59:37.215Z",
    "status": "ok",
    "terms": [
     {
@@ -13767,7 +13767,7 @@
   "MATHX418": {
    "code": "MATHX418",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-418/",
-   "fetched": "2026-11-07T02:47:04.897Z",
+   "fetched": "2026-11-07T09:58:26.787Z",
    "status": "ok",
    "terms": [
     {
@@ -13838,7 +13838,7 @@
   "STAT2003": {
    "code": "STAT2003",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-2003/",
-   "fetched": "2026-11-07T02:45:12.217Z",
+   "fetched": "2026-11-07T09:57:13.280Z",
    "status": "ok",
    "terms": [
     {
@@ -13859,7 +13859,7 @@
            "available": 50,
            "meetings": [
             {
-             "dates": "4 Aug - 22 Sep",
+             "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -13867,7 +13867,7 @@
              "instructor": ""
             },
             {
-             "dates": "13 Oct - 3 Nov",
+             "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -13945,7 +13945,7 @@
   "STAT3005": {
    "code": "STAT3005",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-3005/",
-   "fetched": "2026-11-07T02:47:02.300Z",
+   "fetched": "2026-11-07T09:58:25.542Z",
    "status": "ok",
    "terms": [
     {
@@ -14026,7 +14026,7 @@
   "STAT3006": {
    "code": "STAT3006",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-3006/",
-   "fetched": "2026-11-07T02:46:15.169Z",
+   "fetched": "2026-11-07T09:58:00.416Z",
    "status": "ok",
    "terms": [
     {
@@ -14107,14 +14107,14 @@
   "STAT4001": {
    "code": "STAT4001",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4001/",
-   "fetched": "2026-11-07T02:47:38.129Z",
+   "fetched": "2026-11-07T09:58:57.574Z",
    "status": "no-availability",
    "terms": []
   },
   "STAT4002": {
    "code": "STAT4002",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4002/",
-   "fetched": "2026-11-07T02:47:40.157Z",
+   "fetched": "2026-11-07T09:58:58.818Z",
    "status": "ok",
    "terms": [
     {
@@ -14169,14 +14169,14 @@
   "STAT4019": {
    "code": "STAT4019",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4019/",
-   "fetched": "2026-11-07T02:47:14.718Z",
+   "fetched": "2026-11-07T09:58:31.532Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX100": {
    "code": "STATX100",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-100/",
-   "fetched": "2026-11-07T02:43:07.443Z",
+   "fetched": "2026-11-07T09:56:01.675Z",
    "status": "ok",
    "terms": [
     {
@@ -14194,7 +14194,7 @@
            "number": "31244",
            "section": "FR01",
            "size": 210,
-           "available": 174,
+           "available": 173,
            "meetings": [
             {
              "dates": "22 Feb - 1 Mar",
@@ -14262,7 +14262,7 @@
            "number": "26151",
            "section": "WS06",
            "size": 30,
-           "available": 24,
+           "available": 23,
            "meetings": [
             {
              "dates": "25 Feb - 15 Apr",
@@ -14418,7 +14418,7 @@
            "number": "26147",
            "section": "PR07",
            "size": 30,
-           "available": 26,
+           "available": 25,
            "meetings": [
             {
              "dates": "23 Feb - 13 Apr",
@@ -14611,7 +14611,7 @@
   "STATX200": {
    "code": "STATX200",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-200/",
-   "fetched": "2026-11-07T02:44:29.556Z",
+   "fetched": "2026-11-07T09:56:51.997Z",
    "status": "ok",
    "terms": [
     {
@@ -14770,14 +14770,14 @@
   "STATX201": {
    "code": "STATX201",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-201/",
-   "fetched": "2026-11-07T02:44:37.317Z",
+   "fetched": "2026-11-07T09:56:55.229Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX290": {
    "code": "STATX290",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-290/",
-   "fetched": "2026-11-07T02:45:03.507Z",
+   "fetched": "2026-11-07T09:57:09.783Z",
    "status": "ok",
    "terms": [
     {
@@ -15008,7 +15008,7 @@
   "STATX300": {
    "code": "STATX300",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-300/",
-   "fetched": "2026-11-07T02:45:33.744Z",
+   "fetched": "2026-11-07T09:57:25.447Z",
    "status": "ok",
    "terms": [
     {
@@ -15167,7 +15167,7 @@
   "STATX301": {
    "code": "STATX301",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-301/",
-   "fetched": "2026-11-07T02:46:29.034Z",
+   "fetched": "2026-11-07T09:58:04.565Z",
    "status": "ok",
    "terms": [
     {
@@ -15214,7 +15214,7 @@
            "available": 25,
            "meetings": [
             {
-             "dates": "13 Oct - 3 Nov",
+             "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -15222,7 +15222,7 @@
              "instructor": ""
             },
             {
-             "dates": "4 Aug - 22 Sep",
+             "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -15274,7 +15274,7 @@
   "STATX302": {
    "code": "STATX302",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-302/",
-   "fetched": "2026-11-07T02:46:01.128Z",
+   "fetched": "2026-11-07T09:57:45.972Z",
    "status": "ok",
    "terms": [
     {
@@ -15295,19 +15295,27 @@
            "available": 48,
            "meetings": [
             {
-             "dates": "22 Feb - 1 Mar",
-             "days": "Monday",
-             "time": "12:10pm - 1pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Centenary, C4-08",
-             "instructor": ""
-            },
-            {
              "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
              "location": "Centenary, C4-17",
+             "instructor": ""
+            },
+            {
+             "dates": "4 May - 25 May",
+             "days": "Tuesday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Centenary, C4-17",
+             "instructor": ""
+            },
+            {
+             "dates": "22 Feb - 1 Mar",
+             "days": "Monday",
+             "time": "12:10pm - 1pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Centenary, C4-08",
              "instructor": ""
             },
             {
@@ -15332,14 +15340,6 @@
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
              "location": "Centenary, C4-08",
-             "instructor": ""
-            },
-            {
-             "dates": "4 May - 25 May",
-             "days": "Tuesday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Centenary, C4-17",
              "instructor": ""
             }
            ]
@@ -15455,7 +15455,7 @@
   "STATX303": {
    "code": "STATX303",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-303/",
-   "fetched": "2026-11-07T02:46:58.403Z",
+   "fetched": "2026-11-07T09:58:24.296Z",
    "status": "ok",
    "terms": [
     {
@@ -15536,28 +15536,28 @@
   "STATX400": {
    "code": "STATX400",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-400/",
-   "fetched": "2026-11-07T02:48:14.926Z",
+   "fetched": "2026-11-07T09:59:19.636Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX401": {
    "code": "STATX401",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-401/",
-   "fetched": "2026-11-07T02:48:21.604Z",
+   "fetched": "2026-11-07T09:59:23.946Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX402": {
    "code": "STATX402",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-402/",
-   "fetched": "2026-11-07T02:48:25.249Z",
+   "fetched": "2026-11-07T09:59:25.192Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX403": {
    "code": "STATX403",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-403/",
-   "fetched": "2026-11-07T02:47:51.620Z",
+   "fetched": "2026-11-07T09:59:06.048Z",
    "status": "ok",
    "terms": [
     {
