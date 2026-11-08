@@ -266,10 +266,10 @@ document.getElementById('pr').addEventListener('click',()=>window.print());
 window.addEventListener('beforeprint',()=>{const n=document.getElementById('pfor').value.trim();
  document.getElementById('plink').textContent=shareUrl();
  document.getElementById('pinfo').textContent=(n?'Student name/number: '+n+' · ':'')+P.title+' · '+(cur==='mid'?'Mid-year start (Semester 2)':'Standard start (Semester 1)')+' · '+new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})});
-// ---- course lists come from the spreadsheets in ../major-courses/ (level2.xlsx, level3.xlsx, level4.xlsx)
+// ---- course lists come from the spreadsheets in ../pd/major-courses/ (level2.xlsx, level3.xlsx, level4.xlsx)
 let LISTMSG='';
-const loadLists=()=>{if(!window.MajorLists||!window.XLSX)return Promise.reject(new Error('the spreadsheet reader could not be loaded (check that major-courses/lists.js has been uploaded)'));
- return Promise.all([2,3,4].map(n=>MajorLists.sheet('../major-courses/level'+n+'.xlsx').then(g=>MajorLists.groups(g))))};
+const loadLists=()=>{if(!window.MajorLists||!window.XLSX)return Promise.reject(new Error('the spreadsheet reader could not be loaded (check that pd/major-courses/lists.js has been uploaded)'));
+ return Promise.all([2,3,4].map(n=>MajorLists.sheet('../pd/major-courses/level'+n+'.xlsx').then(g=>MajorLists.groups(g))))};
 function applyLists(L){const bad=new Set();
  L.forEach((gs,i)=>gs.forEach(g=>{const m=window.MAJORS[MajorLists.key(g.name)];if(!m)return;
   const ok=g.items.filter(it=>{if(D[it.code])return true;if(it.code)bad.add(it.code);return false});

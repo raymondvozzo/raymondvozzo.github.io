@@ -7,5 +7,5 @@ Actions tab > "Update class enrolments" > Run workflow (type a course code, or l
 2. At cloudflare.com make a free Worker, paste worker.js into it.
 3. Worker > Settings > Variables: GITHUB_TOKEN (as a secret), OWNER = raymondvozzo,
    REPO = raymondvozzo.github.io, ALLOWED_ORIGIN = https://raymondvozzo.github.io
-4. Put the Worker's address in REFRESH_URL near the top of PD/enrolments/index.html.
+4. Put the Worker's address in REFRESH_URL near the top of pd/enrolments/index.html.
 The token can only start this workflow, and the Worker only accepts course codes from your site.

@@ -1,7 +1,7 @@
 name: Collect last year's final enrolments
 
 # Run this by hand (Actions tab > Run workflow). It reads last year's course pages once and saves each
-# course's final numbers in PD/enrolments/data/last-year.json, for the reference line on the charts.
+# course's final numbers in pd/enrolments/data/last-year.json, for the reference line on the charts.
 on:
   workflow_dispatch:
     inputs:
@@ -26,9 +26,9 @@ jobs:
         with:
           node-version: 20
       - name: Install
-        run: npm install --prefix PD/enrolments/scraper --no-audit --no-fund
+        run: npm install --prefix pd/enrolments/scraper --no-audit --no-fund
       - name: Collect last year's final numbers
-        run: node PD/enrolments/scraper/scrape.mjs
+        run: node pd/enrolments/scraper/scrape.mjs
         env:
           MODE: lastyear
           YEAR: ${{ github.event.inputs.year }}
@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "enrolments-bot"
           git config user.email "enrolments-bot@users.noreply.github.com"
-          git add PD/enrolments/data/last-year.json
+          git add pd/enrolments/data/last-year.json
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Update last year's final enrolments"
           for i in 1 2 3; do

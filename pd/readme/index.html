@@ -45,9 +45,9 @@ a{color:var(--purple);font-weight:700}
 <tr><td>Which courses count towards a major at Level 2, 3 or 4, and the labels Compulsory / Group A / Group B</td><td><code>major-courses/level2.xlsx</code>, <code>level3.xlsx</code>, <code>level4.xlsx</code></td><td>Used by the Major courses page and by the "choose a course" lists in the schedules. See <a href="#xlsx">the layout</a> below.</td></tr>
 <tr><td>A course's learning outcomes</td><td><code>clos/clos.csv</code></td><td>One row per outcome. Or send the updated spreadsheet to Claude to convert.</td></tr>
 <tr><td>A major's schedule layout (which courses are fixed in each year, which boxes are choices), the Applied group note, the Honours note for UNS</td><td>The settings block near the bottom of <code>schedule/index.html</code> (it starts with <code>window.MAJORS=</code>)</td><td>See <a href="#settings">the settings block</a> below.</td></tr>
-<tr><td>Which courses appear on the Class enrolments page</td><td><code>prereqs/courses.csv</code> (every course in it appears), plus <code>PD/enrolments/extra-courses.csv</code> for courses that should appear <em>only</em> there (such as MATH 1016)</td><td>See <a href="#enrol">Class enrolments</a> below.</td></tr>
-<tr><td>The staff-system dashboard and class links on the Class enrolments page</td><td><code>PD/enrolments/ciid-suffix.csv</code></td><td>One row per course and campus. See <a href="#enrol">Class enrolments</a> below.</td></tr>
-<tr><td>The list of links on the hub page</td><td><code>index.html</code> (the hub, in the <code>PD</code> folder)</td><td>Copy an existing <code>&lt;li&gt;…&lt;/li&gt;</code> block, change the address, title and description.</td></tr>
+<tr><td>Which courses appear on the Class enrolments page</td><td><code>prereqs/courses.csv</code> (every course in it appears), plus <code>pd/enrolments/extra-courses.csv</code> for courses that should appear <em>only</em> there (such as MATH 1016)</td><td>See <a href="#enrol">Class enrolments</a> below.</td></tr>
+<tr><td>The staff-system dashboard and class links on the Class enrolments page</td><td><code>pd/enrolments/ciid-suffix.csv</code></td><td>One row per course and campus. See <a href="#enrol">Class enrolments</a> below.</td></tr>
+<tr><td>The list of links on the hub page</td><td><code>index.html</code> (the hub, in the <code>pd</code> folder)</td><td>Copy an existing <code>&lt;li&gt;…&lt;/li&gt;</code> block, change the address, title and description.</td></tr>
 <tr><td>The Common Core course list, the WIL course options and WIL rules (Clinic 1 with Clinic 2; MATH3902 with MATHX315), the two 12-unit research courses, the MATH 1004 exemption, or the wording of the notes under Year 1 and Year 3</td><td><code>schedule/schedule.js</code></td><td>These are typed near the top of the file. Ask Claude to change them if you're unsure.</td></tr>
 </table></div>
 
@@ -98,16 +98,16 @@ a{color:var(--purple);font-weight:700}
 </ul>
 
 <h2 id="enrol">Class enrolments: how the hourly update works</h2>
-<p>A browser cannot read the university's course pages directly, so a small job on GitHub does it. Every hour it opens each course's page on the university website, reads the "Availability" section (classes, sizes, spaces left, meeting times, key dates) and saves the result in <code>PD/enrolments/data/enrolments.json</code>. The Class enrolments page only reads that saved file. "Last updated" on the page is the time of the last run.</p>
+<p>A browser cannot read the university's course pages directly, so a small job on GitHub does it. Every hour it opens each course's page on the university website, reads the "Availability" section (classes, sizes, spaces left, meeting times, key dates) and saves the result in <code>pd/enrolments/data/enrolments.json</code>. The Class enrolments page only reads that saved file. "Last updated" on the page is the time of the last run.</p>
 <div class="t"><table>
 <tr><th>File</th><th>What it does</th><th>Edit it?</th></tr>
-<tr><td><code>.github/workflows/enrolments.yml</code></td><td>The hourly job. It lives in a hidden <code>.github</code> folder at the very top of the repository (not inside <code>PD</code>). The line <code>YEAR: '2027'</code> says which year's course pages to read.</td><td>Only to change the year.</td></tr>
-<tr><td><code>PD/enrolments/scraper/scrape.mjs</code> and <code>package.json</code></td><td>The program that reads the university pages.</td><td>No. Ask Claude if the university changes its page layout.</td></tr>
-<tr><td><code>PD/enrolments/data/enrolments.json</code></td><td>The saved numbers. The job overwrites it every run.</td><td>No.</td></tr>
-<tr><td><code>PD/enrolments/data/history.json</code></td><td>The history behind the small lines and charts. Each run adds a record <code>[time, enrolled, size]</code> for a class only when its enrolled number or its size has changed. It only grows, and it cannot be rebuilt if lost, so do not delete it.</td><td>No.</td></tr>
-<tr><td><code>PD/enrolments/data/last-year.json</code> and <code>.github/workflows/enrolments-last-year.yml</code></td><td>Last year's final numbers for each course, semester and campus (the pink dashed line on the charts). Made once by running the "Collect last year's final enrolments" workflow by hand.</td><td>No. Re-run the workflow each year.</td></tr>
-<tr><td><code>PD/enrolments/extra-courses.csv</code></td><td>Courses to show on this page that are not in <code>courses.csv</code>. Columns: <code>Course Code</code>, <code>Course Name</code>, <code>Level</code>.</td><td>Yes: add a line to add a course.</td></tr>
-<tr><td><code>PD/enrolments/ciid-suffix.csv</code></td><td>The staff system's addresses end in a digit that belongs to each course on each campus (for example <code>2750_MATH_X306_2</code>), and it cannot be worked out, so it is listed here. Columns: <code>Course Code</code>, <code>Campus</code> (exactly as the university page spells it, e.g. Adelaide City Campus East), <code>Last digit</code>.</td><td>Yes: add a row when a course is missing.</td></tr>
+<tr><td><code>.github/workflows/enrolments.yml</code></td><td>The hourly job. It lives in a hidden <code>.github</code> folder at the very top of the repository (not inside <code>pd</code>). The line <code>YEAR: '2027'</code> says which year's course pages to read.</td><td>Only to change the year.</td></tr>
+<tr><td><code>pd/enrolments/scraper/scrape.mjs</code> and <code>package.json</code></td><td>The program that reads the university pages.</td><td>No. Ask Claude if the university changes its page layout.</td></tr>
+<tr><td><code>pd/enrolments/data/enrolments.json</code></td><td>The saved numbers. The job overwrites it every run.</td><td>No.</td></tr>
+<tr><td><code>pd/enrolments/data/history.json</code></td><td>The history behind the small lines and charts. Each run adds a record <code>[time, enrolled, size]</code> for a class only when its enrolled number or its size has changed. It only grows, and it cannot be rebuilt if lost, so do not delete it.</td><td>No.</td></tr>
+<tr><td><code>pd/enrolments/data/last-year.json</code> and <code>.github/workflows/enrolments-last-year.yml</code></td><td>Last year's final numbers for each course, semester and campus (the pink dashed line on the charts). Made once by running the "Collect last year's final enrolments" workflow by hand.</td><td>No. Re-run the workflow each year.</td></tr>
+<tr><td><code>pd/enrolments/extra-courses.csv</code></td><td>Courses to show on this page that are not in <code>courses.csv</code>. Columns: <code>Course Code</code>, <code>Course Name</code>, <code>Level</code>.</td><td>Yes: add a line to add a course.</td></tr>
+<tr><td><code>pd/enrolments/ciid-suffix.csv</code></td><td>The staff system's addresses end in a digit that belongs to each course on each campus (for example <code>2750_MATH_X306_2</code>), and it cannot be worked out, so it is listed here. Columns: <code>Course Code</code>, <code>Campus</code> (exactly as the university page spells it, e.g. Adelaide City Campus East), <code>Last digit</code>.</td><td>Yes: add a row when a course is missing.</td></tr>
 </table></div>
 
 <h3>The small lines and charts</h3>
@@ -144,8 +144,8 @@ a{color:var(--purple);font-weight:700}
 <pre>raymondvozzo.github.io/
 ├── .github/workflows/     enrolments.yml (hourly), enrolments-last-year.yml (by hand); a hidden folder
 ├── prereqs/               index.html, courses.csv
-└── PD/                    index.html (the hub)
-    ├── schedule/          index.html, schedule.js, schedule.css
+├── schedule/              index.html, schedule.js, schedule.css
+└── pd/                    index.html (the hub)
     ├── major-courses/     index.html, lists.js, level2.xlsx, level3.xlsx, level4.xlsx
     ├── clos/              index.html, clos.csv
     ├── enrolments/        index.html, extra-courses.csv, ciid-suffix.csv
@@ -153,7 +153,7 @@ a{color:var(--purple);font-weight:700}
     │   ├── scraper/       scrape.mjs, package.json
     │   └── relay/         optional, not in use
     └── readme/            index.html (this page)</pre>
-<p>The pages find each other by these relative positions, so please keep the folders as they are. <code>PD</code> must be in capital letters, because addresses on GitHub Pages are case-sensitive.</p>
+<p>The pages find each other by these relative positions, so please keep the folders as they are. Folder names must match exactly, including lower case: <code>pd</code> is in lower case, because addresses on GitHub Pages are case-sensitive. The schedule page reads the course lists from <code>pd/major-courses/</code>, and the hub links to it with <code>../schedule/</code>.</p>
 
 <h2>When something looks wrong</h2>
 <div class="t"><table>

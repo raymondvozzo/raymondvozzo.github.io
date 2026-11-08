@@ -1,12 +1,12 @@
 // Collects class enrolment numbers from the university's course pages and saves them to
-// PD/enrolments/data/enrolments.json. Runs on GitHub (see .github/workflows/enrolments.yml).
+// pd/enrolments/data/enrolments.json. Runs on GitHub (see .github/workflows/enrolments.yml).
 //   COURSE=MATHX206   refresh just that course (several codes can be separated by spaces or commas)
 //   YEAR=2027         which year's pages to read
 //   SITE_ROOT=...     the repository root (default: the current folder)
 //   FIXTURE_DIR=...   read saved pages (CODE.html) instead of the website, for testing
 //   MODE=lastyear     one-off: read last year's pages (set YEAR) and save each course's final numbers
-//                     in PD/enrolments/data/last-year.json (enrolments.json and history.json are not touched)
-// Besides enrolments.json (the latest numbers) every normal run adds to PD/enrolments/data/history.json:
+//                     in pd/enrolments/data/last-year.json (enrolments.json and history.json are not touched)
+// Besides enrolments.json (the latest numbers) every normal run adds to pd/enrolments/data/history.json:
 // for each class, a record [time, enrolled, size] is added whenever its enrolled number or size changes.
 import * as cheerio from 'cheerio';
 import fs from 'node:fs';
@@ -15,9 +15,9 @@ import { pathToFileURL } from 'node:url';
 
 const YEAR = process.env.YEAR || '2027';
 const ROOT = process.env.SITE_ROOT || process.cwd();
-const DATA = path.join(ROOT, 'PD/enrolments/data/enrolments.json');
-const HIST = path.join(ROOT, 'PD/enrolments/data/history.json');
-const LAST = path.join(ROOT, 'PD/enrolments/data/last-year.json');
+const DATA = path.join(ROOT, 'pd/enrolments/data/enrolments.json');
+const HIST = path.join(ROOT, 'pd/enrolments/data/history.json');
+const LAST = path.join(ROOT, 'pd/enrolments/data/last-year.json');
 const UA = 'Mozilla/5.0 (compatible; SchoolMathsEnrolmentsBot/1.0)';
 const slug = c => c.toLowerCase().replace(/^([a-z]+)(\d+)$/, '$1-$2');
 const pageUrl = c => `https://adelaide.edu.au/study/courses/${YEAR}/${slug(c)}/`;
@@ -130,8 +130,8 @@ async function getHtml(code) {
 
 async function main() {
   const readCodes = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').replace(/^\uFEFF/, '').split(/\r?\n/).slice(1).map(l => l.split(',')[0].trim().toUpperCase()).filter(Boolean) : [];
-  // the course list, plus any extra courses listed only for this page (PD/enrolments/extra-courses.csv)
-  const codes = [...new Set([...readCodes(path.join(ROOT, 'prereqs/courses.csv')), ...readCodes(path.join(ROOT, 'PD/enrolments/extra-courses.csv'))])];
+  // the course list, plus any extra courses listed only for this page (pd/enrolments/extra-courses.csv)
+  const codes = [...new Set([...readCodes(path.join(ROOT, 'prereqs/courses.csv')), ...readCodes(path.join(ROOT, 'pd/enrolments/extra-courses.csv'))])];
   const lastYear = process.env.MODE === 'lastyear';
   const prev = fs.existsSync(DATA) ? JSON.parse(fs.readFileSync(DATA, 'utf8')) : { meta: {}, courses: {} };
   const hist = !lastYear && fs.existsSync(HIST) ? (JSON.parse(fs.readFileSync(HIST, 'utf8')).classes || {}) : {};
