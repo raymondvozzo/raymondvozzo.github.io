@@ -1,14 +1,14 @@
 {
  "meta": {
   "year": "2027",
-  "generated": "2026-11-14T16:37:32.417Z",
-  "fullRun": "2026-11-14T16:37:32.417Z"
+  "generated": "2026-11-14T21:23:10.693Z",
+  "fullRun": "2026-11-14T21:23:10.693Z"
  },
  "courses": {
   "ARTI1000": {
    "code": "ARTI1000",
    "url": "https://adelaide.edu.au/study/courses/2027/arti-1000/",
-   "fetched": "2026-11-14T16:36:20.257Z",
+   "fetched": "2026-11-14T21:22:08.888Z",
    "status": "ok",
    "terms": [
     {
@@ -63,7 +63,7 @@
   "COMP1002": {
    "code": "COMP1002",
    "url": "https://adelaide.edu.au/study/courses/2027/comp-1002/",
-   "fetched": "2026-11-14T16:32:41.627Z",
+   "fetched": "2026-11-14T21:18:44.064Z",
    "status": "ok",
    "terms": [
     {
@@ -555,7 +555,7 @@
   "COMP4007": {
    "code": "COMP4007",
    "url": "https://adelaide.edu.au/study/courses/2027/comp-4007/",
-   "fetched": "2026-11-14T16:36:31.581Z",
+   "fetched": "2026-11-14T21:22:19.256Z",
    "status": "ok",
    "terms": [
     {
@@ -610,7 +610,7 @@
   "COMPX300": {
    "code": "COMPX300",
    "url": "https://adelaide.edu.au/study/courses/2027/compx-300/",
-   "fetched": "2026-11-14T16:34:43.926Z",
+   "fetched": "2026-11-14T21:20:31.959Z",
    "status": "ok",
    "terms": [
     {
@@ -691,7 +691,7 @@
   "ENGI1004": {
    "code": "ENGI1004",
    "url": "https://adelaide.edu.au/study/courses/2027/engi-1004/",
-   "fetched": "2026-11-14T16:37:18.242Z",
+   "fetched": "2026-11-14T21:23:00.395Z",
    "status": "ok",
    "terms": [
     {
@@ -2414,7 +2414,7 @@
   "ENGI2001": {
    "code": "ENGI2001",
    "url": "https://adelaide.edu.au/study/courses/2027/engi-2001/",
-   "fetched": "2026-11-14T16:37:26.218Z",
+   "fetched": "2026-11-14T21:23:06.049Z",
    "status": "ok",
    "terms": [
     {
@@ -3198,7 +3198,7 @@
   "MATH1004": {
    "code": "MATH1004",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1004/",
-   "fetched": "2026-11-14T16:32:16.138Z",
+   "fetched": "2026-11-14T21:18:24.624Z",
    "status": "ok",
    "terms": [
     {
@@ -3586,7 +3586,7 @@
   "MATH1005": {
    "code": "MATH1005",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1005/",
-   "fetched": "2026-11-14T16:32:48.717Z",
+   "fetched": "2026-11-14T21:18:49.943Z",
    "status": "ok",
    "terms": [
     {
@@ -4074,7 +4074,7 @@
            "number": "63224",
            "section": "FR01",
            "size": 95,
-           "available": 88,
+           "available": 87,
            "meetings": [
             {
              "dates": "3 Aug - 21 Sep",
@@ -4100,7 +4100,7 @@
            "number": "62331",
            "section": "AS01",
            "size": 100,
-           "available": 93,
+           "available": 92,
            "meetings": [
             {
              "dates": "20 Sep - 20 Sep",
@@ -4196,7 +4196,7 @@
            "number": "63228",
            "section": "PR01",
            "size": 30,
-           "available": 27,
+           "available": 26,
            "meetings": [
             {
              "dates": "3 Aug - 21 Sep",
@@ -4222,7 +4222,7 @@
            "number": "63229",
            "section": "WS04",
            "size": 25,
-           "available": 20,
+           "available": 19,
            "meetings": [
             {
              "dates": "3 Aug - 21 Sep",
@@ -4337,7 +4337,7 @@
   "MATH1006": {
    "code": "MATH1006",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1006/",
-   "fetched": "2026-11-14T16:32:25.588Z",
+   "fetched": "2026-11-14T21:18:31.876Z",
    "status": "ok",
    "terms": [
     {
@@ -4714,7 +4714,7 @@
   "MATH1007": {
    "code": "MATH1007",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1007/",
-   "fetched": "2026-11-14T16:32:31.870Z",
+   "fetched": "2026-11-14T21:18:36.044Z",
    "status": "ok",
    "terms": [
     {
@@ -4758,7 +4758,7 @@
            "number": "26258",
            "section": "WS02",
            "size": 25,
-           "available": 13,
+           "available": 12,
            "meetings": [
             {
              "dates": "6 May - 27 May",
@@ -4784,7 +4784,7 @@
            "number": "26259",
            "section": "WS01",
            "size": 25,
-           "available": 13,
+           "available": 14,
            "meetings": [
             {
              "dates": "25 Feb - 15 Apr",
@@ -4821,7 +4821,7 @@
   "MATH1011": {
    "code": "MATH1011",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1011/",
-   "fetched": "2026-11-14T16:32:56.276Z",
+   "fetched": "2026-11-14T21:18:54.846Z",
    "status": "ok",
    "terms": [
     {
@@ -4876,14 +4876,14 @@
   "MATH1012": {
    "code": "MATH1012",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1012/",
-   "fetched": "2026-11-14T16:33:04.910Z",
+   "fetched": "2026-11-14T21:19:01.884Z",
    "status": "no-availability",
    "terms": []
   },
   "MATH1016": {
    "code": "MATH1016",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1016/",
-   "fetched": "2026-11-14T16:37:03.089Z",
+   "fetched": "2026-11-14T21:22:47.982Z",
    "status": "ok",
    "terms": [
     {
@@ -8379,7 +8379,7 @@
   "MATH1035": {
    "code": "MATH1035",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1035/",
-   "fetched": "2026-11-14T16:33:07.745Z",
+   "fetched": "2026-11-14T21:19:04.906Z",
    "status": "ok",
    "terms": [
     {
@@ -8538,7 +8538,7 @@
   "MATH2010": {
    "code": "MATH2010",
    "url": "https://adelaide.edu.au/study/courses/2027/math-2010/",
-   "fetched": "2026-11-14T16:33:39.495Z",
+   "fetched": "2026-11-14T21:19:34.115Z",
    "status": "ok",
    "terms": [
     {
@@ -8593,7 +8593,7 @@
   "MATH2025": {
    "code": "MATH2025",
    "url": "https://adelaide.edu.au/study/courses/2027/math-2025/",
-   "fetched": "2026-11-14T16:33:14.312Z",
+   "fetched": "2026-11-14T21:19:11.596Z",
    "status": "ok",
    "terms": [
     {
@@ -8784,7 +8784,7 @@
   "MATH3013": {
    "code": "MATH3013",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3013/",
-   "fetched": "2026-11-14T16:34:30.459Z",
+   "fetched": "2026-11-14T21:20:19.940Z",
    "status": "ok",
    "terms": [
     {
@@ -8859,7 +8859,7 @@
   "MATH3022": {
    "code": "MATH3022",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3022/",
-   "fetched": "2026-11-14T16:34:57.918Z",
+   "fetched": "2026-11-14T21:20:45.550Z",
    "status": "ok",
    "terms": [
     {
@@ -9094,7 +9094,7 @@
   "MATH3900": {
    "code": "MATH3900",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3900/",
-   "fetched": "2026-11-14T16:35:14.225Z",
+   "fetched": "2026-11-14T21:21:01.787Z",
    "status": "ok",
    "terms": [
     {
@@ -9211,7 +9211,7 @@
   "MATH3901": {
    "code": "MATH3901",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3901/",
-   "fetched": "2026-11-14T16:35:23.336Z",
+   "fetched": "2026-11-14T21:21:11.545Z",
    "status": "ok",
    "terms": [
     {
@@ -9342,7 +9342,7 @@
   "MATH3902": {
    "code": "MATH3902",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3902/",
-   "fetched": "2026-11-14T16:34:02.577Z",
+   "fetched": "2026-11-14T21:19:55.038Z",
    "status": "ok",
    "terms": [
     {
@@ -9483,7 +9483,7 @@
   "MATH4008": {
    "code": "MATH4008",
    "url": "https://adelaide.edu.au/study/courses/2027/math-4008/",
-   "fetched": "2026-11-14T16:35:56.196Z",
+   "fetched": "2026-11-14T21:21:46.639Z",
    "status": "ok",
    "terms": [
     {
@@ -9538,14 +9538,14 @@
   "MATH4010": {
    "code": "MATH4010",
    "url": "https://adelaide.edu.au/study/courses/2027/math-4010/",
-   "fetched": "2026-11-14T16:35:38.182Z",
+   "fetched": "2026-11-14T21:21:26.556Z",
    "status": "no-availability",
    "terms": []
   },
   "MATH6019": {
    "code": "MATH6019",
    "url": "https://adelaide.edu.au/study/courses/2027/math-6019/",
-   "fetched": "2026-11-14T16:35:50.139Z",
+   "fetched": "2026-11-14T21:21:39.872Z",
    "status": "ok",
    "terms": [
     {
@@ -9616,7 +9616,7 @@
   "MATHX104": {
    "code": "MATHX104",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-104/",
-   "fetched": "2026-11-14T16:33:00.182Z",
+   "fetched": "2026-11-14T21:18:57.637Z",
    "status": "ok",
    "terms": [
     {
@@ -9738,7 +9738,7 @@
            "number": "66797",
            "section": "PR01",
            "size": 30,
-           "available": 27,
+           "available": 26,
            "meetings": [
             {
              "dates": "2 Aug - 20 Sep",
@@ -9790,7 +9790,7 @@
            "number": "66799",
            "section": "PR03",
            "size": 30,
-           "available": 28,
+           "available": 29,
            "meetings": [
             {
              "dates": "2 Aug - 20 Sep",
@@ -9868,7 +9868,7 @@
            "number": "61248",
            "section": "WS07",
            "size": 35,
-           "available": 32,
+           "available": 33,
            "meetings": [
             {
              "dates": "12 Oct - 2 Nov",
@@ -9946,7 +9946,7 @@
            "number": "66793",
            "section": "WS02",
            "size": 35,
-           "available": 31,
+           "available": 30,
            "meetings": [
             {
              "dates": "2 Aug - 20 Sep",
@@ -10061,7 +10061,7 @@
   "MATHX106": {
    "code": "MATHX106",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-106/",
-   "fetched": "2026-11-14T16:32:21.043Z",
+   "fetched": "2026-11-14T21:18:28.742Z",
    "status": "ok",
    "terms": [
     {
@@ -10234,7 +10234,7 @@
   "MATHX201": {
    "code": "MATHX201",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-201/",
-   "fetched": "2026-11-14T16:33:11.081Z",
+   "fetched": "2026-11-14T21:19:08.027Z",
    "status": "ok",
    "terms": [
     {
@@ -10375,7 +10375,7 @@
   "MATHX202": {
    "code": "MATHX202",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-202/",
-   "fetched": "2026-11-14T16:33:17.869Z",
+   "fetched": "2026-11-14T21:19:14.912Z",
    "status": "ok",
    "terms": [
     {
@@ -10542,7 +10542,7 @@
   "MATHX203": {
    "code": "MATHX203",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-203/",
-   "fetched": "2026-11-14T16:36:59.248Z",
+   "fetched": "2026-11-14T21:22:44.293Z",
    "status": "ok",
    "terms": [
     {
@@ -10605,7 +10605,7 @@
            "available": 14,
            "meetings": [
             {
-             "dates": "26 Feb - 19 Mar",
+             "dates": "2 Apr - 16 Apr",
              "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -10613,7 +10613,7 @@
              "instructor": ""
             },
             {
-             "dates": "2 Apr - 16 Apr",
+             "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -10691,7 +10691,7 @@
            "available": 18,
            "meetings": [
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -10699,7 +10699,7 @@
              "instructor": ""
             },
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -10902,7 +10902,7 @@
            "available": 22,
            "meetings": [
             {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -10910,7 +10910,7 @@
              "instructor": ""
             },
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -10988,7 +10988,7 @@
   "MATHX204": {
    "code": "MATHX204",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-204/",
-   "fetched": "2026-11-14T16:33:48.675Z",
+   "fetched": "2026-11-14T21:19:43.019Z",
    "status": "ok",
    "terms": [
     {
@@ -11095,7 +11095,7 @@
   "MATHX205": {
    "code": "MATHX205",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-205/",
-   "fetched": "2026-11-14T16:33:25.680Z",
+   "fetched": "2026-11-14T21:19:21.419Z",
    "status": "ok",
    "terms": [
     {
@@ -11234,7 +11234,7 @@
   "MATHX206": {
    "code": "MATHX206",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-206/",
-   "fetched": "2026-11-14T16:33:51.451Z",
+   "fetched": "2026-11-14T21:19:46.129Z",
    "status": "ok",
    "terms": [
     {
@@ -11385,14 +11385,14 @@
   "MATHX208": {
    "code": "MATHX208",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-208/",
-   "fetched": "2026-11-14T16:33:33.150Z",
+   "fetched": "2026-11-14T21:19:28.506Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX209": {
    "code": "MATHX209",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-209/",
-   "fetched": "2026-11-14T16:33:46.162Z",
+   "fetched": "2026-11-14T21:19:40.429Z",
    "status": "ok",
    "terms": [
     {
@@ -11473,7 +11473,7 @@
   "MATHX210": {
    "code": "MATHX210",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-210/",
-   "fetched": "2026-11-14T16:33:42.032Z",
+   "fetched": "2026-11-14T21:19:37.121Z",
    "status": "ok",
    "terms": [
     {
@@ -11580,7 +11580,7 @@
   "MATHX214": {
    "code": "MATHX214",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-214/",
-   "fetched": "2026-11-14T16:33:21.614Z",
+   "fetched": "2026-11-14T21:19:18.187Z",
    "status": "ok",
    "terms": [
     {
@@ -12004,7 +12004,7 @@
   "MATHX300": {
    "code": "MATHX300",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-300/",
-   "fetched": "2026-11-14T16:34:06.521Z",
+   "fetched": "2026-11-14T21:19:58.305Z",
    "status": "ok",
    "terms": [
     {
@@ -12101,7 +12101,7 @@
   "MATHX301": {
    "code": "MATHX301",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-301/",
-   "fetched": "2026-11-14T16:34:10.492Z",
+   "fetched": "2026-11-14T21:20:02.165Z",
    "status": "ok",
    "terms": [
     {
@@ -12198,7 +12198,7 @@
   "MATHX302": {
    "code": "MATHX302",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-302/",
-   "fetched": "2026-11-14T16:34:51.400Z",
+   "fetched": "2026-11-14T21:20:38.397Z",
    "status": "ok",
    "terms": [
     {
@@ -12279,14 +12279,14 @@
   "MATHX303": {
    "code": "MATHX303",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-303/",
-   "fetched": "2026-11-14T16:34:17.288Z",
+   "fetched": "2026-11-14T21:20:08.005Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX304": {
    "code": "MATHX304",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-304/",
-   "fetched": "2026-11-14T16:35:06.368Z",
+   "fetched": "2026-11-14T21:20:51.561Z",
    "status": "ok",
    "terms": [
     {
@@ -12367,14 +12367,14 @@
   "MATHX305": {
    "code": "MATHX305",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-305/",
-   "fetched": "2026-11-14T16:35:08.835Z",
+   "fetched": "2026-11-14T21:20:55.314Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX306": {
    "code": "MATHX306",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-306/",
-   "fetched": "2026-11-14T16:34:20.570Z",
+   "fetched": "2026-11-14T21:20:11.519Z",
    "status": "ok",
    "terms": [
     {
@@ -12455,7 +12455,7 @@
   "MATHX307": {
    "code": "MATHX307",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-307/",
-   "fetched": "2026-11-14T16:34:24.784Z",
+   "fetched": "2026-11-14T21:20:14.710Z",
    "status": "ok",
    "terms": [
     {
@@ -12554,14 +12554,14 @@
   "MATHX308": {
    "code": "MATHX308",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-308/",
-   "fetched": "2026-11-14T16:34:28.114Z",
+   "fetched": "2026-11-14T21:20:17.642Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX309": {
    "code": "MATHX309",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-309/",
-   "fetched": "2026-11-14T16:35:11.088Z",
+   "fetched": "2026-11-14T21:20:57.855Z",
    "status": "ok",
    "terms": [
     {
@@ -12642,7 +12642,7 @@
   "MATHX310": {
    "code": "MATHX310",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-310/",
-   "fetched": "2026-11-14T16:35:16.845Z",
+   "fetched": "2026-11-14T21:21:04.995Z",
    "status": "ok",
    "terms": [
     {
@@ -12723,7 +12723,7 @@
   "MATHX311": {
    "code": "MATHX311",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-311/",
-   "fetched": "2026-11-14T16:34:33.168Z",
+   "fetched": "2026-11-14T21:20:23.765Z",
    "status": "ok",
    "terms": [
     {
@@ -12836,14 +12836,14 @@
   "MATHX312": {
    "code": "MATHX312",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-312/",
-   "fetched": "2026-11-14T16:35:19.711Z",
+   "fetched": "2026-11-14T21:21:08.833Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX313": {
    "code": "MATHX313",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-313/",
-   "fetched": "2026-11-14T16:34:47.284Z",
+   "fetched": "2026-11-14T21:20:35.135Z",
    "status": "ok",
    "terms": [
     {
@@ -12940,7 +12940,7 @@
   "MATHX315": {
    "code": "MATHX315",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-315/",
-   "fetched": "2026-11-14T16:36:55.939Z",
+   "fetched": "2026-11-14T21:22:41.588Z",
    "status": "ok",
    "terms": [
     {
@@ -13065,21 +13065,21 @@
   "MATHX316": {
    "code": "MATHX316",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-316/",
-   "fetched": "2026-11-14T16:34:36.847Z",
+   "fetched": "2026-11-14T21:20:26.451Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX400": {
    "code": "MATHX400",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-400/",
-   "fetched": "2026-11-14T16:35:34.861Z",
+   "fetched": "2026-11-14T21:21:23.596Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX401": {
    "code": "MATHX401",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-401/",
-   "fetched": "2026-11-14T16:36:11.030Z",
+   "fetched": "2026-11-14T21:22:00.873Z",
    "status": "ok",
    "terms": [
     {
@@ -13134,14 +13134,14 @@
   "MATHX402": {
    "code": "MATHX402",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-402/",
-   "fetched": "2026-11-14T16:36:14.234Z",
+   "fetched": "2026-11-14T21:22:03.912Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX403": {
    "code": "MATHX403",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-403/",
-   "fetched": "2026-11-14T16:35:43.011Z",
+   "fetched": "2026-11-14T21:21:32.446Z",
    "status": "ok",
    "terms": [
     {
@@ -13196,7 +13196,7 @@
   "MATHX404": {
    "code": "MATHX404",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-404/",
-   "fetched": "2026-11-14T16:36:22.382Z",
+   "fetched": "2026-11-14T21:22:11.619Z",
    "status": "ok",
    "terms": [
     {
@@ -13251,14 +13251,14 @@
   "MATHX405": {
    "code": "MATHX405",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-405/",
-   "fetched": "2026-11-14T16:36:25.433Z",
+   "fetched": "2026-11-14T21:22:13.806Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX406": {
    "code": "MATHX406",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-406/",
-   "fetched": "2026-11-14T16:35:46.825Z",
+   "fetched": "2026-11-14T21:21:36.045Z",
    "status": "ok",
    "terms": [
     {
@@ -13352,7 +13352,7 @@
   "MATHX407": {
    "code": "MATHX407",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-407/",
-   "fetched": "2026-11-14T16:36:28.601Z",
+   "fetched": "2026-11-14T21:22:16.861Z",
    "status": "ok",
    "terms": [
     {
@@ -13446,14 +13446,14 @@
   "MATHX408": {
    "code": "MATHX408",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-408/",
-   "fetched": "2026-11-14T16:36:38.029Z",
+   "fetched": "2026-11-14T21:22:23.872Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX409": {
    "code": "MATHX409",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-409/",
-   "fetched": "2026-11-14T16:35:52.869Z",
+   "fetched": "2026-11-14T21:21:43.065Z",
    "status": "ok",
    "terms": [
     {
@@ -13508,7 +13508,7 @@
   "MATHX410": {
    "code": "MATHX410",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-410/",
-   "fetched": "2026-11-14T16:35:59.378Z",
+   "fetched": "2026-11-14T21:21:49.154Z",
    "status": "ok",
    "terms": [
     {
@@ -13563,7 +13563,7 @@
   "MATHX411": {
    "code": "MATHX411",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-411/",
-   "fetched": "2026-11-14T16:36:46.322Z",
+   "fetched": "2026-11-14T21:22:33.316Z",
    "status": "ok",
    "terms": [
     {
@@ -13618,7 +13618,7 @@
   "MATHX412": {
    "code": "MATHX412",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-412/",
-   "fetched": "2026-11-14T16:36:08.436Z",
+   "fetched": "2026-11-14T21:21:58.295Z",
    "status": "ok",
    "terms": [
     {
@@ -13673,7 +13673,7 @@
   "MATHX413": {
    "code": "MATHX413",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-413/",
-   "fetched": "2026-11-14T16:36:50.275Z",
+   "fetched": "2026-11-14T21:22:36.367Z",
    "status": "ok",
    "terms": [
     {
@@ -13728,7 +13728,7 @@
   "MATHX415": {
    "code": "MATHX415",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-415/",
-   "fetched": "2026-11-14T16:36:52.991Z",
+   "fetched": "2026-11-14T21:22:38.567Z",
    "status": "ok",
    "terms": [
     {
@@ -13783,7 +13783,7 @@
   "MATHX418": {
    "code": "MATHX418",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-418/",
-   "fetched": "2026-11-14T16:35:31.824Z",
+   "fetched": "2026-11-14T21:21:21.408Z",
    "status": "ok",
    "terms": [
     {
@@ -13854,7 +13854,7 @@
   "STAT2003": {
    "code": "STAT2003",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-2003/",
-   "fetched": "2026-11-14T16:33:59.479Z",
+   "fetched": "2026-11-14T21:19:52.303Z",
    "status": "ok",
    "terms": [
     {
@@ -13961,7 +13961,7 @@
   "STAT3005": {
    "code": "STAT3005",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-3005/",
-   "fetched": "2026-11-14T16:35:29.522Z",
+   "fetched": "2026-11-14T21:21:18.184Z",
    "status": "ok",
    "terms": [
     {
@@ -14042,7 +14042,7 @@
   "STAT3006": {
    "code": "STAT3006",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-3006/",
-   "fetched": "2026-11-14T16:34:54.544Z",
+   "fetched": "2026-11-14T21:20:42.110Z",
    "status": "ok",
    "terms": [
     {
@@ -14123,14 +14123,14 @@
   "STAT4001": {
    "code": "STAT4001",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4001/",
-   "fetched": "2026-11-14T16:36:01.737Z",
+   "fetched": "2026-11-14T21:21:52.220Z",
    "status": "no-availability",
    "terms": []
   },
   "STAT4002": {
    "code": "STAT4002",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4002/",
-   "fetched": "2026-11-14T16:36:04.803Z",
+   "fetched": "2026-11-14T21:21:54.604Z",
    "status": "ok",
    "terms": [
     {
@@ -14185,14 +14185,14 @@
   "STAT4019": {
    "code": "STAT4019",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4019/",
-   "fetched": "2026-11-14T16:35:41.162Z",
+   "fetched": "2026-11-14T21:21:29.557Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX100": {
    "code": "STATX100",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-100/",
-   "fetched": "2026-11-14T16:32:35.440Z",
+   "fetched": "2026-11-14T21:18:39.995Z",
    "status": "ok",
    "terms": [
     {
@@ -14627,7 +14627,7 @@
   "STATX200": {
    "code": "STATX200",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-200/",
-   "fetched": "2026-11-14T16:33:29.072Z",
+   "fetched": "2026-11-14T21:19:24.861Z",
    "status": "ok",
    "terms": [
     {
@@ -14786,14 +14786,14 @@
   "STATX201": {
    "code": "STATX201",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-201/",
-   "fetched": "2026-11-14T16:33:36.541Z",
+   "fetched": "2026-11-14T21:19:31.308Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX290": {
    "code": "STATX290",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-290/",
-   "fetched": "2026-11-14T16:33:55.600Z",
+   "fetched": "2026-11-14T21:19:48.671Z",
    "status": "ok",
    "terms": [
     {
@@ -15024,7 +15024,7 @@
   "STATX300": {
    "code": "STATX300",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-300/",
-   "fetched": "2026-11-14T16:34:14.510Z",
+   "fetched": "2026-11-14T21:20:05.155Z",
    "status": "ok",
    "terms": [
     {
@@ -15183,7 +15183,7 @@
   "STATX301": {
    "code": "STATX301",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-301/",
-   "fetched": "2026-11-14T16:35:02.114Z",
+   "fetched": "2026-11-14T21:20:48.769Z",
    "status": "ok",
    "terms": [
     {
@@ -15290,7 +15290,7 @@
   "STATX302": {
    "code": "STATX302",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-302/",
-   "fetched": "2026-11-14T16:34:39.708Z",
+   "fetched": "2026-11-14T21:20:29.331Z",
    "status": "ok",
    "terms": [
     {
@@ -15471,7 +15471,7 @@
   "STATX303": {
    "code": "STATX303",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-303/",
-   "fetched": "2026-11-14T16:35:26.754Z",
+   "fetched": "2026-11-14T21:21:15.243Z",
    "status": "ok",
    "terms": [
     {
@@ -15552,28 +15552,28 @@
   "STATX400": {
    "code": "STATX400",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-400/",
-   "fetched": "2026-11-14T16:36:35.660Z",
+   "fetched": "2026-11-14T21:22:21.939Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX401": {
    "code": "STATX401",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-401/",
-   "fetched": "2026-11-14T16:36:41.519Z",
+   "fetched": "2026-11-14T21:22:26.867Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX402": {
    "code": "STATX402",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-402/",
-   "fetched": "2026-11-14T16:36:44.462Z",
+   "fetched": "2026-11-14T21:22:30.486Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX403": {
    "code": "STATX403",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-403/",
-   "fetched": "2026-11-14T16:36:17.647Z",
+   "fetched": "2026-11-14T21:22:06.279Z",
    "status": "ok",
    "terms": [
     {
