@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course topics and key concepts</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--bblue:#1448FF;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:660px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+#q{width:100%;padding:12px 14px;font:inherit;font-size:16px;color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:8px}
+#q:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+.bar .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.6;min-width:4.2em}
+button{font-family:var(--ui);cursor:pointer}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+.sp{flex:1}
+.lnk{border:0;background:none;color:var(--purple);font-weight:700;font-size:13px;padding:6px 4px}
+#count{font-size:13px;margin:6px 0 0;opacity:.8}
+h2{font-family:var(--head);font-size:1.5rem;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+details.course{border-bottom:1px solid var(--line)}
+summary{display:flex;gap:12px;align-items:baseline;padding:11px 6px;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--purple);flex:none;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#f3f1ff}
+.cd{font-weight:700;color:var(--purple);flex:none;min-width:6.2em}
+.tt{flex:1}
+.tags{display:flex;gap:4px;flex-wrap:wrap;flex:none}
+.tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;color:#fff;background:var(--f)}
+.tag.c{font-weight:400;background:#fff;color:var(--navy);border:1px solid var(--f)}
+.core{--f:#a8915c}.pure{--f:#6E5AE1}.applied{--f:#1448FF}.statistics{--f:#140f50}.datascience{--f:#0b7a75}.discipline{--f:#B5338A}.service{--f:#666}
+.n{font-size:12px;opacity:.65;flex:none;min-width:8.5em;text-align:right}
+.body{padding:2px 8px 18px 32px}
+.sem{font-size:12px;margin:4px 0 6px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.sem a{color:var(--purple);font-weight:700}
+.semh{font-family:var(--head);font-size:1.2rem;margin:14px 0 2px}
+.mod{margin:12px 0 4px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--purple)}
+.mod b{color:var(--navy);font-size:15px;text-transform:none;letter-spacing:0;margin-left:6px}
+ol.topics{margin:0;padding:0;list-style:none;counter-reset:t}
+ol.topics>li{padding:6px 0 6px 0;border-top:1px solid #eeecf8;font-family:var(--body);line-height:1.45}
+ol.topics>li:first-child{border-top:0}
+.tp{display:flex;gap:10px;align-items:baseline}
+.tn{font-family:var(--ui);font-size:11px;font-weight:700;opacity:.55;flex:none;min-width:4.6em;text-transform:uppercase}
+.tl{color:var(--navy);text-decoration-color:#c9c3f3}.tl:hover{color:var(--purple)}
+.desc{display:block;font-size:13px;font-style:italic;opacity:.7}
+.tp .meta{font-family:var(--ui);font-size:11px;opacity:.6;margin-left:auto;flex:none;text-align:right}
+ul.kc{margin:4px 0 2px 5.6em;padding:0 0 0 1.1em;font-size:14px}
+ul.kc li{margin:2px 0}
+ul.kc ul.sub{margin:1px 0 4px;padding-left:1.2em;font-size:13px;opacity:.85;list-style:circle}
+ul.kc a{color:var(--navy);text-decoration-color:#c9c3f3}
+ul.kc a:hover{color:var(--purple)}
+.nokc{margin:2px 0 0 5.6em;font-family:var(--ui);font-size:12px;opacity:.5;font-style:italic}
+.empty{font-size:13px;background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:8px 12px;color:#5a3600;margin:8px 0}
+mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
+.none{padding:18px 4px}
+.foot{font-size:12px;line-height:1.5;opacity:.75;margin:20px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+@media(max-width:600px){body{padding:16px}.box{padding:14px}summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;text-align:left;padding-left:20px}.body{padding-left:8px}ul.kc,.nokc{margin-left:1em}.tp{flex-wrap:wrap}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},startup:{typeset:false}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+.eyebrow a{color:#fff}
+#gate{max-width:420px}
+#gate label{display:block;font-weight:700;margin:0 0 8px}
+#gate .row{display:flex;gap:8px}
+#pw{flex:1;padding:11px 12px;font:inherit;font-size:16px;color:var(--navy);border:2px solid var(--line);border-radius:8px}
+#pw:focus-visible,#go:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+#go{padding:10px 18px;font:inherit;font-weight:700;border:0;border-radius:8px;background:var(--purple);color:#fff;cursor:pointer}
+#go:disabled{opacity:.6;cursor:wait}
+#gmsg{min-height:1.4em;font-size:13px;margin:10px 0 0}
+#gmsg.err{color:#b3261e}
+#lock{font-size:13px;opacity:.75;margin:12px 0 0}
+#app[hidden],#gate[hidden]{display:none}
+.relock{border:0;background:none;color:#fff;opacity:.8;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">PD Resources</a> · School of Mathematical Sciences · Adelaide University</p>
+<h1>Topics and key concepts</h1>
+<p class="sub" id="subtxt" hidden>The modules, topics and key concepts of each course, taken from its myLearning site. Search by course, topic or any key concept, or filter by level and major. Key concept links open the page on myLearning (you need to be logged in).</p>
+<div class="box" id="gate">
+<form id="gf"><label for="pw">This page is password protected</label>
+<div class="row"><input id="pw" type="password" autocomplete="current-password" required><button id="go" type="submit">Open</button></div></form>
+<p id="gmsg" role="status" aria-live="polite"></p>
+<p id="lock">The course data is encrypted and is only unlocked in your browser.</p>
+</div>
+<div class="box" id="app" hidden>
+<input id="q" type="search" placeholder="Search courses, topics and key concepts" aria-label="Search courses, topics and key concepts" autocomplete="off">
+<div class="bar" id="lv" role="group" aria-label="Level"></div>
+<div class="bar" id="mj" role="group" aria-label="Major"></div>
+<div class="bar"><span id="count" aria-live="polite"></span><span class="sp"></span><button class="lnk" id="ex">Expand all</button><button class="lnk" id="co">Collapse all</button></div>
+<div id="list"></div>
+<p class="foot" id="foot"></p>
+</div>
+</div>
+<script>
+function app(DATA){
+const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4'};
+const MAJ=[['all','All majors'],['pure','Pure'],['applied','Applied'],['statistics','Statistics'],['datascience','Data Science']];
+const TAG={core:'Core',pure:'Pure',applied:'Applied',statistics:'Statistics',datascience:'Data Science',discipline:'Level 1 discipline',service:'Engineering service'};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=id=>document.getElementById(id);
+let lvl='all',maj='all',toks=[];
+const C=DATA.courses.map(c=>{
+  const kc=c.versions.flatMap(v=>v.modules.flatMap(m=>m.topics.flatMap(t=>[m.m,t.t,t.desc||'',...t.kc.flatMap(k=>[k[0],...(k[2]||[])])]))).join(' ').toLowerCase();
+  return{...c,hay:(c.code+' '+c.title+' '+kc).toLowerCase(),inner:kc,
+    nT:Math.max(...c.versions.map(v=>v.modules.reduce((n,m)=>n+m.topics.length,0))),
+    nK:Math.max(...c.versions.map(v=>v.modules.reduce((n,m)=>n+m.topics.reduce((k,t)=>k+t.kc.length,0),0)))}});
+function hl(t){if(!toks.length)return esc(t);
+  const re=new RegExp('('+toks.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+  return String(t).split(re).map((p,i)=>i%2?`<mark>${esc(p)}</mark>`:esc(p)).join('')}
+function inMajor(c){if(maj==='all')return true;
+  // a major shows its own courses plus the core and Level 1 discipline courses every major takes
+  return c.tags.some(t=>t.k===maj)||c.tags.some(t=>t.k==='core'||t.k==='discipline')}
+function version(v,many){
+  let h=many?`<div class="semh">${esc(v.sems.join(' and '))}</div>`:'';
+  h+=`<div class="sem">${many?'':`<span>${esc(v.sems.join(' and '))}</span>`}${v.sites.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">myLearning site${v.sites.length>1?' ('+esc(s.sem)+')':''} ↗</a>`).join('')}</div>`;
+  if(!v.modules.length)return h+'<p class="empty">No modules or topics could be read from this course site.</p>';
+  let tn=0;
+  for(const m of v.modules){
+    h+=`<div class="mod">Module ${v.modules.indexOf(m)+1}<b>${hl(m.m)}</b></div><ol class="topics">`;
+    for(const t of m.topics){tn++;
+      const meta=[t.week?'Week '+t.week:'',t.notes||''].filter(Boolean).join(' · ');
+      h+=`<li><div class="tp"><span class="tn">Topic ${tn}</span><span>${t.url?`<a class="tl" href="${esc(t.url)}" target="_blank" rel="noopener">${hl(t.t)}</a>`:hl(t.t)}${t.desc?`<span class="desc">${hl(t.desc)}</span>`:''}</span>${meta?`<span class="meta">${esc(meta)}</span>`:''}</div>`;
+      h+=t.kc.length?`<ul class="kc">${t.kc.map(k=>`<li>${k[1]?`<a href="${esc(k[1])}" target="_blank" rel="noopener">${hl(k[0])}</a>`:hl(k[0])}${k[2]?`<ul class="sub">${k[2].map(s=>`<li>${hl(s)}</li>`).join('')}</ul>`:''}</li>`).join('')}</ul>`:'<div class="nokc">No key concepts listed</div>';
+      h+='</li>'}
+    h+='</ol>'}
+  return h}
+function draw(){
+  const hit=C.filter(c=>(lvl==='all'||c.lvl==lvl)&&inMajor(c)&&toks.every(t=>c.hay.includes(t)));
+  const auto=toks.length&&hit.length<=8;
+  $('count').textContent=`Showing ${hit.length} of ${C.length} courses`;
+  if(!hit.length){$('list').innerHTML='<p class="none">No courses match.</p>';return}
+  let h='',g=0;
+  for(const c of hit){
+    if(c.lvl!==g){g=c.lvl;h+=`<h2>${GN[g]}</h2>`}
+    const open=auto&&toks.some(t=>c.inner.includes(t));
+    const tags=c.tags.map(t=>`<span class="tag ${t.k}${t.comp?'':' c'}" title="${esc(TAG[t.k]+(t.comp?' (compulsory)':''))}">${esc(TAG[t.k])}${t.comp?' ★':''}</span>`).join('');
+    h+=`<details class="course" id="c-${c.code}"${open?' open':''}><summary><span class="cd">${hl(c.code)}</span><span class="tt">${hl(c.title)}</span><span class="tags">${tags}</span><span class="n">${c.nT} topic${c.nT==1?'':'s'} · ${c.nK} key concept${c.nK==1?'':'s'}</span></summary>
+      <div class="body">${c.versions.map(v=>version(v,c.versions.length>1)).join('')}</div></details>`}
+  $('list').innerHTML=h;typeset()}
+function typeset(){const M=window.MathJax;if(M&&M.typesetPromise){M.typesetClear&&M.typesetClear();M.typesetPromise([$('list')]).catch(()=>{})}else setTimeout(typeset,500)}
+document.addEventListener('toggle',e=>{},true);
+const pills=(el,items,cur)=>el.innerHTML=items.map(([k,l])=>`<button class="pill" data-k="${k}" aria-pressed="${k==cur}">${l}</button>`).join('');
+$('lv').innerHTML='<span class="lbl">Level</span>';pills($('lv').appendChild(document.createElement('span')),[['all','All levels'],...[...new Set(C.map(c=>c.lvl))].sort().map(g=>[g,GN[g]])],'all');
+$('lv').lastChild.style.cssText='display:contents';
+$('mj').innerHTML='<span class="lbl">Major</span>';pills($('mj').appendChild(document.createElement('span')),MAJ,'all');
+$('mj').lastChild.style.cssText='display:contents';
+const pick=(el,set)=>el.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;set(b.dataset.k);
+  el.querySelectorAll('.pill').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+pick($('lv'),k=>lvl=k);pick($('mj'),k=>maj=k);
+$('q').addEventListener('input',e=>{toks=e.target.value.toLowerCase().split(/\s+/).filter(Boolean);draw()});
+$('ex').onclick=()=>document.querySelectorAll('#list details').forEach(d=>d.open=true);
+$('co').onclick=()=>document.querySelectorAll('#list details').forEach(d=>d.open=false);
+$('foot').innerHTML=`Collected from myLearning on ${esc(DATA.collected)}. Major tags follow the 2027 major lists (★ = compulsory for that major); choosing a major also shows the core and Level 1 discipline courses every major takes. ${DATA.missing.length?`Major or core courses with no course site data: ${DATA.missing.map(m=>`${esc(m[0])} ${esc(m[1])}`).join('; ')}.`:''}`;
+draw();
+const id=location.hash.slice(1),el=id&&document.getElementById('c-'+id);if(el){el.open=true;el.scrollIntoView()}
+
+}
+
+// ---- unlocking ---------------------------------------------------------------------------
+// data.enc.json = {v, kdf:"PBKDF2-SHA256", iter, salt, iv, ct}: AES-256-GCM with a key derived from the password.
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const b64e = u => { const a = new Uint8Array(u); let s = ''; for (let i = 0; i < a.length; i += 8192) s += String.fromCharCode.apply(null, a.subarray(i, i + 8192)); return btoa(s); };
+async function deriveKey(pw, salt, iter) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iter }, base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+}
+async function decrypt(enc, key) {
+  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(enc.iv) }, key, b64(enc.ct));
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+let ENC = null;
+async function loadEnc() {
+  if (ENC) return ENC;
+  const r = await fetch('data.enc.json', { cache: 'no-store' });
+  if (!r.ok) throw new Error('the data file could not be loaded (HTTP ' + r.status + ')');
+  return ENC = await r.json();
+}
+const SS = { get: k => { try { return sessionStorage.getItem(k) } catch (_) { return null } },
+             set: (k, v) => { try { sessionStorage.setItem(k, v) } catch (_) {} },
+             del: k => { try { sessionStorage.removeItem(k) } catch (_) {} } };
+function show(DATA) {
+  document.getElementById('gate').hidden = true;
+  document.getElementById('app').hidden = false;
+  document.getElementById('subtxt').hidden = false;
+  const lock = document.createElement('button'); lock.className = 'relock'; lock.textContent = 'Lock';
+  lock.onclick = () => { SS.del('kc-key'); location.reload(); };
+  document.querySelector('.eyebrow').appendChild(lock);
+  app(DATA);
+}
+document.getElementById('gf').addEventListener('submit', async e => {
+  e.preventDefault();
+  const msg = document.getElementById('gmsg'), go = document.getElementById('go');
+  msg.className = ''; msg.textContent = 'Unlocking…'; go.disabled = true;
+  try {
+    const enc = await loadEnc();
+    const key = await deriveKey(document.getElementById('pw').value, b64(enc.salt), enc.iter);
+    let DATA;
+    try { DATA = await decrypt(enc, key); }
+    catch (_) { msg.className = 'err'; msg.textContent = 'That password is not right.'; go.disabled = false; document.getElementById('pw').select(); return; }
+    SS.set('kc-key', b64e(await crypto.subtle.exportKey('raw', key)));   // stay unlocked in this tab only
+    show(DATA);
+  } catch (err) { msg.className = 'err'; msg.textContent = 'Could not open the page: ' + err.message; go.disabled = false; }
+});
+(async () => {   // already unlocked earlier in this tab?
+  const k = SS.get('kc-key'); if (!k) { document.getElementById('pw').focus(); return; }
+  try { const key = await crypto.subtle.importKey('raw', b64(k), 'AES-GCM', false, ['decrypt']); show(await decrypt(await loadEnc(), key)); }
+  catch (_) { SS.del('kc-key'); document.getElementById('pw').focus(); }
+})();
+</script>
+</body>
+</html>
