@@ -49,6 +49,7 @@ tr.course td.c{white-space:nowrap}
 tr.course.open .tri::before{content:"▾"}
 .cell{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:700;color:#fff}
 .ast{color:var(--amber);font-weight:700}
+.old{font-size:11px;font-weight:700;background:#fff4e5;color:#7a3b00;border:1px solid #f0c27b;border-radius:10px;padding:1px 8px;white-space:nowrap}
 tr.clo td{background:#faf9ff;font-size:13px}
 tr.clo td.c{font-family:var(--body);white-space:normal;padding-left:34px;line-height:1.4;min-width:300px}
 tr.clo .no{font-family:var(--ui);font-weight:700;color:var(--purple);margin-right:6px}
@@ -89,7 +90,9 @@ function csvRows(t){const rows=[];let row=[],cur='',q=false;
  const h=rows.shift().map(s=>s.replace(/^﻿/,'').trim());
  return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
 const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4',5:'Postgraduate'};
-const lvlOf=code=>{const d=+(code.match(/\d/)||[0])[0];return d>=5?5:d};
+// Level comes from the prerequisite site's course list; courses not listed there fall back to the code.
+let LV={};
+const lvlOf=code=>{if(LV[code])return Math.min(LV[code],5);const d=+(code.match(/\d/)||[0])[0];return d>=5?5:d};
 const $=id=>document.getElementById(id);
 const get=f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f+' not found (HTTP '+r.status+')');return r.text()}).then(csvRows);
 // clo-plo.csv and plos.csv are encrypted together in data.enc.json; clos.csv is public (the CLO page uses it too)
@@ -100,10 +103,11 @@ const secret=Staff.open('data.enc.json').then(files=>{
 
 let PROGS=[],COURSES=new Map(),cur=null;
 
-Promise.all([secret,get('/pd/clos/clos.csv')]).then(([[map,plos],clos])=>{
+Promise.all([secret,get('/pd/clos/clos.csv'),get('/prereqs/courses.csv').catch(()=>[])]).then(([[map,plos],clos,levels])=>{
+ for(const r of levels){const l=parseInt(r['level'],10);if(r['Course Code']&&l)LV[r['Course Code']]=l}
  // courses and their CLO text
  for(const r of clos){const k=r['Course Code'];
-  if(!COURSES.has(k))COURSES.set(k,{code:k,title:r['Course Title'],clos:[]});
+  if(!COURSES.has(k))COURSES.set(k,{code:k,title:r['Course Title'],note:r['Version Note']||'',applies:r['Applies']||'',clos:[]});
   COURSES.get(k).clos.push({no:r['CLO No'],text:r['Course Learning Outcome']})}
  // programs and their PLOs
  const P=new Map();
@@ -127,7 +131,7 @@ Promise.all([secret,get('/pd/clos/clos.csv')]).then(([[map,plos],clos])=>{
  const un=[...COURSES.values()].filter(c=>!mapped.has(c.code)).sort((a,b)=>a.code.localeCompare(b.code));
  $('unmapped').innerHTML=`<summary>${un.length} course${un.length===1?'':'s'} with no PLO mapping in CurV</summary>
   <p class="note">These courses' CLO tables have an empty "Mapping to PLOs" column in CurV, so they don't appear in any matrix.</p>
-  <div class="chips">${un.map(c=>`<a href="/pd/clos/#${esc(c.code)}" title="${esc(c.title)}">${esc(c.code)}</a>`).join('')}</div>`;
+  <div class="chips">${un.map(c=>`<a href="/pd/clos/#${esc(c.code)}" title="${esc(c.title+(c.note?' ('+c.note+')':''))}">${esc(c.code)}${c.note?' ⚠':''}</a>`).join('')}</div>`;
  const want=decodeURIComponent(location.hash.slice(1)).toUpperCase();
  show(PROGS.find(p=>p.code===want)||PROGS[0]);
 }).catch(e=>{$('main').innerHTML='<p class="none">Could not load the data: '+esc(e.message||'download failed')+'</p>'});
@@ -141,22 +145,22 @@ function show(p,push){
  document.querySelectorAll('#progs .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p===p.code));
  if(push)history.replaceState(null,'','#'+p.code);
  const rows=[...p.courses.values()].map(c=>{
-  const info=COURSES.get(c.code)||{title:'',clos:[]};
+  const info=COURSES.get(c.code)||{title:'',clos:[],note:'',applies:''};
   const per={};for(const s of c.clo.values())for(const n of s)per[n]=(per[n]||0)+1;
-  return{...c,title:info.title,cloText:info.clos,per,g:lvlOf(c.code)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
+  return{...c,title:info.title,note:info.note,applies:info.applies,cloText:info.clos,per,g:lvlOf(c.code)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
  const cov={},cloCov={};
  for(const r of rows)for(const [n,k] of Object.entries(r.per)){cov[n]=(cov[n]||0)+1;cloCov[n]=(cloCov[n]||0)+k}
- const anyAssumed=rows.some(r=>r.assumed);
+ const anyAssumed=rows.some(r=>r.assumed),anyOld=rows.some(r=>r.note);
  let h=`<h2>${esc(p.title)} <span style="opacity:.55">(${esc(p.code)})</span></h2>
  <p class="note">${rows.length} course${rows.length>1?'s':''} map their CLOs to this program in CurV. In CurV each course links to only one program, so courses that belong to ${esc(p.code)} but were mapped to another program are not shown here.</p>
  <h3>Program learning outcomes</h3><ol class="plos">${p.plos.map(x=>{const n=cov[x.no]||0;
   return`<li class="${n?'':'zero'}" data-plo="${esc(x.no)}"><b>PLO ${esc(x.no)}</b><span>${x.text?esc(x.text):'<i>No wording in CurV</i>'}</span><span class="cov">${n?`${n} course${n>1?'s':''} · ${cloCov[x.no]} CLO${cloCov[x.no]>1?'s':''}`:'Not covered'}</span></li>`}).join('')}</ol>
- <h3>Matrix</h3><p class="note">Each cell shows how many of the course's CLOs map to that PLO. Click a course to see its CLOs.${anyAssumed?' <span class="ast">*</span> PLO numbers were typed into CurV as plain text without naming a program; this program has been assumed.':''}</p>
+ <h3>Matrix</h3><p class="note">Each cell shows how many of the course's CLOs map to that PLO. Click a course to see its CLOs.${anyAssumed?' <span class="ast">*</span> PLO numbers were typed into CurV as plain text without naming a program; this program has been assumed.':''}${anyOld?' <span class="old">Old version</span> No Published version for the current year in CurV, so the newest older one is shown.':''}</p>
  <div class="scroll"><table><thead><tr><th class="c" scope="col">Course</th>${p.plos.map(x=>`<th class="plo" scope="col" data-plo="${esc(x.no)}" title="${esc(x.text)}">PLO ${esc(x.no)}</th>`).join('')}</tr></thead><tbody>`;
  let g=0;
  for(const r of rows){
   if(r.g!==g){g=r.g;h+=`<tr class="lvl"><th colspan="${p.plos.length+1}" scope="rowgroup">${GN[g]||'Other'}</th></tr>`}
-  h+=`<tr class="course" tabindex="0" data-c="${esc(r.code)}" aria-expanded="false"><td class="c"><span class="tri" aria-hidden="true"></span><span class="cd">${esc(r.code)}</span>${esc(r.title)}${r.assumed?' <span class="ast" title="Program assumed">*</span>':''}</td>${p.plos.map(x=>{const n=r.per[x.no]||0;
+  h+=`<tr class="course" tabindex="0" data-c="${esc(r.code)}" aria-expanded="false"><td class="c"><span class="tri" aria-hidden="true"></span><span class="cd">${esc(r.code)}</span>${esc(r.title)}${r.assumed?' <span class="ast" title="Program assumed">*</span>':''}${r.note?` <span class="old" title="${esc(r.note)}">Old version · ${esc(r.applies)}</span>`:''}</td>${p.plos.map(x=>{const n=r.per[x.no]||0;
    return`<td data-plo="${esc(x.no)}">${n?`<span class="cell" style="${shade(n)}" title="${n} CLO${n>1?'s':''} → PLO ${esc(x.no)}">${n}</span>`:''}</td>`}).join('')}</tr>`;
   const nos=[...new Set([...r.cloText.map(c=>c.no),...r.clo.keys()])].sort((a,b)=>+a-+b);
   for(const no of nos){const t=(r.cloText.find(c=>c.no===no)||{}).text||'',s=r.clo.get(no)||new Set();
