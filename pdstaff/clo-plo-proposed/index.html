@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLO to PLO mapping (proposed)</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--bblue:#1448FF;--amber:#F5A300;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:720px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+button{font-family:var(--ui);cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible,tr:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 6px}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill small{font-weight:400;opacity:.75}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+h2{font-family:var(--head);font-size:1.6rem;margin:22px 0 4px}
+h3{font-family:var(--head);font-size:1.25rem;margin:24px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+.note{font-size:13px;line-height:1.5;margin:4px 0 0;opacity:.85}
+/* PLO legend */
+ol.plos{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+ol.plos li{display:grid;grid-template-columns:3.2em 1fr auto;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;background:#f6f5fd;font-family:var(--body);line-height:1.4;font-size:15px}
+ol.plos li b{font-family:var(--ui);color:var(--purple)}
+ol.plos .cov{font-family:var(--ui);font-size:12px;white-space:nowrap;opacity:.75}
+ol.plos li.zero{background:#fff4e5}
+ol.plos li.zero .cov{color:#7a3b00;opacity:1;font-weight:700}
+/* matrix */
+.scroll{overflow-x:auto;margin-top:8px;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center}
+thead th{position:sticky;top:0;background:var(--navy);color:#fff;font-size:13px;z-index:1}
+thead th.plo{min-width:3.2em;cursor:help}
+th.c,td.c{text-align:left}
+tr.lvl th{background:#eeecfb;text-align:left;font-family:var(--head);font-size:1.05rem;padding:6px 10px}
+tr.course{cursor:pointer}
+tr.course:hover td{background:#f3f1ff}
+tr.course td.c{white-space:nowrap}
+.cd{font-weight:700;color:var(--purple);margin-right:8px}
+.tw{font-size:12px;opacity:.7}
+.tri{display:inline-block;width:1em;color:var(--purple)}
+.tri::before{content:"▸"}
+tr.course.open .tri::before{content:"▾"}
+.cell{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:700;color:#fff}
+.ast{color:var(--amber);font-weight:700}
+.src{font-size:11px;font-weight:700;background:#eeecfb;color:#4B3BB0;border:1px solid #c9c3f3;border-radius:10px;padding:1px 8px;white-space:nowrap}
+.src.prop{background:#fff4e5;color:#7a3b00;border-color:#f0c27b}
+.src.core{background:#f1f1f1;color:#555;border-color:#ccc}
+.sep{flex-basis:100%;height:0}
+.corebox{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:700;background:#f3f1ff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;margin:8px 0 0;cursor:pointer}
+.old{font-size:11px;font-weight:700;background:#fff4e5;color:#7a3b00;border:1px solid #f0c27b;border-radius:10px;padding:1px 8px;white-space:nowrap}
+tr.clo td{background:#faf9ff;font-size:13px}
+tr.clo td.c{font-family:var(--body);white-space:normal;padding-left:34px;line-height:1.4;min-width:300px}
+tr.clo .no{font-family:var(--ui);font-weight:700;color:var(--purple);margin-right:6px}
+.tick{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--purple)}
+tfoot td,tfoot th{background:#eeecfb;font-weight:700;font-size:13px;border-bottom:0}
+tfoot td.z{background:#fff4e5;color:#7a3b00}
+td.hl,th.hl{box-shadow:inset 0 0 0 2px var(--amber)}
+details.miss{margin:8px 0 0;border:0;padding:0}
+details{margin-top:22px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chips a{font-size:13px;font-weight:700;color:var(--navy);background:#f3f1ff;border:1px solid var(--line);border-radius:14px;padding:3px 10px;text-decoration:none}
+.chips a:hover{border-color:var(--purple)}
+.none{padding:18px 4px}
+.relock{border:0;background:none;color:#fff;opacity:.8;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+@media(max-width:600px){body{padding:16px}.box{padding:14px}ol.plos li{grid-template-columns:2.6em 1fr}ol.plos .cov{grid-column:2}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="/pdstaff/">PD staff area</a> · School of Mathematical Sciences · Adelaide University<button class="relock" id="lockbtn" hidden>Lock</button></p>
+<h1>CLO → PLO mapping <span style="opacity:.6">(proposed)</span></h1>
+<p class="sub">A proposed, corrected version of the CurV mappings for the BMATH, HMATH and their majors. The official CurV data is unchanged: see the <a href="../clo-plo/" style="color:#fff">CurV version</a>. Choose a program or major, then click a course to see its CLOs.</p>
+<div class="box">
+<div class="bar" id="progs" role="group" aria-label="Program"></div>
+<div id="main"><p class="none">Unlocking…</p></div>
+<details id="unmapped"></details>
+</div>
+</div>
+<script src="/pdstaff/gate.js"></script>
+<script>
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function csvRows(t){const rows=[];let row=[],cur='',q=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=c}
+  else if(c==='"')q=true;else if(c===','){row.push(cur);cur=''}
+  else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur=''}else if(c!=='\r')cur+=c}
+ if(cur||row.length){row.push(cur);rows.push(row)}
+ const h=rows.shift().map(s=>s.replace(/^﻿/,'').trim());
+ return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
+const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4',5:'Postgraduate'};
+// Level comes from the prerequisite site's course list; courses not listed there fall back to the code.
+let LV={};
+const lvlOf=code=>{if(LV[code])return Math.min(LV[code],5);const d=+(code.match(/\d/)||[0])[0];return d>=5?5:d};
+const $=id=>document.getElementById(id);
+const get=f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f+' not found (HTTP '+r.status+')');return r.text()}).then(csvRows);
+// clo-plo.csv and plos.csv are encrypted together in data.enc.json; clos.csv is public (the CLO page uses it too)
+const secret=Staff.open('data.enc.json').then(files=>{
+ const pick=re=>{const n=Object.keys(files).find(k=>re.test(k));if(!n)throw new Error('the encrypted file has no '+re.source.replace(/\\/g,''));return csvRows(files[n])};
+ $('lockbtn').hidden=false;$('lockbtn').onclick=()=>Staff.lock();
+ return[pick(/clo-plo.*\.csv$/i),pick(/^plos.*\.csv$/i)]});
+
+let PROGS=[],COURSES=new Map(),cur=null,withCore=false;
+const ORDER=['BMATH','HMATH','PMTHBMATH','PMTHHMATH','APPMBMATH','APPMHMATH','DATSBMATH','DATSHMATH','STATBMATH','STATHMATH'];
+const isMajor=c=>/^(PMTH|APPM|DATS|STAT)(B|H)MATH$/.test(c);
+
+Promise.all([secret,get('/pd/clos/clos.csv'),get('/prereqs/courses.csv').catch(()=>[])]).then(([[map,plos],clos,levels])=>{
+ for(const r of levels){const l=parseInt(r['level'],10);if(r['Course Code']&&l)LV[r['Course Code']]=l}
+ // courses and their CLO text
+ for(const r of clos){const k=r['Course Code'];
+  if(!COURSES.has(k))COURSES.set(k,{code:k,title:r['Course Title'],note:r['Version Note']||'',applies:r['Applies']||'',clos:[]});
+  COURSES.get(k).clos.push({no:r['CLO No'],text:r['Course Learning Outcome']})}
+ // programs and their PLOs
+ const P=new Map();
+ for(const r of plos){const k=r['Program Code'];
+  if(!P.has(k))P.set(k,{code:k,title:r['Program Title'],plos:[],courses:new Map()});
+  P.get(k).plos.push({no:r['PLO No'],text:r['Program Learning Outcome']})}
+ // links: program -> course -> clo -> set of PLO numbers
+ for(const r of map){const pc=r['Program Code'];if(!pc)continue;
+  if(!P.has(pc))P.set(pc,{code:pc,title:r['Program Title'],plos:[],courses:new Map()});
+  const p=P.get(pc),cc=r['Course Code'];
+  if(!p.courses.has(cc))p.courses.set(cc,{code:cc,assumed:false,core:false,proposed:false,from:new Set(),edited:false,clo:new Map()});
+  const c=p.courses.get(cc);
+  const src=r['Source']||'';
+  if(/typed in CurV/i.test(src))c.assumed=true;
+  if(/^core layer/i.test(src))c.core=true;
+  if(/added by PD/i.test(src))c.edited=true;
+  if(/^proposed \(program/i.test(src))c.proposed=true;
+  const fm=src.match(/^(?:copied|translated) from CurV (\w+)/i);if(fm)c.from.add(fm[1]);
+  if(!c.clo.has(r['CLO No']))c.clo.set(r['CLO No'],new Set());
+  c.clo.get(r['CLO No']).add(r['PLO No']);
+  if(!p.plos.some(x=>x.no===r['PLO No']))p.plos.push({no:r['PLO No'],text:''})}
+ for(const p of P.values())p.plos.sort((a,b)=>+a.no-+b.no);
+ const rk=c=>{const i=ORDER.indexOf(c);return i<0?99:i};
+ PROGS=[...P.values()].filter(p=>p.courses.size).sort((a,b)=>rk(a.code)-rk(b.code)||b.courses.size-a.courses.size||a.code.localeCompare(b.code));
+ const nMain=[...P.values()].filter(p=>p.courses.size&&rk(p.code)<99).length;
+ const cnt=p=>[...p.courses.values()].filter(c=>!c.core).length;
+ $('progs').innerHTML=PROGS.map((p,i)=>`${i===nMain?'<span class="sep"></span>':''}<button class="pill" data-p="${esc(p.code)}" title="${esc(p.title)}">${esc(p.code)} <small>· ${cnt(p)} course${cnt(p)===1?'':'s'}</small></button>`).join('');
+ const mapped=new Set(map.filter(r=>r['Program Code']).map(r=>r['Course Code']));
+ const un=[...COURSES.values()].filter(c=>!mapped.has(c.code)).sort((a,b)=>a.code.localeCompare(b.code));
+ $('unmapped').innerHTML=`<summary>${un.length} course${un.length===1?'':'s'} with no PLO mapping at all</summary>
+  <p class="note">No mapping in CurV and none proposed here, so they don't appear in any matrix.</p>
+  <div class="chips">${un.map(c=>`<a href="/pd/clos/#${esc(c.code)}" title="${esc(c.title+(c.note?' ('+c.note+')':''))}">${esc(c.code)}${c.note?' ⚠':''}</a>`).join('')}</div>`;
+ const want=decodeURIComponent(location.hash.slice(1)).toUpperCase();
+ show(PROGS.find(p=>p.code===want)||PROGS[0]);
+}).catch(e=>{$('main').innerHTML='<p class="none">Could not load the data: '+esc(e.message||'download failed')+'</p>'});
+
+$('progs').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b)show(PROGS.find(p=>p.code===b.dataset.p),true)});
+
+const shade=n=>n?`background:rgba(110,90,225,${Math.min(1,.35+.2*n)})`:'';
+
+function show(p,push){
+ cur=p;
+ document.querySelectorAll('#progs .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p===p.code));
+ if(push)history.replaceState(null,'','#'+p.code);
+ const hasCore=[...p.courses.values()].some(c=>c.core);
+ const rows=[...p.courses.values()].filter(c=>withCore||!c.core).map(c=>{
+  const info=COURSES.get(c.code)||{title:'',clos:[],note:'',applies:''};
+  const per={};for(const s of c.clo.values())for(const n of s)per[n]=(per[n]||0)+1;
+  return{...c,title:info.title,note:info.note,applies:info.applies,cloText:info.clos,per,g:lvlOf(c.code)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
+ const cov={},cloCov={};
+ for(const r of rows)for(const [n,k] of Object.entries(r.per)){cov[n]=(cov[n]||0)+1;cloCov[n]=(cloCov[n]||0)+k}
+ const anyAssumed=rows.some(r=>r.assumed),anyOld=rows.some(r=>r.note);
+ let h=`<h2>${esc(p.title)} <span style="opacity:.55">(${esc(p.code)})</span></h2>
+ <p class="note">${isMajor(p.code)
+   ?`${rows.filter(r=>!r.core).length} major courses. All mappings to major PLOs are proposed (CurV has almost none).${withCore?` Core courses (marked <span class="src core">core</span>) are a separate, proposed layer.`:''}`
+   :p.code==='BMATH'||p.code==='HMATH'
+   ?(()=>{const inProg=Object.keys(LV).filter(c=>p.code==='HMATH'||LV[c]<=3),miss=inProg.filter(c=>!p.courses.has(c)).sort();
+     return`${inProg.length} courses in the program (the prerequisite site's course list${p.code==='BMATH'?', Levels 1–3':''}); ${rows.length} have mappings, shown below. Each course uses its CurV mapping; where that was copied from the other program or translated from the HMTSC the course says so, and courses with no CurV mapping have a <span class="src prop">proposed</span> one.${miss.length?`</p><details class="miss"><summary>${miss.length} program course${miss.length===1?' has':'s have'} no mapping (no CLOs in CurV)</summary><div class="chips">${miss.map(c=>{const i=COURSES.get(c);return`<a href="/pd/clos/#${esc(c)}" title="${esc(i?i.title:'')}">${esc(c)}</a>`}).join('')}</div></details><p class="note" hidden>`:''}`})()
+   :`As in CurV.`}</p>
+ ${hasCore?`<label class="corebox"><input type="checkbox" id="corechk"${withCore?' checked':''}> Include core courses</label>`:''}
+ <h3>Program learning outcomes</h3><ol class="plos">${p.plos.map(x=>{const n=cov[x.no]||0;
+  return`<li class="${n?'':'zero'}" data-plo="${esc(x.no)}"><b>PLO ${esc(x.no)}</b><span>${x.text?esc(x.text):'<i>No wording in CurV</i>'}</span><span class="cov">${n?`${n} course${n>1?'s':''} · ${cloCov[x.no]} CLO${cloCov[x.no]>1?'s':''}`:'Not covered'}</span></li>`}).join('')}</ol>
+ <h3>Matrix</h3><p class="note">Each cell shows how many of the course's CLOs map to that PLO. Click a course to see its CLOs.${anyAssumed?' <span class="ast">*</span> PLO numbers were typed into CurV as plain text without naming a program; this program has been assumed.':''}${anyOld?' <span class="old">Old version</span> No Published version for the current year in CurV, so the newest older one is shown.':''}</p>
+ <div class="scroll"><table><thead><tr><th class="c" scope="col">Course</th>${p.plos.map(x=>`<th class="plo" scope="col" data-plo="${esc(x.no)}" title="${esc(x.text)}">PLO ${esc(x.no)}</th>`).join('')}</tr></thead><tbody>`;
+ let g=0;
+ for(const r of rows){
+  if(r.g!==g){g=r.g;h+=`<tr class="lvl"><th colspan="${p.plos.length+1}" scope="rowgroup">${GN[g]||'Other'}</th></tr>`}
+  h+=`<tr class="course" tabindex="0" data-c="${esc(r.code)}" aria-expanded="false"><td class="c"><span class="tri" aria-hidden="true"></span><span class="cd">${esc(r.code)}</span>${esc(r.title)}${r.assumed?' <span class="ast" title="Program assumed">*</span>':''}${r.core?' <span class="src core" title="Core course: proposed core layer">core</span>':''}${[...r.from].map(f=>` <span class="src" title="Mapping copied from CurV ${esc(f)}">from ${esc(f)}</span>`).join('')}${r.edited?' <span class="src" title="Includes a mapping added by the program director">edited</span>':''}${r.proposed?' <span class="src prop" title="No mapping in CurV: this mapping is proposed">proposed</span>':''}${r.note?` <span class="old" title="${esc(r.note)}">Old version · ${esc(r.applies)}</span>`:''}</td>${p.plos.map(x=>{const n=r.per[x.no]||0;
+   return`<td data-plo="${esc(x.no)}">${n?`<span class="cell" style="${shade(n)}" title="${n} CLO${n>1?'s':''} → PLO ${esc(x.no)}">${n}</span>`:''}</td>`}).join('')}</tr>`;
+  const nos=[...new Set([...r.cloText.map(c=>c.no),...r.clo.keys()])].sort((a,b)=>+a-+b);
+  for(const no of nos){const t=(r.cloText.find(c=>c.no===no)||{}).text||'',s=r.clo.get(no)||new Set();
+   h+=`<tr class="clo" data-of="${esc(r.code)}" hidden><td class="c"><span class="no">CLO ${esc(no)}</span>${esc(t)}</td>${p.plos.map(x=>`<td data-plo="${esc(x.no)}">${s.has(x.no)?'<span class="tick" role="img" aria-label="maps"></span>':''}</td>`).join('')}</tr>`}
+ }
+ h+=`</tbody><tfoot><tr><th class="c" scope="row">Courses covering this PLO</th>${p.plos.map(x=>`<td class="${cov[x.no]?'':'z'}" data-plo="${esc(x.no)}">${cov[x.no]||0}</td>`).join('')}</tr></tfoot></table></div>`;
+ $('main').innerHTML=h;
+ const ck=$('corechk');if(ck)ck.onchange=()=>{withCore=ck.checked;show(cur)};
+}
+
+function toggle(tr){const open=tr.classList.toggle('open');tr.setAttribute('aria-expanded',open);
+ document.querySelectorAll(`tr.clo[data-of="${tr.dataset.c}"]`).forEach(x=>x.hidden=!open)}
+$('main').addEventListener('click',e=>{const tr=e.target.closest('tr.course');if(tr)toggle(tr)});
+$('main').addEventListener('keydown',e=>{const tr=e.target.closest('tr.course');if(tr&&(e.key==='Enter'||e.key===' ')){e.preventDefault();toggle(tr)}});
+// highlight a PLO column when hovering its header or legend entry
+$('main').addEventListener('mouseover',e=>{const t=e.target.closest('thead th[data-plo],ol.plos li[data-plo]');
+ document.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'));
+ if(t)document.querySelectorAll(`table [data-plo="${t.dataset.plo}"]`).forEach(x=>x.classList.add('hl'))});
+</script>
+</body>
+</html>
