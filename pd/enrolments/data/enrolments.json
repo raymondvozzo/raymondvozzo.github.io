@@ -1,14 +1,14 @@
 {
  "meta": {
   "year": "2027",
-  "generated": "2026-11-22T18:30:23.916Z",
-  "fullRun": "2026-11-22T18:30:23.916Z"
+  "generated": "2026-11-23T00:13:15.182Z",
+  "fullRun": "2026-11-23T00:13:15.182Z"
  },
  "courses": {
   "ARTI1000": {
    "code": "ARTI1000",
    "url": "https://adelaide.edu.au/study/courses/2027/arti-1000/",
-   "fetched": "2026-11-22T18:28:54.525Z",
+   "fetched": "2026-11-23T00:12:18.484Z",
    "status": "ok",
    "terms": [
     {
@@ -63,7 +63,7 @@
   "COMP1002": {
    "code": "COMP1002",
    "url": "https://adelaide.edu.au/study/courses/2027/comp-1002/",
-   "fetched": "2026-11-22T18:24:46.027Z",
+   "fetched": "2026-11-23T00:09:38.185Z",
    "status": "ok",
    "terms": [
     {
@@ -87,7 +87,7 @@
              "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "12:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             },
@@ -95,7 +95,7 @@
              "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "12:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             },
@@ -103,7 +103,7 @@
              "dates": "22 Feb - 12 Apr",
              "days": "Monday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             },
@@ -111,7 +111,7 @@
              "dates": "3 May - 24 May",
              "days": "Monday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             }
@@ -139,7 +139,7 @@
              "dates": "9 Mar - 13 Apr",
              "days": "Tuesday",
              "time": "4:10pm - 6pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-16",
              "instructor": ""
             },
@@ -147,7 +147,7 @@
              "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "4:10pm - 6pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-16",
              "instructor": ""
             }
@@ -299,7 +299,7 @@
            "number": "27128",
            "section": "PR03",
            "size": 60,
-           "available": 53,
+           "available": 52,
            "meetings": [
             {
              "dates": "12 Mar - 16 Apr",
@@ -351,7 +351,7 @@
            "number": "27130",
            "section": "PR01",
            "size": 60,
-           "available": 44,
+           "available": 45,
            "meetings": [
             {
              "dates": "9 Mar - 13 Apr",
@@ -404,7 +404,7 @@
              "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "12:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             },
@@ -412,7 +412,7 @@
              "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "12:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             },
@@ -420,7 +420,7 @@
              "dates": "2 Aug - 20 Sep",
              "days": "Monday",
              "time": "2:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             },
@@ -428,7 +428,7 @@
              "dates": "11 Oct - 1 Nov",
              "days": "Monday",
              "time": "2:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building D, D1-05",
              "instructor": ""
             }
@@ -446,7 +446,7 @@
              "dates": "16 Aug - 20 Sep",
              "days": "Monday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-18",
              "instructor": ""
             },
@@ -454,7 +454,7 @@
              "dates": "11 Oct - 1 Nov",
              "days": "Monday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-18",
              "instructor": ""
             }
@@ -555,7 +555,7 @@
   "COMP4007": {
    "code": "COMP4007",
    "url": "https://adelaide.edu.au/study/courses/2027/comp-4007/",
-   "fetched": "2026-11-22T18:29:07.624Z",
+   "fetched": "2026-11-23T00:12:28.026Z",
    "status": "ok",
    "terms": [
     {
@@ -610,7 +610,7 @@
   "COMPX300": {
    "code": "COMPX300",
    "url": "https://adelaide.edu.au/study/courses/2027/compx-300/",
-   "fetched": "2026-11-22T18:26:58.136Z",
+   "fetched": "2026-11-23T00:11:06.191Z",
    "status": "ok",
    "terms": [
     {
@@ -691,7 +691,7 @@
   "ENGI1004": {
    "code": "ENGI1004",
    "url": "https://adelaide.edu.au/study/courses/2027/engi-1004/",
-   "fetched": "2026-11-22T18:30:00.585Z",
+   "fetched": "2026-11-23T00:13:04.500Z",
    "status": "ok",
    "terms": [
     {
@@ -715,7 +715,7 @@
              "dates": "14 Jan - 11 Feb",
              "days": "Thursday",
              "time": "10:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-37",
              "instructor": ""
             },
@@ -723,7 +723,7 @@
              "dates": "12 Jan - 9 Feb",
              "days": "Tuesday",
              "time": "10:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-37",
              "instructor": "Yuliya Tugai"
             }
@@ -741,7 +741,7 @@
              "dates": "18 Feb - 18 Feb",
              "days": "Thursday",
              "time": "2:10pm - 5pm",
-             "campus": "Mawson Lakes",
+             "campus": "Adelaide City Campus East",
              "location": "Scott Theatre, 001",
              "instructor": ""
             }
@@ -756,18 +756,18 @@
            "available": 23,
            "meetings": [
             {
-             "dates": "12 Jan - 9 Feb",
-             "days": "Tuesday",
+             "dates": "14 Jan - 11 Feb",
+             "days": "Thursday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
             {
-             "dates": "14 Jan - 11 Feb",
-             "days": "Thursday",
+             "dates": "12 Jan - 9 Feb",
+             "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -987,18 +987,18 @@
            "available": 66,
            "meetings": [
             {
-             "dates": "4 May - 25 May",
+             "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-49",
              "instructor": "Yuliya Tugai, Elizabeth Jensen Young, Elliot Herrington"
             },
             {
-             "dates": "23 Feb - 13 Apr",
+             "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-49",
              "instructor": "Yuliya Tugai, Elizabeth Jensen Young, Elliot Herrington"
             }
@@ -1016,7 +1016,7 @@
              "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -1024,7 +1024,7 @@
              "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             }
@@ -1042,7 +1042,7 @@
              "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -1050,7 +1050,7 @@
              "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -1065,18 +1065,18 @@
            "available": 28,
            "meetings": [
             {
-             "dates": "4 May - 25 May",
+             "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
             {
-             "dates": "23 Feb - 13 Apr",
+             "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -1127,7 +1127,7 @@
            "available": 406,
            "meetings": [
             {
-             "dates": "6 May - 27 May",
+             "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -1135,7 +1135,7 @@
              "instructor": "Yuliya Tugai, Elizabeth Jensen Young, Elliot Herrington"
             },
             {
-             "dates": "25 Feb - 15 Apr",
+             "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -1307,14 +1307,6 @@
            "available": 28,
            "meetings": [
             {
-             "dates": "7 May - 28 May",
-             "days": "Friday",
-             "time": "10:10am - 11am",
-             "campus": "Adelaide City Campus East",
-             "location": "Engineering North, N132",
-             "instructor": ""
-            },
-            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "10:10am - 11am",
@@ -1324,6 +1316,14 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
+             "days": "Friday",
+             "time": "10:10am - 11am",
+             "campus": "Adelaide City Campus East",
+             "location": "Engineering North, N132",
+             "instructor": ""
+            },
+            {
+             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -1443,7 +1443,7 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "6 May - 27 May",
+             "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -1451,7 +1451,7 @@
              "instructor": ""
             },
             {
-             "dates": "25 Feb - 15 Apr",
+             "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -1571,15 +1571,7 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "5 Apr - 12 Apr",
-             "days": "Monday",
-             "time": "12:10pm - 1pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
-             "dates": "3 May - 24 May",
+             "dates": "22 Feb - 1 Mar",
              "days": "Monday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
@@ -1595,7 +1587,15 @@
              "instructor": ""
             },
             {
-             "dates": "22 Feb - 1 Mar",
+             "dates": "5 Apr - 12 Apr",
+             "days": "Monday",
+             "time": "12:10pm - 1pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "3 May - 24 May",
              "days": "Monday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
@@ -1613,7 +1613,7 @@
            "available": 27,
            "meetings": [
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -1621,7 +1621,7 @@
              "instructor": ""
             },
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -1639,14 +1639,6 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "7 May - 28 May",
-             "days": "Friday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "2:10pm - 3pm",
@@ -1656,6 +1648,14 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
+             "days": "Friday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -1697,7 +1697,7 @@
              "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-14",
              "instructor": "Yuliya Tugai"
             },
@@ -1705,7 +1705,7 @@
              "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "11:10am - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-14",
              "instructor": "Yuliya Tugai"
             }
@@ -1723,7 +1723,7 @@
              "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -1731,7 +1731,7 @@
              "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -1749,7 +1749,7 @@
              "dates": "5 Aug - 23 Sep",
              "days": "Thursday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-41",
              "instructor": ""
             },
@@ -1757,7 +1757,7 @@
              "dates": "14 Oct - 4 Nov",
              "days": "Thursday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-41",
              "instructor": ""
             }
@@ -1775,7 +1775,7 @@
              "dates": "5 Aug - 23 Sep",
              "days": "Thursday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-41",
              "instructor": ""
             },
@@ -1783,7 +1783,7 @@
              "dates": "14 Oct - 4 Nov",
              "days": "Thursday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-41",
              "instructor": ""
             }
@@ -1801,7 +1801,7 @@
              "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-41",
              "instructor": ""
             },
@@ -1809,7 +1809,7 @@
              "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-41",
              "instructor": ""
             }
@@ -2328,7 +2328,7 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -2336,7 +2336,7 @@
              "instructor": ""
             },
             {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -2380,7 +2380,7 @@
            "available": 29,
            "meetings": [
             {
-             "dates": "15 Oct - 5 Nov",
+             "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -2388,7 +2388,7 @@
              "instructor": ""
             },
             {
-             "dates": "6 Aug - 24 Sep",
+             "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "1:10pm - 2pm",
              "campus": "Adelaide City Campus East",
@@ -2414,7 +2414,7 @@
   "ENGI2001": {
    "code": "ENGI2001",
    "url": "https://adelaide.edu.au/study/courses/2027/engi-2001/",
-   "fetched": "2026-11-22T18:30:17.305Z",
+   "fetched": "2026-11-23T00:13:10.225Z",
    "status": "ok",
    "terms": [
     {
@@ -2438,7 +2438,7 @@
              "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-25",
              "instructor": "Trent Mattner"
             },
@@ -2446,7 +2446,7 @@
              "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-25",
              "instructor": "Trent Mattner"
             }
@@ -2464,7 +2464,7 @@
              "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J2-25",
              "instructor": ""
             },
@@ -2472,7 +2472,7 @@
              "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J2-25",
              "instructor": ""
             }
@@ -2490,7 +2490,7 @@
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2498,7 +2498,7 @@
              "dates": "2 Apr - 16 Apr",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2506,7 +2506,7 @@
              "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             }
@@ -2524,7 +2524,7 @@
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2532,7 +2532,7 @@
              "dates": "2 Apr - 16 Apr",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2540,7 +2540,7 @@
              "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             }
@@ -2558,7 +2558,7 @@
              "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2566,7 +2566,7 @@
              "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             }
@@ -2753,14 +2753,6 @@
            "available": 0,
            "meetings": [
             {
-             "dates": "7 May - 28 May",
-             "days": "Friday",
-             "time": "3:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Ingkarni Wardli, B.23",
-             "instructor": ""
-            },
-            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "3:10pm - 4pm",
@@ -2770,6 +2762,14 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
+             "days": "Friday",
+             "time": "3:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Ingkarni Wardli, B.23",
+             "instructor": ""
+            },
+            {
+             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "3:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -2787,14 +2787,6 @@
            "available": 0,
            "meetings": [
             {
-             "dates": "7 May - 28 May",
-             "days": "Friday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Ingkarni Wardli, B.23",
-             "instructor": ""
-            },
-            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "9:10am - 10am",
@@ -2804,6 +2796,14 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
+             "days": "Friday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Ingkarni Wardli, B.23",
+             "instructor": ""
+            },
+            {
+             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -2845,7 +2845,7 @@
              "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-14",
              "instructor": "Trent Mattner"
             },
@@ -2853,7 +2853,7 @@
              "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-14",
              "instructor": "Trent Mattner"
             }
@@ -2871,7 +2871,7 @@
              "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2879,7 +2879,7 @@
              "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             }
@@ -2897,7 +2897,7 @@
              "dates": "6 Aug - 24 Sep",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             },
@@ -2905,7 +2905,7 @@
              "dates": "15 Oct - 5 Nov",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building M, M2-14",
              "instructor": ""
             }
@@ -3164,7 +3164,7 @@
            "available": 36,
            "meetings": [
             {
-             "dates": "13 Oct - 3 Nov",
+             "dates": "4 Aug - 22 Sep",
              "days": "Wednesday",
              "time": "3:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -3172,7 +3172,7 @@
              "instructor": ""
             },
             {
-             "dates": "4 Aug - 22 Sep",
+             "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "3:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -3198,7 +3198,7 @@
   "MATH1004": {
    "code": "MATH1004",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1004/",
-   "fetched": "2026-11-22T18:24:18.586Z",
+   "fetched": "2026-11-23T00:09:23.017Z",
    "status": "ok",
    "terms": [
     {
@@ -3219,7 +3219,7 @@
            "available": 99,
            "meetings": [
             {
-             "dates": "11 Oct - 1 Nov",
+             "dates": "2 Aug - 20 Sep",
              "days": "Monday",
              "time": "2:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -3227,7 +3227,7 @@
              "instructor": "Jorge Aarao"
             },
             {
-             "dates": "2 Aug - 20 Sep",
+             "dates": "11 Oct - 1 Nov",
              "days": "Monday",
              "time": "2:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -3552,7 +3552,7 @@
            "available": 24,
            "meetings": [
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -3560,7 +3560,7 @@
              "instructor": ""
             },
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -3586,7 +3586,7 @@
   "MATH1005": {
    "code": "MATH1005",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1005/",
-   "fetched": "2026-11-22T18:24:52.547Z",
+   "fetched": "2026-11-23T00:09:42.240Z",
    "status": "ok",
    "terms": [
     {
@@ -3607,14 +3607,6 @@
            "available": 40,
            "meetings": [
             {
-             "dates": "25 Jan - 25 Jan",
-             "days": "Monday",
-             "time": "12:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Horace Lamb, 1022",
-             "instructor": "Adrian Koerber"
-            },
-            {
              "dates": "15 Jan - 12 Feb",
              "days": "Friday",
              "time": "12:10pm - 2pm",
@@ -3633,6 +3625,14 @@
             {
              "dates": "2 Feb - 9 Feb",
              "days": "Tuesday",
+             "time": "12:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Horace Lamb, 1022",
+             "instructor": "Adrian Koerber"
+            },
+            {
+             "dates": "25 Jan - 25 Jan",
+             "days": "Monday",
              "time": "12:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Horace Lamb, 1022",
@@ -3649,17 +3649,17 @@
            "available": 80,
            "meetings": [
             {
-             "dates": "18 Feb - 18 Feb",
+             "dates": "28 Jan - 28 Jan",
              "days": "Thursday",
-             "time": "9:10am - 1pm",
+             "time": "10:10am - 12pm",
              "campus": "Adelaide City Campus East",
              "location": "Ingkarni Wardli, B.18",
              "instructor": ""
             },
             {
-             "dates": "28 Jan - 28 Jan",
+             "dates": "18 Feb - 18 Feb",
              "days": "Thursday",
-             "time": "10:10am - 12pm",
+             "time": "9:10am - 1pm",
              "campus": "Adelaide City Campus East",
              "location": "Ingkarni Wardli, B.18",
              "instructor": ""
@@ -3674,14 +3674,6 @@
            "size": 30,
            "available": 20,
            "meetings": [
-            {
-             "dates": "25 Jan - 25 Jan",
-             "days": "Monday",
-             "time": "3:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 106",
-             "instructor": ""
-            },
             {
              "dates": "15 Jan - 12 Feb",
              "days": "Friday",
@@ -3701,6 +3693,14 @@
             {
              "dates": "2 Feb - 9 Feb",
              "days": "Tuesday",
+             "time": "3:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 106",
+             "instructor": ""
+            },
+            {
+             "dates": "25 Jan - 25 Jan",
+             "days": "Monday",
              "time": "3:10pm - 4pm",
              "campus": "Adelaide City Campus East",
              "location": "Engin and Maths Sciences, 106",
@@ -3780,7 +3780,7 @@
            "available": 122,
            "meetings": [
             {
-             "dates": "4 May - 25 May",
+             "dates": "23 Feb - 6 Apr",
              "days": "Tuesday",
              "time": "3:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -3788,7 +3788,7 @@
              "instructor": "Judith Bunder"
             },
             {
-             "dates": "23 Feb - 6 Apr",
+             "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "3:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -3850,7 +3850,7 @@
            "available": 20,
            "meetings": [
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -3858,7 +3858,7 @@
              "instructor": ""
             },
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "10:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -3910,14 +3910,6 @@
            "available": 26,
            "meetings": [
             {
-             "dates": "7 May - 28 May",
-             "days": "Friday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 108",
-             "instructor": ""
-            },
-            {
              "dates": "26 Feb - 19 Mar",
              "days": "Friday",
              "time": "2:10pm - 3pm",
@@ -3927,6 +3919,14 @@
             },
             {
              "dates": "2 Apr - 16 Apr",
+             "days": "Friday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 108",
+             "instructor": ""
+            },
+            {
+             "dates": "7 May - 28 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -4030,7 +4030,7 @@
            "available": 21,
            "meetings": [
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
@@ -4038,7 +4038,7 @@
              "instructor": ""
             },
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
@@ -4077,7 +4077,7 @@
            "available": 86,
            "meetings": [
             {
-             "dates": "12 Oct - 2 Nov",
+             "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "10:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -4085,7 +4085,7 @@
              "instructor": "Elliot Herrington"
             },
             {
-             "dates": "3 Aug - 21 Sep",
+             "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "10:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -4337,7 +4337,7 @@
   "MATH1006": {
    "code": "MATH1006",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1006/",
-   "fetched": "2026-11-22T18:24:28.826Z",
+   "fetched": "2026-11-23T00:09:29.883Z",
    "status": "ok",
    "terms": [
     {
@@ -4613,17 +4613,17 @@
              "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-14",
-             "instructor": "Jorge Aarao, Daniel Stevenson"
+             "instructor": "Daniel Stevenson, Jorge Aarao"
             },
             {
              "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-14",
-             "instructor": "Jorge Aarao, Daniel Stevenson"
+             "instructor": "Daniel Stevenson, Jorge Aarao"
             }
            ]
           },
@@ -4639,7 +4639,7 @@
              "dates": "1 Apr - 1 Apr",
              "days": "Thursday",
              "time": "3:10pm - 5pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-49",
              "instructor": ""
             }
@@ -4657,7 +4657,7 @@
              "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-10",
              "instructor": ""
             },
@@ -4665,7 +4665,7 @@
              "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-10",
              "instructor": ""
             }
@@ -4683,7 +4683,7 @@
              "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-10",
              "instructor": ""
             },
@@ -4691,7 +4691,7 @@
              "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-10",
              "instructor": ""
             }
@@ -4714,7 +4714,7 @@
   "MATH1007": {
    "code": "MATH1007",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1007/",
-   "fetched": "2026-11-22T18:24:34.983Z",
+   "fetched": "2026-11-23T00:09:33.114Z",
    "status": "ok",
    "terms": [
     {
@@ -4821,7 +4821,7 @@
   "MATH1011": {
    "code": "MATH1011",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1011/",
-   "fetched": "2026-11-22T18:24:57.771Z",
+   "fetched": "2026-11-23T00:09:46.662Z",
    "status": "ok",
    "terms": [
     {
@@ -4876,14 +4876,14 @@
   "MATH1012": {
    "code": "MATH1012",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1012/",
-   "fetched": "2026-11-22T18:25:08.992Z",
+   "fetched": "2026-11-23T00:09:52.877Z",
    "status": "no-availability",
    "terms": []
   },
   "MATH1016": {
    "code": "MATH1016",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1016/",
-   "fetched": "2026-11-22T18:29:44.997Z",
+   "fetched": "2026-11-23T00:12:50.250Z",
    "status": "ok",
    "terms": [
     {
@@ -4904,18 +4904,18 @@
            "available": 154,
            "meetings": [
             {
-             "dates": "6 May - 27 May",
+             "dates": "25 Feb - 15 Apr",
              "days": "Thursday",
              "time": "2:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-24",
              "instructor": "Adrian Koerber, Lyndon Koens"
             },
             {
-             "dates": "25 Feb - 15 Apr",
+             "dates": "6 May - 27 May",
              "days": "Thursday",
              "time": "2:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-24",
              "instructor": "Adrian Koerber, Lyndon Koens"
             }
@@ -4933,7 +4933,7 @@
              "dates": "26 Feb - 26 Feb",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -4941,7 +4941,7 @@
              "dates": "12 Mar - 12 Mar",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -4949,7 +4949,7 @@
              "dates": "26 Mar - 26 Mar",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -4957,7 +4957,7 @@
              "dates": "9 Apr - 9 Apr",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -4965,7 +4965,7 @@
              "dates": "7 May - 7 May",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -4973,7 +4973,7 @@
              "dates": "21 May - 21 May",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -4988,10 +4988,18 @@
            "available": 19,
            "meetings": [
             {
+             "dates": "25 Feb - 25 Feb",
+             "days": "Thursday",
+             "time": "10:10am - 11am",
+             "campus": "Mawson Lakes Campus",
+             "location": "Building GP, GP1-06",
+             "instructor": ""
+            },
+            {
              "dates": "11 Mar - 11 Mar",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -4999,7 +5007,7 @@
              "dates": "25 Mar - 25 Mar",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5007,7 +5015,7 @@
              "dates": "8 Apr - 8 Apr",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5015,7 +5023,7 @@
              "dates": "6 May - 6 May",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5023,15 +5031,7 @@
              "dates": "20 May - 20 May",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
-             "location": "Building GP, GP1-06",
-             "instructor": ""
-            },
-            {
-             "dates": "25 Feb - 25 Feb",
-             "days": "Thursday",
-             "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             }
@@ -5049,7 +5049,7 @@
              "dates": "26 Feb - 26 Feb",
              "days": "Friday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5057,7 +5057,7 @@
              "dates": "12 Mar - 12 Mar",
              "days": "Friday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5065,7 +5065,7 @@
              "dates": "26 Mar - 26 Mar",
              "days": "Friday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5073,7 +5073,7 @@
              "dates": "9 Apr - 9 Apr",
              "days": "Friday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5081,7 +5081,7 @@
              "dates": "7 May - 7 May",
              "days": "Friday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5089,7 +5089,7 @@
              "dates": "21 May - 21 May",
              "days": "Friday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -5107,7 +5107,7 @@
              "dates": "6 Apr - 6 Apr",
              "days": "Tuesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5115,7 +5115,7 @@
              "dates": "4 May - 4 May",
              "days": "Tuesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5123,15 +5123,7 @@
              "dates": "18 May - 18 May",
              "days": "Tuesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-13",
-             "instructor": ""
-            },
-            {
-             "dates": "23 Mar - 23 Mar",
-             "days": "Tuesday",
-             "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5139,7 +5131,7 @@
              "dates": "23 Feb - 23 Feb",
              "days": "Tuesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5147,7 +5139,15 @@
              "dates": "9 Mar - 9 Mar",
              "days": "Tuesday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
+             "location": "Building P, P1-13",
+             "instructor": ""
+            },
+            {
+             "dates": "23 Mar - 23 Mar",
+             "days": "Tuesday",
+             "time": "10:10am - 11am",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -5165,7 +5165,7 @@
              "dates": "23 Feb - 23 Feb",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5173,7 +5173,7 @@
              "dates": "9 Mar - 9 Mar",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5181,7 +5181,7 @@
              "dates": "23 Mar - 23 Mar",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5189,7 +5189,7 @@
              "dates": "6 Apr - 6 Apr",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5197,7 +5197,7 @@
              "dates": "4 May - 4 May",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5205,7 +5205,7 @@
              "dates": "18 May - 18 May",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             }
@@ -5223,7 +5223,7 @@
              "dates": "9 Apr - 9 Apr",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5231,7 +5231,7 @@
              "dates": "7 May - 7 May",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5239,15 +5239,7 @@
              "dates": "21 May - 21 May",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-13",
-             "instructor": ""
-            },
-            {
-             "dates": "26 Mar - 26 Mar",
-             "days": "Friday",
-             "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5255,7 +5247,7 @@
              "dates": "26 Feb - 26 Feb",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -5263,7 +5255,15 @@
              "dates": "12 Mar - 12 Mar",
              "days": "Friday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
+             "location": "Building P, P1-13",
+             "instructor": ""
+            },
+            {
+             "dates": "26 Mar - 26 Mar",
+             "days": "Friday",
+             "time": "12:10pm - 1pm",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -5281,7 +5281,7 @@
              "dates": "25 Feb - 25 Feb",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5289,7 +5289,7 @@
              "dates": "11 Mar - 11 Mar",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5297,7 +5297,7 @@
              "dates": "25 Mar - 25 Mar",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5305,7 +5305,7 @@
              "dates": "8 Apr - 8 Apr",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5313,7 +5313,7 @@
              "dates": "6 May - 6 May",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             },
@@ -5321,7 +5321,7 @@
              "dates": "20 May - 20 May",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building GP, GP1-06",
              "instructor": ""
             }
@@ -5339,7 +5339,7 @@
              "dates": "21 May - 21 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-12",
              "instructor": ""
             },
@@ -5347,7 +5347,7 @@
              "dates": "26 Feb - 26 Feb",
              "days": "Friday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-12",
              "instructor": ""
             },
@@ -5355,7 +5355,7 @@
              "dates": "12 Mar - 12 Mar",
              "days": "Friday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-12",
              "instructor": ""
             },
@@ -5363,7 +5363,7 @@
              "dates": "26 Mar - 26 Mar",
              "days": "Friday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-12",
              "instructor": ""
             },
@@ -5371,7 +5371,7 @@
              "dates": "9 Apr - 9 Apr",
              "days": "Friday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-12",
              "instructor": ""
             },
@@ -5379,7 +5379,7 @@
              "dates": "7 May - 7 May",
              "days": "Friday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-12",
              "instructor": ""
             }
@@ -5397,7 +5397,7 @@
              "dates": "5 Mar - 5 Mar",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5405,7 +5405,7 @@
              "dates": "19 Mar - 19 Mar",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5413,7 +5413,7 @@
              "dates": "16 Apr - 16 Apr",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5421,7 +5421,7 @@
              "dates": "14 May - 14 May",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5429,7 +5429,7 @@
              "dates": "28 May - 28 May",
              "days": "Friday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -5447,7 +5447,7 @@
              "dates": "5 Mar - 5 Mar",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5455,7 +5455,7 @@
              "dates": "19 Mar - 19 Mar",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5463,7 +5463,7 @@
              "dates": "16 Apr - 16 Apr",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5471,7 +5471,7 @@
              "dates": "14 May - 14 May",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5479,7 +5479,7 @@
              "dates": "28 May - 28 May",
              "days": "Friday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -5497,7 +5497,7 @@
              "dates": "10 May - 10 May",
              "days": "Monday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5505,7 +5505,7 @@
              "dates": "1 Mar - 1 Mar",
              "days": "Monday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5513,7 +5513,7 @@
              "dates": "15 Mar - 15 Mar",
              "days": "Monday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5521,7 +5521,7 @@
              "dates": "12 Apr - 12 Apr",
              "days": "Monday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             },
@@ -5529,7 +5529,7 @@
              "dates": "24 May - 24 May",
              "days": "Monday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building J, J1-06",
              "instructor": ""
             }
@@ -5547,7 +5547,7 @@
              "dates": "3 Mar - 3 Mar",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5555,7 +5555,7 @@
              "dates": "17 Mar - 17 Mar",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5563,7 +5563,7 @@
              "dates": "14 Apr - 14 Apr",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5571,7 +5571,7 @@
              "dates": "12 May - 12 May",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5579,7 +5579,7 @@
              "dates": "26 May - 26 May",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             }
@@ -5597,7 +5597,7 @@
              "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5605,7 +5605,7 @@
              "dates": "18 Mar - 18 Mar",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5613,7 +5613,7 @@
              "dates": "15 Apr - 15 Apr",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5621,7 +5621,7 @@
              "dates": "13 May - 13 May",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5629,7 +5629,7 @@
              "dates": "27 May - 27 May",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             }
@@ -5647,7 +5647,7 @@
              "dates": "13 May - 13 May",
              "days": "Thursday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5655,7 +5655,7 @@
              "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5663,7 +5663,7 @@
              "dates": "18 Mar - 18 Mar",
              "days": "Thursday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5671,7 +5671,7 @@
              "dates": "15 Apr - 15 Apr",
              "days": "Thursday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             },
@@ -5679,7 +5679,7 @@
              "dates": "27 May - 27 May",
              "days": "Thursday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P2-04",
              "instructor": ""
             }
@@ -5730,7 +5730,7 @@
            "available": 293,
            "meetings": [
             {
-             "dates": "5 May - 26 May",
+             "dates": "24 Feb - 14 Apr",
              "days": "Wednesday",
              "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -5738,7 +5738,7 @@
              "instructor": ""
             },
             {
-             "dates": "24 Feb - 14 Apr",
+             "dates": "5 May - 26 May",
              "days": "Wednesday",
              "time": "9:10am - 11am",
              "campus": "Adelaide City Campus East",
@@ -5922,7 +5922,7 @@
            "available": 44,
            "meetings": [
             {
-             "dates": "6 Apr - 6 Apr",
+             "dates": "4 May - 4 May",
              "days": "Tuesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -5954,7 +5954,7 @@
              "instructor": ""
             },
             {
-             "dates": "4 May - 4 May",
+             "dates": "6 Apr - 6 Apr",
              "days": "Tuesday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -6238,7 +6238,7 @@
            "available": 50,
            "meetings": [
             {
-             "dates": "7 May - 7 May",
+             "dates": "21 May - 21 May",
              "days": "Friday",
              "time": "8:10am - 9am",
              "campus": "Adelaide City Campus East",
@@ -6270,7 +6270,7 @@
              "instructor": ""
             },
             {
-             "dates": "21 May - 21 May",
+             "dates": "7 May - 7 May",
              "days": "Friday",
              "time": "8:10am - 9am",
              "campus": "Adelaide City Campus East",
@@ -6488,22 +6488,6 @@
            "available": 27,
            "meetings": [
             {
-             "dates": "19 Mar - 19 Mar",
-             "days": "Friday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 322",
-             "instructor": ""
-            },
-            {
-             "dates": "16 Apr - 16 Apr",
-             "days": "Friday",
-             "time": "9:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 322",
-             "instructor": ""
-            },
-            {
              "dates": "14 May - 14 May",
              "days": "Friday",
              "time": "9:10am - 10am",
@@ -6513,6 +6497,22 @@
             },
             {
              "dates": "5 Mar - 5 Mar",
+             "days": "Friday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 322",
+             "instructor": ""
+            },
+            {
+             "dates": "19 Mar - 19 Mar",
+             "days": "Friday",
+             "time": "9:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 322",
+             "instructor": ""
+            },
+            {
+             "dates": "16 Apr - 16 Apr",
              "days": "Friday",
              "time": "9:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -6804,14 +6804,6 @@
              "instructor": ""
             },
             {
-             "dates": "12 Apr - 12 Apr",
-             "days": "Monday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, G07",
-             "instructor": ""
-            },
-            {
              "dates": "1 Mar - 1 Mar",
              "days": "Monday",
              "time": "2:10pm - 3pm",
@@ -6821,6 +6813,14 @@
             },
             {
              "dates": "15 Mar - 15 Mar",
+             "days": "Monday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, G07",
+             "instructor": ""
+            },
+            {
+             "dates": "12 Apr - 12 Apr",
              "days": "Monday",
              "time": "2:10pm - 3pm",
              "campus": "Adelaide City Campus East",
@@ -6938,7 +6938,7 @@
            "available": 28,
            "meetings": [
             {
-             "dates": "4 Mar - 4 Mar",
+             "dates": "18 Mar - 18 Mar",
              "days": "Thursday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -6946,7 +6946,7 @@
              "instructor": ""
             },
             {
-             "dates": "18 Mar - 18 Mar",
+             "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -7012,7 +7012,7 @@
              "instructor": ""
             },
             {
-             "dates": "18 Mar - 18 Mar",
+             "dates": "4 Mar - 4 Mar",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -7020,7 +7020,7 @@
              "instructor": ""
             },
             {
-             "dates": "4 Mar - 4 Mar",
+             "dates": "18 Mar - 18 Mar",
              "days": "Thursday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -7088,6 +7088,14 @@
            "available": 28,
            "meetings": [
             {
+             "dates": "12 Apr - 12 Apr",
+             "days": "Monday",
+             "time": "11:10am - 12pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Schulz, 214",
+             "instructor": ""
+            },
+            {
              "dates": "1 Mar - 1 Mar",
              "days": "Monday",
              "time": "11:10am - 12pm",
@@ -7097,14 +7105,6 @@
             },
             {
              "dates": "15 Mar - 15 Mar",
-             "days": "Monday",
-             "time": "11:10am - 12pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Schulz, 214",
-             "instructor": ""
-            },
-            {
-             "dates": "12 Apr - 12 Apr",
              "days": "Monday",
              "time": "11:10am - 12pm",
              "campus": "Adelaide City Campus East",
@@ -7412,7 +7412,7 @@
              "dates": "3 Aug - 21 Sep",
              "days": "Tuesday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "The Mawson Centre, MC1-02",
              "instructor": "Adrian Koerber"
             },
@@ -7420,7 +7420,7 @@
              "dates": "12 Oct - 2 Nov",
              "days": "Tuesday",
              "time": "9:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "The Mawson Centre, MC1-02",
              "instructor": "Adrian Koerber"
             }
@@ -7438,7 +7438,7 @@
              "dates": "12 Oct - 12 Oct",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -7446,15 +7446,7 @@
              "dates": "26 Oct - 26 Oct",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
-             "location": "Building P, P1-13",
-             "instructor": ""
-            },
-            {
-             "dates": "14 Sep - 14 Sep",
-             "days": "Tuesday",
-             "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -7462,7 +7454,7 @@
              "dates": "3 Aug - 3 Aug",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -7470,7 +7462,15 @@
              "dates": "17 Aug - 24 Aug",
              "days": "Tuesday",
              "time": "1:10pm - 2pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
+             "location": "Building P, P1-13",
+             "instructor": ""
+            },
+            {
+             "dates": "14 Sep - 14 Sep",
+             "days": "Tuesday",
+             "time": "1:10pm - 2pm",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -7488,7 +7488,7 @@
              "dates": "3 Aug - 3 Aug",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-13",
              "instructor": ""
             },
@@ -7496,7 +7496,7 @@
              "dates": "17 Aug - 24 Aug",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-13",
              "instructor": ""
             },
@@ -7504,7 +7504,7 @@
              "dates": "14 Sep - 14 Sep",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-13",
              "instructor": ""
             },
@@ -7512,7 +7512,7 @@
              "dates": "12 Oct - 12 Oct",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-13",
              "instructor": ""
             },
@@ -7520,7 +7520,7 @@
              "dates": "26 Oct - 26 Oct",
              "days": "Tuesday",
              "time": "3:10pm - 4pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-13",
              "instructor": ""
             }
@@ -7538,7 +7538,7 @@
              "dates": "12 Oct - 12 Oct",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-17",
              "instructor": ""
             },
@@ -7546,7 +7546,7 @@
              "dates": "3 Aug - 3 Aug",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-17",
              "instructor": ""
             },
@@ -7554,7 +7554,7 @@
              "dates": "17 Aug - 24 Aug",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-17",
              "instructor": ""
             },
@@ -7562,7 +7562,7 @@
              "dates": "14 Sep - 14 Sep",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-17",
              "instructor": ""
             },
@@ -7570,7 +7570,7 @@
              "dates": "26 Oct - 26 Oct",
              "days": "Tuesday",
              "time": "12:10pm - 1pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building F, F1-17",
              "instructor": ""
             }
@@ -7588,7 +7588,7 @@
              "dates": "11 Aug - 11 Aug",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7596,7 +7596,7 @@
              "dates": "25 Aug - 25 Aug",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7604,7 +7604,7 @@
              "dates": "22 Sep - 22 Sep",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7612,7 +7612,7 @@
              "dates": "20 Oct - 20 Oct",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7620,7 +7620,7 @@
              "dates": "3 Nov - 3 Nov",
              "days": "Wednesday",
              "time": "11:10am - 12pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             }
@@ -7635,10 +7635,10 @@
            "available": 30,
            "meetings": [
             {
-             "dates": "20 Oct - 20 Oct",
+             "dates": "22 Sep - 22 Sep",
              "days": "Wednesday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7646,7 +7646,7 @@
              "dates": "11 Aug - 11 Aug",
              "days": "Wednesday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7654,15 +7654,15 @@
              "dates": "25 Aug - 25 Aug",
              "days": "Wednesday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
             {
-             "dates": "22 Sep - 22 Sep",
+             "dates": "20 Oct - 20 Oct",
              "days": "Wednesday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             },
@@ -7670,7 +7670,7 @@
              "dates": "3 Nov - 3 Nov",
              "days": "Wednesday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-10",
              "instructor": ""
             }
@@ -8379,7 +8379,7 @@
   "MATH1035": {
    "code": "MATH1035",
    "url": "https://adelaide.edu.au/study/courses/2027/math-1035/",
-   "fetched": "2026-11-22T18:25:12.397Z",
+   "fetched": "2026-11-23T00:09:55.275Z",
    "status": "ok",
    "terms": [
     {
@@ -8538,7 +8538,7 @@
   "MATH2010": {
    "code": "MATH2010",
    "url": "https://adelaide.edu.au/study/courses/2027/math-2010/",
-   "fetched": "2026-11-22T18:25:50.111Z",
+   "fetched": "2026-11-23T00:10:19.087Z",
    "status": "ok",
    "terms": [
     {
@@ -8593,7 +8593,7 @@
   "MATH2025": {
    "code": "MATH2025",
    "url": "https://adelaide.edu.au/study/courses/2027/math-2025/",
-   "fetched": "2026-11-22T18:25:22.236Z",
+   "fetched": "2026-11-23T00:10:00.595Z",
    "status": "ok",
    "terms": [
     {
@@ -8614,44 +8614,20 @@
            "available": 24,
            "meetings": [
             {
-             "dates": "9 Mar - 9 Mar",
-             "days": "Tuesday",
-             "time": "8:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, G03",
-             "instructor": "Liz Bradford, Lesley Ward"
-            },
-            {
-             "dates": "30 Mar - 30 Mar",
-             "days": "Tuesday",
-             "time": "8:10am - 10am",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, G03",
-             "instructor": "Liz Bradford, Lesley Ward"
-            },
-            {
-             "dates": "5 Apr - 12 Apr",
-             "days": "Monday",
-             "time": "12:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, G03",
-             "instructor": "Liz Bradford, Lesley Ward"
-            },
-            {
-             "dates": "3 May - 24 May",
-             "days": "Monday",
-             "time": "12:10pm - 2pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Napier, G03",
-             "instructor": "Liz Bradford, Lesley Ward"
-            },
-            {
              "dates": "22 Feb - 1 Mar",
              "days": "Monday",
              "time": "12:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Napier, G03",
-             "instructor": "Liz Bradford, Lesley Ward"
+             "instructor": "Lesley Ward, Liz Bradford"
+            },
+            {
+             "dates": "9 Mar - 9 Mar",
+             "days": "Tuesday",
+             "time": "8:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, G03",
+             "instructor": "Lesley Ward, Liz Bradford"
             },
             {
              "dates": "15 Mar - 22 Mar",
@@ -8659,7 +8635,31 @@
              "time": "12:10pm - 2pm",
              "campus": "Adelaide City Campus East",
              "location": "Napier, G03",
-             "instructor": "Liz Bradford, Lesley Ward"
+             "instructor": "Lesley Ward, Liz Bradford"
+            },
+            {
+             "dates": "30 Mar - 30 Mar",
+             "days": "Tuesday",
+             "time": "8:10am - 10am",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, G03",
+             "instructor": "Lesley Ward, Liz Bradford"
+            },
+            {
+             "dates": "5 Apr - 12 Apr",
+             "days": "Monday",
+             "time": "12:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, G03",
+             "instructor": "Lesley Ward, Liz Bradford"
+            },
+            {
+             "dates": "3 May - 24 May",
+             "days": "Monday",
+             "time": "12:10pm - 2pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Napier, G03",
+             "instructor": "Lesley Ward, Liz Bradford"
             }
            ]
           },
@@ -8784,7 +8784,7 @@
   "MATH3013": {
    "code": "MATH3013",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3013/",
-   "fetched": "2026-11-22T18:26:44.417Z",
+   "fetched": "2026-11-23T00:10:56.964Z",
    "status": "ok",
    "terms": [
     {
@@ -8805,7 +8805,15 @@
            "available": 16,
            "meetings": [
             {
-             "dates": "4 May - 25 May",
+             "dates": "5 May - 26 May",
+             "days": "Wednesday",
+             "time": "3:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 213",
+             "instructor": ""
+            },
+            {
+             "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "8:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -8821,15 +8829,7 @@
              "instructor": ""
             },
             {
-             "dates": "5 May - 26 May",
-             "days": "Wednesday",
-             "time": "3:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 213",
-             "instructor": ""
-            },
-            {
-             "dates": "23 Feb - 13 Apr",
+             "dates": "4 May - 25 May",
              "days": "Tuesday",
              "time": "8:10am - 10am",
              "campus": "Adelaide City Campus East",
@@ -8859,7 +8859,7 @@
   "MATH3022": {
    "code": "MATH3022",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3022/",
-   "fetched": "2026-11-22T18:27:13.894Z",
+   "fetched": "2026-11-23T00:11:16.069Z",
    "status": "ok",
    "terms": [
     {
@@ -8880,14 +8880,6 @@
            "available": 104,
            "meetings": [
             {
-             "dates": "11 Oct - 1 Nov",
-             "days": "Monday",
-             "time": "2:10pm - 4pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Engin and Maths Sciences, 205",
-             "instructor": "Susan Barwick"
-            },
-            {
              "dates": "2 Aug - 23 Aug",
              "days": "Monday",
              "time": "2:10pm - 4pm",
@@ -8897,6 +8889,14 @@
             },
             {
              "dates": "6 Sep - 20 Sep",
+             "days": "Monday",
+             "time": "2:10pm - 4pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Engin and Maths Sciences, 205",
+             "instructor": "Susan Barwick"
+            },
+            {
+             "dates": "11 Oct - 1 Nov",
              "days": "Monday",
              "time": "2:10pm - 4pm",
              "campus": "Adelaide City Campus East",
@@ -8982,6 +8982,14 @@
            "available": 20,
            "meetings": [
             {
+             "dates": "13 Oct - 3 Nov",
+             "days": "Wednesday",
+             "time": "4:10pm - 5pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Hughes, 111b",
+             "instructor": ""
+            },
+            {
              "dates": "4 Aug - 25 Aug",
              "days": "Wednesday",
              "time": "4:10pm - 5pm",
@@ -8991,14 +8999,6 @@
             },
             {
              "dates": "8 Sep - 22 Sep",
-             "days": "Wednesday",
-             "time": "4:10pm - 5pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Hughes, 111b",
-             "instructor": ""
-            },
-            {
-             "dates": "13 Oct - 3 Nov",
              "days": "Wednesday",
              "time": "4:10pm - 5pm",
              "campus": "Adelaide City Campus East",
@@ -9094,7 +9094,7 @@
   "MATH3900": {
    "code": "MATH3900",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3900/",
-   "fetched": "2026-11-22T18:27:35.177Z",
+   "fetched": "2026-11-23T00:11:28.845Z",
    "status": "ok",
    "terms": [
     {
@@ -9211,7 +9211,7 @@
   "MATH3901": {
    "code": "MATH3901",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3901/",
-   "fetched": "2026-11-22T18:27:44.612Z",
+   "fetched": "2026-11-23T00:11:36.063Z",
    "status": "ok",
    "terms": [
     {
@@ -9342,7 +9342,7 @@
   "MATH3902": {
    "code": "MATH3902",
    "url": "https://adelaide.edu.au/study/courses/2027/math-3902/",
-   "fetched": "2026-11-22T18:26:16.939Z",
+   "fetched": "2026-11-23T00:10:36.880Z",
    "status": "ok",
    "terms": [
     {
@@ -9483,7 +9483,7 @@
   "MATH4008": {
    "code": "MATH4008",
    "url": "https://adelaide.edu.au/study/courses/2027/math-4008/",
-   "fetched": "2026-11-22T18:28:26.613Z",
+   "fetched": "2026-11-23T00:12:00.924Z",
    "status": "ok",
    "terms": [
     {
@@ -9538,14 +9538,14 @@
   "MATH4010": {
    "code": "MATH4010",
    "url": "https://adelaide.edu.au/study/courses/2027/math-4010/",
-   "fetched": "2026-11-22T18:28:02.864Z",
+   "fetched": "2026-11-23T00:11:47.577Z",
    "status": "no-availability",
    "terms": []
   },
   "MATH6019": {
    "code": "MATH6019",
    "url": "https://adelaide.edu.au/study/courses/2027/math-6019/",
-   "fetched": "2026-11-22T18:28:19.680Z",
+   "fetched": "2026-11-23T00:11:56.674Z",
    "status": "ok",
    "terms": [
     {
@@ -9616,7 +9616,7 @@
   "MATHX104": {
    "code": "MATHX104",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-104/",
-   "fetched": "2026-11-22T18:25:01.282Z",
+   "fetched": "2026-11-23T00:09:49.311Z",
    "status": "ok",
    "terms": [
     {
@@ -10061,7 +10061,7 @@
   "MATHX106": {
    "code": "MATHX106",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-106/",
-   "fetched": "2026-11-22T18:24:25.028Z",
+   "fetched": "2026-11-23T00:09:27.206Z",
    "status": "ok",
    "terms": [
     {
@@ -10234,7 +10234,7 @@
   "MATHX201": {
    "code": "MATHX201",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-201/",
-   "fetched": "2026-11-22T18:25:17.738Z",
+   "fetched": "2026-11-23T00:09:57.612Z",
    "status": "ok",
    "terms": [
     {
@@ -10375,7 +10375,7 @@
   "MATHX202": {
    "code": "MATHX202",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-202/",
-   "fetched": "2026-11-22T18:25:26.824Z",
+   "fetched": "2026-11-23T00:10:02.917Z",
    "status": "ok",
    "terms": [
     {
@@ -10542,7 +10542,7 @@
   "MATHX203": {
    "code": "MATHX203",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-203/",
-   "fetched": "2026-11-22T18:29:40.459Z",
+   "fetched": "2026-11-23T00:12:46.812Z",
    "status": "ok",
    "terms": [
     {
@@ -10988,7 +10988,7 @@
   "MATHX204": {
    "code": "MATHX204",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-204/",
-   "fetched": "2026-11-22T18:26:01.763Z",
+   "fetched": "2026-11-23T00:10:27.284Z",
    "status": "ok",
    "terms": [
     {
@@ -11095,7 +11095,7 @@
   "MATHX205": {
    "code": "MATHX205",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-205/",
-   "fetched": "2026-11-22T18:25:34.313Z",
+   "fetched": "2026-11-23T00:10:09.004Z",
    "status": "ok",
    "terms": [
     {
@@ -11234,7 +11234,7 @@
   "MATHX206": {
    "code": "MATHX206",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-206/",
-   "fetched": "2026-11-22T18:26:05.447Z",
+   "fetched": "2026-11-23T00:10:29.614Z",
    "status": "ok",
    "terms": [
     {
@@ -11385,14 +11385,14 @@
   "MATHX208": {
    "code": "MATHX208",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-208/",
-   "fetched": "2026-11-22T18:25:44.008Z",
+   "fetched": "2026-11-23T00:10:14.515Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX209": {
    "code": "MATHX209",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-209/",
-   "fetched": "2026-11-22T18:25:57.740Z",
+   "fetched": "2026-11-23T00:10:24.783Z",
    "status": "ok",
    "terms": [
     {
@@ -11473,7 +11473,7 @@
   "MATHX210": {
    "code": "MATHX210",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-210/",
-   "fetched": "2026-11-22T18:25:53.629Z",
+   "fetched": "2026-11-23T00:10:22.495Z",
    "status": "ok",
    "terms": [
     {
@@ -11580,7 +11580,7 @@
   "MATHX214": {
    "code": "MATHX214",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-214/",
-   "fetched": "2026-11-22T18:25:30.252Z",
+   "fetched": "2026-11-23T00:10:06.327Z",
    "status": "ok",
    "terms": [
     {
@@ -11752,18 +11752,18 @@
            "available": 50,
            "meetings": [
             {
-             "dates": "11 Oct - 1 Nov",
+             "dates": "2 Aug - 20 Sep",
              "days": "Monday",
              "time": "1:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-49",
              "instructor": "Malgorzata Korolkiewicz"
             },
             {
-             "dates": "2 Aug - 20 Sep",
+             "dates": "11 Oct - 1 Nov",
              "days": "Monday",
              "time": "1:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Sir Charles Todd, SCT2-49",
              "instructor": "Malgorzata Korolkiewicz"
             }
@@ -11781,7 +11781,7 @@
              "dates": "5 Aug - 23 Sep",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -11789,7 +11789,7 @@
              "dates": "14 Oct - 4 Nov",
              "days": "Thursday",
              "time": "10:10am - 11am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -11807,7 +11807,7 @@
              "dates": "5 Aug - 23 Sep",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             },
@@ -11815,7 +11815,7 @@
              "dates": "14 Oct - 4 Nov",
              "days": "Thursday",
              "time": "9:10am - 10am",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-13",
              "instructor": ""
             }
@@ -11833,7 +11833,7 @@
              "dates": "14 Oct - 4 Nov",
              "days": "Thursday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-15",
              "instructor": ""
             },
@@ -11841,7 +11841,7 @@
              "dates": "5 Aug - 23 Sep",
              "days": "Thursday",
              "time": "2:10pm - 3pm",
-             "campus": "Mawson Lakes",
+             "campus": "Mawson Lakes Campus",
              "location": "Building P, P1-15",
              "instructor": ""
             }
@@ -12004,7 +12004,7 @@
   "MATHX300": {
    "code": "MATHX300",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-300/",
-   "fetched": "2026-11-22T18:26:20.584Z",
+   "fetched": "2026-11-23T00:10:40.256Z",
    "status": "ok",
    "terms": [
     {
@@ -12101,7 +12101,7 @@
   "MATHX301": {
    "code": "MATHX301",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-301/",
-   "fetched": "2026-11-22T18:26:24.940Z",
+   "fetched": "2026-11-23T00:10:42.614Z",
    "status": "ok",
    "terms": [
     {
@@ -12198,7 +12198,7 @@
   "MATHX302": {
    "code": "MATHX302",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-302/",
-   "fetched": "2026-11-22T18:27:06.436Z",
+   "fetched": "2026-11-23T00:11:10.861Z",
    "status": "ok",
    "terms": [
     {
@@ -12279,14 +12279,14 @@
   "MATHX303": {
    "code": "MATHX303",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-303/",
-   "fetched": "2026-11-22T18:26:30.838Z",
+   "fetched": "2026-11-23T00:10:47.960Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX304": {
    "code": "MATHX304",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-304/",
-   "fetched": "2026-11-22T18:27:22.112Z",
+   "fetched": "2026-11-23T00:11:21.894Z",
    "status": "ok",
    "terms": [
     {
@@ -12367,14 +12367,14 @@
   "MATHX305": {
    "code": "MATHX305",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-305/",
-   "fetched": "2026-11-22T18:27:27.007Z",
+   "fetched": "2026-11-23T00:11:24.199Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX306": {
    "code": "MATHX306",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-306/",
-   "fetched": "2026-11-22T18:26:33.683Z",
+   "fetched": "2026-11-23T00:10:49.998Z",
    "status": "ok",
    "terms": [
     {
@@ -12455,7 +12455,7 @@
   "MATHX307": {
    "code": "MATHX307",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-307/",
-   "fetched": "2026-11-22T18:26:36.889Z",
+   "fetched": "2026-11-23T00:10:52.657Z",
    "status": "ok",
    "terms": [
     {
@@ -12554,14 +12554,14 @@
   "MATHX308": {
    "code": "MATHX308",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-308/",
-   "fetched": "2026-11-22T18:26:41.963Z",
+   "fetched": "2026-11-23T00:10:54.967Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX309": {
    "code": "MATHX309",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-309/",
-   "fetched": "2026-11-22T18:27:32.421Z",
+   "fetched": "2026-11-23T00:11:26.332Z",
    "status": "ok",
    "terms": [
     {
@@ -12642,7 +12642,7 @@
   "MATHX310": {
    "code": "MATHX310",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-310/",
-   "fetched": "2026-11-22T18:27:39.180Z",
+   "fetched": "2026-11-23T00:11:31.662Z",
    "status": "ok",
    "terms": [
     {
@@ -12723,7 +12723,7 @@
   "MATHX311": {
    "code": "MATHX311",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-311/",
-   "fetched": "2026-11-22T18:26:48.615Z",
+   "fetched": "2026-11-23T00:10:59.266Z",
    "status": "ok",
    "terms": [
     {
@@ -12836,14 +12836,14 @@
   "MATHX312": {
    "code": "MATHX312",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-312/",
-   "fetched": "2026-11-22T18:27:42.114Z",
+   "fetched": "2026-11-23T00:11:33.931Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX313": {
    "code": "MATHX313",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-313/",
-   "fetched": "2026-11-22T18:27:00.792Z",
+   "fetched": "2026-11-23T00:11:08.520Z",
    "status": "ok",
    "terms": [
     {
@@ -12940,7 +12940,7 @@
   "MATHX315": {
    "code": "MATHX315",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-315/",
-   "fetched": "2026-11-22T18:29:37.067Z",
+   "fetched": "2026-11-23T00:12:44.021Z",
    "status": "ok",
    "terms": [
     {
@@ -13065,21 +13065,21 @@
   "MATHX316": {
    "code": "MATHX316",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-316/",
-   "fetched": "2026-11-22T18:26:52.131Z",
+   "fetched": "2026-11-23T00:11:01.628Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX400": {
    "code": "MATHX400",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-400/",
-   "fetched": "2026-11-22T18:27:59.741Z",
+   "fetched": "2026-11-23T00:11:45.581Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX401": {
    "code": "MATHX401",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-401/",
-   "fetched": "2026-11-22T18:28:43.355Z",
+   "fetched": "2026-11-23T00:12:12.046Z",
    "status": "ok",
    "terms": [
     {
@@ -13134,14 +13134,14 @@
   "MATHX402": {
    "code": "MATHX402",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-402/",
-   "fetched": "2026-11-22T18:28:46.971Z",
+   "fetched": "2026-11-23T00:12:14.363Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX403": {
    "code": "MATHX403",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-403/",
-   "fetched": "2026-11-22T18:28:09.398Z",
+   "fetched": "2026-11-23T00:11:52.020Z",
    "status": "ok",
    "terms": [
     {
@@ -13196,7 +13196,7 @@
   "MATHX404": {
    "code": "MATHX404",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-404/",
-   "fetched": "2026-11-22T18:28:57.912Z",
+   "fetched": "2026-11-23T00:12:20.839Z",
    "status": "ok",
    "terms": [
     {
@@ -13251,14 +13251,14 @@
   "MATHX405": {
    "code": "MATHX405",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-405/",
-   "fetched": "2026-11-22T18:29:01.391Z",
+   "fetched": "2026-11-23T00:12:23.018Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX406": {
    "code": "MATHX406",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-406/",
-   "fetched": "2026-11-22T18:28:14.236Z",
+   "fetched": "2026-11-23T00:11:54.383Z",
    "status": "ok",
    "terms": [
     {
@@ -13352,7 +13352,7 @@
   "MATHX407": {
    "code": "MATHX407",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-407/",
-   "fetched": "2026-11-22T18:29:04.775Z",
+   "fetched": "2026-11-23T00:12:25.619Z",
    "status": "ok",
    "terms": [
     {
@@ -13446,14 +13446,14 @@
   "MATHX408": {
    "code": "MATHX408",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-408/",
-   "fetched": "2026-11-22T18:29:14.141Z",
+   "fetched": "2026-11-23T00:12:32.245Z",
    "status": "no-availability",
    "terms": []
   },
   "MATHX409": {
    "code": "MATHX409",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-409/",
-   "fetched": "2026-11-22T18:28:22.252Z",
+   "fetched": "2026-11-23T00:11:58.737Z",
    "status": "ok",
    "terms": [
     {
@@ -13508,7 +13508,7 @@
   "MATHX410": {
    "code": "MATHX410",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-410/",
-   "fetched": "2026-11-22T18:28:29.515Z",
+   "fetched": "2026-11-23T00:12:03.104Z",
    "status": "ok",
    "terms": [
     {
@@ -13563,7 +13563,7 @@
   "MATHX411": {
    "code": "MATHX411",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-411/",
-   "fetched": "2026-11-22T18:29:23.704Z",
+   "fetched": "2026-11-23T00:12:38.465Z",
    "status": "ok",
    "terms": [
     {
@@ -13618,7 +13618,7 @@
   "MATHX412": {
    "code": "MATHX412",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-412/",
-   "fetched": "2026-11-22T18:28:39.882Z",
+   "fetched": "2026-11-23T00:12:09.719Z",
    "status": "ok",
    "terms": [
     {
@@ -13673,7 +13673,7 @@
   "MATHX413": {
    "code": "MATHX413",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-413/",
-   "fetched": "2026-11-22T18:29:29.279Z",
+   "fetched": "2026-11-23T00:12:40.593Z",
    "status": "ok",
    "terms": [
     {
@@ -13728,7 +13728,7 @@
   "MATHX415": {
    "code": "MATHX415",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-415/",
-   "fetched": "2026-11-22T18:29:33.604Z",
+   "fetched": "2026-11-23T00:12:41.953Z",
    "status": "ok",
    "terms": [
     {
@@ -13783,7 +13783,7 @@
   "MATHX418": {
    "code": "MATHX418",
    "url": "https://adelaide.edu.au/study/courses/2027/mathx-418/",
-   "fetched": "2026-11-22T18:27:55.694Z",
+   "fetched": "2026-11-23T00:11:43.186Z",
    "status": "ok",
    "terms": [
     {
@@ -13854,7 +13854,7 @@
   "STAT2003": {
    "code": "STAT2003",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-2003/",
-   "fetched": "2026-11-22T18:26:13.361Z",
+   "fetched": "2026-11-23T00:10:34.508Z",
    "status": "ok",
    "terms": [
     {
@@ -13961,7 +13961,7 @@
   "STAT3005": {
    "code": "STAT3005",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-3005/",
-   "fetched": "2026-11-22T18:27:52.726Z",
+   "fetched": "2026-11-23T00:11:40.886Z",
    "status": "ok",
    "terms": [
     {
@@ -14042,7 +14042,7 @@
   "STAT3006": {
    "code": "STAT3006",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-3006/",
-   "fetched": "2026-11-22T18:27:09.365Z",
+   "fetched": "2026-11-23T00:11:13.738Z",
    "status": "ok",
    "terms": [
     {
@@ -14123,14 +14123,14 @@
   "STAT4001": {
    "code": "STAT4001",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4001/",
-   "fetched": "2026-11-22T18:28:32.334Z",
+   "fetched": "2026-11-23T00:12:05.284Z",
    "status": "no-availability",
    "terms": []
   },
   "STAT4002": {
    "code": "STAT4002",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4002/",
-   "fetched": "2026-11-22T18:28:36.297Z",
+   "fetched": "2026-11-23T00:12:07.520Z",
    "status": "ok",
    "terms": [
     {
@@ -14185,14 +14185,14 @@
   "STAT4019": {
    "code": "STAT4019",
    "url": "https://adelaide.edu.au/study/courses/2027/stat-4019/",
-   "fetched": "2026-11-22T18:28:05.746Z",
+   "fetched": "2026-11-23T00:11:49.754Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX100": {
    "code": "STATX100",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-100/",
-   "fetched": "2026-11-22T18:24:39.346Z",
+   "fetched": "2026-11-23T00:09:34.454Z",
    "status": "ok",
    "terms": [
     {
@@ -14627,7 +14627,7 @@
   "STATX200": {
    "code": "STATX200",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-200/",
-   "fetched": "2026-11-22T18:25:39.180Z",
+   "fetched": "2026-11-23T00:10:11.481Z",
    "status": "ok",
    "terms": [
     {
@@ -14786,14 +14786,14 @@
   "STATX201": {
    "code": "STATX201",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-201/",
-   "fetched": "2026-11-22T18:25:47.060Z",
+   "fetched": "2026-11-23T00:10:16.546Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX290": {
    "code": "STATX290",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-290/",
-   "fetched": "2026-11-22T18:26:08.998Z",
+   "fetched": "2026-11-23T00:10:31.973Z",
    "status": "ok",
    "terms": [
     {
@@ -15024,7 +15024,7 @@
   "STATX300": {
    "code": "STATX300",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-300/",
-   "fetched": "2026-11-22T18:26:28.295Z",
+   "fetched": "2026-11-23T00:10:45.666Z",
    "status": "ok",
    "terms": [
     {
@@ -15183,7 +15183,7 @@
   "STATX301": {
    "code": "STATX301",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-301/",
-   "fetched": "2026-11-22T18:27:17.460Z",
+   "fetched": "2026-11-23T00:11:19.375Z",
    "status": "ok",
    "terms": [
     {
@@ -15290,7 +15290,7 @@
   "STATX302": {
    "code": "STATX302",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-302/",
-   "fetched": "2026-11-22T18:26:55.222Z",
+   "fetched": "2026-11-23T00:11:03.644Z",
    "status": "ok",
    "terms": [
     {
@@ -15311,6 +15311,14 @@
            "available": 39,
            "meetings": [
             {
+             "dates": "22 Feb - 1 Mar",
+             "days": "Monday",
+             "time": "12:10pm - 1pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Centenary, C4-08",
+             "instructor": "Anthony Mays, Melissa Humphries"
+            },
+            {
              "dates": "23 Feb - 13 Apr",
              "days": "Tuesday",
              "time": "2:10pm - 3pm",
@@ -15319,28 +15327,12 @@
              "instructor": ""
             },
             {
-             "dates": "4 May - 25 May",
-             "days": "Tuesday",
-             "time": "2:10pm - 3pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Centenary, C4-17",
-             "instructor": ""
-            },
-            {
-             "dates": "22 Feb - 1 Mar",
-             "days": "Monday",
-             "time": "12:10pm - 1pm",
-             "campus": "Adelaide City Campus East",
-             "location": "Centenary, C4-08",
-             "instructor": "Melissa Humphries, Anthony Mays"
-            },
-            {
              "dates": "15 Mar - 22 Mar",
              "days": "Monday",
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
              "location": "Centenary, C4-08",
-             "instructor": "Melissa Humphries, Anthony Mays"
+             "instructor": "Anthony Mays, Melissa Humphries"
             },
             {
              "dates": "5 Apr - 12 Apr",
@@ -15348,7 +15340,7 @@
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
              "location": "Centenary, C4-08",
-             "instructor": "Melissa Humphries, Anthony Mays"
+             "instructor": "Anthony Mays, Melissa Humphries"
             },
             {
              "dates": "3 May - 24 May",
@@ -15356,7 +15348,15 @@
              "time": "12:10pm - 1pm",
              "campus": "Adelaide City Campus East",
              "location": "Centenary, C4-08",
-             "instructor": "Melissa Humphries, Anthony Mays"
+             "instructor": "Anthony Mays, Melissa Humphries"
+            },
+            {
+             "dates": "4 May - 25 May",
+             "days": "Tuesday",
+             "time": "2:10pm - 3pm",
+             "campus": "Adelaide City Campus East",
+             "location": "Centenary, C4-17",
+             "instructor": ""
             }
            ]
           },
@@ -15471,7 +15471,7 @@
   "STATX303": {
    "code": "STATX303",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-303/",
-   "fetched": "2026-11-22T18:27:48.254Z",
+   "fetched": "2026-11-23T00:11:38.528Z",
    "status": "ok",
    "terms": [
     {
@@ -15552,28 +15552,28 @@
   "STATX400": {
    "code": "STATX400",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-400/",
-   "fetched": "2026-11-22T18:29:11.165Z",
+   "fetched": "2026-11-23T00:12:30.242Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX401": {
    "code": "STATX401",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-401/",
-   "fetched": "2026-11-22T18:29:17.511Z",
+   "fetched": "2026-11-23T00:12:34.354Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX402": {
    "code": "STATX402",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-402/",
-   "fetched": "2026-11-22T18:29:20.926Z",
+   "fetched": "2026-11-23T00:12:36.429Z",
    "status": "no-availability",
    "terms": []
   },
   "STATX403": {
    "code": "STATX403",
    "url": "https://adelaide.edu.au/study/courses/2027/statx-403/",
-   "fetched": "2026-11-22T18:28:49.962Z",
+   "fetched": "2026-11-23T00:12:16.387Z",
    "status": "ok",
    "terms": [
     {
