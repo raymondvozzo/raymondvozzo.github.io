@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course assessments</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--bblue:#1448FF;--amber:#F5A300;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1000px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+.relock{border:0;background:none;color:#fff;opacity:.8;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:700px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+#q{width:100%;padding:12px 14px;font:inherit;font-size:16px;color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:8px}
+#q:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+button{font-family:var(--ui);cursor:pointer}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+.sp{flex:1}
+.lnk{border:0;background:none;color:var(--purple);font-weight:700;font-size:13px;padding:6px 4px}
+#count{font-size:13px;margin:6px 0 0;opacity:.8}
+h2{font-family:var(--head);font-size:1.5rem;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+details.course{border-bottom:1px solid var(--line)}
+details.course>summary{display:flex;gap:12px;align-items:baseline;padding:11px 6px;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+details.course>summary::before{content:"▸";color:var(--purple);flex:none}
+details.course[open]>summary::before{content:"▾"}
+details.course>summary:hover{background:#f3f1ff}
+.cd{font-weight:700;color:var(--purple);flex:none;min-width:6.2em}
+.tt{flex:1}
+.tags{display:flex;gap:4px;flex-wrap:wrap;flex:none}
+.tag{font-size:11px;font-weight:700;padding:1px 8px;border-radius:10px;background:#eeecfb;color:#4B3BB0;border:1px solid #c9c3f3;white-space:nowrap}
+.tag.warn{background:#fff4e5;color:#7a3b00;border-color:#f0c27b}
+.n{font-size:12px;opacity:.65;flex:none;min-width:7em;text-align:right}
+.body{padding:4px 8px 18px 30px}
+.meta{font-size:13px;margin:4px 0 10px;display:flex;flex-wrap:wrap;gap:4px 18px}
+.meta b{font-weight:700}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-size:12px;font-weight:700}
+td.num{text-align:right;white-space:nowrap}
+tr.a{cursor:pointer}
+tr.a:hover td{background:#f6f5fd}
+tr.sub td{font-size:13px;background:#fbfaff}
+tr.sub td.nm{padding-left:28px}
+.tri{display:inline-block;width:1em;color:var(--purple)}
+.tri::before{content:"▸"}tr.a.open .tri::before{content:"▾"}
+.ty{font-size:12px;opacity:.75}
+.chip{display:inline-block;min-width:22px;text-align:center;font-size:12px;font-weight:700;padding:1px 6px;margin:1px 2px 1px 0;border-radius:10px;background:var(--purple);color:#fff;border:0;cursor:pointer}
+.chip.on{background:var(--amber);color:var(--navy)}
+.hurdle{color:#7a3b00;font-weight:700}
+tr.det td{background:#faf9ff;padding:10px 14px 14px 36px}
+dl{margin:0;display:grid;grid-template-columns:12em 1fr;gap:6px 14px;font-size:13px}
+dt{font-weight:700;opacity:.75}
+dd{margin:0;font-family:var(--body);font-size:14px;line-height:1.45;white-space:pre-line}
+.subtog{border:0;background:none;color:var(--purple);font-size:12px;font-weight:700;padding:0;margin-left:6px}
+.clos{margin:14px 0 0}
+.clos h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--purple);margin:0 0 6px}
+ol.cl{list-style:none;margin:0;padding:0}
+ol.cl li{display:grid;grid-template-columns:4.2em 1fr auto;gap:8px;align-items:baseline;padding:6px 8px;border-radius:8px;font-family:var(--body);font-size:14px;line-height:1.4}
+ol.cl li b{font-family:var(--ui);color:var(--purple);font-size:13px}
+ol.cl li .w{font-family:var(--ui);font-size:12px;opacity:.75;white-space:nowrap}
+ol.cl li.on{background:#fff1cc}
+ol.cl li.none .w{color:#7a3b00;opacity:1;font-weight:700}
+tr.hl td{background:#fff1cc!important}
+mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
+.none{padding:18px 4px}
+#wait{opacity:.8}
+@media(max-width:700px){body{padding:16px}.box{padding:14px}details.course>summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;text-align:left;padding-left:20px}.body{padding-left:4px}dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="/pdstaff/">PD staff area</a> · School of Mathematical Sciences · Adelaide University<button class="relock" id="lockbtn" hidden>Lock</button></p>
+<h1>Course assessments</h1>
+<p class="sub">Each course's assessment, from CurV: weights, types, hurdles, weeks and the CLOs each item assesses. Click a course to open it, an assessment for its details, and a CLO number to highlight that outcome and everything that assesses it.</p>
+<p id="wait" role="status">Unlocking…</p>
+<div class="box" id="app" hidden>
+<input id="q" type="search" placeholder="Search courses, assessments and outcomes" aria-label="Search courses, assessments and outcomes" autocomplete="off">
+<div class="bar" id="lv" role="group" aria-label="Level"></div>
+<div class="bar"><span id="count" aria-live="polite"></span><span class="sp"></span><button class="lnk" id="ex">Expand all</button><button class="lnk" id="co">Collapse all</button></div>
+<div id="list"></div>
+</div>
+</div>
+<script src="/pdstaff/gate.js"></script>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function csvRows(t){const rows=[];let row=[],cur='',q=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=c}
+  else if(c==='"')q=true;else if(c===','){row.push(cur);cur=''}
+  else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur=''}else if(c!=='\r')cur+=c}
+ if(cur||row.length){row.push(cur);rows.push(row)}
+ const h=rows.shift().map(s=>s.replace(/^﻿/,'').trim());
+ return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
+const $=id=>document.getElementById(id);
+const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4',5:'Postgraduate'};
+const get=f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f+' not found (HTTP '+r.status+')');return r.text()}).then(csvRows);
+const num=s=>{const x=parseFloat(String(s).replace('%',''));return isFinite(x)?x:0};
+const fmt=x=>(Math.round(x*100)/100)+'%';
+
+let C=[],lvl='all',toks=[],DET={},SUM={};
+
+const secret=Staff.open('data.enc.json').then(files=>{
+ const pick=re=>{const n=Object.keys(files).find(k=>re.test(k));return n?csvRows(files[n]):null};
+ const a=pick(/^assessments.*\.csv$/i);if(!a)throw new Error('the encrypted file has no assessments.csv');
+ $('lockbtn').hidden=false;$('lockbtn').onclick=()=>Staff.lock();
+ return[a,pick(/details.*\.csv$/i)||[],pick(/summary.*\.csv$/i)||[]]});
+
+Promise.all([secret,get('/pd/clos/clos.csv').catch(()=>[]),get('/prereqs/courses.csv').catch(()=>[])]).then(([[as,det,sum],clos,levels])=>{
+ const LV={};for(const r of levels){const l=parseInt(r['level'],10);if(r['Course Code']&&l)LV[r['Course Code']]=l}
+ const lvlOf=code=>LV[code]?Math.min(LV[code],5):(d=>d>=5?5:d)(+(code.match(/\d/)||[0])[0]);
+ const CL={};for(const r of clos)(CL[r['Course Code']]??=[]).push({no:r['CLO No'],text:r['Course Learning Outcome']});
+ for(const r of det)DET[r['Course Code']+'|'+r['Assessment ID']]=r;
+ for(const r of sum)SUM[r['Course Code']]=r;
+ const M=new Map();
+ for(const r of as){const k=r['Course Code'];
+  if(!M.has(k))M.set(k,{code:k,title:r['Course Title'],version:r['Version'],items:[]});
+  M.get(k).items.push({id:r['Assessment ID'],parent:r['Parent ID'],kind:r['Kind'],name:r['Name'],cat:r['Category'],type:r['Type'],
+   w:num(r['Weight %']),hurdle:/^y/i.test(r['Hurdle']),pf:/^y/i.test(r['Pass/Fail']),week:r['Week'],clos:(r['CLOs']||'').split(/\s+/).filter(Boolean)})}
+ C=[...M.values()].map(c=>{
+  const tops=c.items.filter(i=>!i.parent);
+  for(const t of tops)t.subs=c.items.filter(i=>i.parent===t.id);
+  // leaves carry the marks: sub-parts, or the item itself when it has none
+  const leaves=tops.flatMap(t=>t.subs.length?t.subs:[t]);
+  const total=tops.reduce((s,t)=>s+t.w,0);
+  const cl=CL[c.code]||[];
+  const perClo={};for(const l of leaves)for(const n of l.clos)perClo[n]=(perClo[n]||0)+l.w;
+  const s=SUM[c.code]||{};
+  const hay=[c.code,c.title,...c.items.flatMap(i=>[i.name,i.cat,i.type]),...cl.map(x=>x.text),
+   ...tops.map(t=>(DET[c.code+'|'+t.id]||{})['Statement']||'')].join(' ').toLowerCase();
+  return{...c,tops,total,cl,perClo,s,g:lvlOf(c.code),hay,
+   exam:tops.filter(t=>/exam/i.test(t.type)||/exam/i.test(t.name)).reduce((a,t)=>a+t.w,0),
+   hurdle:c.items.some(i=>i.hurdle)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
+ const gs=[...new Set(C.map(c=>c.g))];
+ $('lv').innerHTML=[['all','All levels'],...gs.map(g=>[g,GN[g]])].map(([g,l])=>`<button class="pill" data-g="${g}" aria-pressed="${g==='all'}">${l}</button>`).join('');
+ $('wait').hidden=true;$('app').hidden=false;draw();
+ const id=location.hash.slice(1),el=id&&document.getElementById('c-'+id);if(el){el.open=true;el.scrollIntoView()}
+}).catch(e=>{$('wait').textContent='Could not open the page: '+(e.message||e)});
+
+function hl(t){t=String(t??'');if(!toks.length)return esc(t);
+ const re=new RegExp('('+toks.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+ return t.split(re).map((p,i)=>i%2?`<mark>${esc(p)}</mark>`:esc(p)).join('')}
+
+function chips(c,list){return list.map(n=>{const t=(c.cl.find(x=>x.no===n)||{}).text||'';
+ return`<button class="chip" data-clo="${esc(n)}" title="CLO ${esc(n)}: ${esc(t)}">${esc(n)}</button>`}).join('')}
+
+function details(c,t){const d=DET[c.code+'|'+t.id];if(!d)return'<p class="ty">No details recorded in CurV.</p>';
+ const F=[['Statement','Statement'],['Activities','Activities / timing'],['Indicative Learner Hours','Indicative learner hours'],
+  ['Student Workload Hours','Student workload hours'],['Generative AI','Generative AI'],['Assessment Options','Assessment options'],
+  ['Threshold %','Threshold %'],['Additional Requirements','Additional requirements']];
+ const rows=F.filter(([k])=>d[k]).map(([k,l])=>`<dt>${l}</dt><dd>${hl(d[k])}</dd>`).join('');
+ return rows?`<dl>${rows}</dl>`:'<p class="ty">No details recorded in CurV.</p>'}
+
+function courseBody(c){
+ const s=c.s,meta=[s['Grading Basis']&&`<span><b>Grading:</b> ${esc(s['Grading Basis'])}</span>`,
+  s['Formal Final Exam']&&`<span><b>Formal final exam:</b> ${esc(s['Formal Final Exam'])}</span>`,
+  s['Supplementary Assessment']&&`<span><b>Supplementary:</b> ${esc(s['Supplementary Assessment'])}${s['Rationale for No Supplementary']?' ('+esc(s['Rationale for No Supplementary'])+')':''}</span>`,
+  `<span><b>Version:</b> ${esc(c.version)}</span>`].filter(Boolean).join('');
+ let h=`<div class="meta">${meta}</div><div class="scroll"><table><thead><tr><th>#</th><th>Assessment</th><th>Type</th><th class="num">Weight</th><th>Week</th><th>Hurdle</th><th>CLOs</th></tr></thead><tbody>`;
+ for(const t of c.tops){
+  const ty=[t.cat,t.type].filter(Boolean).join(' · ')||(t.subs.length?`${t.subs.length} parts`:'');
+  h+=`<tr class="a" data-a="${esc(t.id)}" data-clos="${esc(t.clos.join(' '))}" tabindex="0" aria-expanded="false"><td>${esc(t.id)}</td><td class="nm"><span class="tri"></span>${hl(t.name)}${t.subs.length?`<button class="subtog" data-sub="${esc(t.id)}">${t.subs.length} parts</button>`:''}</td><td class="ty">${hl(ty)}</td><td class="num">${t.w?fmt(t.w):''}</td><td>${esc(t.week)}</td><td>${t.hurdle?'<span class="hurdle">Hurdle</span>':''}${t.pf?' <span class="ty">Pass/Fail</span>':''}</td><td>${chips(c,t.clos)}</td></tr>`;
+  for(const p of t.subs)h+=`<tr class="sub" data-of="${esc(t.id)}" data-clos="${esc(p.clos.join(' '))}" hidden><td>${esc(p.id)}</td><td class="nm">${hl(p.name)}</td><td class="ty">${hl([p.cat,p.type].filter(Boolean).join(' · '))}</td><td class="num">${p.w?fmt(p.w):''}</td><td>${esc(p.week)}</td><td>${p.hurdle?'<span class="hurdle">Hurdle</span>':''}</td><td>${chips(c,p.clos)}</td></tr>`;
+  h+=`<tr class="det" data-det="${esc(t.id)}" hidden><td colspan="7">${details(c,t)}</td></tr>`;
+ }
+ h+=`</tbody><tfoot><tr><th></th><th>Total</th><th></th><th class="num">${fmt(c.total)}</th><th colspan="3">${Math.abs(c.total-100)>.01?'<span class="hurdle">does not add to 100%</span>':''}</th></tr></tfoot></table></div>`;
+ if(c.cl.length)h+=`<div class="clos"><h3>Course learning outcomes (and the total weight of the items that assess each)</h3><ol class="cl">${c.cl.map(x=>{const w=c.perClo[x.no]||0;
+  return`<li data-clo="${esc(x.no)}" class="${w?'':'none'}"><b>CLO ${esc(x.no)}</b><span>${hl(x.text)}</span><span class="w">${w?'in items worth '+fmt(w):'Not assessed'}</span></li>`}).join('')}</ol></div>`;
+ return h}
+
+function draw(){
+ const hit=C.filter(c=>(lvl==='all'||c.g==lvl)&&toks.every(t=>c.hay.includes(t)));
+ $('count').textContent=`Showing ${hit.length} of ${C.length} courses`;
+ if(!hit.length){$('list').innerHTML='<p class="none">No courses match.</p>';return}
+ let h='',g=0;
+ for(const c of hit){
+  if(c.g!==g){g=c.g;h+=`<h2>${GN[g]}</h2>`}
+  const tags=[c.exam?`<span class="tag">Exam ${fmt(c.exam)}</span>`:'',c.hurdle?'<span class="tag warn">Hurdle</span>':'',
+   Math.abs(c.total-100)>.01?`<span class="tag warn">Total ${fmt(c.total)}</span>`:''].join('');
+  h+=`<details class="course" id="c-${esc(c.code)}"${toks.length&&hit.length<=6?' open':''}><summary><span class="cd">${hl(c.code)}</span><span class="tt">${hl(c.title)}</span><span class="tags">${tags}</span><span class="n">${c.tops.length} assessment${c.tops.length===1?'':'s'}</span></summary><div class="body">${courseBody(c)}</div></details>`}
+ $('list').innerHTML=h}
+
+$('q').addEventListener('input',e=>{toks=e.target.value.toLowerCase().split(/\s+/).filter(Boolean);draw()});
+$('lv').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;lvl=b.dataset.g;
+ document.querySelectorAll('#lv .pill').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+$('ex').onclick=()=>document.querySelectorAll('#list details.course').forEach(d=>d.open=true);
+$('co').onclick=()=>document.querySelectorAll('#list details.course').forEach(d=>d.open=false);
+
+$('list').addEventListener('click',e=>{
+ const body=e.target.closest('.body');if(!body)return;
+ const chip=e.target.closest('.chip,ol.cl li');
+ if(chip){e.stopPropagation();const n=chip.dataset.clo;
+  const was=body.dataset.sel===n;body.dataset.sel=was?'':n;
+  body.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',!was&&x.dataset.clo===n));
+  body.querySelectorAll('ol.cl li').forEach(x=>x.classList.toggle('on',!was&&x.dataset.clo===n));
+  body.querySelectorAll('tr[data-clos]').forEach(x=>x.classList.toggle('hl',!was&&x.dataset.clos.split(' ').includes(n)));
+  if(!was)body.querySelectorAll('tr.sub').forEach(x=>{if(x.dataset.clos.split(' ').includes(n))x.hidden=false});
+  return}
+ const st=e.target.closest('.subtog');
+ if(st){e.stopPropagation();const rows=body.querySelectorAll(`tr.sub[data-of="${CSS.escape(st.dataset.sub)}"]`);const show=[...rows].some(r=>r.hidden);rows.forEach(r=>r.hidden=!show);return}
+ const tr=e.target.closest('tr.a');
+ if(tr){const d=body.querySelector(`tr.det[data-det="${CSS.escape(tr.dataset.a)}"]`);const open=d.hidden;d.hidden=!open;tr.classList.toggle('open',open);tr.setAttribute('aria-expanded',open)}
+});
+$('list').addEventListener('keydown',e=>{const tr=e.target.closest('tr.a');if(tr&&(e.key==='Enter'||e.key===' ')){e.preventDefault();tr.click()}});
+</script>
+</body>
+</html>
