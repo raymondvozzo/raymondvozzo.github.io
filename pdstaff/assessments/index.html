@@ -74,6 +74,7 @@ mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
 .none{padding:18px 4px}
 #wait{opacity:.8}
 @media(max-width:700px){body{padding:16px}.box{padding:14px}details.course>summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;text-align:left;padding-left:20px}.body{padding-left:4px}dl{grid-template-columns:1fr}}
+.loose{border-left:3px solid var(--line,#ddd);padding-left:.8em;margin:.6em 0}
 </style>
 </head>
 <body>
@@ -106,7 +107,7 @@ const get=f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f+' not found (HTTP '+r.
 const num=s=>{const x=parseFloat(String(s).replace('%',''));return isFinite(x)?x:0};
 const fmt=x=>(Math.round(x*100)/100)+'%';
 
-let C=[],lvl='all',toks=[],DET={},SUM={};
+let C=[],lvl='all',toks=[],DET={},SUM={},LOOSE={};
 
 const secret=Staff.open('data.enc.json').then(files=>{
  const pick=re=>{const n=Object.keys(files).find(k=>re.test(k));return n?csvRows(files[n]):null};
@@ -118,7 +119,7 @@ Promise.all([secret,get('/pd/clos/clos.csv').catch(()=>[]),get('/prereqs/courses
  const LV={};for(const r of levels){const l=parseInt(r['level'],10);if(r['Course Code']&&l)LV[r['Course Code']]=l}
  const lvlOf=code=>LV[code]?Math.min(LV[code],5):(d=>d>=5?5:d)(+(code.match(/\d/)||[0])[0]);
  const CL={};for(const r of clos)(CL[r['Course Code']]??=[]).push({no:r['CLO No'],text:r['Course Learning Outcome']});
- for(const r of det)DET[r['Course Code']+'|'+r['Assessment ID']]=r;
+ for(const r of det){if(r['Assessment ID'])DET[r['Course Code']+'|'+r['Assessment ID']]=r;else(LOOSE[r['Course Code']]??=[]).push(r)}
  for(const r of sum)SUM[r['Course Code']]=r;
  const M=new Map();
  for(const r of as){const k=r['Course Code'];
@@ -135,7 +136,7 @@ Promise.all([secret,get('/pd/clos/clos.csv').catch(()=>[]),get('/prereqs/courses
   const perClo={};for(const l of leaves)for(const n of l.clos)perClo[n]=(perClo[n]||0)+l.w;
   const s=SUM[c.code]||{};
   const hay=[c.code,c.title,...c.items.flatMap(i=>[i.name,i.cat,i.type]),...cl.map(x=>x.text),
-   ...tops.map(t=>(DET[c.code+'|'+t.id]||{})['Statement']||'')].join(' ').toLowerCase();
+   ...tops.map(t=>(DET[c.code+'|'+t.id]||{})['Statement']||''),...(LOOSE[c.code]||[]).map(d=>d['Statement']||'')].join(' ').toLowerCase();
   return{...c,tops,total,cl,perClo,s,g:lvlOf(c.code),hay,
    exam:tops.filter(t=>/exam/i.test(t.type)||/exam/i.test(t.name)).reduce((a,t)=>a+t.w,0),
    hurdle:c.items.some(i=>i.hurdle)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
@@ -152,7 +153,7 @@ function hl(t){t=String(t??'');if(!toks.length)return esc(t);
 function chips(c,list){return list.map(n=>{const t=(c.cl.find(x=>x.no===n)||{}).text||'';
  return`<button class="chip" data-clo="${esc(n)}" title="CLO ${esc(n)}: ${esc(t)}">${esc(n)}</button>`}).join('')}
 
-function details(c,t){const d=DET[c.code+'|'+t.id];if(!d)return'<p class="ty">No details recorded in CurV.</p>';
+function details(c,t,d=DET[c.code+'|'+t.id]){if(!d)return'<p class="ty">No details recorded in CurV.</p>';
  const F=[['Statement','Statement'],['Activities','Activities / timing'],['Indicative Learner Hours','Indicative learner hours'],
   ['Student Workload Hours','Student workload hours'],['Generative AI','Generative AI'],['Assessment Options','Assessment options'],
   ['Threshold %','Threshold %'],['Additional Requirements','Additional requirements']];
@@ -172,6 +173,8 @@ function courseBody(c){
   h+=`<tr class="det" data-det="${esc(t.id)}" hidden><td colspan="7">${details(c,t)}</td></tr>`;
  }
  h+=`</tbody><tfoot><tr><th></th><th>Total</th><th></th><th class="num">${fmt(c.total)}</th><th colspan="3">${Math.abs(c.total-100)>.01?'<span class="hurdle">does not add to 100%</span>':''}</th></tr></tfoot></table></div>`;
+ const lo=LOOSE[c.code]||[];
+ if(lo.length)h+=`<div class="clos"><h3>Assessment details not linked to an assessment in CurV (${lo.length})</h3>${lo.map(d=>`<div class="loose">${d['Assessment Name']?`<p><b>${hl(d['Assessment Name'])}</b></p>`:''}${details(c,null,d)}</div>`).join('')}</div>`;
  if(c.cl.length)h+=`<div class="clos"><h3>Course learning outcomes (and the total weight of the items that assess each)</h3><ol class="cl">${c.cl.map(x=>{const w=c.perClo[x.no]||0;
   return`<li data-clo="${esc(x.no)}" class="${w?'':'none'}"><b>CLO ${esc(x.no)}</b><span>${hl(x.text)}</span><span class="w">${w?'in items worth '+fmt(w):'Not assessed'}</span></li>`}).join('')}</ol></div>`;
  return h}
