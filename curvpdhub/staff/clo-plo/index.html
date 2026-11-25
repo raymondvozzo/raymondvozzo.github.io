@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLO → PLO mapping</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--lpurple:#8C78FF;--bblue:#1448FF;--amber:#F5A300;--teal:#0E9F9A;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1000px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:700px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+[hidden]{display:none!important}
+button{font-family:var(--ui);cursor:pointer}
+input[type=search]{width:100%;padding:12px 14px;font:inherit;font-size:16px;color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:8px}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible,tr:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+.bar .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.6;min-width:4.2em}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill small{font-weight:400;opacity:.75}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+.sp{flex:1}
+.lnk{border:0;background:none;color:var(--purple);font-weight:700;font-size:13px;padding:6px 4px}
+.count{font-size:13px;margin:6px 0 0;opacity:.8}
+h2{font-family:var(--head);font-size:1.5rem;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+details.course{border-bottom:1px solid var(--line)}
+details.course>summary{display:flex;gap:12px;align-items:baseline;padding:11px 6px;cursor:pointer;list-style:none}
+details.course>summary::-webkit-details-marker{display:none}
+details.course>summary::before{content:"▸";color:var(--purple);flex:none;transition:transform .15s}
+details.course[open]>summary::before{transform:rotate(90deg)}
+details.course>summary:hover{background:#f3f1ff}
+.cd{font-weight:700;color:var(--purple);flex:none;min-width:6.2em}
+.tt{flex:1}
+.n{font-size:12px;opacity:.65;flex:none;text-align:right}
+.tags{display:flex;gap:4px;flex-wrap:wrap;flex:none}
+.tag{font-size:11px;font-weight:700;padding:1px 8px;border-radius:10px;background:#eeecfb;color:#4B3BB0;border:1px solid #c9c3f3;white-space:nowrap}
+.tag.warn,.old{font-size:11px;font-weight:700;background:#fff4e5;color:#7a3b00;border:1px solid #f0c27b;border-radius:10px;padding:1px 8px;white-space:nowrap}
+.body{padding:4px 8px 18px 30px}
+mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
+.none{padding:18px 4px}
+.empty{font-size:13px;background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:8px 12px;color:#5a3600;margin:8px 0}
+.foot{font-size:12px;line-height:1.5;opacity:.75;margin:20px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.relock{border:0;background:none;color:#fff;opacity:.8;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+#wait{opacity:.8}
+@media(max-width:640px){body{padding:16px}.box{padding:14px}details.course>summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;text-align:left;padding-left:20px}.body{padding-left:6px}}
+
+.wrap{max-width:1100px}
+.bar{margin:0 0 6px}
+h2.prog{border:0;margin:18px 0 4px;font-size:1.6rem}
+h3{font-family:var(--head);font-size:1.25rem;margin:24px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+.note{font-size:13px;line-height:1.5;margin:4px 0 0;opacity:.85}
+ol.plos{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+ol.plos li{display:grid;grid-template-columns:3.2em 1fr auto;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;background:#f6f5fd;font-family:var(--body);line-height:1.4;font-size:15px}
+ol.plos li b{font-family:var(--ui);color:var(--purple)}
+ol.plos .cov{font-family:var(--ui);font-size:12px;white-space:nowrap;opacity:.75}
+ol.plos li.zero{background:#fff4e5}ol.plos li.zero .cov{color:#7a3b00;opacity:1;font-weight:700}
+.scroll{overflow-x:auto;margin-top:8px;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center}
+thead th{position:sticky;top:0;background:var(--navy);color:#fff;font-size:13px;z-index:1}
+th.c,td.c{text-align:left}
+tr.lvl th{background:#eeecfb;text-align:left;font-family:var(--head);font-size:1.05rem;padding:6px 10px}
+tr.course{cursor:pointer}tr.course:hover td{background:#f3f1ff}tr.course td.c{white-space:nowrap}
+.tri{display:inline-block;width:1em;color:var(--purple)}.tri::before{content:"▸"}tr.course.open .tri::before{content:"▾"}
+.cell{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:700;color:#fff}
+.ast{color:var(--amber);font-weight:700}
+tr.clo td{background:#faf9ff;font-size:13px}
+tr.clo td.c{font-family:var(--body);white-space:normal;padding-left:34px;line-height:1.4;min-width:300px}
+tr.clo .no{font-family:var(--ui);font-weight:700;color:var(--purple);margin-right:6px}
+.tick{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--purple)}
+tfoot td,tfoot th{background:#eeecfb;font-weight:700;font-size:13px;border-bottom:0}tfoot td.z{background:#fff4e5;color:#7a3b00}
+td.hl,th.hl{box-shadow:inset 0 0 0 2px var(--amber)}
+details.un{margin-top:22px;border-top:1px solid var(--line);padding-top:10px}details.un summary{cursor:pointer;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chips span{font-size:13px;font-weight:700;background:#f3f1ff;border:1px solid var(--line);border-radius:14px;padding:3px 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">Staff area</a> · Bachelor of Mathematics &amp; Bachelor of Mathematics (Honours) CurV-data hub<button class="relock" id="lockbtn" hidden>Lock</button></p>
+
+<h1>CLO → PLO mapping</h1>
+<p class="sub">How each course's learning outcomes (CLOs) map to program learning outcomes (PLOs), exactly as recorded in CurV. Choose a program, then click a course to see its individual CLOs.</p>
+<p id="wait" role="status">Unlocking…</p>
+<div class="box" id="app" hidden>
+<div class="bar" id="progs" role="group" aria-label="Program"></div>
+<div id="main"></div>
+<details class="un" id="unmapped"></details>
+</div>
+</div>
+<script src="../gate.js"></script>
+<script>
+// shared helpers for every page (inlined by the builder)
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=id=>document.getElementById(id);
+const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4',5:'Level 5+ / postgraduate'};
+const lvlGroup=l=>Math.min(Math.max(+l||0,1),5);
+function hlr(toks){if(!toks.length)return t=>esc(t);const re=new RegExp('('+toks.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+ return t=>String(t??'').split(re).map((p,i)=>i%2?`<mark>${esc(p)}</mark>`:esc(p)).join('')}
+const getJSON=u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u+' not found (HTTP '+r.status+')');return r.json()});
+function loadFail(e){const w=$('wait')||$('list');if(w)w.textContent='Could not load the data: '+(e&&e.message||e)+(location.protocol==='file:'?'. Pages read their data from the website, so open this from the website (or a local web server), not as a file.':'')}
+
+// open this page's encrypted data, then call app(data)
+function unlockThen(name, app) {
+  Staff.open('data.enc.json').then(files => {
+    const f = files[name]; if (!f) throw new Error('the encrypted file has no ' + name);
+    $('lockbtn').hidden = false; $('lockbtn').onclick = () => Staff.lock();
+    $('wait').hidden = true; $('app').hidden = false;
+    app(JSON.parse(f));
+  }).catch(e => { $('wait').textContent = 'Could not open the page: ' + (e.message || e); });
+}
+
+let PROGS=[],COURSES=new Map();
+unlockThen('clo-plo.json',d=>{
+ for(const c of d.courses)COURSES.set(c.code,c);
+ const P=new Map();
+ for(const [code,p] of Object.entries(d.plos))P.set(code,{code,title:p.title,plos:p.plos.slice(),courses:new Map(),own:d.order.includes(code)});
+ for(const r of d.maps){if(!r.prog)continue;
+  if(!P.has(r.prog))P.set(r.prog,{code:r.prog,title:r.progTitle||'',plos:[],courses:new Map()});
+  const p=P.get(r.prog);if(!p.courses.has(r.course))p.courses.set(r.course,{code:r.course,assumed:false,clo:new Map()});
+  const c=p.courses.get(r.course);if(!/^linked$/.test(r.source))c.assumed=true;
+  if(!c.clo.has(r.clo))c.clo.set(r.clo,new Set());c.clo.get(r.clo).add(r.plo);
+  if(!p.plos.some(x=>x.no===r.plo))p.plos.push({no:r.plo,text:''})}
+ for(const p of P.values())p.plos.sort((a,b)=>(parseInt(a.no)||0)-(parseInt(b.no)||0));
+ const rank=c=>{const i=d.order.indexOf(c.code);return i<0?999:i};
+ PROGS=[...P.values()].filter(p=>p.courses.size||p.own).sort((a,b)=>rank(a)-rank(b)||b.courses.size-a.courses.size||a.code.localeCompare(b.code));
+ $('progs').innerHTML=PROGS.map(p=>`<button class="pill" data-p="${esc(p.code)}" title="${esc(p.title)}">${esc(p.code)} <small>· ${p.courses.size} course${p.courses.size===1?'':'s'}</small></button>`).join('');
+ const mapped=new Set(d.maps.filter(r=>r.prog).map(r=>r.course)),un=d.courses.filter(c=>!mapped.has(c.code));
+ $('unmapped').innerHTML=`<summary>${un.length} course${un.length===1?'':'s'} with no PLO mapping in CurV</summary><p class="note">Their CLO tables have an empty (or unlinked) "Mapping to PLOs" column in CurV.</p><div class="chips">${un.map(c=>`<span title="${esc(c.title)}">${esc(c.code)}</span>`).join('')}</div>`;
+ const want=decodeURIComponent(location.hash.slice(1)).toUpperCase();
+ show(PROGS.find(p=>p.code===want)||PROGS[0]);
+});
+$('progs').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b)show(PROGS.find(p=>p.code===b.dataset.p),true)});
+const shade=n=>n?`background:rgba(110,90,225,${Math.min(1,.35+.2*n)})`:'';
+function show(p,push){
+ document.querySelectorAll('#progs .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p===p.code));
+ if(push)history.replaceState(null,'','#'+p.code);
+ const rows=[...p.courses.values()].map(c=>{const info=COURSES.get(c.code)||{title:'',clos:[],level:0};
+  const per={};for(const s of c.clo.values())for(const n of s)per[n]=(per[n]||0)+1;
+  return{...c,info,per,g:lvlGroup(info.level)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
+ const cov={},cloCov={};for(const r of rows)for(const [n,k] of Object.entries(r.per)){cov[n]=(cov[n]||0)+1;cloCov[n]=(cloCov[n]||0)+k}
+ let h=`<h2 class="prog">${esc(p.title)} <span style="opacity:.55">(${esc(p.code)})</span></h2>
+ <p class="note">${rows.length} course${rows.length===1?'':'s'} map CLOs to this program in CurV.${rows.some(r=>r.assumed)?' <span class="ast">*</span> PLO numbers typed into CurV as text; the program was assumed.':''}</p>
+ <h3>Program learning outcomes</h3>${p.plos.length?`<ol class="plos">${p.plos.map(x=>{const n=cov[x.no]||0;
+  return`<li class="${n?'':'zero'}" data-plo="${esc(x.no)}"><b>PLO ${esc(x.no)}</b><span>${x.text?esc(x.text):'<i>No wording exported (this program’s record was not part of the export)</i>'}</span><span class="cov">${n?`${n} course${n>1?'s':''} · ${cloCov[x.no]} CLO${cloCov[x.no]>1?'s':''}`:'Not covered'}</span></li>`}).join('')}</ol>`:'<p class="empty">No PLOs recorded.</p>'}`;
+ if(rows.length){h+=`<h3>Matrix</h3><p class="note">Each cell is the number of the course's CLOs that map to that PLO. Click a course to see its CLOs.</p>
+ <div class="scroll"><table><thead><tr><th class="c">Course</th>${p.plos.map(x=>`<th data-plo="${esc(x.no)}" title="${esc(x.text)}">PLO ${esc(x.no)}</th>`).join('')}</tr></thead><tbody>`;
+ let g=0;
+ for(const r of rows){
+  if(r.g!==g){g=r.g;h+=`<tr class="lvl"><th colspan="${p.plos.length+1}">${GN[g]}</th></tr>`}
+  h+=`<tr class="course" tabindex="0" data-c="${esc(r.code)}" aria-expanded="false"><td class="c"><span class="tri"></span><b style="color:var(--purple)">${esc(r.code)}</b> ${esc(r.info.title)}${r.assumed?' <span class="ast">*</span>':''}${r.info.old?' <span class="old">Old version</span>':''}</td>${p.plos.map(x=>{const n=r.per[x.no]||0;return`<td data-plo="${esc(x.no)}">${n?`<span class="cell" style="${shade(n)}">${n}</span>`:''}</td>`}).join('')}</tr>`;
+  const nos=[...new Set([...r.info.clos.map(c=>c.no),...r.clo.keys()])].sort((a,b)=>(parseInt(a)||0)-(parseInt(b)||0));
+  for(const no of nos){const t=(r.info.clos.find(c=>c.no===no)||{}).text||'',s=r.clo.get(no)||new Set();
+   h+=`<tr class="clo" data-of="${esc(r.code)}" hidden><td class="c"><span class="no">CLO ${esc(no)}</span>${esc(t)}</td>${p.plos.map(x=>`<td data-plo="${esc(x.no)}">${s.has(x.no)?'<span class="tick"></span>':''}</td>`).join('')}</tr>`}}
+ h+=`</tbody><tfoot><tr><th class="c">Courses covering this PLO</th>${p.plos.map(x=>`<td class="${cov[x.no]?'':'z'}">${cov[x.no]||0}</td>`).join('')}</tr></tfoot></table></div>`}
+ else h+='<p class="empty">No course maps its CLOs to this program in CurV.</p>';
+ $('main').innerHTML=h}
+function toggle(tr){const o=tr.classList.toggle('open');tr.setAttribute('aria-expanded',o);document.querySelectorAll(`tr.clo[data-of="${tr.dataset.c}"]`).forEach(x=>x.hidden=!o)}
+$('main').addEventListener('click',e=>{const tr=e.target.closest('tr.course');if(tr)toggle(tr)});
+$('main').addEventListener('keydown',e=>{const tr=e.target.closest('tr.course');if(tr&&(e.key==='Enter'||e.key===' ')){e.preventDefault();toggle(tr)}});
+$('main').addEventListener('mouseover',e=>{const t=e.target.closest('thead th[data-plo],ol.plos li[data-plo]');document.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'));
+ if(t)document.querySelectorAll(`table [data-plo="${t.dataset.plo}"]`).forEach(x=>x.classList.add('hl'))});
+</script>
+</body>
+</html>

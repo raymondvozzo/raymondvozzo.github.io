@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff area · Bachelor of Mathematics &amp; Bachelor of Mathematics (Honours) CurV-data hub</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--lpurple:#8C78FF;--bblue:#1448FF;--amber:#F5A300;--teal:#0E9F9A;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1000px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:700px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+[hidden]{display:none!important}
+button{font-family:var(--ui);cursor:pointer}
+input[type=search]{width:100%;padding:12px 14px;font:inherit;font-size:16px;color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:8px}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible,tr:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+.bar .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.6;min-width:4.2em}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill small{font-weight:400;opacity:.75}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+.sp{flex:1}
+.lnk{border:0;background:none;color:var(--purple);font-weight:700;font-size:13px;padding:6px 4px}
+.count{font-size:13px;margin:6px 0 0;opacity:.8}
+h2{font-family:var(--head);font-size:1.5rem;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+details.course{border-bottom:1px solid var(--line)}
+details.course>summary{display:flex;gap:12px;align-items:baseline;padding:11px 6px;cursor:pointer;list-style:none}
+details.course>summary::-webkit-details-marker{display:none}
+details.course>summary::before{content:"▸";color:var(--purple);flex:none;transition:transform .15s}
+details.course[open]>summary::before{transform:rotate(90deg)}
+details.course>summary:hover{background:#f3f1ff}
+.cd{font-weight:700;color:var(--purple);flex:none;min-width:6.2em}
+.tt{flex:1}
+.n{font-size:12px;opacity:.65;flex:none;text-align:right}
+.tags{display:flex;gap:4px;flex-wrap:wrap;flex:none}
+.tag{font-size:11px;font-weight:700;padding:1px 8px;border-radius:10px;background:#eeecfb;color:#4B3BB0;border:1px solid #c9c3f3;white-space:nowrap}
+.tag.warn,.old{font-size:11px;font-weight:700;background:#fff4e5;color:#7a3b00;border:1px solid #f0c27b;border-radius:10px;padding:1px 8px;white-space:nowrap}
+.body{padding:4px 8px 18px 30px}
+mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
+.none{padding:18px 4px}
+.empty{font-size:13px;background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:8px 12px;color:#5a3600;margin:8px 0}
+.foot{font-size:12px;line-height:1.5;opacity:.75;margin:20px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.relock{border:0;background:none;color:#fff;opacity:.8;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+#wait{opacity:.8}
+@media(max-width:640px){body{padding:16px}.box{padding:14px}details.course>summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;text-align:left;padding-left:20px}.body{padding-left:6px}}
+
+.wrap{max-width:720px}
+label{display:block;font-weight:700;margin:0 0 8px}
+.row{display:flex;gap:8px}
+#pw{flex:1;padding:11px 12px;font:inherit;font-size:16px;color:var(--navy);border:2px solid var(--line);border-radius:8px}
+#go{padding:10px 18px;font:inherit;font-weight:700;border:0;border-radius:8px;background:var(--purple);color:#fff}
+#go:disabled{opacity:.6;cursor:wait}
+.chk{display:flex;gap:8px;align-items:center;font-weight:400;font-size:14px;margin:12px 0 0}
+#msg{min-height:1.4em;font-size:13px;margin:10px 0 0}#msg.err{color:#b3261e}
+.small{font-size:13px;opacity:.75;margin:12px 0 0;line-height:1.5}
+ul.links{list-style:none;margin:0;padding:0}
+ul.links li{border-bottom:1px solid var(--line)}ul.links li:last-child{border-bottom:0}
+ul.links a{display:block;padding:14px 8px;text-decoration:none;color:inherit;border-radius:6px}
+ul.links a:hover{background:#f3f1ff}
+.t{display:block;font-weight:700;color:var(--purple)}
+.d{display:block;font-family:var(--body);font-size:15px;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">Bachelor of Mathematics &amp; Bachelor of Mathematics (Honours) CurV-data hub</a> · School of Mathematical Sciences — Adelaide University<span id="lockslot"></span></p>
+<h1>Staff area</h1>
+<div class="box" id="gate" hidden>
+<form id="gf"><label for="pw">Staff password</label>
+<div class="row"><input id="pw" type="password" autocomplete="current-password" required><button id="go" type="submit">Unlock</button></div>
+<label class="chk"><input type="checkbox" id="rem"> Remember on this computer</label></form>
+<p id="msg" role="status" aria-live="polite"></p>
+<p class="small">The data on these pages is encrypted and only unlocked in your browser. Without “remember”, it locks again when you close the tab. Don’t tick “remember” on a shared computer.</p>
+</div>
+<div id="home" hidden>
+<p class="sub">Pages for program directors and staff, built from CurV (2027 versions, exported 25 November 2026).</p>
+<div class="box"><ul class="links">
+  <li><a href="clo-plo/"><span class="t">CLO → PLO mapping</span><span class="d">How each course’s learning outcomes map to the program and major learning outcomes, as recorded in CurV.</span></a></li>
+  <li><a href="assessments/"><span class="t">Course assessments</span><span class="d">Each course’s assessment: weights, types, hurdles, weeks, details, and the CLOs each item assesses.</span></a></li>
+  <li><a href="topics/"><span class="t">Modules and topics</span><span class="d">The modules and topics of each course, with weeks and the CLOs each topic covers.</span></a></li>
+  <li><a href="problems/"><span class="t">Problems found in CurV</span><span class="d">Gaps and inconsistencies to fix in CurV: weights that don’t add up, missing links, unmapped outcomes and more.</span></a></li>
+  <!-- To add a protected page: copy one <li> block. -->
+</ul></div>
+</div>
+</div>
+<script src="gate.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const next = (() => { const n = new URLSearchParams(location.search).get('next') || '';
+  return n.startsWith(Staff.root) && !n.startsWith('//') && !/[\\]/.test(n) ? n : ''; })();
+function showHome() { $('gate').hidden = true; $('home').hidden = false;
+  const b = document.createElement('button'); b.className = 'relock'; b.textContent = 'Lock'; b.onclick = () => Staff.lock(); $('lockslot').appendChild(b); }
+$('gf').addEventListener('submit', async e => {
+  e.preventDefault(); $('msg').className = ''; $('msg').textContent = 'Unlocking…'; $('go').disabled = true;
+  try {
+    if (!(await Staff.login($('pw').value, $('rem').checked))) { $('msg').className = 'err'; $('msg').textContent = 'That password is not right.'; $('go').disabled = false; $('pw').select(); return; }
+    if (next) location.replace(next); else { $('msg').textContent = ''; showHome(); }
+  } catch (err) { $('msg').className = 'err'; $('msg').textContent = 'Could not unlock: ' + err.message; $('go').disabled = false; }
+});
+Staff.isUnlocked().then(ok => { if (ok && next) location.replace(next); else if (ok) showHome(); else { $('gate').hidden = false; $('pw').focus(); } })
+  .catch(err => { $('gate').hidden = false; $('msg').className = 'err'; $('msg').textContent = err.message; });
+</script>
+</body>
+</html>
