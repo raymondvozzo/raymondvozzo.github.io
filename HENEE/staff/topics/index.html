@@ -77,7 +77,7 @@ ol.cll li.none .w{color:#7a3b00;opacity:1;font-weight:700}ol.cll li.on{backgroun
 </head>
 <body>
 <div class="wrap">
-<p class="eyebrow"><a href="../">Staff area</a> · Bachelor of Engineering (Electrical) (Honours) CurV-data hub<button class="relock" id="lockbtn" hidden>Lock</button></p>
+<p class="eyebrow"><a href="../">Staff area</a> · Bachelor of Engineering (Electrical) (Honours) hub<button class="relock" id="lockbtn" hidden>Lock</button></p>
 
 <h1>Modules and topics</h1>
 <p class="sub">The modules and topics of each course as recorded in CurV, with the week and the CLOs each topic is mapped to. Click a CLO number to see which topics cover it.</p>
@@ -118,7 +118,7 @@ unlockThen('topics.json',d=>{D=d;
  C=d.courses.map(c=>{const inner=c.modules.flatMap(m=>[m.loose?'':m.m,...m.topics.map(t=>t.t)]).join(' ').toLowerCase();
   const nT=c.modules.reduce((n,m)=>n+m.topics.length,0),nM=c.modules.filter(m=>!m.loose).length;
   const per={};for(const m of c.modules)for(const t of m.topics)for(const n of t.clos)(per[n]=per[n]||[]).push(t.n);
-  return{...c,g:lvlGroup(c.level),inner,hay:(c.code+' '+c.title+' '+inner).toLowerCase(),nT,nM,per}});
+  return{...c,g:lvlGroup(c.level),inner,hay:(c.code+' '+c.title+' '+inner).toLowerCase(),nT,nM,per}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
  const pills=(el,lbl,items)=>{$(el).innerHTML=`<span class="lbl">${lbl}</span>`+items.map(([k,l])=>`<button class="pill" data-k="${esc(k)}" aria-pressed="${k==='all'}">${esc(l)}</button>`).join('')};
  pills('lv','Level',[['all','All levels'],...[...new Set(C.map(c=>c.g))].sort().map(g=>[g,GN[g]])]);
  if(d.majors.length)pills('mj','Major',[['all','All'],...d.majors.map(m=>[m.code,m.name])]);else $('mj').hidden=true;

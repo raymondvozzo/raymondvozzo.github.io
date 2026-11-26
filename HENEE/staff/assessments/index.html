@@ -79,7 +79,7 @@ tr.hl td{background:#fff1cc!important}
 </head>
 <body>
 <div class="wrap">
-<p class="eyebrow"><a href="../">Staff area</a> · Bachelor of Engineering (Electrical) (Honours) CurV-data hub<button class="relock" id="lockbtn" hidden>Lock</button></p>
+<p class="eyebrow"><a href="../">Staff area</a> · Bachelor of Engineering (Electrical) (Honours) hub<button class="relock" id="lockbtn" hidden>Lock</button></p>
 
 <h1>Course assessments</h1>
 <p class="sub">Each course's assessment from CurV: weights, types, hurdles, weeks and the CLOs each item assesses. Click an assessment for its details, or a CLO number to highlight that outcome and everything that assesses it.</p>
@@ -124,7 +124,7 @@ unlockThen('assessments.json',d=>{
   const det={},loose=[];for(const x of c.details)(x.id?det[x.id]=x:loose.push(x));
   const hay=[c.code,c.title,...items.flatMap(i=>[i.name,i.category,i.type]),...c.clos.map(x=>x.text),...c.details.map(x=>x.statement)].join(' ').toLowerCase();
   return{...c,tops,total,perClo,det,loose,hay,g:lvlGroup(c.level),
-   exam:tops.filter(t=>/exam/i.test(t.type)||/exam/i.test(t.name)).reduce((a,t)=>a+t.w,0),hurdle:items.some(i=>i.hurdle)}});
+   exam:tops.filter(t=>/exam/i.test(t.type)||/exam/i.test(t.name)).reduce((a,t)=>a+t.w,0),hurdle:items.some(i=>i.hurdle)}}).sort((a,b)=>a.g-b.g||a.code.localeCompare(b.code));
  const gs=[...new Set(C.map(c=>c.g))].sort();
  $('lv').innerHTML=[['all','All levels'],...gs.map(g=>[g,GN[g]])].map(([g,l])=>`<button class="pill" data-g="${g}" aria-pressed="${g==='all'}">${l}</button>`).join('');
  draw();const id=location.hash.slice(1),el=id&&document.getElementById('c-'+id);if(el){el.open=true;el.scrollIntoView()}});
