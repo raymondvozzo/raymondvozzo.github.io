@@ -362,7 +362,7 @@ function courseView(c0, mode) {
   show(`<h3><span class="code">${esc(c.code)}</span><br>${esc(c.title)}</h3>
  <div><b>Level ${esc(c.level)}</b> · ${esc(semTxt(c))}${c.units ? ' · ' + esc(c.units) + ' units' : ''}</div>
  ${c.old ? `<p class="warn">No ${esc(CD.year)} version in CurV (showing ${esc(c.version)}, applies ${esc(c.applies)}).</p>` : ''}${ex}
- <p><b>Prerequisites:</b> ${esc(c.prereqText || 'None listed')}</p>${c.excl.length ? `<p><b>Incompatible with:</b> ${esc(c.excl.join(', '))}</p>` : ''}
+ <p><b>Prerequisites:</b> ${esc(c.prereqText || 'None listed')}</p>${c.coreqText ? `<p><b>Corequisites:</b> ${esc(c.coreqText)}</p>` : ''}${c.exclText || c.excl.length ? `<p><b>Incompatible with:</b> ${esc(c.exclText || c.excl.join(', '))}</p>` : ''}
  ${c.assumed ? `<p><b>Assumed knowledge:</b> ${esc(c.assumed)}</p>` : ''}${c.aim ? `<p><b>Aim:</b> ${esc(c.aim)}</p>` : ''}
  <p><a href="../clos/#${esc(c.code)}" target="_blank" rel="noopener">Learning outcomes ↗</a></p>${tree(c0)}`);
 }

@@ -224,7 +224,8 @@ function select(d){const up=walk(d.code,'up'),dn=walk(d.code,'down'),rel=new Set
  ${(d.mj||[]).length?`<p><b>In the major${d.mj.length>1?'s':''}:</b> ${esc(d.mj.join(', '))}</p>`:''}
  ${d.old?`<p class="warn">No ${esc(D.year)} version in CurV (showing ${esc(d.version)}, applies ${esc(d.applies)}).</p>`:''}
  <p><b>Prerequisites:</b> ${esc(d.prereqText||'None listed')}</p>
- ${d.excl.length?`<p><b>Incompatible with:</b> ${esc(d.excl.join(', '))}</p>`:''}
+ ${d.coreqText?`<p><b>Corequisites:</b> ${esc(d.coreqText)}</p>`:''}
+ ${d.exclText||d.excl.length?`<p><b>Incompatible with:</b> ${esc(d.exclText||d.excl.join(', '))}</p>`:''}
  ${d.assumed?`<p><b>Assumed knowledge:</b> ${esc(d.assumed)}</p>`:''}
  ${ext.length?`<p class="warn">Not shown here: ${esc(ext.join(', '))}</p>`:''}
  <p>${up.size} course${up.size===1?'':'s'} shown lead to this one; it unlocks ${dn.size} shown.</p><p><a href="../clos/#${esc(d.code)}">Learning outcomes →</a></p>`;
