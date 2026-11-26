@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program schedule · Bachelor of Science CurV-data hub</title>
+<style>
+:root{--navy:#140f50;--purple:#6E5AE1;--lpurple:#8C78FF;--bblue:#1448FF;--amber:#F5A300;--teal:#0E9F9A;--line:#d9d6ee;--ui:Arial,Helvetica,sans-serif;--body:Georgia,"Roboto Serif",Cambria,serif;--head:"National 2 Condensed","National 2","Arial Narrow","Roboto Condensed",Arial,sans-serif}
+*{box-sizing:border-box}
+body{font-family:var(--ui);margin:0;padding:28px;background:var(--navy);color:#fff;min-height:100vh}
+.wrap{max-width:1000px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font-size:15px;font-weight:700}.eyebrow a{color:#fff}
+h1{font-family:var(--head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:.95;margin:0 0 14px}
+.sub{font-family:var(--body);max-width:700px;line-height:1.5;margin:0 0 20px}
+.box{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+[hidden]{display:none!important}
+button{font-family:var(--ui);cursor:pointer}
+input[type=search]{width:100%;padding:12px 14px;font:inherit;font-size:16px;color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:8px}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible,tr:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+.bar .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.6;min-width:4.2em}
+.pill{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700}
+.pill small{font-weight:400;opacity:.75}
+.pill[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue);color:#fff}
+.sp{flex:1}
+.lnk{border:0;background:none;color:var(--purple);font-weight:700;font-size:13px;padding:6px 4px}
+.count{font-size:13px;margin:6px 0 0;opacity:.8}
+h2{font-family:var(--head);font-size:1.5rem;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--purple)}
+details.course{border-bottom:1px solid var(--line)}
+details.course>summary{display:flex;gap:12px;align-items:baseline;padding:11px 6px;cursor:pointer;list-style:none}
+details.course>summary::-webkit-details-marker{display:none}
+details.course>summary::before{content:"▸";color:var(--purple);flex:none;transition:transform .15s}
+details.course[open]>summary::before{transform:rotate(90deg)}
+details.course>summary:hover{background:#f3f1ff}
+.cd{font-weight:700;color:var(--purple);flex:none;min-width:6.2em}
+.tt{flex:1}
+.n{font-size:12px;opacity:.65;flex:none;text-align:right}
+.tags{display:flex;gap:4px;flex-wrap:wrap;flex:none}
+.tag{font-size:11px;font-weight:700;padding:1px 8px;border-radius:10px;background:#eeecfb;color:#4B3BB0;border:1px solid #c9c3f3;white-space:nowrap}
+.tag.warn,.old{font-size:11px;font-weight:700;background:#fff4e5;color:#7a3b00;border:1px solid #f0c27b;border-radius:10px;padding:1px 8px;white-space:nowrap}
+.body{padding:4px 8px 18px 30px}
+mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
+.none{padding:18px 4px}
+.empty{font-size:13px;background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:8px 12px;color:#5a3600;margin:8px 0}
+.foot{font-size:12px;line-height:1.5;opacity:.75;margin:20px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.relock{border:0;background:none;color:#fff;opacity:.8;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+#wait{opacity:.8}
+@media(max-width:640px){body{padding:16px}.box{padding:14px}details.course>summary{flex-wrap:wrap}.cd{min-width:0}.n{width:100%;text-align:left;padding-left:20px}.body{padding-left:6px}}
+
+.wrap{max-width:1150px}
+.tabs{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.tabs .tl{font-size:13px;font-weight:700;min-width:4.2rem}
+.tab{background:none;color:#fff;border:2px solid rgba(255,255,255,.4);padding:9px 20px;border-radius:25px;font-size:14px;font-weight:700}
+.tab[aria-pressed=true]{background:var(--bblue);border-color:var(--bblue)}
+.pfor{padding:8px 14px;border-radius:20px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:14px;flex:1 1 16rem;min-width:14rem;max-width:24rem}
+.pfor::placeholder{color:rgba(255,255,255,.65)}
+#plan{background:#fff;color:var(--navy);border-radius:14px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.year{margin-bottom:20px}.year h2{margin:0 0 8px;color:var(--navy)}
+.sem{display:grid;grid-template-columns:7rem repeat(var(--cols),1fr);gap:8px;margin-bottom:8px;align-items:stretch}
+.sl{font-size:13px;font-weight:700;align-self:center}
+.cw{position:relative;display:flex}.cw .cell{width:100%}
+.cell{position:relative;min-height:66px;padding:8px 8px 30px;border-radius:8px;text-align:left;font-size:12px;line-height:1.3;background:var(--f,#f3f1fb);color:var(--t,var(--navy));border:2px solid var(--s,#6E5AE1)}
+.cell b{display:block;font-size:13px}.cell small{display:block;opacity:.8;margin-top:3px}
+.cell:hover{filter:brightness(1.05)}
+.cell.ph{border-style:dashed;background:#fff;color:var(--navy)}
+.cell.done{box-shadow:0 0 0 3px #1f9d55}
+.cell.src{outline:3px solid var(--bblue);outline-offset:2px}.cell.ok{outline:3px solid var(--teal);outline-offset:2px}.cell.amber{outline:3px solid var(--amber);outline-offset:2px}
+.cell.nomove,.cell.dim{opacity:.35}
+.mv{position:absolute;top:4px;right:4px;width:22px;height:22px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);font-size:13px;line-height:22px}
+.ck{position:absolute;left:6px;bottom:6px;width:22px;height:22px;padding:0;border-radius:50%;border:2px solid rgba(20,15,80,.35);background:rgba(255,255,255,.92);color:rgba(20,15,80,.35);font-size:12px;line-height:18px}
+.ck.on{background:#1f9d55;border-color:#1f9d55;color:#fff}
+.wn{position:absolute;right:4px;bottom:4px;width:18px;height:18px;border-radius:50%;background:var(--amber);color:var(--navy);font-size:11px;line-height:18px;text-align:center}
+.note{font-size:13px;font-family:var(--body);margin:0 0 6px;line-height:1.45}
+.planinfo{font-family:var(--body);font-size:14px;line-height:1.5;background:#f6f5fd;border-radius:8px;padding:10px 14px;margin:0 0 16px}
+.mvbar,.infobox{background:#eef0ff;border:1px solid #c9c6e0;border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:13px}
+.mvbar .why{display:block;margin-top:4px;color:#a1121f;font-weight:700}
+.mvbar button{margin-left:8px;border:1px solid var(--purple);background:#fff;color:var(--navy);border-radius:14px;padding:3px 12px;font-size:12px;font-weight:700}
+.warnbox{background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:8px 12px;font-size:13px;margin:12px 0;color:#7a3b00}
+.warnbox ul{margin:4px 0 0;padding-left:1.2em}
+.ckey{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.ckey span{font-size:12px;padding:3px 10px;border-radius:12px;background:var(--f);border:1px solid var(--s)}
+.legend{margin-top:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:12px;line-height:1.5}
+dialog{width:min(860px,94vw);max-height:88vh;padding:20px;border:0;border-left:8px solid var(--purple);border-radius:12px;background:#fff;color:var(--navy);font-family:var(--body);font-size:14px;line-height:1.45}
+dialog::backdrop{background:rgba(10,8,40,.6)}
+dialog h3{font-family:var(--head);font-size:1.6rem;line-height:1;margin:0 0 6px}
+dialog .code{color:var(--purple);font-family:var(--ui)}
+dialog a{color:var(--purple);font-weight:700}
+.x{position:absolute;top:8px;right:12px;background:none;border:0;font-size:26px;color:var(--navy)}
+.back{background:none;border:0;color:var(--purple);font-weight:700;padding:0 0 8px;font-size:14px}
+.grp{font-family:var(--ui);font-size:14px;margin:14px 0 6px}.grp.no{opacity:.6}
+ul.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+ul.opts li{position:relative}
+.opt{width:100%;text-align:left;padding:7px 34px 7px 9px;border-radius:6px;font-size:12px;background:#fff;color:var(--navy);border:1px solid #c9c6e0;border-left:8px solid var(--s,#c9c6e0)}
+.opt b{font-size:13px}.opt small{display:block;opacity:.75}.opt .wr{color:#7a3b00;opacity:1}
+.opt:hover{background:#f1efff}
+.info{position:absolute;top:6px;right:6px;width:22px;height:22px;padding:0;border-radius:50%;border:1px solid #c9c6e0;background:#fff;color:var(--navy);font-size:12px}
+.act{border:0;background:var(--purple);color:#fff;border-radius:18px;padding:8px 16px;font-weight:700;font-size:13px}
+.act.alt{background:#fff;color:var(--navy);border:1px solid var(--purple)}
+.hint{font-size:13px;opacity:.8;margin:8px 0}
+.fe input{width:100%;font:inherit;font-size:15px;padding:9px 11px;border:1px solid #c9c6e0;border-radius:6px}
+.tree{overflow:auto;border:1px solid #ddd;border-radius:8px;margin-top:10px;background:#fbfaff}.tree svg{display:block;margin:0 auto}
+.n{cursor:pointer}.n rect{fill:var(--f);stroke:var(--s);stroke-width:2}.n.sel rect{stroke:#000;stroke-width:4}
+.n text{fill:var(--t,var(--navy));text-anchor:middle;font-size:9px;font-family:var(--ui);pointer-events:none}.n text.c{font-size:10.5px;font-weight:700}
+.e{fill:none;stroke-width:2}.e.up{stroke:var(--amber)}.e.dn{stroke:var(--teal)}.e.alt{stroke-dasharray:6 4}
+.tkey{font-size:12px;margin-top:6px;font-family:var(--ui)}.tkey i{display:inline-block;width:24px;border-top:3px solid;margin:0 5px 3px 10px;vertical-align:middle}
+.print-only{display:none}
+@media(max-width:700px){.sem{grid-template-columns:1fr 1fr}.sl{grid-column:1/-1}.cw[style]{grid-column:span 1!important}}
+@media print{@page{margin:12mm}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{background:#fff;color:#000;padding:0}.eyebrow,.sub,.tabs,.legend,.mv,.mvbar,.ck:not(.on){display:none}
+ h1{color:var(--navy);font-size:2rem}.print-only{display:block;font-size:12px;word-break:break-all}#plan{box-shadow:none;padding:0}.year{break-inside:avoid}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow"><a href="../">Bachelor of Science CurV-data hub</a> · College of Science — Adelaide University</p>
+<h1 id="ttl">Program schedule</h1>
+<p class="print-only" id="pinfo"></p>
+<p class="sub">The study plans recorded in CurV. Choose a program, a plan (major) and a start semester. Click a dashed box to choose a course for it, or any course to see its details and prerequisite tree.</p>
+<p id="wait" role="status">Loading…</p>
+<div id="ui" hidden>
+<div class="tabs" id="progs" role="group" aria-label="Program"></div>
+<div class="tabs" id="plans" role="group" aria-label="Plan"></div>
+<div class="tabs" id="starts" role="group" aria-label="Start semester"></div>
+<div class="tabs" role="group" aria-label="Share or print"><span class="tl">Share</span>
+<button class="tab" id="cp">Copy link</button><button class="tab" id="pr">Print / save as PDF</button>
+<input class="pfor" id="pfor" placeholder="Student name/number (optional)" aria-label="Student name or number, shown on the printed schedule"></div>
+<div id="plan"></div>
+<div class="print-only"><p>To open and edit this schedule online:</p><p id="plink"></p></div>
+<div class="legend">Dashed boxes are choices: click one to pick a course. ✓ marks a course as completed. ⚠ marks something to check (a prerequisite not taken earlier, a semester the course isn’t in, a repeat). ⇄ swaps a box with one in another semester. Colours and slot names are CurV’s. Semester availability comes from where CurV’s schedules place each course (known for 151 of 291 courses).</div>
+</div>
+</div>
+<dialog id="dlg"></dialog>
+<script>
+// shared helpers for every page (inlined by the builder)
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=id=>document.getElementById(id);
+const GN={1:'Level 1',2:'Level 2',3:'Level 3',4:'Level 4',5:'Level 5+ / postgraduate'};
+const lvlGroup=l=>Math.min(Math.max(+l||0,1),5);
+function hlr(toks){if(!toks.length)return t=>esc(t);const re=new RegExp('('+toks.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+ return t=>String(t??'').split(re).map((p,i)=>i%2?`<mark>${esc(p)}</mark>`:esc(p)).join('')}
+const getJSON=u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u+' not found (HTTP '+r.status+')');return r.json()});
+function loadFail(e){const w=$('wait')||$('list');if(w)w.textContent='Could not load the data: '+(e&&e.message||e)+(location.protocol==='file:'?'. Pages read their data from the website, so open this from the website (or a local web server), not as a file.':'')}
+
+// Prerequisite expressions from the builder: 'A AND (B OR C) OR OTHER' (OTHER = an alternative that isn't a course)
+function parseExpr(s){const tk=String(s||'').match(/\(|\)|AND|OR|OTHER|[A-Z]{3,6}\d{3,4}/g)||[];let p=0;
+ const atom=()=>{const t=tk[p++];if(t==='('){const n=or();p++;return n}return{code:t==='OTHER'?'*':t}};
+ const and=()=>{const k=[atom()];while(tk[p]==='AND'){p++;k.push(atom())}return k.length>1?{op:'and',k}:k[0]};
+ const or=()=>{const k=[and()];while(tk[p]==='OR'){p++;k.push(and())}return k.length>1?{op:'or',k}:k[0]};
+ return tk.length?or():null}
+// branches = the sets of courses that together meet the prerequisite
+function branches(n){if(n.code)return[[n.code]];if(n.op==='or')return n.k.flatMap(branches);
+ return n.k.reduce((acc,k)=>acc.flatMap(a=>branches(k).map(b=>[...new Set([...a,...b])])),[[]])}
+// keep branches that can be met inside this site's course list ('*' = met some other way, always possible)
+function effB(n,inTree){const ok=x=>x==='*'||inTree(x),B=branches(n),full=B.filter(b=>b.every(ok));
+ return full.length?full:B.map(b=>b.filter(ok)).filter(b=>b.length)}
+// courses drawn solid (needed) rather than dashed (one of several alternatives)
+function solidSet(n,inTree){const out=new Set();if(!n)return out;const B=effB(n,inTree);if(!B.length)return out;
+ if(B.length===1){B[0].forEach(c=>out.add(c));return out}
+ B[0].filter(c=>B.every(b=>b.includes(c))).forEach(c=>out.add(c));
+ const multi=B.filter(b=>b.length>1);if(multi.length===1)multi[0].forEach(c=>out.add(c));
+ out.delete('*');return out}
+function prereqLinks(courses,D){const L=[];for(const c of courses){const ex=parseExpr(c.prereq);if(!ex)continue;const rq=solidSet(ex,x=>D[x]);
+ [...new Set(String(c.prereq).match(/[A-Z]{3,6}\d{3,4}/g)||[])].filter(x=>D[x]&&x!==c.code).forEach(x=>L.push({s:x,t:c.code,alt:!rq.has(x)}))}return L}
+
+// Program schedule: study plans from CurV (data/schedule.json) + course details (data/courses.json).
+// Layout entries are strings: '<y>.<s>.<i>' (the box CurV puts there), '<id>=CODE' (a course chosen for a slot),
+// '<id>:FE:<text>' (a typed free elective), with a trailing '!' when the box is marked completed.
+let S, CD, D = {}, CAT = {}, LK = [], P = null, KEY = '', BASE = {}, LAY = {}, HIST = {}, mv = null, mvMsg = '', ctx = null, hist = [];
+const SPL = sp => (S.spLabels && S.spLabels[sp]) || ({ 1: 'Semester 1', 2: 'Semester 2' }[sp] || 'Study period ' + sp);
+const clone = x => JSON.parse(JSON.stringify(x));
+const darker = h => { const m = /^#?([0-9a-f]{6})$/i.exec(h || ''); if (!m) return '#6E5AE1'; const n = parseInt(m[1], 16);
+  const f = v => Math.max(0, Math.round(v * 0.55)).toString(16).padStart(2, '0'); return '#' + f(n >> 16) + f((n >> 8) & 255) + f(n & 255); };
+const colourOf = c => { const k = CAT[(D[c] || {}).cat]; return k ? `--f:${k.f};--s:${k.s};--t:${k.t}` : ''; };
+const itemStyle = it => it && it.color ? `--f:${it.color};--s:${darker(it.color)};--t:#140f50` : '';
+
+// ---------- entries ----------
+const done = e => e.endsWith('!'), base = e => e.replace(/!$/, '');
+const idOf = e => base(e).split(/[=:]/)[0];
+const item = e => BASE[KEY][idOf(e)];
+const feText = e => { const m = base(e).match(/^[\d.]+:FE:(.*)$/); if (!m) return ''; try { return decodeURIComponent(m[1]); } catch (x) { return ''; } };
+const code = e => { const b = base(e), it = item(e); if (/=/.test(b)) return b.split('=')[1]; return it && it.t === 'c' ? it.code : null; };
+const isSlot = e => { const it = item(e); return it && it.t !== 'c'; };
+const listOf = it => it.t === 'x' ? { title: it.cat || 'Choose one', courses: [...new Set(it.groups.flat())] } : (S.lists[it.list] || { title: it.cat || 'Elective', courses: [] });
+const slotLabel = e => { const it = item(e); return it.t === 'x' ? (it.cat || 'Choose one') : listOf(it).title || it.cat || 'Elective'; };
+const freeOnly = it => it.t === 's' && !listOf(it).courses.some(c => D[c]);
+
+function layout() {   // current layout of the open plan: years -> sems -> entries
+  if (!LAY[KEY]) LAY[KEY] = P.years.map((y, yi) => y.sems.map((s, si) => s.items.map((it, i) => `${yi}.${si}.${i}`)));
+  return LAY[KEY];
+}
+function snap() { (HIST[KEY] = HIST[KEY] || []).push(clone(layout())); if (HIST[KEY].length > 40) HIST[KEY].shift(); }
+
+// ---------- warnings ----------
+function warns(L) {
+  const pos = {}, cnt = {}, dc = new Set(), out = {};
+  let n = 0;
+  L.forEach((y, yi) => y.forEach((s, si) => { s.forEach(e => { const c = code(e); if (c) { pos[c] = pos[c] === undefined ? n : pos[c]; cnt[c] = (cnt[c] || 0) + 1; if (done(e)) dc.add(c); } }); n++; }));
+  n = 0;
+  L.forEach((y, yi) => y.forEach((s, si) => {
+    const sp = P.years[yi].sems[si].sp;
+    s.forEach((e, i) => {
+      const c = code(e), w = [];
+      if (c && D[c]) {
+        const d = D[c];
+        if (d.sem && !d.sem.split(',').includes(String(sp))) w.push({ t: 'sem', m: `${c} is not offered in ${SPL(sp)} (CurV places it in ${d.sem.split(',').map(SPL).join(' and ')}).` });
+        if (d.old) w.push({ t: 'old', m: `${c} has no ${CD.year} version in CurV.` });
+        if (cnt[c] > 1) w.push({ t: 'dup', m: `${c} is in this schedule more than once.` });
+        const ex = parseExpr(d.prereq);
+        if (ex) { const B = effB(ex, k => D[k]), met = k => k === '*' || (k in pos && pos[k] < n) || dc.has(k);
+          if (B.length && !B.some(b => b.every(met))) { const u = B.length === 1 ? B[0].filter(k => !met(k)) : [];
+            w.push({ t: 'pre', m: u.length ? `${c} needs ${u.join(' and ')} in an earlier semester.` : `${c}: its prerequisites (${d.prereqText}) are not met earlier in this schedule.` }); } }
+      } else if (c && !D[c]) w.push({ t: 'unk', m: `${c} is not in this site's course list.` });
+      const k = `${yi},${si},${i}`, w2 = done(e) ? w.filter(x => x.t === 'dup') : w;
+      if (w2.length) out[k] = w2;
+    }); n++;
+  }));
+  // choice boxes (e.g. "complete one group of 2 courses"): all chosen courses must come from one group
+  const xs = [];
+  L.forEach((y, yi) => y.forEach((s, si) => s.forEach((e, i) => { const it = item(e); if (it && it.t === 'x' && code(e)) xs.push({ k: `${yi},${si},${i}`, it, c: code(e) }); })));
+  const bySig = {};
+  xs.forEach(x => (bySig[JSON.stringify(x.it.groups)] = bySig[JSON.stringify(x.it.groups)] || []).push(x));
+  Object.values(bySig).forEach(g => { const ch = g.map(x => x.c), ok = g[0].it.groups.some(gr => ch.every(c => gr.includes(c)));
+    if (!ok) g.forEach(x => (out[x.k] = out[x.k] || []).push({ t: 'grp', m: `${ch.join(' and ')} are not one of the allowed groups (${g[0].it.groups.map(gr => gr.join(' + ')).join('; ')}).` })); });
+  return out;
+}
+function hypo(c) { const L = clone(layout()), e = L[ctx.y][ctx.s][ctx.i]; L[ctx.y][ctx.s][ctx.i] = idOf(e) + '=' + c + (done(e) ? '!' : ''); return warns(L)[`${ctx.y},${ctx.s},${ctx.i}`] || []; }
+function swapInfo(a, b) {
+  const L = layout(), ea = L[a.y][a.s][a.i], eb = L[b.y][b.s][b.i], spa = P.years[a.y].sems[a.s].sp, spb = P.years[b.y].sems[b.s].sp;
+  const off = (e, sp) => { const c = code(e); return c && D[c] && D[c].sem && !D[c].sem.split(',').includes(String(sp)) ? `${c} is not offered in ${SPL(sp)}.` : ''; };
+  const why = off(ea, spb) || off(eb, spa); if (why) return { why };
+  const T = clone(L); T[a.y][a.s][a.i] = eb; T[b.y][b.s][b.i] = ea;
+  const msgs = Z => new Set(Object.values(warns(Z)).flat().map(w => w.m)), old = msgs(L);
+  return { news: [...msgs(T)].filter(m => !old.has(m)) };
+}
+
+// ---------- drawing ----------
+function tabs(el, items, cur, attr) { $(el).innerHTML = `<span class="tl">${esc(items.label)}</span>` + items.list.map(([k, l]) => `<button class="tab" data-${attr}="${esc(k)}" aria-pressed="${k == cur}">${esc(l)}</button>`).join(''); $(el).hidden = items.list.length < 2 && attr !== 'plan'; }
+let progCode, planCode, start;
+function plansOf(pc) { return S.programs.find(p => p.code === pc).plans; }
+function choose(pc, pl, st, keepHash) {
+  const prog = S.programs.find(p => p.code === pc) || S.programs[0]; progCode = prog.code;
+  const codes = [...new Set(prog.plans.map(p => p.plan))]; planCode = codes.includes(pl) ? pl : codes[0];
+  const starts = [...new Set(prog.plans.filter(p => p.plan === planCode).map(p => p.start))].sort(); start = starts.includes(+st) ? +st : starts[0];
+  P = prog.plans.find(p => p.plan === planCode && p.start === start);
+  KEY = P.id; mv = null; mvMsg = '';
+  if (!BASE[KEY]) { BASE[KEY] = {}; P.years.forEach((y, yi) => y.sems.forEach((s, si) => s.items.forEach((it, i) => { BASE[KEY][`${yi}.${si}.${i}`] = it; }))); }
+  tabs('progs', { label: 'Program', list: S.programs.map(p => [p.code, p.name]) }, progCode, 'prog');
+  tabs('plans', { label: 'Plan', list: codes.map(c => [c, (S.planNames[c] || c)]) }, planCode, 'plan');
+  tabs('starts', { label: 'Start', list: starts.map(s => [s, 'Starts ' + SPL(s)]) }, start, 'start');
+  $('ttl').textContent = prog.name + (S.planNames[planCode] && S.planNames[planCode] !== prog.name ? ' · ' + S.planNames[planCode] : '');
+  document.title = $('ttl').textContent + ': program schedule';
+  if (!keepHash) history.replaceState(null, '', '#' + [progCode, planCode, start].join('.'));
+  if ($('dlg').open) $('dlg').close();
+  render();
+}
+function phBody(e) {
+  const it = item(e), t = feText(e);
+  if (t) { const m = /^([A-Za-z]{2,6}\s?[A-Za-z]?\d{3,4})\b[\s:–-]*(.*)$/.exec(t); return (m ? `<b>${esc(m[1].toUpperCase())}</b>${esc(m[2])}` : `<b>${esc(t)}</b>`) + `<small>${esc(slotLabel(e))}</small>`; }
+  return `${esc(slotLabel(e))}<small>${freeOnly(it) ? 'Type a course (optional)' : 'Choose a course'}</small>`;
+}
+function render() {
+  const L = layout(), W = warns(L), lab = e => code(e) || feText(e) || slotLabel(e);
+  const changed = JSON.stringify(L) !== JSON.stringify(P.years.map((y, yi) => y.sems.map((s, si) => s.items.map((it, i) => `${yi}.${si}.${i}`))));
+  let bar = '';
+  if (mv) bar = `<div class="mvbar">Swapping <b>${esc(lab(L[mv.y][mv.s][mv.i]))}</b>. Pick a box in another semester: green is fine, amber is allowed but adds a warning. <button data-cancel>Cancel</button>${mvMsg ? `<span class="why">${esc(mvMsg)}</span>` : ''}</div>`;
+  else if (changed || (HIST[KEY] || []).length) bar = `<div class="mvbar">You have changed this schedule. ${(HIST[KEY] || []).length ? '<button data-undo>Undo</button>' : ''}<button data-reset>Reset</button></div>`;
+  const cols = Math.max(...P.years.flatMap(y => y.sems.map(s => s.items.reduce((a, it) => a + (it.w || 1), 0))), 1);
+  const wk = Object.keys(W);
+  const used = {}; P.years.forEach(y => y.sems.forEach(s => s.items.forEach(it => { if (it.color && it.cat) used[it.cat] = it.color; })));
+  let h = (P.notes || P.overview ? `<div class="planinfo">${esc([P.overview, P.notes].filter(Boolean).join(' '))}</div>` : '') + bar;
+  L.forEach((y, yi) => {
+    h += `<section class="year"><h2>${esc(P.years[yi].label)}</h2>`;
+    y.forEach((s, si) => {
+      h += `<div class="sem" style="--cols:${cols}"><div class="sl">${esc(P.years[yi].sems[si].label)}</div>`;
+      s.forEach((e, i) => {
+        const it = item(e), c = code(e), w = W[`${yi},${si},${i}`] || [], dn = done(e) ? ' done' : '';
+        let x = '', tt = '', extra = '';
+        if (mv) { if (yi === mv.y && si === mv.s && i === mv.i) x = ' src'; else if (yi !== mv.y || si !== mv.s) { const f = swapInfo(mv, { y: yi, s: si, i }); x = f.why ? ' nomove' : f.news.length ? ' amber' : ' ok'; const t = f.why || f.news.join(' '); if (t) tt = ` title="${esc(t)}"`; } else x = ' dim'; }
+        else extra = `<button class="mv" data-mv="${yi},${si},${i}" title="Swap with a box in another semester" aria-label="Swap ${esc(lab(e))}">⇄</button><button class="ck${done(e) ? ' on' : ''}" data-done="${yi},${si},${i}" aria-pressed="${done(e)}" title="${done(e) ? 'Completed (click to undo)' : 'Mark as completed'}" aria-label="Mark ${esc(lab(e))} as completed">✓</button>`;
+        const pos = `data-y="${yi}" data-s="${si}" data-i="${i}"${tt}`, bd = w.length ? `<span class="wn" title="${esc(w.map(z => z.m).join(' '))}">⚠</span>` : '';
+        const sty = c && it.t === 'c' ? itemStyle(it) || colourOf(c) : itemStyle(it);
+        h += `<div class="cw"${(it.w || 1) > 1 ? ` style="grid-column:span ${it.w}"` : ''}>` + (c
+          ? `<button class="cell${dn}${x}" style="${sty}" ${pos} data-c="${esc(c)}"><b>${esc(c)}</b>${esc((D[c] || {}).title || '')}${isSlot(e) ? `<small>${esc(slotLabel(e))}</small>` : it.cat ? `<small>${esc(it.cat)}</small>` : ''}${bd}</button>`
+          : `<button class="cell ${feText(e) ? '' : 'ph'}${dn}${x}" style="${sty}" ${pos}>${phBody(e)}${bd}</button>`) + extra + '</div>';
+      });
+      h += '</div>';
+    });
+    h += '</section>';
+  });
+  if (Object.keys(used).length) h += `<div class="ckey">${Object.entries(used).map(([k, c]) => `<span style="--f:${c};--s:${darker(c)}">${esc(k)}</span>`).join('')}</div>`;
+  if (wk.length) h += `<div class="warnbox"><b>⚠ Things to check</b><ul>${[...new Set(wk.flatMap(k => { const [y, s] = k.split(',').map(Number);
+    return W[k].map(w => `${P.years[y].label}, ${P.years[y].sems[s].label}: ${w.m}`); }))].map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`;
+  $('plan').innerHTML = h;
+}
+
+// ---------- dialogs ----------
+const dlg = $('dlg');
+function go(fn) { hist.push(fn); fn(); }
+function back() { hist.pop(); hist[hist.length - 1](); }
+function show(html) { dlg.innerHTML = `<button class="x" aria-label="Close" data-x>×</button>${hist.length > 1 ? '<button class="back" data-back>‹ Back</button>' : ''}${html}`; if (!dlg.open) dlg.showModal(); }
+const semTxt = c => c.sem ? c.sem.split(',').map(SPL).join(' & ') : 'semester not recorded';
+function listView() {
+  const e = layout()[ctx.y][ctx.s][ctx.i], it = item(e), sp = P.years[ctx.y].sems[ctx.s].sp, Lst = listOf(it);
+  let h = `<h3>${esc(slotLabel(e))}</h3><p>Box in ${esc(P.years[ctx.y].label)}, ${esc(SPL(sp))}.</p>`;
+  if (Lst.description) h += `<p class="hint">${esc(Lst.description)}</p>`;
+  if (it.note) h += `<div class="infobox">${esc(it.note)}</div>`;
+  if (it.t === 'x') h += `<p><b>${esc(it.label)}</b></p><ul>${it.groups.map(g => `<li>${g.map(c => `${esc(c)} ${esc((D[c] || {}).title || '')}`).join(' <b>+</b> ')}</li>`).join('')}</ul>`;
+  h += `<p><button class="act alt" data-act="done">${done(e) ? 'Mark as not completed' : 'Mark as completed'}</button>${code(e) || feText(e) ? ' <button class="act alt" data-act="clear">Clear</button>' : ''}</p>`;
+  if (freeOnly(it)) {
+    const t = feText(e);
+    h += `<form class="fe" data-fe><label for="fet"><b>Course code / name</b> <small>(optional)</small></label><input id="fet" maxlength="80" autocomplete="off" value="${esc(t)}" placeholder="e.g. ECON1001 Introduction to Economics"><p><button class="act" type="submit">Save</button></p><p class="hint">Shown in the box; not checked against prerequisites or semesters.</p></form>`;
+    if (Lst.wild && Lst.wild.length) h += `<p class="hint">${esc(Lst.wild.join(' '))}</p>`;
+    return show(h);
+  }
+  const cs = Lst.courses.filter(c => D[c]).map(c => D[c]), missing = Lst.courses.filter(c => !D[c]), chosen = code(e);
+  h += '<p class="hint">Click a course to choose it. ⓘ shows its details and prerequisite tree.</p>';
+  const groups = [['here', `Offered in ${SPL(sp)}`], ['unknown', 'Semester not recorded'], ['other', `Not offered in ${SPL(sp)}`]];
+  const kind = c => !c.sem ? 'unknown' : c.sem.split(',').includes(String(sp)) ? 'here' : 'other';
+  for (const [g, label] of groups) {
+    const list = cs.filter(c => kind(c) === g).sort((a, b) => (a.old - b.old) || a.code.localeCompare(b.code)); if (!list.length) continue;
+    h += `<h4 class="grp${g === 'other' ? ' no' : ''}">${label}</h4><ul class="opts">` + list.map(c => { const w = hypo(c.code).filter(x => x.t !== 'sem');
+      return `<li><button class="opt" style="${colourOf(c.code)}" data-pick="${esc(c.code)}"><b>${esc(c.code)}</b> ${esc(c.title)}<small>Level ${esc(c.level)} · ${esc(semTxt(c))}</small>${c.code === chosen ? '<small>✓ currently chosen</small>' : ''}${w.length ? `<small class="wr">⚠ ${esc(w.map(x => x.m).join(' '))}</small>` : ''}</button><button class="info" data-info="${esc(c.code)}" aria-label="Details for ${esc(c.code)}" title="Details and prerequisite tree">ⓘ</button></li>`; }).join('') + '</ul>';
+  }
+  if (missing.length) h += `<p class="hint">Also in this list in CurV but not in this site's course data: ${esc(missing.join(', '))}.</p>`;
+  show(h);
+}
+function tree(c0) {
+  const up = new Set(), st = [c0];
+  while (st.length) { const t = st.pop(); LK.forEach(l => { if (l.t === t && !up.has(l.s)) { up.add(l.s); st.push(l.s); } }); }
+  const A = new Set([c0, ...up]), kids = [...new Set(LK.filter(l => l.s === c0).map(l => l.t))];
+  if (A.size === 1 && !kids.length) return '<p>No prerequisite courses in this site, and it doesn’t lead to any listed course.</p>';
+  const dp = { [c0]: 0 }, dep = a => a in dp ? dp[a] : (dp[a] = Math.min(...LK.filter(l => l.s === a && A.has(l.t)).map(l => dep(l.t) - 1)));
+  up.forEach(dep); kids.forEach(k => dp[k] = 1);
+  const ds = [...new Set(Object.values(dp))].sort((a, b) => a - b), cols = ds.map(d => Object.keys(dp).filter(c => dp[c] === d).sort());
+  const NW = 132, NH = 42, GX = 64, GY = 8, Hh = Math.max(...cols.map(c => c.length)) * (NH + GY) + 8, Wd = cols.length * (NW + GX) - GX + 8, pos = {};
+  cols.forEach((c, i) => { const off = (Hh - c.length * (NH + GY)) / 2; c.forEach((x, j) => pos[x] = { x: 4 + i * (NW + GX), y: off + j * (NH + GY) + 4 }); });
+  const E = LK.filter(l => pos[l.s] && pos[l.t] && ((A.has(l.s) && A.has(l.t)) || l.s === c0));
+  const wrap = t => { const o = []; let l = ''; t.split(' ').forEach(w => { if ((l + ' ' + w).trim().length > 25 && l) { o.push(l); l = w; } else l = (l + ' ' + w).trim(); }); o.push(l); if (o.length > 2) { o.length = 2; o[1] = o[1].slice(0, 22) + '…'; } return o; };
+  return `<div class="tree"><svg width="${Wd}" height="${Hh}" viewBox="0 0 ${Wd} ${Hh}"><defs>
+ <marker id="au" viewBox="0 -5 10 10" refX="10" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,-5L10,0L0,5" fill="#F5A300"/></marker>
+ <marker id="ad" viewBox="0 -5 10 10" refX="10" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,-5L10,0L0,5" fill="#0E9F9A"/></marker></defs>` +
+    E.map(l => { const a = pos[l.s], b = pos[l.t], x1 = a.x + NW, y1 = a.y + NH / 2, x2 = b.x, y2 = b.y + NH / 2, m = (x1 + x2) / 2, dn = l.s === c0;
+      return `<path class="e ${dn ? 'dn' : 'up'}${l.alt ? ' alt' : ''}" marker-end="url(#${dn ? 'ad' : 'au'})" d="M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}"/>`; }).join('') +
+    Object.keys(pos).map(k => { const c = D[k], p = pos[k];
+      return `<g class="n${k === c0 ? ' sel' : ''}" style="${colourOf(k)}" transform="translate(${p.x},${p.y})" tabindex="0" role="button" data-c="${k}" aria-label="${k} ${esc(c.title)}"><rect width="${NW}" height="${NH}" rx="6"/><text class="c" x="${NW / 2}" y="15">${k}</text>${wrap(c.title).map((t, i) => `<text x="${NW / 2}" y="${26 + i * 10}">${esc(t)}</text>`).join('')}</g>`; }).join('') +
+    `</svg></div><p class="tkey"><i style="border-color:#F5A300"></i>leads to this course<i style="border-color:#0E9F9A"></i>unlocked by this course<i style="border-top-style:dashed;border-color:#555"></i>one of several alternatives</p>`;
+}
+function courseView(c0, mode) {
+  const c = D[c0], wl = ws => ws.length ? `<div class="warnbox"><b>⚠ Things to check</b><ul>${ws.map(w => `<li>${esc(w.m)}</li>`).join('')}</ul></div>` : '';
+  if (!c) return show(`<h3>${esc(c0)}</h3><p>This course isn't in this site's course data.</p>`);
+  let ex = '';
+  if (mode === 'pick') ex = wl(hypo(c0)) + `<p><button class="act" data-act="choose" data-code="${esc(c0)}">Choose ${esc(c0)} for this box</button></p>`;
+  else if (mode) {
+    const e = layout()[ctx.y][ctx.s][ctx.i], it = item(e);
+    ex = wl(warns(layout())[`${ctx.y},${ctx.s},${ctx.i}`] || []) + (it.note ? `<div class="infobox">${esc(it.note)}</div>` : '') +
+      `<p><button class="act alt" data-act="done">${done(e) ? 'Mark as not completed' : 'Mark as completed'}</button>${isSlot(e) ? ' <button class="act" data-act="change">Change course</button> <button class="act alt" data-act="clear">Clear</button>' : ''}</p>`;
+  }
+  show(`<h3><span class="code">${esc(c.code)}</span><br>${esc(c.title)}</h3>
+ <div><b>Level ${esc(c.level)}</b> · ${esc(semTxt(c))}${c.units ? ' · ' + esc(c.units) + ' units' : ''}</div>
+ ${c.old ? `<p class="warn">No ${esc(CD.year)} version in CurV (showing ${esc(c.version)}, applies ${esc(c.applies)}).</p>` : ''}${ex}
+ <p><b>Prerequisites:</b> ${esc(c.prereqText || 'None listed')}</p>${c.excl.length ? `<p><b>Incompatible with:</b> ${esc(c.excl.join(', '))}</p>` : ''}
+ ${c.assumed ? `<p><b>Assumed knowledge:</b> ${esc(c.assumed)}</p>` : ''}${c.aim ? `<p><b>Aim:</b> ${esc(c.aim)}</p>` : ''}
+ <p><a href="../clos/#${esc(c.code)}" target="_blank" rel="noopener">Learning outcomes ↗</a></p>${tree(c0)}`);
+}
+function setEntry(v) { snap(); layout()[ctx.y][ctx.s][ctx.i] = v; dlg.close(); render(); }
+function cur() { return layout()[ctx.y][ctx.s][ctx.i]; }
+function pick(c) { const e = cur(); setEntry(idOf(e) + '=' + c + (done(e) ? '!' : '')); }
+dlg.addEventListener('click', e => {
+  if (e.target === dlg || e.target.closest('[data-x]')) return dlg.close();
+  if (e.target.closest('[data-back]')) return back();
+  const pk = e.target.closest('[data-pick]'); if (pk) return pick(pk.dataset.pick);
+  const inf = e.target.closest('[data-info]'); if (inf) return go(() => courseView(inf.dataset.info, 'pick'));
+  const a = e.target.closest('[data-act]');
+  if (a) { const en = cur(), d = done(en) ? '!' : '';
+    if (a.dataset.act === 'choose') return pick(a.dataset.code);
+    if (a.dataset.act === 'change') return go(listView);
+    if (a.dataset.act === 'done') return setEntry(done(en) ? base(en) : base(en) + '!');
+    if (a.dataset.act === 'clear') return setEntry(idOf(en) + d); }
+  const n = e.target.closest('[data-c]'); if (n) go(() => courseView(n.dataset.c));
+});
+dlg.addEventListener('submit', e => { const f = e.target.closest && e.target.closest('[data-fe]'); if (!f) return; e.preventDefault();
+  const en = cur(), v = f.querySelector('#fet').value.trim().replace(/\s+/g, ' ');
+  setEntry(idOf(en) + (v ? ':FE:' + encodeURIComponent(v).replace(/!/g, '%21') : '') + (done(en) ? '!' : '')); });
+dlg.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('g[data-c]')) go(() => courseView(e.target.dataset.c)); });
+dlg.addEventListener('close', () => { hist = []; });
+
+$('plan').addEventListener('click', e => {
+  const t = e.target;
+  if (t.closest('[data-reset]')) { delete LAY[KEY]; delete HIST[KEY]; mv = null; return render(); }
+  if (t.closest('[data-undo]')) { const h = HIST[KEY]; if (h && h.length) LAY[KEY] = h.pop(); mv = null; return render(); }
+  if (t.closest('[data-cancel]')) { mv = null; mvMsg = ''; return render(); }
+  const dk = t.closest('[data-done]'); if (dk) { const [y, s, i] = dk.dataset.done.split(',').map(Number); snap(); const r = layout()[y][s]; r[i] = done(r[i]) ? base(r[i]) : base(r[i]) + '!'; return render(); }
+  const m = t.closest('[data-mv]'); if (m) { const [y, s, i] = m.dataset.mv.split(',').map(Number); mv = { y, s, i }; mvMsg = ''; return render(); }
+  const b = t.closest('button.cell'); if (!b) return;
+  const p = { y: +b.dataset.y, s: +b.dataset.s, i: +b.dataset.i };
+  if (mv) {
+    if (p.y === mv.y && p.s === mv.s && p.i === mv.i) { mv = null; mvMsg = ''; }
+    else if (p.y === mv.y && p.s === mv.s) mvMsg = 'Pick a box in a different semester, or cancel.';
+    else { const f = swapInfo(mv, p); if (f.why) mvMsg = f.why; else { snap(); const L = layout(), A = L[mv.y][mv.s], B = L[p.y][p.s]; [A[mv.i], B[p.i]] = [B[p.i], A[mv.i]]; mv = null; mvMsg = ''; } }
+    return render();
+  }
+  ctx = p; hist = [];
+  const en = cur();
+  if (b.dataset.c) go(() => courseView(b.dataset.c, isSlot(en) ? 'chosen' : 'fixed')); else go(listView);
+});
+['progs', 'plans', 'starts'].forEach(id => $(id).addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.prog) choose(b.dataset.prog); else if (b.dataset.plan) choose(progCode, b.dataset.plan); else if (b.dataset.start) choose(progCode, planCode, b.dataset.start); }));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && mv) { mv = null; mvMsg = ''; render(); } });
+
+// ---------- share / print ----------
+const b64 = s => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const unb64 = s => decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/'))));
+function shareUrl() {
+  const ch = []; layout().forEach((y, yi) => y.forEach((s, si) => s.forEach((e, i) => { if (e !== `${yi}.${si}.${i}`) ch.push([yi, si, i, e]); })));
+  return location.origin + location.pathname + '#' + [progCode, planCode, start].join('.') + (ch.length ? '.' + b64(JSON.stringify(ch)) : '');
+}
+function fromHash() {
+  const [pc, pl, st, dat] = decodeURIComponent(location.hash.slice(1)).split('.');
+  choose(pc, pl, st, true);
+  if (!dat) return;
+  try { delete LAY[KEY]; const L = layout();
+    JSON.parse(unb64(dat)).forEach(([y, s, i, e]) => { if (L[y] && L[y][s] && i in L[y][s] && BASE[KEY][idOf(String(e))]) L[y][s][i] = String(e); });
+    render(); } catch (x) {}
+}
+window.addEventListener('hashchange', () => { if (S) fromHash(); });
+$('cp').addEventListener('click', async e => { const b = e.currentTarget, u = shareUrl();
+  try { await navigator.clipboard.writeText(u); b.textContent = 'Link copied ✓'; } catch (x) { prompt('Copy this link:', u); }
+  setTimeout(() => { b.textContent = 'Copy link'; }, 2000); });
+$('pr').addEventListener('click', () => window.print());
+window.addEventListener('beforeprint', () => { const n = $('pfor').value.trim(); $('plink').textContent = shareUrl();
+  $('pinfo').textContent = (n ? 'Student: ' + n + ' · ' : '') + $('ttl').textContent + ' · starts ' + SPL(start) + ' · ' + new Date().toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' }); });
+
+// ---------- load ----------
+Promise.all([getJSON('../data/schedule.json'), getJSON('../data/courses.json')]).then(([s, c]) => {
+  S = s; CD = c; D = Object.fromEntries(c.courses.map(x => [x.code, x])); CAT = Object.fromEntries(c.categories.map(k => [k.key, k]));
+  LK = prereqLinks(c.courses, D);
+  if (!S.programs.some(p => p.plans.length)) { $('wait').textContent = 'CurV has no program schedules for these programs.'; return; }
+  S.programs = S.programs.filter(p => p.plans.length);
+  $('wait').hidden = true; $('ui').hidden = false;
+  fromHash();
+}).catch(loadFail);
+
+</script>
+</body>
+</html>
