@@ -52,9 +52,15 @@ mark{background:#ffe38a;color:inherit;border-radius:2px;padding:0 1px}
 .top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:18px}
 .key{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:12px 14px;min-width:240px}
 .key h2{font-size:1.1rem;margin:0 0 8px;border:0;padding:0;color:#fff}
-.key ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.kp{border-radius:6px;padding:4px 10px;font-size:13px;font-weight:700;background:var(--f);color:var(--t);border:2px solid var(--s);cursor:pointer;text-align:left;width:100%}
-.kp[aria-pressed=false]{opacity:.35}
+.key{max-width:420px}
+.key ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;max-height:40vh;overflow:auto}
+.kp{border-radius:6px;padding:4px 10px;font-size:13px;font-weight:700;background:var(--f);color:var(--t);border:2px solid var(--s);cursor:pointer;text-align:left}
+.kp[aria-pressed=false]{background:transparent;color:#fff;border-color:rgba(255,255,255,.35);font-weight:400}
+.kbtn{display:flex;gap:8px;margin:0 0 8px;flex-wrap:wrap;align-items:center}
+.kbtn button{background:none;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:14px;padding:3px 12px;font-size:12px;font-weight:700}
+.kbtn label{font-size:12px;display:flex;gap:6px;align-items:center}
+.node.ext{opacity:.55}.node.ext rect{stroke-dasharray:4 3}
+.pick{padding:40px 20px;color:var(--navy);font-family:var(--body);font-size:17px;text-align:center}
 .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
 .controls input{width:280px;border-radius:25px;padding:10px 18px;border:0}
 .controls button{background:var(--bblue);color:#fff;border:none;padding:11px 22px;border-radius:25px;font-size:14px;font-weight:700}
@@ -95,7 +101,10 @@ svg{display:block;width:100%;height:auto}
 <h1>Course prerequisite tree</h1>
 <p class="sub" id="sub" style="margin:0">Loading…</p>
 </div>
-<aside class="key" aria-label="Colour key"><h2>Colour key <small style="font-weight:400;opacity:.7">(click to show/hide)</small></h2><ul id="cats"></ul></aside>
+<aside class="key" aria-label="Choose what to show"><h2>Show</h2>
+<div class="kbtn"><button id="all">Show all</button><button id="none">Clear</button>
+<label><input type="checkbox" id="ext" checked> Prerequisites from outside the selection</label></div>
+<ul id="cats"></ul></aside>
 </header>
 <div class="controls"><input id="q" type="search" placeholder="Search code or name…" aria-label="Search courses"><button id="reset">Reset view</button></div>
 <div id="viz"></div>
@@ -105,7 +114,7 @@ svg{display:block;width:100%;height:auto}
 <span><span class="ln" style="border-color:#F5A300"></span>Leads to the selected course</span>
 <span><span class="ln" style="border-color:#0E9F9A"></span>Unlocked by the selected course</span>
 <span><b>ⓘ</b> other entry requirements (see details)</span>
-<span>Faded, dashed box: no 2027 version in CurV</span>
+<span>Faded, dashed box: no 2027 version in CurV, or (with the switch on) a prerequisite outside your selection</span>
 </div>
 <div id="panel" role="dialog" aria-label="Course details"></div>
 </div>
@@ -144,59 +153,93 @@ function prereqLinks(courses,D){const L=[];for(const c of courses){const ex=pars
 let D;
 getJSON('../data/courses.json').then(d=>{D=d;draw()}).catch(e=>{$('sub').textContent='Could not load the course data: '+e.message});
 function draw(){
-const cats=D.categories,CAT=Object.fromEntries(cats.map(c=>[c.key,c])),hidden=new Set();
-const courses=D.courses.filter(c=>c.level),byCode=Object.fromEntries(courses.map(c=>[c.code,c]));
-const links=prereqLinks(courses,byCode);
-$('sub').textContent=`${courses.length} courses · click a course (or press Enter) to see what leads to it and what it unlocks`;
+const fixed=Object.fromEntries(D.categories.map(c=>[c.key,c]));
+const MAJ=D.majors||[],PAL=[['#6E5AE1','#4B3BB0','#fff'],['#1448FF','#0A2FC7','#fff'],['#0B7A75','#075450','#fff'],['#C2570C','#8A3D08','#fff'],['#2E7D32','#1B5E20','#fff'],['#8E24AA','#5E1872','#fff'],['#140f50','#8C78FF','#fff'],['#455A64','#263238','#fff']];
+const all=D.courses.filter(c=>c.level&&!c.placeholder),byCode=Object.fromEntries(all.map(c=>[c.code,c]));
+const links=prereqLinks(all,byCode);
+// what can be switched on and off: core, each major, then the rest
+const groups=[...(all.some(c=>c.cat==='core')?[{k:'core',label:'Core'}]:[]),...MAJ.map(m=>({k:'m:'+m,label:m})),
+ ...(all.some(c=>c.cat==='elective')?[{k:'elective',label:'Other program courses'}]:[]),...(all.some(c=>c.cat==='other')?[{k:'other',label:'Not in the program rules'}]:[])];
+let sel=new Set();
+const h=decodeURIComponent(location.hash.slice(1));
+if(h.startsWith('show=')){const [v,o]=h.slice(5).split(';');v.split('|').filter(Boolean).forEach(k=>sel.add(k));if(o==='noext')$('ext').checked=false}
+else if(MAJ.length<=6)groups.forEach(g=>sel.add(g.k)); else sel.add('core');
+const majorsOn=()=>MAJ.filter(m=>sel.has('m:'+m));
+function colourOf(c,on){if(c.cat==='core')return fixed.core;if(c.cat==='elective'||c.cat==='other')return fixed[c.cat];
+ const ms=(c.mj||[]).filter(m=>on.includes(m));if(ms.length>1)return fixed.shared||{f:'#BCD4E6',s:'#2F5E85',t:'#140f50'};
+ const m=ms[0]||(c.mj||[])[0];const i=Math.max(0,on.indexOf(m)),p=PAL[i%PAL.length];return{f:p[0],s:p[1],t:p[2]}}
+const shown=c=>(sel.has('core')&&c.cat==='core')||(c.mj||[]).some(m=>sel.has('m:'+m))||(sel.has(c.cat)&&(c.cat==='elective'||c.cat==='other'));
 const sty=c=>`--f:${c.f};--s:${c.s};--t:${c.t}`;
-$('cats').innerHTML=cats.map(c=>`<li><button class="kp" data-k="${esc(c.key)}" aria-pressed="true" style="${sty(c)}">${esc(c.label)}</button></li>`).join('');
-const levels=[...new Set(courses.map(c=>lvlGroup(c.level)))].sort();
-const NW=150,NH=54,GAP=6,SEP=18,COLW=300,TOP=60,LEFT=40,nodes=[];let maxH=0;
-const semRank=c=>c.sem==='1'?1:c.sem==='2'?2:3;
-levels.forEach((l,li)=>{let y=TOP,first=true;
- cats.forEach(k=>{const g=courses.filter(c=>lvlGroup(c.level)===l&&c.cat===k.key).sort((a,b)=>(a.old-b.old)||semRank(a)-semRank(b)||a.title.localeCompare(b.title));
-  if(!g.length)return;if(!first)y+=SEP;first=false;g.forEach(c=>{nodes.push({...c,x:LEFT+li*COLW,y,col:li});y+=NH+GAP})});maxH=Math.max(maxH,y)});
-const W=LEFT*2+(levels.length-1)*COLW+NW,Ht=maxH+30,pos=new Map(nodes.map(n=>[n.code,n]));
-const svg=d3.select('#viz').append('svg').attr('viewBox',`0 0 ${W} ${Ht}`).style('min-width',Math.min(W,levels.length*260)+'px');
-const defs=svg.append('defs');
-[['arrow','#9a97b8'],['arrow-up','#F5A300'],['arrow-down','#0E9F9A']].forEach(([id,col])=>defs.append('marker').attr('id',id).attr('viewBox','0 -5 10 10').attr('refX',10).attr('markerWidth',6).attr('markerHeight',6).attr('orient','auto').append('path').attr('d','M0,-5L10,0L0,5').attr('fill',col));
-levels.forEach((l,li)=>svg.append('text').attr('class','col-label').attr('x',LEFT+li*COLW+NW/2).attr('y',32).text(l>=5?'Level 5+':'Level '+l));
-const lp=l=>{const s=pos.get(l.s),t=pos.get(l.t),sy=s.y+NH/2,ty=t.y+NH/2,R=18;
- if(s.col>=t.col){const x=s.x+NW,b=R+8+Math.min(Math.abs(ty-sy)/6,50);return`M${x},${sy} C${x+b},${sy} ${x+b},${ty} ${x+R},${ty} L${x},${ty}`}
- const sx=s.x+NW,tx=t.x-R,m=(sx+tx)/2;return`M${sx},${sy} C${m},${sy} ${m},${ty} ${tx},${ty} L${t.x},${ty}`};
-const linkSel=svg.append('g').selectAll('path').data(links.filter(l=>pos.has(l.s)&&pos.has(l.t))).join('path').attr('class',l=>'link'+(l.alt?' alt':'')).attr('d',lp);
-const wrap=(t,m)=>{const o=[];let ln='';t.split(' ').forEach(w=>{if((ln+' '+w).trim().length>m&&ln){o.push(ln);ln=w}else ln=(ln+' '+w).trim()});o.push(ln);if(o.length>2){o.length=2;o[1]=o[1].slice(0,-2)+'…'}return o};
-const nodeSel=svg.append('g').selectAll('g').data(nodes).join('g').attr('class',d=>'node'+(d.old?' off':'')).attr('style',d=>sty(CAT[d.cat]||cats[cats.length-1]))
- .attr('transform',d=>`translate(${d.x},${d.y})`).attr('tabindex',0).attr('role','button').attr('aria-label',d=>d.code+' '+d.title)
- .on('click',(e,d)=>{e.stopPropagation();select(d)}).on('keydown',(e,d)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(d)}});
-nodeSel.append('title').text(d=>d.code+': '+d.title);
-nodeSel.append('rect').attr('width',NW).attr('height',NH).attr('rx',6);
-nodeSel.append('text').attr('class','code').attr('x',NW/2).attr('y',18).text(d=>d.code);
-nodeSel.each(function(d){wrap(d.title,27).forEach((t,i)=>d3.select(this).append('text').attr('x',NW/2).attr('y',32+i*11).text(t))});
-const bd=nodeSel.filter(d=>d.prereqNotes.length||d.coreq.length).append('g').attr('class','badge');
-bd.append('circle').attr('cx',NW-11).attr('cy',11).attr('r',8);bd.append('text').attr('x',NW-11).attr('y',14.5).text('i');
-function walk(code,dir){const seen=new Set(),st=[code];while(st.length){const c=st.pop();links.forEach(l=>{const f=dir==='up'?l.t:l.s,t=dir==='up'?l.s:l.t;if(f===c&&!seen.has(t)){seen.add(t);st.push(t)}})}return seen}
+function key(){const on=majorsOn();
+ $('cats').innerHTML=groups.map(g=>{const k=g.k.startsWith('m:')?colourOf({mj:[g.label]},on.length?on:[g.label]):fixed[g.k]||fixed.shared;
+  return`<li><button class="kp" data-k="${esc(g.k)}" aria-pressed="${sel.has(g.k)}" style="${sty(k)}">${esc(g.label)}</button></li>`}).join('')+
+  (on.length>1?`<li><span class="kp" style="${sty(fixed.shared||{f:'#BCD4E6',s:'#2F5E85',t:'#140f50'})};cursor:default">In several of these</span></li>`:'')}
+let svg=null,nodeSel=null,linkSel=null,pos=new Map(),drawnLinks=[];
+function layout(){
+ key();d3.select('#viz').selectAll('*').remove();$('panel').style.display='none';
+ history.replaceState(null,'','#show='+encodeURIComponent([...sel].join('|'))+($('ext').checked?'':';noext'));
+ const on=majorsOn(),pick=all.filter(shown),ids=new Set(pick.map(c=>c.code));
+ if($('ext').checked){const st=[...ids];while(st.length){const t=st.pop();links.forEach(l=>{if(l.t===t&&!ids.has(l.s)){ids.add(l.s);st.push(l.s)}})}}
+ const list=all.filter(c=>ids.has(c.code)).map(c=>({...c,ext:!shown(c)}));
+ $('sub').textContent=list.length?`${pick.length} course${pick.length===1?'':'s'} selected${list.length>pick.length?` (+${list.length-pick.length} prerequisites from outside the selection)`:''} · click a course to see what leads to it and what it unlocks`:'Choose what to show on the right.';
+ if(MAJ.length&&!on.length&&pick.length)$('sub').textContent+=' · choose a major on the right to add its courses';
+ if(!pick.length){d3.select('#viz').append('p').attr('class','pick').text(MAJ.length?'Choose one or more majors (and Core) to see their courses.':'Nothing selected.');return}
+ const levels=[...new Set(list.map(c=>lvlGroup(c.level)))].sort();
+ const order=c=>c.ext?9:c.cat==='core'?0:(c.mj||[]).filter(m=>on.includes(m)).length>1?2:c.cat==='elective'?7:c.cat==='other'?8:1+on.indexOf((c.mj||[]).find(m=>on.includes(m)))/100;
+ const semRank=c=>c.sem==='1'?1:c.sem==='2'?2:3;
+ const NW=150,NH=54,GAP=6,SEP=18,COLW=300,TOP=60,LEFT=40,nodes=[];let maxH=0;
+ levels.forEach((l,li)=>{let y=TOP,last=null;
+  list.filter(c=>lvlGroup(c.level)===l).sort((a,b)=>order(a)-order(b)||(a.old-b.old)||semRank(a)-semRank(b)||a.title.localeCompare(b.title))
+   .forEach(c=>{const o=Math.floor(order(c)*100);if(last!==null&&o!==last)y+=SEP;last=o;nodes.push({...c,col:colourOf(c,on),x:LEFT+li*COLW,y,ci:li});y+=NH+GAP});maxH=Math.max(maxH,y)});
+ const W=LEFT*2+(levels.length-1)*COLW+NW,Ht=maxH+30;pos=new Map(nodes.map(n=>[n.code,n]));
+ svg=d3.select('#viz').append('svg').attr('viewBox',`0 0 ${W} ${Ht}`).style('min-width',Math.min(W,levels.length*260)+'px');
+ const defs=svg.append('defs');
+ [['arrow','#9a97b8'],['arrow-up','#F5A300'],['arrow-down','#0E9F9A']].forEach(([id,col])=>defs.append('marker').attr('id',id).attr('viewBox','0 -5 10 10').attr('refX',10).attr('markerWidth',6).attr('markerHeight',6).attr('orient','auto').append('path').attr('d','M0,-5L10,0L0,5').attr('fill',col));
+ levels.forEach((l,li)=>svg.append('text').attr('class','col-label').attr('x',LEFT+li*COLW+NW/2).attr('y',32).text(l>=5?'Level 5+':'Level '+l));
+ const lp=l=>{const s=pos.get(l.s),t=pos.get(l.t),sy=s.y+NH/2,ty=t.y+NH/2,R=18;
+  if(s.ci>=t.ci){const x=s.x+NW,b=R+8+Math.min(Math.abs(ty-sy)/6,50);return`M${x},${sy} C${x+b},${sy} ${x+b},${ty} ${x+R},${ty} L${x},${ty}`}
+  const sx=s.x+NW,tx=t.x-R,m=(sx+tx)/2;return`M${sx},${sy} C${m},${sy} ${m},${ty} ${tx},${ty} L${t.x},${ty}`};
+ drawnLinks=links.filter(l=>pos.has(l.s)&&pos.has(l.t));
+ linkSel=svg.append('g').selectAll('path').data(drawnLinks).join('path').attr('class',l=>'link'+(l.alt?' alt':'')).attr('d',lp);
+ const wrap=(t,m)=>{const o=[];let ln='';t.split(' ').forEach(w=>{if((ln+' '+w).trim().length>m&&ln){o.push(ln);ln=w}else ln=(ln+' '+w).trim()});o.push(ln);if(o.length>2){o.length=2;o[1]=o[1].slice(0,-2)+'…'}return o};
+ nodeSel=svg.append('g').selectAll('g').data(nodes).join('g').attr('class',d=>'node'+(d.old?' off':'')+(d.ext?' ext':'')).attr('style',d=>sty(d.ext?{f:'#ECEAF4',s:'#8C88A8',t:'#140f50'}:d.col))
+  .attr('transform',d=>`translate(${d.x},${d.y})`).attr('tabindex',0).attr('role','button').attr('aria-label',d=>d.code+' '+d.title)
+  .on('click',(e,d)=>{e.stopPropagation();select(d)}).on('keydown',(e,d)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(d)}});
+ nodeSel.append('title').text(d=>d.code+': '+d.title+(d.ext?' (prerequisite outside your selection)':''));
+ nodeSel.append('rect').attr('width',NW).attr('height',NH).attr('rx',6);
+ nodeSel.append('text').attr('class','code').attr('x',NW/2).attr('y',18).text(d=>d.code);
+ nodeSel.each(function(d){wrap(d.title,27).forEach((t,i)=>d3.select(this).append('text').attr('x',NW/2).attr('y',32+i*11).text(t))});
+ const bd=nodeSel.filter(d=>d.prereqNotes.length||d.coreq.length).append('g').attr('class','badge');
+ bd.append('circle').attr('cx',NW-11).attr('cy',11).attr('r',8);bd.append('text').attr('x',NW-11).attr('y',14.5).text('i');
+ svg.on('click',resetView);
+}
+function walk(code,dir){const seen=new Set(),st=[code];while(st.length){const c=st.pop();drawnLinks.forEach(l=>{const f=dir==='up'?l.t:l.s,t=dir==='up'?l.s:l.t;if(f===c&&!seen.has(t)){seen.add(t);st.push(t)}})}return seen}
 function select(d){const up=walk(d.code,'up'),dn=walk(d.code,'down'),rel=new Set([d.code,...up,...dn]);
  const iu=l=>up.has(l.s)&&(up.has(l.t)||l.t===d.code),id=l=>dn.has(l.t)&&(dn.has(l.s)||l.s===d.code);
  nodeSel.classed('sel',n=>n.code===d.code).classed('up',n=>up.has(n.code)).classed('down',n=>dn.has(n.code)).classed('faded',n=>!rel.has(n.code));
  linkSel.classed('up',iu).classed('down',id).classed('faded',l=>!iu(l)&&!id(l));
- const ext=[...new Set(String(d.prereq).match(/[A-Z]{3,6}\d{3,4}/g)||[])].filter(x=>!byCode[x]);
+ const ext=[...new Set(String(d.prereq).match(/[A-Z]{3,6}\d{3,4}/g)||[])].filter(x=>!pos.has(x));
  $('panel').innerHTML=`<button class="x" onclick="window.resetView()" aria-label="Close">×</button><h3><span class="code">${esc(d.code)}</span><br>${esc(d.title)}</h3>
- <div><b>Level ${esc(d.level)}</b>${d.sem?' · Semester '+esc(d.sem.replace(',',' & ')):''} · ${esc((CAT[d.cat]||{}).label||'')}</div>
+ <div><b>Level ${esc(d.level)}</b>${d.sem?' · Semester '+esc(d.sem.replace(',',' & ')):''}${d.cat==='core'?' · Core':''}</div>
+ ${(d.mj||[]).length?`<p><b>In the major${d.mj.length>1?'s':''}:</b> ${esc(d.mj.join(', '))}</p>`:''}
  ${d.old?`<p class="warn">No ${esc(D.year)} version in CurV (showing ${esc(d.version)}, applies ${esc(d.applies)}).</p>`:''}
  <p><b>Prerequisites:</b> ${esc(d.prereqText||'None listed')}</p>
- ${d.excl.length?`<p><b>Incompatible with:</b> ${esc(d.excl.join(', '))}</p>`:''}
+ ${d.coreqText?`<p><b>Corequisites:</b> ${esc(d.coreqText)}</p>`:''}
+ ${d.exclText||d.excl.length?`<p><b>Incompatible with:</b> ${esc(d.exclText||d.excl.join(', '))}</p>`:''}
  ${d.assumed?`<p><b>Assumed knowledge:</b> ${esc(d.assumed)}</p>`:''}
- ${ext.length?`<p class="warn">Not in this course list (not drawn): ${esc(ext.join(', '))}</p>`:''}
- <p>${up.size} course${up.size===1?'':'s'} lead to this one; it unlocks ${dn.size}.</p><p><a href="../clos/#${esc(d.code)}">Learning outcomes →</a></p>`;
+ ${ext.length?`<p class="warn">Not shown here: ${esc(ext.join(', '))}</p>`:''}
+ <p>${up.size} course${up.size===1?'':'s'} shown lead to this one; it unlocks ${dn.size} shown.</p><p><a href="../clos/#${esc(d.code)}">Learning outcomes →</a></p>`;
  $('panel').style.display='block';$('q').value=''}
-function resetView(){nodeSel.classed('sel up down faded',false);linkSel.classed('up down faded',false);$('panel').style.display='none';applyHidden()}
-function applyHidden(){nodeSel.style('display',n=>hidden.has(n.cat)?'none':null);linkSel.style('display',l=>hidden.has(pos.get(l.s).cat)||hidden.has(pos.get(l.t).cat)?'none':null)}
-window.resetView=resetView;svg.on('click',resetView);$('reset').onclick=resetView;
+function resetView(){if(!nodeSel)return;nodeSel.classed('sel up down faded',false);linkSel.classed('up down faded',false);$('panel').style.display='none'}
+window.resetView=resetView;$('reset').onclick=resetView;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')resetView()});
-$('q').addEventListener('input',e=>{resetView();const q=e.target.value.trim().toLowerCase();if(q)nodeSel.classed('faded',n=>!(n.code+' '+n.title).toLowerCase().includes(q))});
-$('cats').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k;hidden.has(k)?hidden.delete(k):hidden.add(k);b.setAttribute('aria-pressed',!hidden.has(k));applyHidden()});
-const id=location.hash.slice(1);if(id&&pos.has(id))select(pos.get(id));
+$('q').addEventListener('input',e=>{resetView();const q=e.target.value.trim().toLowerCase();if(q&&nodeSel)nodeSel.classed('faded',n=>!(n.code+' '+n.title).toLowerCase().includes(q))});
+$('cats').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const k=b.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);layout()});
+$('all').onclick=()=>{groups.forEach(g=>sel.add(g.k));layout()};
+$('none').onclick=()=>{sel.clear();layout()};
+$('ext').onchange=layout;
+layout();
+const id=location.hash.match(/[A-Z]{3,6}\d{3,4}$/);if(id&&pos.has(id[0]))select(pos.get(id[0]));
 }
 </script>
 </body>
