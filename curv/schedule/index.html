@@ -181,7 +181,9 @@ const item = e => BASE[KEY][idOf(e)];
 const feText = e => { const m = base(e).match(/^[\d.]+:FE:(.*)$/); if (!m) return ''; try { return decodeURIComponent(m[1]); } catch (x) { return ''; } };
 const code = e => { const b = base(e), it = item(e); if (/=/.test(b)) return b.split('=')[1]; return it && it.t === 'c' ? it.code : null; };
 const isSlot = e => { const it = item(e); return it && it.t !== 'c'; };
-const listOf = it => it.t === 'x' ? { title: it.cat || 'Choose one', courses: [...new Set(it.groups.flat())] } : (S.lists[it.list] || { title: it.cat || 'Elective', courses: [] });
+const real = c => !(D[c] && D[c].placeholder);   // CurV fills open choices with placeholder courses like "Elective 1"
+const listOf = it => { const L = it.t === 'x' ? { title: it.cat || 'Choose one', courses: [...new Set(it.groups.flat())] } : (S.lists[it.list] || { title: it.cat || 'Elective', courses: [] });
+  return { ...L, courses: L.courses.filter(real) }; };
 const slotLabel = e => { const it = item(e); return it.t === 'x' ? (it.cat || 'Choose one') : listOf(it).title || it.cat || 'Elective'; };
 const freeOnly = it => it.t === 's' && !listOf(it).courses.some(c => D[c]);
 
@@ -307,11 +309,11 @@ function listView() {
   if (it.note) h += `<div class="infobox">${esc(it.note)}</div>`;
   if (it.t === 'x') h += `<p><b>${esc(it.label)}</b></p><ul>${it.groups.map(g => `<li>${g.map(c => `${esc(c)} ${esc((D[c] || {}).title || '')}`).join(' <b>+</b> ')}</li>`).join('')}</ul>`;
   h += `<p><button class="act alt" data-act="done">${done(e) ? 'Mark as not completed' : 'Mark as completed'}</button>${code(e) || feText(e) ? ' <button class="act alt" data-act="clear">Clear</button>' : ''}</p>`;
+  const form = (lbl) => `<form class="fe" data-fe><label for="fet"><b>${lbl}</b></label><input id="fet" maxlength="80" autocomplete="off" value="${esc(feText(e))}" placeholder="e.g. ECON1001 Introduction to Economics"><p><button class="act" type="submit">Save</button></p><p class="hint">Shown in the box; not checked against prerequisites or semesters.</p></form>`;
   if (freeOnly(it)) {
-    const t = feText(e);
-    h += `<form class="fe" data-fe><label for="fet"><b>Course code / name</b> <small>(optional)</small></label><input id="fet" maxlength="80" autocomplete="off" value="${esc(t)}" placeholder="e.g. ECON1001 Introduction to Economics"><p><button class="act" type="submit">Save</button></p><p class="hint">Shown in the box; not checked against prerequisites or semesters.</p></form>`;
+    h += form('Type a course code / name <small>(optional)</small>');
     if (Lst.wild && Lst.wild.length) h += `<p class="hint">${esc(Lst.wild.join(' '))}</p>`;
-    return show(h);
+    show(h); const fi = dlg.querySelector('#fet'); if (fi && matchMedia('(pointer:fine)').matches) fi.focus(); return;
   }
   const cs = Lst.courses.filter(c => D[c]).map(c => D[c]), missing = Lst.courses.filter(c => !D[c]), chosen = code(e);
   h += '<p class="hint">Click a course to choose it. ⓘ shows its details and prerequisite tree.</p>';
@@ -323,6 +325,7 @@ function listView() {
       return `<li><button class="opt" style="${colourOf(c.code)}" data-pick="${esc(c.code)}"><b>${esc(c.code)}</b> ${esc(c.title)}<small>Level ${esc(c.level)} · ${esc(semTxt(c))}</small>${c.code === chosen ? '<small>✓ currently chosen</small>' : ''}${w.length ? `<small class="wr">⚠ ${esc(w.map(x => x.m).join(' '))}</small>` : ''}</button><button class="info" data-info="${esc(c.code)}" aria-label="Details for ${esc(c.code)}" title="Details and prerequisite tree">ⓘ</button></li>`; }).join('') + '</ul>';
   }
   if (missing.length) h += `<p class="hint">Also in this list in CurV but not in this site's course data: ${esc(missing.join(', '))}.</p>`;
+  h += '<h4 class="grp">Not in the list?</h4>' + form('Type a course code / name');
   show(h);
 }
 function tree(c0) {
@@ -359,7 +362,7 @@ function courseView(c0, mode) {
   show(`<h3><span class="code">${esc(c.code)}</span><br>${esc(c.title)}</h3>
  <div><b>Level ${esc(c.level)}</b> · ${esc(semTxt(c))}${c.units ? ' · ' + esc(c.units) + ' units' : ''}</div>
  ${c.old ? `<p class="warn">No ${esc(CD.year)} version in CurV (showing ${esc(c.version)}, applies ${esc(c.applies)}).</p>` : ''}${ex}
- <p><b>Prerequisites:</b> ${esc(c.prereqText || 'None listed')}</p>${c.excl.length ? `<p><b>Incompatible with:</b> ${esc(c.excl.join(', '))}</p>` : ''}
+ <p><b>Prerequisites:</b> ${esc(c.prereqText || 'None listed')}</p>${c.coreqText ? `<p><b>Corequisites:</b> ${esc(c.coreqText)}</p>` : ''}${c.exclText || c.excl.length ? `<p><b>Incompatible with:</b> ${esc(c.exclText || c.excl.join(', '))}</p>` : ''}
  ${c.assumed ? `<p><b>Assumed knowledge:</b> ${esc(c.assumed)}</p>` : ''}${c.aim ? `<p><b>Aim:</b> ${esc(c.aim)}</p>` : ''}
  <p><a href="../clos/#${esc(c.code)}" target="_blank" rel="noopener">Learning outcomes ↗</a></p>${tree(c0)}`);
 }
